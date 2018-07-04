@@ -1,0 +1,114 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+@include mat-core();
+
+$mmb-primary: (
+  50 : #fff0e1,
+  100 : #ffdab4,
+  200 : #ffc282,
+  300 : #ffaa50,
+  400 : #ff972b,
+  500 : #ff8505,
+  600 : #ff7d04,
+  700 : #ff7204,
+  800 : #ff6803,
+  900 : #ff5501,
+  A100 : #ffffff,
+  A200 : #fff6f2,
+  A400 : #ffd1bf,
+  A700 : #ffbea6,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$mmb-accent: (
+  50 : #fff0e1,
+  100 : #ffdab4,
+  200 : #ffc282,
+  300 : #ffaa50,
+  400 : #ff972b,
+  500 : #ff8505,
+  600 : #ff7d04,
+  700 : #ff7204,
+  800 : #ff6803,
+  900 : #ff5501,
+  A100 : #ffffff,
+  A200 : #fff6f2,
+  A400 : #ffd1bf,
+  A700 : #ffbea6,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$mmb-palette-primary: mat-palette($mmb-primary);
+$mmb-palette-accent: mat-palette($mmb-accent);
+
+$mmb-app-theme: mat-light-theme($mmb-palette-primary, $mmb-palette-accent);
+@include angular-material-theme($mmb-app-theme);
+
+.bgAccent50 {
+  background: mat-color($mmb-palette-accent, 50);
+}
+
+.bgAccent500 {
+  background: mat-color($mmb-palette-accent, 500);
+}
+
+.bgPrimary50 {
+  background: mat-color($mmb-palette-primary, 50);
+}
+
+.bgPrimary100 {
+  background: mat-color($mmb-palette-primary, 100);
+}
+
+.borderAccent500 {
+  border-color: mat-color($mmb-palette-accent, 500);
+}
+
+@mixin linearGradient($top, $bottom) {
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(top, $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top), color-stop(100%, $bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $top 0%, $bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $top 0%, $bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $top 0%, $bottom 100%); /* IE10+ */
+  background: linear-gradient(to bottom, $top 0%, $bottom 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#000000', GradientType=0); /* IE6-9 */
+}
+
+#dashboardContainer {
+  @include linearGradient(#000000, #404040);
+}
+
+.mat-card{
+  @include linearGradient(#ffffff, #f2f2f2);
+}
