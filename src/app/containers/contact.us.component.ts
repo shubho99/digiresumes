@@ -8,7 +8,7 @@ import {Component} from '@angular/core';
       <h1>Contact Us</h1>
       <p>Our Company is here to provide you more information,answer any questions you may have <br> and create an effective
         solution for your need</p>
-      <mat-icon (click)=scrollToBottom()>arrow_drop_down_circle</mat-icon>
+      <mat-icon class="animated fadeInDown infinite time" (click)=scrollToBottom()>arrow_drop_down_circle</mat-icon>
     </div>
     <mat-card style="opacity: 0.7">
       <mat-card class="contact-card">
@@ -36,9 +36,11 @@ import {Component} from '@angular/core';
       top: 35%;
       left: 42%;
       font-size: 3em;
-      color: #fff;
       font-weight: 100;
       text-shadow: 0 0 30px rgba(0, 0, 0, .25);
+      background-image: linear-gradient(to right bottom, #e79f13, #ff6803);
+      -webkit-background-clip: text;
+      color:transparent;
     }
 
     p {
@@ -47,7 +49,7 @@ import {Component} from '@angular/core';
       align-items: center;
       text-align: justify;
       margin-left: 17%;
-      color: #fff;
+      color: #ff5501;
       font-size: 1.5em;
       text-shadow: 0 0 30px rgba(0, 0, 0, .5);
       text-align: center;
@@ -89,6 +91,10 @@ import {Component} from '@angular/core';
 
     mat-form-field {
       width: 40%;
+    }
+
+    .time {
+      animation-duration: 2s;
     }
   `]
 })

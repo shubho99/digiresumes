@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
     <img class="polygon" src="../../assets/images/buisness.jpg" style="position: absolute;height:93%;width: 106%;margin-top: -2%">
     <div class="main-div" fxLayout="column"
          fxLayoutAlign="center start">
-      <p class="animated flip time" style="    margin-left: 4%;
+      <p class="animated flipInY time" style="    margin-left: 4%;
     margin-bottom: -34px;
     margin-top: 1%;
     font-size: 70px;

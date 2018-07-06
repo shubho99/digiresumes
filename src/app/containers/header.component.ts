@@ -35,6 +35,7 @@ import {Component} from '@angular/core';
       box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.2);
     }
 
+
     @keyframes BackgroundGradient {
       0% {
         background-position: 0% 50%;
