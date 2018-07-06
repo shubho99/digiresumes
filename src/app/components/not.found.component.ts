@@ -10,7 +10,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
         <h1 id="word1" class="glitch_word1">404 - page not found</h1>
         <h1 id="word2" class="glitch_word2">404 - page not found</h1>
       </div>
-    </div>
+    </div>         
   `,
   styles: [`
     .container {
@@ -239,3 +239,4 @@ import {Component, EventEmitter, Output} from '@angular/core';
 
 export class NotFoundComponent {
 }
+// testing git
