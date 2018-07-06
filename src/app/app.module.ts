@@ -1,18 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './containers/app.component';
+import {AppComponent} from './containers/app.component';
 import {HeaderComponent} from './containers/header';
 import {DashboardComponent} from './containers/dashboard';
 import {NotFoundComponent} from './components/not-found';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import {routes} from './routes';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatButtonModule} from '@angular/material';
-import {HomeComponent} from './components/home';
-import {QuickSetupComponent} from './components/quick-setup';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
+import {HomeComponent} from './containers/home';
+import {SignUpComponent} from './containers/sign-up';
+import {GetStartedComponent} from './containers/get-started';
+import {ContactUsComponent} from './containers/contact-us';
+import {LoginComponent} from './containers/login';
+import {SafeUrlPipe} from './pipes/safeUrl';
+import {TruncatePipe} from './pipes/truncate';
 
 
 @NgModule({
@@ -22,7 +27,12 @@ import {QuickSetupComponent} from './components/quick-setup';
     DashboardComponent,
     NotFoundComponent,
     HomeComponent,
-    QuickSetupComponent
+    SignUpComponent,
+    GetStartedComponent,
+    ContactUsComponent,
+    LoginComponent,
+    SafeUrlPipe,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
@@ -31,8 +41,13 @@ import {QuickSetupComponent} from './components/quick-setup';
     RouterModule.forRoot(routes),
     FlexLayoutModule,
     MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

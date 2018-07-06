@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,7 @@ import {Component} from '@angular/core';
       </div>
     </div>
     <div style="height: 90%" class="animated fadeIn time">
-      <button class="animated slideInUp time" mat-raised-button>Get Started</button>
+      <button (click)="onClick()" class="animated slideInUp time" mat-raised-button>Get Started</button>
     </div>
   `,
   styles: [`
@@ -93,8 +94,8 @@ import {Component} from '@angular/core';
       width: 16%;
       height: 8%;
     }
-    
-    button:hover{
+
+    button:hover {
       box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3);
     }
 
@@ -111,6 +112,12 @@ import {Component} from '@angular/core';
 })
 
 export class HomeComponent {
+  constructor(private router: Router) {
+  }
+
+  onClick() {
+    this.router.navigate(['get-started']);
+  }
 }
 
 // #1665c1
