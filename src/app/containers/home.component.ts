@@ -8,14 +8,15 @@ import {Router} from '@angular/router';
     <div class="main-div" fxLayout="column"
          fxLayoutAlign="center start">
       <p class="animated flipInY time" style="    margin-left: 4%;
-    margin-bottom: -34px;
-    margin-top: 1%;
+    margin-bottom: 9px;
+    margin-top: -1%;
     font-size: 70px;
     color: #ffdab4; letter-spacing: 11px">
         Make My <span style="font-size: 70px;color: #ff7d04">Resume</span>
       </p>
       <div class="animated flipInX time1" style="  padding-left: 10px; padding-top : 10px; margin-left: 4%;
-    margin-top: 1%;" fxLayout="row" fxLayoutAlign="start center">
+      margin-bottom: -12px;
+    margin-top: -1%;" fxLayout="row" fxLayoutAlign="start center">
         <p style="margin-left: 40px;font-size:34px;color:  #ffdab4">
           Let's make your Resume &nbsp;
         </p>
