@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {VideoDialogComponent} from '../components/video.dialog.component';
 
 @Component({
   selector: 'app-get-started',
@@ -10,9 +12,9 @@ import {Component} from '@angular/core';
           <div style="    margin-top: 4%;
     margin-left: 2%;" fxFlex="row">
             <button mat-raised-button class="sign-up-button" color="primary" style="color: whitesmoke">Let's Go</button>
-            <div  fxFlex="row" style="margin-left: 6%;" fxLayoutGap="-15px">
-              <mat-icon class="mac-icon" >slow_motion_video</mat-icon>
-              <a color="primary" class="no-hover " mat-button>Watch Video</a>
+            <div fxFlex="row" style="margin-left: 6%;" fxLayoutGap="-15px">
+              <mat-icon class="mac-icon">slow_motion_video</mat-icon>
+              <a (click)="openDialog()" color="primary" class="no-hover " mat-button>Watch Video</a>
             </div>
           </div>
           <div fxFlex="row" style="margin-top: 5%" fxLayoutGap="20px">
@@ -103,4 +105,15 @@ import {Component} from '@angular/core';
   `]
 })
 export class GetStartedComponent {
+  constructor(private dialog: MatDialog) {
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(VideoDialogComponent, {
+      height: '400px',
+      width: '600px',
+      backdropClass : 'video-dialog',
+      panelClass: 'video-dialog-panel-class'
+    });
+  }
 }

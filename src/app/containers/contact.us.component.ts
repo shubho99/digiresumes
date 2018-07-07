@@ -18,8 +18,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       <div class="book__form">
         <form class="form" (submit)="onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small">
-            <h2 class="heading-secondary" style="margin-left: 50px;">
-              CONTACT US
+            <h2 class="heading-secondary" style="margin-left: 50px; font-size: 2rem; text-align: center; margin-top: 1%">
+              We'd love To Hear <br> From You!
             </h2>
           </div>
           <div class="blog">
@@ -28,7 +28,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
             <span class="account">Email: <a class="footer__link" routerLink="#"> shubham99varshney@gmail.com</a></span>
           </div>
 
-          <div class="example-container" fxLayout="column" fxLayoutGap="18px">
+          <div class="example-container" fxLayout="column" fxLayoutGap="15px">
             <mat-form-field color="accent">
               <input matInput placeholder="Full Name" [formControl]="fullNameControl">
               <mat-error *ngIf="fullNameControl.invalid">{{getErrorMessageFullName()}}</mat-error>
@@ -114,10 +114,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       background-size: cover;
       border-radius: 3px;
       box-shadow: 1px 1px 20px 15px rgba(0, 0, 0, 0.2);
-      height: 100%;
       width: 900px;
       margin-left: 220px;
-      margin-top: 0px;
+      margin-top: -1%;
+      height: 71%;
     }
 
     .u-margin-bottom-small {
