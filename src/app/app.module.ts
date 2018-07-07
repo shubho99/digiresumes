@@ -7,6 +7,7 @@ import {HeaderComponent} from './containers/header.component';
 import {DashboardComponent} from './containers/dashboard.component';
 import {NotFoundComponent} from './components/not.found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule} from '@angular/router';
 import {routes} from './routes';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -43,6 +44,8 @@ import {ContactUsComponent} from './containers/contact.us.component';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
   ],
