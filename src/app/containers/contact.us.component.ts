@@ -5,16 +5,18 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   selector: 'app-contact-us',
   template: `
     <div>
-      <img style="width: 106%; height: 100%" src="../../assets/images/contact-us.jpeg"/>
+      <div>
+        <img style="width: 106%; height: 100%" src="../../assets/images/contact-us.jpeg"/>
+      </div>
       <h1>Contact Us</h1>
-      <p class="company-text">Our Company is here to provide you more information,answer any questions you may have <br>
+      <p class="company-text mac-contact-us-p">Our Company is here to provide you more information,answer any questions you may have <br>
         and create an effective solution for your need</p>
-      <mat-icon class="animated fadeInDown infinite time" (click)=scrollToBottom()>arrow_drop_down_circle</mat-icon>
+      <mat-icon class="animated fadeInDown infinite time mac-contact-us-icon" (click)=scrollToBottom()>arrow_drop_down_circle</mat-icon>
     </div>
     <div class="u-margin-bottom-small-1"></div>
     <div class="book">
       <div class="book__form">
-        <form class="form" (submit)="onSend()" [formGroup]="loginForm">
+        <form class="form" (submit)="onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small">
             <h2 class="heading-secondary" style="margin-left: 50px;">
               CONTACT US
@@ -27,18 +29,18 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
           </div>
 
           <div class="example-container" fxLayout="column" fxLayoutGap="18px">
-            <mat-form-field [color]="accent">
+            <mat-form-field color="accent">
               <input matInput placeholder="Full Name" [formControl]="fullNameControl">
               <mat-error *ngIf="fullNameControl.invalid">{{getErrorMessageFullName()}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field [color]="accent">
+            <mat-form-field color="accent">
               <input matInput placeholder="Email" [formControl]="emailControl">
               <mat-error *ngIf="emailControl.invalid">{{getErrorMessageEmail()}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field [color]="accent">
-              <textarea matInput placeholder="Message(Optional)" [formControl]="messageControl"></textarea>
+            <mat-form-field color="accent">
+              <textarea matInput placeholder="Message" [formControl]="messageControl"></textarea>
             </mat-form-field>
 
             <mat-card-actions>
@@ -74,6 +76,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       text-shadow: 0 0 30px rgba(0, 0, 0, .5);
       text-align: center;
     }
+
     .hire {
       font-size: 17px;
       margin-left: 6px;
@@ -86,8 +89,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       opacity: 0.8;
       font-size: 3.5em;
       position: absolute;
-      bottom: 29%;
-      left: 48%;
+      bottom: 18%;
+      left: 47%;
+      cursor: pointer;
     }
 
     mat-icon:hover {
@@ -107,7 +111,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     .book {
       background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%),
       url(../../assets/images/contact.jpg);
-      background-size: 100%;
+      background-size: cover;
       border-radius: 3px;
       box-shadow: 1px 1px 20px 15px rgba(0, 0, 0, 0.2);
       height: 100%;
@@ -131,6 +135,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       letter-spacing: .2rem;
       transition: all .2s;
     }
+
     .heading-secondary:hover {
       transform: skewY(2deg) skewX(15deg) scale(1.1);
       text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
@@ -151,7 +156,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     .account {
       color: #757575;
       margin-left: 35px;
-      
+
     }
 
     .example-container {
@@ -188,10 +193,10 @@ export class ContactUsComponent {
   fullNameControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   messageControl = new FormControl('');
-  loginForm: FormGroup;
+  contactUsForm: FormGroup;
 
   constructor() {
-    this.loginForm = new FormGroup({
+    this.contactUsForm = new FormGroup({
       myFullname: this.fullNameControl,
       myEmail: this.emailControl,
       myMessage: this.messageControl
@@ -211,7 +216,7 @@ export class ContactUsComponent {
 
   onSend() {
     console.log('form submitted', this.fullNameControl.value, this.emailControl.value, this.messageControl);
-    this.loginForm.reset();
+    this.contactUsForm.reset();
   }
 
   scrollToBottom() {

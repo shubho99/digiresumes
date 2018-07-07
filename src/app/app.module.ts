@@ -13,7 +13,6 @@ import {routes} from './routes';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
 import {HomeComponent} from './containers/home.component';
-import {SignUpComponent} from './containers/sign-up.component';
 import {GetStartedComponent} from './containers/get.started.component';
 import {LoginComponent} from './containers/login.component';
 import {SafeUrlPipe} from './pipes/safeUrl';
@@ -28,7 +27,6 @@ import {ContactUsComponent} from './containers/contact.us.component';
     DashboardComponent,
     NotFoundComponent,
     HomeComponent,
-    SignUpComponent,
     GetStartedComponent,
     ContactUsComponent,
     LoginComponent,

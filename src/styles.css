@@ -1,14 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 /**/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 html, body {
   height: 100%;
-  margin-right: -1px;
-  margin-left: 0px;
-  margin-top: -10px;
-
   background: linear-gradient(132deg, #ec5218, #1665c1);
-  background-size: 400% 400%;
+  background-size: 500% 500%;
   animation: BackgroundGradient 10s ease infinite;
   /*background-image: -webkit-radial-gradient(top, circle cover, #ffdab4, #ffaa50 80%);*/
   /*background-image: -moz-radial-gradient(top, circle cover, #ffdab4, #ffaa50 80%);*/
@@ -37,4 +38,24 @@ html, body {
 }
 .polygon:hover{
   opacity: 0.8;
+}
+
+
+@media (min-height: 700px){
+  .mac-footer{
+    margin-top: 7% !important;
+    padding: 4% !important;
+  }
+  .mac-icon{
+    position: absolute !important;
+    left: 16% !important;
+    top: 36% !important;
+  }
+  .mac-contact-us-p{
+    bottom: 45% !important;
+  }
+  .mac-contact-us-icon{
+    left: 47% !important;
+    bottom: 25% !important;
+  }
 }

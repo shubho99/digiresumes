@@ -14,9 +14,6 @@ import {Component} from '@angular/core';
         <button style="animation-delay: 1s" mat-button routerLink="/get-started" routerLinkActive="selected"
                 class="nav-bar-button animated bounceInDown time">Get Started
         </button>
-        <button style="animation-delay: 1.5s" mat-button routerLink="/signup"
-                routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">Sign Up
-        </button>
         <button style="animation-delay: 2s" mat-button routerLink="/login" routerLinkActive="selected"
                 class="nav-bar-button animated bounceInDown time">Login
         </button>
@@ -33,6 +30,7 @@ import {Component} from '@angular/core';
       width: 100%;
       animation: BackgroundGradient 10s ease infinite;
       box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.2);
+      margin-top: -1.2%;
     }
 
 

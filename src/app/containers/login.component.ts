@@ -4,12 +4,12 @@ import {Component} from '@angular/core';
   selector: 'app-login',
   template: `
     <form>
-      <input  checked id='signin' name='action' type='radio' value='signin'>
-      <label  for='signin'>login</label>
-      <input  id='signup' name='action' type='radio' value='signup'>
-      <label  for='signup'>Sign up</label>
-      <input  id='reset' name='action' type='radio' value='reset'>
-      <label  for='reset'>Reset</label>
+      <input checked id='signin' name='action' type='radio' value='signin'>
+      <label (click)="loginLabel()" for='signin'>login</label>
+      <input id='signup' name='action' type='radio' value='signup'>
+      <label (click)="signUpLabel()" for='signup'>Sign up</label>
+      <input id='reset' name='action' type='radio' value='reset'>
+      <label (click)="resetLabel()" for='reset'>Reset</label>
       <div id='wrapper'>
         <div id='arrow'></div>
         <input id='email' placeholder='Email' type='text'>
@@ -17,21 +17,10 @@ import {Component} from '@angular/core';
         <input id='mob' placeholder='Mobile number' type='text'>
         <input id='repass' placeholder='confirm password' type='password'>
       </div>
-      <!--<button  type='submit'><span>Reset password</span><br></button>-->
-      <!---->
-      <!--<button  type='submit'><span>Sign in</span><br></button>-->
-      <!---->
-      <!--<button  type='submit'><span>Sign up</span><br></button>-->
-      <button>
-    <span>
-      Reset password
-      <br>
-      login
-      <br>
-      Sign up
-    </span>
-      </button>
-      </form>
+      <button *ngIf="this.isResetButton" type='submit'>Reset password</button>
+      <button *ngIf="this.isLoginButton" type='submit'>Login</button>
+      <button *ngIf="this.isSignUpButton" type='submit'>Sign up</button>
+    </form>
   `,
   styles: [`
     @import url(https://fonts.googleapis.com/css?family=Raleway:700,800);
@@ -41,11 +30,11 @@ import {Component} from '@angular/core';
     }
 
     ::-webkit-input-placeholder {
-    color: #DEDFDF;
+      color: #DEDFDF;
     }
 
     ::-moz-placeholder {
-    color: #DEDFDF;
+      color: #DEDFDF;
     }
 
     :-moz-placeholder {
@@ -53,49 +42,49 @@ import {Component} from '@angular/core';
     }
 
     ::-ms-input-placeholder {
-    color: #DEDFDF;
-    }   
+      color: #DEDFDF;
+    }
 
-    #wrapper, label, #arrow, button  {
+    #wrapper, label, #arrow, button {
       transition: all .5s cubic-bezier(.6, 0, .4, 1);
     }
-    
+
     #wrapper {
       overflow: hidden;
     }
-    
+
     #signin:checked ~ #wrapper {
       height: 134px;
     }
-    
+
     #signin:checked ~ #wrapper #arrow {
       left: 32px;
     }
-    
+
     #signin:checked ~ button span {
       transform: translate3d(0, -72px, 0);
     }
-    
+
     #signup:checked ~ #wrapper {
       height: 258px;
     }
-    
+
     #signup:checked ~ #wrapper #arrow {
       left: 137px;
     }
-    
+
     #signup:checked ~ button span {
       transform: translate3d(0, -144px, 0);
     }
-    
+
     #reset:checked ~ #wrapper {
       height: 72px;
     }
-    
+
     #reset:checked ~ #wrapper #arrow {
       left: 404px;
     }
-    
+
     #reset:checked ~ button span {
       transform: translate3d(0, 0, 0);
     }
@@ -122,6 +111,10 @@ import {Component} from '@angular/core';
       opacity: .5;
       margin-bottom: 30px;
       text-transform: uppercase;
+    }
+
+    button {
+      margin-top: -1%;
     }
 
     label:hover {
@@ -197,4 +190,31 @@ import {Component} from '@angular/core';
   `]
 })
 export class LoginComponent {
+  isSignUpButton = false;
+  isLoginButton = true;
+  isResetButton = false;
+
+  constructor() {
+
+  }
+
+  loginLabel() {
+    this.isLoginButton = true;
+    this.isResetButton = false;
+    this.isSignUpButton = false;
+  }
+
+  signUpLabel() {
+    this.isLoginButton = false;
+    this.isResetButton = false;
+    this.isSignUpButton = true;
+  }
+
+  resetLabel() {
+    this.isLoginButton = false;
+    this.isResetButton = true;
+    this.isSignUpButton = false;
+  }
+
+
 }

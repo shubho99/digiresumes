@@ -9,10 +9,10 @@ import {Component} from '@angular/core';
         <div fxLayout="column">
           <div style="    margin-top: 4%;
     margin-left: 2%;" fxFlex="row">
-            <button mat-raised-button class="sign-up-button" color="primary" style="color: whitesmoke">Sign UP</button>
-            <div fxFlex="row" style="margin-left: 6%;" fxLayoutGap="0px">
-              <mat-icon>slow_motion_video</mat-icon>
-              <a color="primary" class="no-hover" mat-button>Watch Video</a>
+            <button mat-raised-button class="sign-up-button" color="primary" style="color: whitesmoke">Let's Go</button>
+            <div  fxFlex="row" style="margin-left: 6%;" fxLayoutGap="-15px">
+              <mat-icon class="mac-icon" >slow_motion_video</mat-icon>
+              <a color="primary" class="no-hover " mat-button>Watch Video</a>
             </div>
           </div>
           <div fxFlex="row" style="margin-top: 5%" fxLayoutGap="20px">
@@ -33,10 +33,10 @@ import {Component} from '@angular/core';
             </div>
           </div>
         </div>
+        <mat-card-footer class="mac-footer"></mat-card-footer>
       </mat-card-content>
-      <mat-card-footer>
-      </mat-card-footer>
     </mat-card>
+
   `
   ,
   styles: [`
@@ -63,10 +63,11 @@ import {Component} from '@angular/core';
     }
 
     mat-icon {
-      position: absolute;
-      left: 16%;
-      bottom: 61.5%;
       color: #e79f13;
+      position: absolute;
+      bottom: 52.5%;
+      left: 16.2%;
+      align-self: center
     }
 
     .sign-up-button:hover {
@@ -94,10 +95,10 @@ import {Component} from '@angular/core';
       background-color: #b1b1b1;;
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
-      padding: 40px 114px;
-      margin-top: 7%;
+      padding: 3%;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
+      margin-top: 3%;
     }
   `]
 })
