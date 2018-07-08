@@ -14,7 +14,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       <mat-icon class="animated fadeInDown infinite time mac-contact-us-icon" (click)=scrollToBottom()>arrow_drop_down_circle</mat-icon>
     </div>
     <div class="u-margin-bottom-small-1"></div>
-    <div class="book">
+    <div class="book mac-contact-us-card">
       <div class="book__form">
         <form class="form" (submit)="onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small">
@@ -117,7 +117,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       width: 900px;
       margin-left: 220px;
       margin-top: -1%;
-      height: 71%;
+      height: 81%;
     }
 
     .u-margin-bottom-small {
