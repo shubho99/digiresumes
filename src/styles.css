@@ -58,6 +58,9 @@ html, body {
     left: 47% !important;
     bottom: 25% !important;
   }
+  .mac-contact-us-card{
+    height: 71%!important;
+  }
 }
 
 .video-dialog{
