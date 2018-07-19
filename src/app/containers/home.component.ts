@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-home',
   template: `
-    <img class="polygon res-polygon" src="../../assets/images/buisness.jpg" >
+    <img class="polygon res-polygon" src="../../assets/images/buisness.jpg">
     <div class="main-div res-main-div" fxLayout="column"
          fxLayoutAlign="center start">
       <p class="animated flipInY time resume res-resume">
@@ -33,15 +33,17 @@ import {Router} from '@angular/router';
       content: "Classy";
       animation: spin 8s linear infinite;
     }
+
     .resume {
       margin-left: 6.5%;
       margin-bottom: 9px;
       margin-top: -1%;
       font-size: 70px;
-      color: #ffdab4; 
+      color: #ffdab4;
       letter-spacing: 11px;
       text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.75);
     }
+
     .resume-sub {
       padding-top: 10px;
       margin-left: 12%;
@@ -49,6 +51,7 @@ import {Router} from '@angular/router';
       margin-top: -2%;
       text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.75);
     }
+
     @keyframes spin {
       0% {
         content: "Perfect";
@@ -117,7 +120,7 @@ import {Router} from '@angular/router';
       transform: translateY(-3px);
       /*box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.3);*/
       box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3);
-    }    
+    }
   `]
 })
 

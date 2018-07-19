@@ -69,7 +69,7 @@ html, body {
   }
 }
 
-@media (max-width: 599px) {
+@media  screen and (max-width: 599px) {
   .res-header {
 
     height: 10% !important;
@@ -110,35 +110,36 @@ html, body {
   }
   .res-polygon {
     height: 65% !important;
-    width: 123% !important;
-    margin-left: -12% !important;
     margin-top: 21% !important;
+    width: 126% !important;
+    margin-left: -13.5% !important;
   }
   .res-main-div {
     margin-top: 37% !important;
-    margin-left: 8% !important;
+    margin-left: 6.5% !important;
     box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.2) !important;
-    width: 84% !important;
+    width: 87% !important;
   }
   .res-resume {
     font-size: 40px !important;
     text-align: center !important;
   }
   .res-resume-sub {
-    font-size: 23px !important;
+    font-size: 18px !important;
     padding-left: -5% !important;
     margin-left: -12% !important;
+    margin-bottom: 3% !important;
   }
   .res-resume-sub-anm {
-    font-size: 23px !important;
+    font-size: 18px !important;
     margin-right: 2% !important;
     color: #bae4f9 !important;
   }
   .home-res-button {
     margin-left: 34% !important;
     margin-top: 7% !important;
-    font-size: 15px !important;
-    width: 35% !important;
+    font-size: 13px !important;
+    width: 39% !important;
   }
   .get-res-header {
     font-size: 40px !important;
