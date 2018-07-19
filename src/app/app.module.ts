@@ -17,7 +17,7 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule, MatMenuModule
 } from '@angular/material';
 import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 
@@ -58,7 +58,8 @@ import {VideoDialogComponent} from './components/video.dialog.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule
   ],
   entryComponents: [VideoDialogComponent],
   providers: [],
