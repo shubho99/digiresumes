@@ -5,19 +5,20 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
 @Component({
   selector: 'app-get-started',
   template: `
-    <mat-card>
-      <mat-card-header>World's First Digital Resume <br>Builder is here for you.</mat-card-header>
+    <mat-card class="get-res-mat-card">
+      <mat-card-header class="animated flipInX get-res-header">World's First Digital Resume <br>Builder is here for you.</mat-card-header>
       <mat-card-content>
         <div fxLayout="column">
-          <div style="    margin-top: 4%;
-    margin-left: 2%;" fxFlex="row">
-            <button mat-raised-button class="sign-up-button" color="primary" style="color: whitesmoke">Let's Go</button>
-            <div fxFlex="row" style="margin-left: 6%;" fxLayoutGap="-15px">
-              <mat-icon class="mac-icon">slow_motion_video</mat-icon>
-              <a (click)="openDialog()" color="primary" class="no-hover " mat-button>Watch Video</a>
+          <div class="get-res-button get-button" fxFlex="row" fxLayoutGap="7%">
+            <button mat-raised-button class="sign-up-button animated zoomIn time" color="primary" routerLink="/login"
+                    style="color: whitesmoke;text-transform: uppercase">Let's Go
+            </button>
+            <div fxFlex="row" fxLayoutGap="-15px">
+              <mat-icon class="mac-icon get-res-mat-icon animated zoomIn _time1">slow_motion_video</mat-icon>
+              <a (click)="openDialog()" color="primary" class="no-hover video get-res-video animated zoomIn _time1">Watch Video</a>
             </div>
           </div>
-          <div fxFlex="row" style="margin-top: 5%" fxLayoutGap="20px">
+          <div fxFlex="row" fxLayout.xs="column" style="margin-top: 5%" fxLayoutGap="20px" fxLayoutGap.xs="8%">
             <div fxFlex="column">
               <h1>Build Digital Resume <br>And share your link</h1>
               <p>Firebase gives you functionality like analytics, databases, messaging
@@ -35,7 +36,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
             </div>
           </div>
         </div>
-        <mat-card-footer class="mac-footer"></mat-card-footer>
+        <mat-card-footer class="mac-footer get-res-mat-footer"></mat-card-footer>
       </mat-card-content>
     </mat-card>
 
@@ -45,17 +46,31 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
     mat-card {
       opacity: 0.8;
       width: 90%;
-      margin-left: 3%;
-      margin-top: 3%;
+      margin-left: 5%;
+      margin-top: 2.5%;
       height: 70%;
       border-radius: 10px;
     }
-
+    .video {
+      color: #DE7D20;
+      position: absolute;
+      left: 19%;
+      top: 43.5%;
+      cursor: pointer;
+    }
+    .get-button {
+      margin-top: 4%;
+      margin-left: 2%;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+    }
     mat-card-header {
       font-size: 48px;
-      background-image: linear-gradient(to right bottom, #e79f13, #ff6803);
-      -webkit-background-clip: text;
-      color: transparent;
+      /*background-image: linear-gradient(to right bottom, #e79f13, #ff6803);*/
+      /*-webkit-background-clip: text;*/
+      color: #ffab00;
+      text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.75);
       margin-left: -2%;
     }
 
@@ -67,7 +82,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
     mat-icon {
       color: #e79f13;
       position: absolute;
-      bottom: 52.5%;
+      bottom: 52%;
       left: 16.2%;
       align-self: center
     }
@@ -82,25 +97,34 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
 
     h1 {
       font-size: 18px;
-      line-height: 26px;
-      font-weight: 500;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      line-height: 26px;      
       color: #ffab00;
+      margin-bottom: 3%;
     }
 
     p {
       font-size: 14px;
       line-height: 24px;
       color: #757575;
+      font-weight: bold;
+    }
+    .time {
+       animation-duration: 2s;
+       animation-delay: 1s;
+     }
+    ._time1 {
+      animation-duration: 2s;
+      animation-delay: 2s;
     }
 
     mat-card-footer {
       background-color: #b1b1b1;;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
       padding: 3%;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
-      margin-top: 3%;
+      margin-top: 2%;
     }
   `]
 })

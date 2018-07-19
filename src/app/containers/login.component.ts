@@ -3,13 +3,13 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-login',
   template: `
-    <form>
+    <form class="res-login animated fadeInLeft">
       <input checked id='signin' name='action' type='radio' value='signin'>
-      <label (click)="loginLabel()" for='signin'>login</label>
+      <label class="res-input-login" (click)="loginLabel()" for='signin'>login</label>
       <input id='signup' name='action' type='radio' value='signup'>
-      <label (click)="signUpLabel()" for='signup'>Sign up</label>
+      <label class="res-input-signup" (click)="signUpLabel()" for='signup'>Sign up</label>
       <input id='reset' name='action' type='radio' value='reset'>
-      <label (click)="resetLabel()" for='reset'>Reset</label>
+      <label class="res-input-reset" (click)="resetLabel()" for='reset'>Reset</label>
       <div id='wrapper'>
         <div id='arrow'></div>
         <input id='email' placeholder='Email' type='text'>
@@ -23,7 +23,6 @@ import {Component} from '@angular/core';
     </form>
   `,
   styles: [`
-    @import url(https://fonts.googleapis.com/css?family=Raleway:700,800);
 
     :focus {
       outline: none;
@@ -95,7 +94,7 @@ import {Component} from '@angular/core';
       margin: -185px -225px;
       position: absolute;
       left: 50%;
-      top: 50%;
+      top: 55%;
     }
 
     input[type=radio] {
@@ -107,14 +106,11 @@ import {Component} from '@angular/core';
       color: #ff8505;
       display: inline-block;
       font-size: 22px;
-      font-weight: 800;
+      font-weight: bold;
+      letter-spacing: 1.5px;
       opacity: .5;
       margin-bottom: 30px;
       text-transform: uppercase;
-    }
-
-    button {
-      margin-top: -1%;
     }
 
     label:hover {
@@ -129,6 +125,7 @@ import {Component} from '@angular/core';
 
     label[for="reset"] {
       float: right;
+      margin-right: 1%;
     }
 
     input[type=radio]:checked + label {
@@ -142,7 +139,6 @@ import {Component} from '@angular/core';
       border: none;
       border-radius: 8px;
       font-size: 20px;
-      font-family: 'Raleway', sans-serif;
       height: 50px;
       width: 99.5%;
       margin-bottom: 10px;
@@ -157,8 +153,11 @@ import {Component} from '@angular/core';
       border-radius: 8px;
       color: #fff;
       cursor: pointer;
-      font-family: 'Raleway', sans-serif;
-      font-size: 27px;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin-top: -1.1%;
+      text-transform: uppercase;
       height: 50px;
       width: 100%;
       margin-bottom: 10px;

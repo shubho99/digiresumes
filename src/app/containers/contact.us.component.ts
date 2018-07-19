@@ -4,31 +4,36 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-contact-us',
   template: `
-    <div>
+    <div class="contact res-contact">
+      <!--<div>-->
+      <!--<img style="width: 106%; height: 100%" src="../../assets/images/contact-us.jpg"/>-->
+      <!--</div>-->
       <div>
-        <img style="width: 106%; height: 100%" src="../../assets/images/contact-us.jpeg"/>
+        <h1 class="res-contact-h1" animateOnScroll animationName="animated fadeInLeft">Contact Us</h1>
+        <p class="company-text mac-contact-us-p res-contact-company-text" animateOnScroll animationName="animated fadeInLeft">Our Company is
+          here to provide you more information,answer any questions you may have <br>
+          and create an effective solution for your need</p>
       </div>
-      <h1>Contact Us</h1>
-      <p class="company-text mac-contact-us-p">Our Company is here to provide you more information,answer any questions you may have <br>
-        and create an effective solution for your need</p>
-      <mat-icon class="animated fadeInDown infinite time mac-contact-us-icon" (click)=scrollToBottom()>arrow_drop_down_circle</mat-icon>
+      <mat-icon class="animated fadeInDown infinite time mac-contact-us-icon res-contact-mat-icon"
+                (click)=scrollToBottom()>arrow_drop_down_circle
+      </mat-icon>
     </div>
     <div class="u-margin-bottom-small-1"></div>
-    <div class="book mac-contact-us-card">
-      <div class="book__form">
+    <div class="book mac-contact-us-card res-contact-book">
+      <div class="book__form" animateOnScroll animationName="animated fadeInLeft" style="animation-delay: .4s">
         <form class="form" (submit)="onSend()" [formGroup]="contactUsForm">
-          <div class="u-margin-bottom-small">
-            <h2 class="heading-secondary" style="margin-left: 50px; font-size: 2rem; text-align: center; margin-top: 1%">
+          <div class="u-margin-bottom-small res-contact-bottom-margin">
+            <h2 class="heading-secondary res-contact-heading-secondary">
               We'd love To Hear <br> From You!
             </h2>
           </div>
-          <div class="blog">
-            <p class="hire">Need help? Want to hire me as a freelancer for your work?<br>Feel free to contact
+          <div class="blog res-contact-blog">
+            <p class="hire res-contact-hire">Need help? Want to hire me as a freelancer for your work?<br>Feel free to contact
               me and I would be happy to help!</p>
-            <span class="account">Email: <a class="footer__link" routerLink="#"> shubham99varshney@gmail.com</a></span>
+            <span class="account res-contact-account">Email: <a class="footer__link" routerLink="#"> shubham99varshney@gmail.com</a></span>
           </div>
 
-          <div class="example-container" fxLayout="column" fxLayoutGap="15px">
+          <div class="example-container res-contact-example-container" fxLayout="column" fxLayoutGap="15px">
             <mat-form-field color="accent">
               <input matInput placeholder="Full Name" [formControl]="fullNameControl">
               <mat-error *ngIf="fullNameControl.invalid">{{getErrorMessageFullName()}}</mat-error>
@@ -41,10 +46,11 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 
             <mat-form-field color="accent">
               <textarea matInput placeholder="Message" [formControl]="messageControl"></textarea>
+              <mat-error *ngIf="messageControl.invalid">{{getErrorMessageMessage()}}</mat-error>
             </mat-form-field>
 
             <mat-card-actions>
-              <button mat-raised-button color="accent">SEND</button>
+              <button class="res-contact-button" mat-raised-button color="accent">SEND</button>
             </mat-card-actions>
           </div>
         </form>
@@ -53,43 +59,63 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 
   `,
   styles: [`
+    .form {
+      margin-left: 5%;
+      padding-top: 3%;
+    }
+
+    .contact {
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(105deg, rgba(225, 204, 174, 0.8) 0%, rgba(225, 204, 174, 0.8) 45%, transparent 45%),
+      url(../../assets/images/contact-us.jpg);
+      background-size: 100% 110%;
+      background-attachment: fixed;
+      background-position: center;
+    }
+
     h1 {
       position: absolute;
-      top: 35%;
-      left: 42%;
-      font-size: 3em;
-      font-weight: 100;
-      text-shadow: 0 0 30px rgba(0, 0, 0, .25);
-      background-image: linear-gradient(to right bottom, #e79f13, #ff6803);
-      -webkit-background-clip: text;
-      color: transparent;
+      top: 30%;
+      left: 12%;
+      font-size: 48px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      /*background-image: linear-gradient(to right bottom, #e79f13, #ff6803);*/
+      /*-webkit-background-clip: text;*/
+      /*color: transparent;*/
+      color: #ffab00;
+      text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.75);
     }
 
     .company-text {
-      bottom: 38%;
+      top: 48%;
+      left: -8%;
+      width: 30%;
       position: absolute;
-      align-items: center;
-      text-align: justify;
-      margin-left: 17%;
-      color: #ff5501;
-      font-size: 1.5em;
-      text-shadow: 0 0 30px rgba(0, 0, 0, .5);
+      margin-left: 14.5%;
+      color: #757575;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      /*text-shadow: 0 0 30px rgba(0, 0, 0, .5);*/
       text-align: center;
     }
 
     .hire {
-      font-size: 17px;
+      font-size: 16px;
+      font-weight: bold;
       margin-left: 6px;
       color: #757575;
       margin-top: 5px;
     }
 
     mat-icon {
-      color: white;
+      color: #e1ccae;
       opacity: 0.8;
       font-size: 3.5em;
       position: absolute;
-      bottom: 18%;
+      bottom: 8%;
       left: 47%;
       cursor: pointer;
     }
@@ -109,40 +135,47 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     }
 
     .book {
-      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%),
+      background-image: linear-gradient(105deg, rgba(225, 204, 174, 0.8) 0%, rgba(225, 204, 174, 0.8) 45%, transparent 45%),
       url(../../assets/images/contact.jpg);
-      background-size: cover;
+      background-size: 100% 100%;
+
       border-radius: 3px;
       box-shadow: 1px 1px 20px 15px rgba(0, 0, 0, 0.2);
-      width: 900px;
-      margin-left: 220px;
-      margin-top: -1%;
-      height: 81%;
+      background-attachment: fixed;
+      background-position: center;
+      width: 100%;
+      margin-left: 0px;
+      margin-top: -1.8%;
+      height: 102%;
     }
 
     .u-margin-bottom-small {
-      margin-bottom: 0.6rem;
+      margin-bottom: 3%;
     }
 
     .heading-secondary {
-      font-size: 3rem;
+      font-size: 37px !important;
       text-transform: uppercase;
-      font-weight: 700;
       display: inline-block;
-      background-image: linear-gradient(to right, #e79f13, #ff6803);
-      -webkit-background-clip: text;
-      color: transparent;
-      letter-spacing: .2rem;
+      /*background-image: linear-gradient(to right, #e79f13, #ff6803);*/
+      /*-webkit-background-clip: text;*/
+      /*color: transparent;*/
+      margin-left: 20px;
+      text-align: center;
+      margin-top: -0.5%;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #ffab00;
+      text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.75);
       transition: all .2s;
     }
 
-    .heading-secondary:hover {
-      transform: skewY(2deg) skewX(15deg) scale(1.1);
-      text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
-    }
+    /*.heading-secondary:hover {*/
+    /*transform: skewY(2deg) skewX(15deg) scale(1.1);*/
+    /*text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);*/
+    /*}*/
 
     .blog {
-      margin-left: 30px;
       margin-bottom: 30px;
       display: block;
       background-color: #F9F9F9;
@@ -155,8 +188,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 
     .account {
       color: #757575;
-      margin-left: 35px;
-
+      margin-left: 5%;
+      font-weight: bold;
     }
 
     .example-container {
@@ -192,7 +225,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class ContactUsComponent {
   fullNameControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
-  messageControl = new FormControl('');
+  messageControl = new FormControl('', [Validators.required]);
   contactUsForm: FormGroup;
 
   constructor() {
@@ -213,6 +246,9 @@ export class ContactUsComponent {
         '';
   }
 
+  getErrorMessageMessage() {
+    return this.messageControl.hasError('required') ? 'Message is required' : '';
+  }
 
   onSend() {
     console.log('form submitted', this.fullNameControl.value, this.emailControl.value, this.messageControl);

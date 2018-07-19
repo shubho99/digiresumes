@@ -19,6 +19,8 @@ import {
   MatIconModule,
   MatInputModule
 } from '@angular/material';
+import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
+
 import {HomeComponent} from './containers/home.component';
 import {GetStartedComponent} from './containers/get.started.component';
 import {LoginComponent} from './containers/login.component';
@@ -47,6 +49,7 @@ import {VideoDialogComponent} from './components/video.dialog.component';
     BrowserAnimationsModule,
     RouterModule,
     RouterModule.forRoot(routes),
+    AnimateOnScrollModule.forRoot(),
     FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
