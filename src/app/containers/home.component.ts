@@ -4,28 +4,24 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-home',
   template: `
-    <img class="polygon" src="../../assets/images/buisness.jpg" style="position: absolute;height:93%;width: 106%;margin-top: -2%">
-    <div class="main-div" fxLayout="column"
+    <img class="polygon res-polygon" src="../../assets/images/buisness.jpg" >
+    <div class="main-div res-main-div" fxLayout="column"
          fxLayoutAlign="center start">
-      <p class="animated flipInY time" style="    margin-left: 4%;
-    margin-bottom: 9px;
-    margin-top: -1%;
-    font-size: 70px;
-    color: #ffdab4; letter-spacing: 11px">
-        Make My <span style="font-size: 70px;color: #ff7d04">Resume</span>
+      <p class="animated flipInY time resume res-resume">
+        Make My <span style="color: #ff7d04">Resume</span>
       </p>
-      <div class="animated flipInX time1" style="  padding-left: 10px; padding-top : 10px; margin-left: 4%;
-      margin-bottom: -12px;
-    margin-top: -1%;" fxLayout="row" fxLayoutAlign="start center">
-        <p style="margin-left: 40px;font-size:34px;color:  #ffdab4">
+      <div class="animated flipInX time1 resume-sub" fxLayout="row" fxLayoutAlign="start center">
+        <p style="font-size:34px;color:  #ffdab4" class="res-resume-sub">
           Let's make your Resume &nbsp;
         </p>
-        <p style="font-size:40px;    border: solid thick #1665c1;" id="spin" color="primary">
+        <p style="font-size:40px;border: solid thick #1665c1;" id="spin" class="res-resume-sub-anm" color="primary">
         </p>
       </div>
     </div>
-    <div style="height: 90%" class="animated fadeIn time">
-      <button (click)="onClick()" class="animated slideInUp time" mat-raised-button>Get Started</button>
+    <div class="animated fadeIn time">
+      <button (click)="onClick()" class="animated slideInUp time button home-res-button" mat-button>Get
+        Started
+      </button>
     </div>
   `,
   styles: [`
@@ -37,7 +33,22 @@ import {Router} from '@angular/router';
       content: "Classy";
       animation: spin 8s linear infinite;
     }
-
+    .resume {
+      margin-left: 6.5%;
+      margin-bottom: 9px;
+      margin-top: -1%;
+      font-size: 70px;
+      color: #ffdab4; 
+      letter-spacing: 11px;
+      text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.75);
+    }
+    .resume-sub {
+      padding-top: 10px;
+      margin-left: 12%;
+      margin-bottom: 3px;
+      margin-top: -2%;
+      text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.75);
+    }
     @keyframes spin {
       0% {
         content: "Perfect";
@@ -84,31 +95,29 @@ import {Router} from '@angular/router';
       border-radius: 10px;
     }
 
-    button {
+    .button {
+      padding-top: .5%;
+      padding-bottom: .5%;
+      margin-top: 5%;
       margin-left: 47%;
-      margin-top: 8%;
+      font-weight: bold;
+      letter-spacing: 1.5px;
       border-radius: 30px;
       font-size: 1.1em;
       text-transform: uppercase;
       background-image: linear-gradient(to right bottom, #ffdab4, #ff6803);
       color: brown;
+      /*text-shadow: 0px 2px .1px rgba(0, 0, 0, 0.75);*/
       width: 16%;
       height: 8%;
+      transition: all .5s;
     }
 
-    button:hover {
+    .button:hover {
+      transform: translateY(-3px);
+      /*box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.3);*/
       box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .time {
-      animation-duration: 2s;
-      animation-delay: 1s;
-    }
-
-    .time1 {
-      animation-duration: 2s;
-      animation-delay: 3s;
-    }
+    }    
   `]
 })
 
