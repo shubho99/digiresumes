@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,25 +6,34 @@ import {Component} from '@angular/core';
     <div class="major res-header" fxLayout="row"
          fxLayoutAlign="start center">
       <span fxFlex="1 1 auto"></span>
-      <label for="toggle">&#9776;</label>
-      <input type="checkbox" id="toggle"/>
-      <div class="res-button">
-        <div class="res-button1 header" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center" fxLayout.xs="column wrap"
-             fxLayoutAlign.xs="start start"
-             fxFlex="1 1 auto">
-          <button style="animation-delay:0.5s" mat-button routerLink="/home" routerLinkActive="selected"
-                  class="nav-bar-button animated bounceInDown time">Home
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
+           fxFlex="1 1 auto" fxHide.xs>
+        <button  style="animation-delay:0.5s" mat-button routerLink="/home" routerLinkActive="selected"
+                class="nav-bar-button animated bounceInDown time">Home
+        </button>
+        <button style="animation-delay: 1s" mat-button routerLink="/get-started" routerLinkActive="selected"
+                class="nav-bar-button animated bounceInDown time">Get Started
+        </button>
+        <button style="animation-delay: 2s" mat-button routerLink="/login" routerLinkActive="selected"
+                class="nav-bar-button animated bounceInDown time">Login
+        </button>
+        <button style="animation-delay: 2.5s" mat-button routerLink="/contact-us"
+                routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">Contact Us
+        </button>
+      </div>
+      <div fxLayoutAlign="start center " fxFlex="100%" fxHide.gt-xs>
+        <button style="margin-top: 4%;
+    margin-left: -5%; color: #ffab00" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>dehaze</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false" style="background-color: #2e2e2e">
+          <button style="color: #ff8505" mat-menu-item routerLink="/home" routerLinkActive="selected-small">Home</button>
+          <button style="color: #ff8505" mat-menu-item routerLink="/get-started" routerLinkActive="selected-small">Get Started</button>
+          <button style="color: #ff8505" mat-menu-item routerLink="/login" routerLinkActive="selected-small">Login
           </button>
-          <button style="animation-delay: 1s" mat-button routerLink="/get-started" routerLinkActive="selected"
-                  class="nav-bar-button animated bounceInDown time">Get Started
+          <button style="color: #ff8505" mat-menu-item color="primary" routerLink="/contact-us" routerLinkActive="selected-small">Contact Us
           </button>
-          <button style="animation-delay: 2s" mat-button routerLink="/login" routerLinkActive="selected"
-                  class="nav-bar-button animated bounceInDown time">Login
-          </button>
-          <button style="animation-delay: 2.5s" mat-button routerLink="/contact-us"
-                  routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">Contact Us
-          </button>
-        </div>
+        </mat-menu>
       </div>
     </div>
   `,
@@ -35,32 +44,32 @@ import {Component} from '@angular/core';
       background-repeat: no-repeat;
       animation: BackgroundGradient 10s ease infinite;
       box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.2);
-      margin-top: -1.2%;
-      height: 13%;
-      padding-left:20px;
+      height: 10%;
+      padding-left: 20px;
       width: 106%
     }
 
-    label {
-      position: absolute;
-      left: 93%;     
-      font-size: 26px;
-      line-height: 70px;
-      display: none;
-      width: 26px;
-    
+    .selected-small {
+      border: 1px solid #ff8505 !important;
+      width: 61% !important;
+      text-align: start !important;
     }
-    #toggle {
-      display: none;
-      position: absolute;
-      margin-left: 86%;
+
+    .mat-menu-panel {
+      width: 1007px;
+      height: 1018px;
+      background: #1d1c1bc2;
+      margin-left: -7% !important;
       margin-top: 2%;
     }
-    .header {
-      margin-left: -110%;
-      margin-top: 3.5%;
-      
+
+    .mat-menu-content {
+      padding-top: 68% !important;
+      padding-left: 31% !important;
+      color: #1665c1 !important;
+
     }
+
     @keyframes BackgroundGradient {
       0% {
         background-position: 0% 50%;
@@ -74,13 +83,14 @@ import {Component} from '@angular/core';
     }
 
     .selected {
-      border: 1px solid;
+      border: 1px solid #ff8505 !important;
     }
 
     time {
       animation-duration: 1s;
     }
-  `]
+  `],
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
 }

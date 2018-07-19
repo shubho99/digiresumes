@@ -5,7 +5,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
 @Component({
   selector: 'app-get-started',
   template: `
-    <mat-card class="get-res-mat-card">
+    <mat-card fxFlex.xs="90%"  fxFlex="1 1 90%" class="get-res-mat-card">
       <mat-card-header class="animated flipInX get-res-header">World's First Digital Resume <br>Builder is here for you.</mat-card-header>
       <mat-card-content>
         <div fxLayout="column">
@@ -15,7 +15,8 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
             </button>
             <div fxFlex="row" fxLayoutGap="-15px">
               <mat-icon class="mac-icon get-res-mat-icon animated zoomIn _time1">slow_motion_video</mat-icon>
-              <a (click)="openDialog()" color="primary" class="no-hover video get-res-video animated zoomIn _time1">Watch Video</a>
+              <a (click)="openDialog()" color="primary" class="no-hover video get-res-video mac-watch-video animated zoomIn _time1">Watch
+                Video</a>
             </div>
           </div>
           <div fxFlex="row" fxLayout.xs="column" style="margin-top: 5%" fxLayoutGap="20px" fxLayoutGap.xs="8%">
@@ -51,6 +52,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
       height: 70%;
       border-radius: 10px;
     }
+
     .video {
       color: #DE7D20;
       position: absolute;
@@ -58,6 +60,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
       top: 43.5%;
       cursor: pointer;
     }
+
     .get-button {
       margin-top: 4%;
       margin-left: 2%;
@@ -65,6 +68,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
       font-weight: bold;
       letter-spacing: 1.5px;
     }
+
     mat-card-header {
       font-size: 48px;
       /*background-image: linear-gradient(to right bottom, #e79f13, #ff6803);*/
@@ -99,7 +103,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
       font-size: 18px;
       font-weight: bold;
       letter-spacing: 1.5px;
-      line-height: 26px;      
+      line-height: 26px;
       color: #ffab00;
       margin-bottom: 3%;
     }
@@ -110,10 +114,12 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
       color: #757575;
       font-weight: bold;
     }
+
     .time {
-       animation-duration: 2s;
-       animation-delay: 1s;
-     }
+      animation-duration: 2s;
+      animation-delay: 1s;
+    }
+
     ._time1 {
       animation-duration: 2s;
       animation-delay: 2s;
@@ -136,7 +142,7 @@ export class GetStartedComponent {
     const dialogRef = this.dialog.open(VideoDialogComponent, {
       height: '400px',
       width: '600px',
-      backdropClass : 'video-dialog',
+      backdropClass: 'video-dialog',
       panelClass: 'video-dialog-panel-class'
     });
   }

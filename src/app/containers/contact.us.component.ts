@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -9,19 +9,19 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       <!--<img style="width: 106%; height: 100%" src="../../assets/images/contact-us.jpg"/>-->
       <!--</div>-->
       <div>
-        <h1 class="res-contact-h1" animateOnScroll animationName="animated fadeInLeft">Contact Us</h1>
+        <h1 class="res-contact-h1 contact-h1" animateOnScroll animationName="animated fadeInLeft">Contact Us</h1>
         <p class="company-text mac-contact-us-p res-contact-company-text" animateOnScroll animationName="animated fadeInLeft">Our Company is
           here to provide you more information,answer any questions you may have <br>
           and create an effective solution for your need</p>
       </div>
-      <mat-icon class="animated fadeInDown infinite time mac-contact-us-icon res-contact-mat-icon"
+      <mat-icon style="font-size: 3.5rem;" class="animated fadeInDown infinite time mac-contact-us-icon res-contact-mat-icon"
                 (click)=scrollToBottom()>arrow_drop_down_circle
       </mat-icon>
     </div>
     <div class="u-margin-bottom-small-1"></div>
     <div class="book mac-contact-us-card res-contact-book">
       <div class="book__form" animateOnScroll animationName="animated fadeInLeft" style="animation-delay: .4s">
-        <form class="form" (submit)="onSend()" [formGroup]="contactUsForm">
+        <form class="form mac-contact-form" (submit)="onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small res-contact-bottom-margin">
             <h2 class="heading-secondary res-contact-heading-secondary">
               We'd love To Hear <br> From You!
@@ -64,6 +64,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       padding-top: 3%;
     }
 
+    body{
+      overflow-x: visible;
+    }
     .contact {
       width: 100%;
       height: 100%;
@@ -74,7 +77,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       background-position: center;
     }
 
-    h1 {
+    .contact-h1 {
       position: absolute;
       top: 30%;
       left: 12%;
@@ -113,7 +116,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     mat-icon {
       color: #e1ccae;
       opacity: 0.8;
-      font-size: 3.5em;
       position: absolute;
       bottom: 8%;
       left: 47%;
@@ -220,7 +222,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     .time {
       animation-duration: 2s;
     }
-  `]
+  `],
+  encapsulation: ViewEncapsulation.None
 })
 export class ContactUsComponent {
   fullNameControl = new FormControl('', [Validators.required]);
