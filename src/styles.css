@@ -28,6 +28,7 @@ html, body {
 
 .nav-bar-button:hover {
   border-bottom: 1px solid #ffdab4;
+  color: #ffdab4 !important;
 }
 
 .polygon {
@@ -86,17 +87,18 @@ html, body {
     background-repeat: no-repeat !important;
   }
 
+  .mat-menu-item {
+    text-align: center !important;
+  }
 
-
-
-
+  button.mat-menu-item {
+    width: 60% !important;
+  }
 
   .nav-bar-button {
     margin-left: 60% !important;
     display: block !important;
   }
-
-
 
   .res-polygon {
     height: 65% !important;
@@ -117,15 +119,19 @@ html, body {
     text-align: center !important;
   }
 
+  .res-resume-text {
+    margin-top: 2% !important;
+  }
+
   .res-resume-sub {
-    font-size: 18px !important;
-    padding-left: -5% !important;
+    font-size: 21px !important;
+    padding-right: 5% !important;
     margin-left: -12% !important;
     margin-bottom: 3% !important;
   }
 
   .res-resume-sub-anm {
-    font-size: 16px !important;
+    font-size: 19px !important;
     margin-right: 2% !important;
     color: #bae4f9 !important;
   }
@@ -166,7 +172,7 @@ html, body {
   .res-login {
     width: 90.5% !important;
     margin-left: -45% !important;
-    margin-top: -41% !important;
+    margin-top: -53% !important;
   }
 
   .res-input-login {
@@ -174,12 +180,10 @@ html, body {
   }
 
   .res-input-signup {
-    margin-left: 28% !important;
+    margin-left: 2% !important;
   }
 
   .res-input-reset {
-    margin-bottom: 0% !important;
-    margin-top: -15.5% !important;
     margin-right: 7% !important;
   }
 
@@ -212,17 +216,22 @@ html, body {
   }
 
   .res-contact-book {
-    margin-top: -6% !important;
+    margin-top: -7% !important;
     background-image: linear-gradient(117deg, rgba(225, 204, 174, 0.8) 0%, rgba(225, 204, 174, 0.8) 100%,
     transparent 100%), url(/assets/images/contact.jpg) !important;
     background-size: 100% 100% !important;
-    height: 119% !important;
+    height: 108% !important;
+  }
+
+  .res-contact-form {
+    padding-top: 12% !important;
   }
 
   .res-contact-heading-secondary {
     width: 96%;
     margin-left: -0.5% !important;
     margin-top: 5% !important;
+    font-size: 30px !important;
   }
 
   .res-contact-bottom-margin {
@@ -250,6 +259,7 @@ html, body {
 
   .res-contact-button {
     margin-top: 10% !important;
+    margin-left: 34% !important;
   }
 }
 

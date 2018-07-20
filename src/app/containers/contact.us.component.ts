@@ -21,7 +21,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     <div class="u-margin-bottom-small-1"></div>
     <div class="book mac-contact-us-card res-contact-book">
       <div class="book__form" animateOnScroll animationName="animated fadeInLeft" style="animation-delay: .4s">
-        <form class="form mac-contact-form" (submit)="onSend()" [formGroup]="contactUsForm">
+        <form class="form mac-contact-form res-contact-form" (submit)="onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small res-contact-bottom-margin">
             <h2 class="heading-secondary res-contact-heading-secondary">
               We'd love To Hear <br> From You!
@@ -156,7 +156,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     }
 
     .heading-secondary {
-      font-size: 37px !important;
+      font-size: 37px;
       text-transform: uppercase;
       display: inline-block;
       /*background-image: linear-gradient(to right, #e79f13, #ff6803);*/

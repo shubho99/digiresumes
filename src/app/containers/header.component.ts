@@ -14,10 +14,10 @@ import {Component, ViewEncapsulation} from '@angular/core';
         <button style="animation-delay: 1s" mat-button routerLink="/get-started" routerLinkActive="selected"
                 class="nav-bar-button animated bounceInDown time">Get Started
         </button>
-        <button style="animation-delay: 2s" mat-button routerLink="/login" routerLinkActive="selected"
+        <button style="animation-delay: 1.5s" mat-button routerLink="/login" routerLinkActive="selected"
                 class="nav-bar-button animated bounceInDown time">Login
         </button>
-        <button style="animation-delay: 2.5s" mat-button routerLink="/contact-us"
+        <button style="animation-delay: 2s" mat-button routerLink="/contact-us"
                 routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">Contact Us
         </button>
       </div>
@@ -52,7 +52,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
     .selected-small {
       border: 1px solid #ff8505 !important;
       width: 61% !important;
-      text-align: start !important;
+      /*text-align: center !important;*/
     }
 
     .mat-menu-panel {
@@ -66,8 +66,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
     .mat-menu-content {
       padding-top: 68% !important;
       padding-left: 31% !important;
-      color: #1665c1 !important;
-
     }
 
     @keyframes BackgroundGradient {
