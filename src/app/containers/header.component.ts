@@ -8,7 +8,8 @@ import {Component, ViewEncapsulation} from '@angular/core';
       <span fxFlex="1 1 auto"></span>
       <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
            fxFlex="1 1 auto" fxHide.xs>
-        <button  style="animation-delay:0.5s" mat-button routerLink="/home" routerLinkActive="selected"
+        <button style="animation-delay:0.5s" mat-button routerLink="/" [routerLinkActiveOptions]="{ exact: true }"
+                routerLinkActive="selected"
                 class="nav-bar-button animated bounceInDown time">Home
         </button>
         <button style="animation-delay: 1s" mat-button routerLink="/get-started" routerLinkActive="selected"
@@ -27,7 +28,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
           <mat-icon>dehaze</mat-icon>
         </button>
         <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false" style="background-color: #2e2e2e">
-          <button style="color: #ff8505" mat-menu-item routerLink="/home" routerLinkActive="selected-small">Home</button>
+          <button style="color: #ff8505" mat-menu-item routerLink="" routerLinkActive="selected-small">Home</button>
           <button style="color: #ff8505" mat-menu-item routerLink="/get-started" routerLinkActive="selected-small">Get Started</button>
           <button style="color: #ff8505" mat-menu-item routerLink="/login" routerLinkActive="selected-small">Login
           </button>
@@ -55,7 +56,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
       /*text-align: center !important;*/
     }
 
-     .mat-menu-panel {
+    .mat-menu-panel {
       width: 1007px;
       height: 1018px;
       background: #1d1c1bc2;
@@ -63,7 +64,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
       margin-top: 2%;
     }
 
-     .mat-menu-content {
+    .mat-menu-content {
       padding-top: 68% !important;
       padding-left: 31% !important;
     }

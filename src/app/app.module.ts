@@ -1,4 +1,3 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 
@@ -6,7 +5,6 @@ import {AppComponent} from './containers/app.component';
 import {HeaderComponent} from './containers/header.component';
 import {DashboardComponent} from './containers/dashboard.component';
 import {NotFoundComponent} from './components/not.found.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {routes} from './routes';
@@ -21,6 +19,13 @@ import {TruncatePipe} from './pipes/truncate';
 import {ContactUsComponent} from './containers/contact.us.component';
 import {VideoDialogComponent} from './components/video.dialog.component';
 import {MaterialModule} from './material.module';
+import {CoreModule} from './modules/core/core.module';
+import {AuthGuard} from './guards/auth-guard';
+import {AnonGuard} from './guards/anon-guard';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AuthService} from './modules/core/services/auth.service';
+import {ApiService} from './modules/core/services/api.service';
+import {AlertService} from './modules/core/services/alert.service';
 
 
 @NgModule({
@@ -38,18 +43,18 @@ import {MaterialModule} from './material.module';
     VideoDialogComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MaterialModule,
+    CoreModule,
     RouterModule,
     RouterModule.forRoot(routes),
     AnimateOnScrollModule.forRoot(),
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
+    HttpClientModule
   ],
   entryComponents: [VideoDialogComponent],
-  providers: [],
+  providers: [AuthGuard, AnonGuard, ApiService, AuthService,AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

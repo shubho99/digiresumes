@@ -16,6 +16,18 @@ html, body {
   overflow-x: hidden;
 }
 
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d0e9c6;
+  color: #3c763d;
+}
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #ebcccc;
+  color: #a94442;
+}
+
 .nav-bar-button {
   color: #ff8505 !important;
   background: transparent;

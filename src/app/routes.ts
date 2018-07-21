@@ -5,11 +5,13 @@ import {HomeComponent} from './containers/home.component';
 import {LoginComponent} from './containers/login.component';
 import {GetStartedComponent} from './containers/get.started.component';
 import {ContactUsComponent} from './containers/contact.us.component';
+import {AnonGuard} from './guards/anon-guard';
+import {AuthGuard} from './guards/auth-guard';
 
 export const routes: Routes = [{
-  path: '', component: DashboardComponent,
+  path: '', component: DashboardComponent, canActivate: [AnonGuard],
   children: [{
-    path: 'home', component: HomeComponent
+    path: '', component: HomeComponent
   },
     {
       path: 'login', component: LoginComponent
@@ -22,6 +24,11 @@ export const routes: Routes = [{
     }
   ]
 },
+  {
+    path: 'user',
+    loadChildren: './modules/user/user.module#UserModule',
+    canActivateChild: [AuthGuard]
+  },
   {
     path: '**', component: NotFoundComponent
   }];
