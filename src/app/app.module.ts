@@ -11,15 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {routes} from './routes';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule, MatMenuModule
-} from '@angular/material';
-import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
+import {AnimateOnScrollModule} from 'ng2-animate-on-scroll';
 
 import {HomeComponent} from './containers/home.component';
 import {GetStartedComponent} from './containers/get.started.component';
@@ -28,6 +20,7 @@ import {SafeUrlPipe} from './pipes/safeUrl';
 import {TruncatePipe} from './pipes/truncate';
 import {ContactUsComponent} from './containers/contact.us.component';
 import {VideoDialogComponent} from './components/video.dialog.component';
+import {MaterialModule} from './material.module';
 
 
 @NgModule({
@@ -47,19 +40,13 @@ import {VideoDialogComponent} from './components/video.dialog.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MaterialModule,
     RouterModule,
     RouterModule.forRoot(routes),
     AnimateOnScrollModule.forRoot(),
     FlexLayoutModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatMenuModule
   ],
   entryComponents: [VideoDialogComponent],
   providers: [],
