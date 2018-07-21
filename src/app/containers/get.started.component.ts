@@ -57,7 +57,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
       color: #DE7D20;
       position: absolute;
       left: 19%;
-      top: 43.5%;
+      top: 38.5%;
       cursor: pointer;
     }
 
@@ -86,7 +86,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
     mat-icon {
       color: #e79f13;
       position: absolute;
-      bottom: 52%;
+      bottom: 57.5%;
       left: 16.2%;
       align-self: center
     }

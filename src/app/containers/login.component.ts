@@ -14,7 +14,7 @@ import {Component} from '@angular/core';
         <div id='arrow'></div>
         <input id='email' placeholder='Email' type='text'>
         <input id='pass' placeholder='Password' type='password'>
-        <input id='mob' placeholder='Mobile number' type='text'>
+        <input id='name' placeholder='Full Name' type='text'>
         <input id='repass' placeholder='confirm password' type='password'>
       </div>
       <button *ngIf="this.isResetButton" type='submit'>Reset password</button>
@@ -156,7 +156,7 @@ import {Component} from '@angular/core';
       font-size: 25px;
       font-weight: bold;
       letter-spacing: 1.5px;
-      margin-top: -1.1%;
+      margin-top: -1.8%;
       text-transform: uppercase;
       height: 50px;
       width: 100%;

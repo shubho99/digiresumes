@@ -14,14 +14,16 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
           here to provide you more information,answer any questions you may have <br>
           and create an effective solution for your need</p>
       </div>
-      <mat-icon style="font-size: 3.5rem;" class="animated fadeInDown infinite time mac-contact-us-icon res-contact-mat-icon"
-                (click)=scrollToBottom()>arrow_drop_down_circle
-      </mat-icon>
+      <div>
+        <mat-icon style="font-size: 3.5rem;" class="animated fadeInDown infinite time mac-contact-us-icon res-contact-mat-icon"
+                  (click)=scrollToBottom()>arrow_drop_down_circle
+        </mat-icon>
+      </div>
     </div>
     <div class="u-margin-bottom-small-1"></div>
     <div class="book mac-contact-us-card res-contact-book">
       <div class="book__form" animateOnScroll animationName="animated fadeInLeft" style="animation-delay: .4s">
-        <form class="form mac-contact-form" (submit)="onSend()" [formGroup]="contactUsForm">
+        <form class="form mac-contact-form res-contact-form" (submit)="onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small res-contact-bottom-margin">
             <h2 class="heading-secondary res-contact-heading-secondary">
               We'd love To Hear <br> From You!
@@ -64,9 +66,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       padding-top: 3%;
     }
 
-    body{
+    body {
       overflow-x: visible;
     }
+
     .contact {
       width: 100%;
       height: 100%;
@@ -156,7 +159,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     }
 
     .heading-secondary {
-      font-size: 37px !important;
+      font-size: 37px;
       text-transform: uppercase;
       display: inline-block;
       /*background-image: linear-gradient(to right, #e79f13, #ff6803);*/
@@ -259,7 +262,12 @@ export class ContactUsComponent {
   }
 
   scrollToBottom() {
-    window.scrollTo({left: 0, top: 1000, behavior: 'smooth'});
+    if (window.innerWidth <= 599) {
+      window.scrollTo({left: 0, top: 650, behavior: 'smooth'});
+    } else {
+      window.scrollTo({left: 0, top: 1000, behavior: 'smooth'});
+
+    }
   }
 }
 

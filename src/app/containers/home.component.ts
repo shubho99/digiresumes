@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
       <p class="animated flipInY time resume res-resume">
         Make My <span style="color: #ff7d04">Resume</span>
       </p>
-      <div class="animated flipInX time1 resume-sub" fxLayout="row" fxLayoutAlign="start center">
+      <div class="animated flipInX time1 resume-sub res-resume-text" fxLayout="row" fxLayoutAlign="start center">
         <p style="font-size:34px;color:  #ffdab4" class="res-resume-sub">
           Let's make your Resume &nbsp;
         </p>
@@ -35,7 +35,7 @@ import {Router} from '@angular/router';
     }
 
     .resume {
-      margin-left: 6.5%;
+      margin-left: 4.5%;
       margin-bottom: 9px;
       margin-top: -1%;
       font-size: 70px;
