@@ -210,7 +210,7 @@ html, body {
   }
 
   .res-contact-mat-icon {
-    bottom: 10% !important;
+    bottom: 5% !important;
     left: 44% !important;
     color: whitesmoke !important;
   }
@@ -220,7 +220,7 @@ html, body {
     background-image: linear-gradient(117deg, rgba(225, 204, 174, 0.8) 0%, rgba(225, 204, 174, 0.8) 100%,
     transparent 100%), url(/assets/images/contact.jpg) !important;
     background-size: 100% 100% !important;
-    height: 108% !important;
+    height: 126% !important;
   }
 
   .res-contact-form {

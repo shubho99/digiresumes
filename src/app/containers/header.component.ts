@@ -55,7 +55,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
       /*text-align: center !important;*/
     }
 
-    .mat-menu-panel {
+     .mat-menu-panel {
       width: 1007px;
       height: 1018px;
       background: #1d1c1bc2;
@@ -63,7 +63,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
       margin-top: 2%;
     }
 
-    .mat-menu-content {
+     .mat-menu-content {
       padding-top: 68% !important;
       padding-left: 31% !important;
     }

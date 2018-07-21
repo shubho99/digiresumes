@@ -14,9 +14,11 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
           here to provide you more information,answer any questions you may have <br>
           and create an effective solution for your need</p>
       </div>
-      <mat-icon style="font-size: 3.5rem;" class="animated fadeInDown infinite time mac-contact-us-icon res-contact-mat-icon"
-                (click)=scrollToBottom()>arrow_drop_down_circle
-      </mat-icon>
+      <div>
+        <mat-icon style="font-size: 3.5rem;" class="animated fadeInDown infinite time mac-contact-us-icon res-contact-mat-icon"
+                  (click)=scrollToBottom()>arrow_drop_down_circle
+        </mat-icon>
+      </div>
     </div>
     <div class="u-margin-bottom-small-1"></div>
     <div class="book mac-contact-us-card res-contact-book">
@@ -64,9 +66,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       padding-top: 3%;
     }
 
-    body{
+    body {
       overflow-x: visible;
     }
+
     .contact {
       width: 100%;
       height: 100%;
@@ -259,7 +262,12 @@ export class ContactUsComponent {
   }
 
   scrollToBottom() {
-    window.scrollTo({left: 0, top: 1000, behavior: 'smooth'});
+    if (window.innerWidth <= 599) {
+      window.scrollTo({left: 0, top: 650, behavior: 'smooth'});
+    } else {
+      window.scrollTo({left: 0, top: 1000, behavior: 'smooth'});
+
+    }
   }
 }
 
