@@ -66,9 +66,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       padding-top: 3%;
     }
 
-    body {
-      overflow-x: visible;
-    }
+   
 
     .contact {
       width: 100%;
@@ -226,7 +224,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       animation-duration: 2s;
     }
   `],
-  encapsulation: ViewEncapsulation.None
 })
 export class ContactUsComponent {
   fullNameControl = new FormControl('', [Validators.required]);
@@ -235,6 +232,7 @@ export class ContactUsComponent {
   contactUsForm: FormGroup;
 
   constructor() {
+    document.body.style.overflowX = 'visible';
     this.contactUsForm = new FormGroup({
       myFullname: this.fullNameControl,
       myEmail: this.emailControl,
