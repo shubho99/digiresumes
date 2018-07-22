@@ -16,6 +16,20 @@ html, body {
   overflow-x: hidden;
 }
 
+.alert-success {
+  background-color: #dff0d8 !important;
+  border-color: #d0e9c6 !important;
+  color: #3c763d !important;
+  text-align: center;
+}
+
+.alert-error {
+  background-color: #f2dede !important;
+  border-color: #ebcccc !important;
+  color: #a94442 !important;
+  text-align: center;
+}
+
 .nav-bar-button {
   color: #ff8505 !important;
   background: transparent;
@@ -120,7 +134,7 @@ html, body {
   }
 
   .res-resume-text {
-    margin-top: 2% !important;
+    margin-top: -3% !important;
   }
 
   .res-resume-sub {

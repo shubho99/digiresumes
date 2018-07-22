@@ -1,5 +1,7 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
+import {AlertService} from '../modules/core/services/alert.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -23,16 +25,16 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
     <div class="u-margin-bottom-small-1"></div>
     <div class="book mac-contact-us-card res-contact-book">
       <div class="book__form" animateOnScroll animationName="animated fadeInLeft" style="animation-delay: .4s">
-        <form class="form mac-contact-form res-contact-form" (submit)="onSend()" [formGroup]="contactUsForm">
+        <form class="form mac-contact-form res-contact-form" (submit)=" contactUsForm.valid &&  onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small res-contact-bottom-margin">
             <h2 class="heading-secondary res-contact-heading-secondary">
               We'd love To Hear <br> From You!
             </h2>
           </div>
           <div class="blog res-contact-blog">
-            <p class="hire res-contact-hire">Need help? Want to hire me as a freelancer for your work?<br>Feel free to contact
-              me and I would be happy to help!</p>
-            <span class="account res-contact-account">Email: <a class="footer__link" routerLink="#"> shubham99varshney@gmail.com</a></span>
+            <p class="hire res-contact-hire">Need help? Want to ask something?<br>Feel free to contact
+              Us and Our Team would be happy to help!</p>
+            <span class="account res-contact-account">Email: <a class="footer__link" routerLink="#"> shagungarg2010@gmail.com</a></span>
           </div>
 
           <div class="example-container res-contact-example-container" fxLayout="column" fxLayoutGap="15px">
@@ -57,17 +59,13 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
           </div>
         </form>
       </div>
+      <ngx-loading [show]="loading"></ngx-loading>
     </div>
-
   `,
   styles: [`
     .form {
       margin-left: 5%;
       padding-top: 3%;
-    }
-
-    body {
-      overflow-x: visible;
     }
 
     .contact {
@@ -226,19 +224,20 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       animation-duration: 2s;
     }
   `],
-  encapsulation: ViewEncapsulation.None
 })
 export class ContactUsComponent {
   fullNameControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   messageControl = new FormControl('', [Validators.required]);
   contactUsForm: FormGroup;
+  loading = false;
 
-  constructor() {
+  constructor(private authRepo: AuthRepoService, private alertService: AlertService) {
+    document.body.style.overflowX = 'visible';
     this.contactUsForm = new FormGroup({
-      myFullname: this.fullNameControl,
-      myEmail: this.emailControl,
-      myMessage: this.messageControl
+      name: this.fullNameControl,
+      email: this.emailControl,
+      message: this.messageControl
     });
   }
 
@@ -257,8 +256,14 @@ export class ContactUsComponent {
   }
 
   onSend() {
-    console.log('form submitted', this.fullNameControl.value, this.emailControl.value, this.messageControl);
-    this.contactUsForm.reset();
+    this.loading = true;
+    this.authRepo.contactUs(this.contactUsForm.value).subscribe((res) => {
+      this.loading = false;
+      this.alertService.success('Your query has been submitted successfully');
+    }, (error => {
+      this.loading = false;
+      this.alertService.error('Something went wrong please try again');
+    }));
   }
 
   scrollToBottom() {

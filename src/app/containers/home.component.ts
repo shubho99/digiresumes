@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
   selector: 'app-home',
   template: `
     <img class="polygon res-polygon" src="../../assets/images/buisness.jpg">
-    <div class="main-div res-main-div" fxLayout="column"
+    <div class="main-div res-main-div"  fxLayout="column"
          fxLayoutAlign="center start">
       <p class="animated flipInY time resume res-resume">
         Make My <span style="color: #ff7d04">Resume</span>
