@@ -4,9 +4,19 @@ import {Observable} from 'rxjs/Observable';
 import {User} from '../models/user';
 import {ApiRoute} from '../utils/utils';
 
+
+const AUTH_TOKEN = 'auth_token';
 @Injectable()
 export class AuthService {
   constructor(private apiService: ApiService) {
+  }
+
+  static clearAuthToken() {
+    localStorage.removeItem(AUTH_TOKEN);
+  }
+
+  static setAuthToken(token: string) {
+    localStorage.setItem(AUTH_TOKEN, token);
   }
 
   signUp(data: { email: string, password: string, name: string, confirm_password: string }): Observable<User> {
@@ -38,7 +48,7 @@ export class AuthService {
   }
 
   contactUs(data: { name: string, email: string, message: string }): Observable<Object> {
-    return this.apiService.post(ApiRoute.RESUME, data);
+    return this.apiService.post(ApiRoute.CONTACT, data);
   }
 }
 

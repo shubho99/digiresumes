@@ -5,11 +5,10 @@ import {UserDashboardComponent} from './containers/user-dashboard.component';
 import {ResumeService} from '../core/services/resume.service';
 
 @NgModule({
-  declarations: [],
+  declarations: [UserDashboardComponent],
   imports: [
     SharedModule,
     UserRoutingModule,
-    UserDashboardComponent
   ],
   entryComponents: [],
   providers: [ResumeService]

@@ -26,6 +26,11 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthService} from './modules/core/services/auth.service';
 import {ApiService} from './modules/core/services/api.service';
 import {AlertService} from './modules/core/services/alert.service';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {StoreModule} from '@ngrx/store';
+import {reducers} from './reducers';
+import {AuthRepoService} from './modules/core/repositry/authRepo.service';
+import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 
 
 @NgModule({
@@ -46,6 +51,18 @@ import {AlertService} from './modules/core/services/alert.service';
     CoreModule,
     RouterModule,
     RouterModule.forRoot(routes),
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10
+    }),
+    LoadingModule.forRoot({
+      animationType: ANIMATION_TYPES.threeBounce,
+      backdropBackgroundColour: 'rgba(0, 0, 0, 0.5)',
+      primaryColour: '#3169ff',
+      secondaryColour: '#3169ff',
+      tertiaryColour: '#3169ff',
+      fullScreenBackdrop: true
+    }),
     AnimateOnScrollModule.forRoot(),
     FlexLayoutModule,
     FormsModule,
@@ -54,7 +71,7 @@ import {AlertService} from './modules/core/services/alert.service';
     HttpClientModule
   ],
   entryComponents: [VideoDialogComponent],
-  providers: [AuthGuard, AnonGuard, ApiService, AuthService,AlertService],
+  providers: [AuthGuard, AnonGuard, ApiService, AuthService, AlertService, AuthRepoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

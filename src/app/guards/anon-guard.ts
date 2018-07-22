@@ -8,12 +8,12 @@ export class AnonGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const isLoggedIn = !!localStorage.getItem('my_login_token');
+    const isLoggedIn = !!localStorage.getItem('auth_token');
 
     if (!isLoggedIn) {
       return true;
     } else {
-      this.router.navigate(['user', 'resumes']);
+      this.router.navigate(['user']);
       return false;
     }
   }
