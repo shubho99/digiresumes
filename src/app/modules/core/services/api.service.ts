@@ -43,7 +43,7 @@ export class ApiService {
 
   private getAuthHeader(): { [header: string]: string | string[]; } {
     return {
-      'Authorization': `Token ${localStorage.getItem('auth_token')}`
+      'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
     };
   }
 

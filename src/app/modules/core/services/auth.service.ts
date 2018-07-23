@@ -6,6 +6,7 @@ import {ApiRoute} from '../utils/utils';
 
 
 const AUTH_TOKEN = 'auth_token';
+
 @Injectable()
 export class AuthService {
   constructor(private apiService: ApiService) {
@@ -27,8 +28,8 @@ export class AuthService {
     return this.apiService.get(ApiRoute.USER + '/login', data).map(res => <User>res);
   }
 
-  sendEmailVerification(data: { email: string }): Observable<Object> {
-    return this.apiService.get(ApiRoute.USER + '/send/emailverification', data).map(res => <User>res);
+  sendEmailVerification(data: { email: string, code: string }): Observable<Object> {
+    return this.apiService.get(ApiRoute.USER + '/send/emailverification', data);
   }
 
   updateUserName(data: { name: String }): Observable<User> {
@@ -43,12 +44,23 @@ export class AuthService {
     return this.apiService.patch(ApiRoute.USER + '/update/onboarding', data).map(res => <User>res);
   }
 
-  resetPassword(data: { email: string, new_password: string, confirm_password: string }): Observable<Object> {
+  resetPassword(data: { code: string, new_password: string, confirm_password: string }): Observable<Object> {
     return this.apiService.patch(ApiRoute.USER + '/reset/password', data).map(res => <User>res);
+  }
+
+  sendResetPasswordEmail(email: string): Observable<Object> {
+    const data = {
+      email: email
+    };
+    return this.apiService.get(ApiRoute.USER + '/reset/password/email', data);
   }
 
   contactUs(data: { name: string, email: string, message: string }): Observable<Object> {
     return this.apiService.post(ApiRoute.CONTACT, data);
+  }
+
+  fetchUser(): Observable<User> {
+    return this.apiService.get(ApiRoute.USER + '/fetch').map(res => <User>res);
   }
 }
 

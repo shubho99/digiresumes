@@ -49,11 +49,11 @@ export class ResumeService {
     return this.apiService.post(ApiRoute.RESUME + '/add/employmentHistory/' + resumeId, data).map(res => <EmploymentHistory>res);
   }
 
-  addLanguage(data: { name: string, level: string, represent: string }, resumeId): Observable<Language> {
+  addLanguage(data: { name: string, level: string, represent: string }, resumeId: string): Observable<Language> {
     return this.apiService.post(ApiRoute.RESUME + '/add/language/' + resumeId, data).map(res => <Language>res);
   }
 
-  addSkill(data: { skill: string, level: string, represent: string }, resumeId): Observable<Skill> {
+  addSkill(data: { skill: string, level: string, represent: string }, resumeId: string): Observable<Skill> {
     return this.apiService.post(ApiRoute.RESUME + '/add/skill/' + resumeId, data).map(res => <Skill>res);
   }
 
@@ -116,103 +116,117 @@ export class ResumeService {
 
   // Update Api
   updateResume(data, resumeId: string): Observable<Resume> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/resume/' + resumeId).map(res => <Resume>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/resume/' + resumeId, data).map(res => <Resume>res);
   }
 
   updateContactDetails(data, contactDetailId: string): Observable<Contact> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/contactDetails/' + contactDetailId).map(res => <Contact>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/contactDetails/' + contactDetailId, data).map(res => <Contact>res);
   }
 
   updateEducation(data, educationId: string): Observable<Education> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/education/' + educationId).map(res => <Education>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/education/' + educationId, data).map(res => <Education>res);
   }
 
   updateEmploymentHistory(data, employmentHistoryId: string): Observable<EmploymentHistory> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/employmentHistory/' + employmentHistoryId).map(res => <EmploymentHistory>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/employmentHistory/' + employmentHistoryId, data)
+      .map(res => <EmploymentHistory>res);
   }
 
   updateLanguage(data, languageId: string): Observable<Language> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/language/' + languageId).map(res => <Language>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/language/' + languageId, data).map(res => <Language>res);
   }
 
   updateSkill(data, skillId: string): Observable<Skill> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/skill/' + skillId).map(res => <Skill>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/skill/' + skillId, data).map(res => <Skill>res);
   }
 
   updateRefrence(data, refrenceId: string): Observable<Refrence> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/refrence/' + refrenceId).map(res => <Refrence>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/refrence/' + refrenceId, data).map(res => <Refrence>res);
   }
 
   updateAwardAchivement(data, awardAchivementId: string): Observable<AwarsAchivement> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/awardAchivements/' + awardAchivementId).map(res => <AwarsAchivement>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/awardAchivements/' + awardAchivementId, data).map(res => <AwarsAchivement>res);
   }
 
   updateInterest(data, interestId: string): Observable<Interest> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/interest/' + interestId).map(res => <Interest>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/interest/' + interestId, data).map(res => <Interest>res);
   }
 
   updateIndustrialExposure(data, industrialExposureId: string): Observable<IndustrialExposure> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/industrialExposure/' + industrialExposureId).map(res => <IndustrialExposure>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/industrialExposure/' + industrialExposureId, data)
+      .map(res => <IndustrialExposure>res);
   }
 
   updateProjectDetail(data, projectDetailId: string): Observable<ProjectDetail> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/projectDetail/' + projectDetailId).map(res => <ProjectDetail>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/projectDetail/' + projectDetailId, data).map(res => <ProjectDetail>res);
   }
 
   updateStrength(data, strengthId: string): Observable<Strength> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/strength/' + strengthId).map(res => <Strength>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/strength/' + strengthId, data).map(res => <Strength>res);
   }
 
   updateWeakness(data, weaknessId: string): Observable<Weakness> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/weakness/' + weaknessId).map(res => <Weakness>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/weakness/' + weaknessId, data).map(res => <Weakness>res);
   }
 
   updateObjective(data, ObjectiveId: string): Observable<Objective> {
-    return this.apiService.get(ApiRoute.RESUME + '/update/objective/' + ObjectiveId).map(res => <Objective>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/update/objective/' + ObjectiveId, data).map(res => <Objective>res);
   }
 
   addOrUpdateVideo(data, contactDetailId: string): Observable<Contact> {
-    return this.apiService.get(ApiRoute.RESUME + '/import/video/' + contactDetailId).map(res => <Contact>res);
+    return this.apiService.patch(ApiRoute.RESUME + '/import/video/' + contactDetailId, data).map(res => <Contact>res);
   }
 
   // Delete Api
   deleteResume(id: string): Observable<Resume> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/resume/' + id).map(res => <Resume>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/resume/' + id).map(res => <Resume>res);
   }
+
   deleteEducation(id: string): Observable<Contact> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/education/' + id).map(res => <Contact>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/education/' + id).map(res => <Contact>res);
   }
+
   deleteEmploymentHistory(id: string): Observable<EmploymentHistory> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/employmentHistory/' + id).map(res => <EmploymentHistory>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/employmentHistory/' + id).map(res => <EmploymentHistory>res);
   }
+
   deleteLanguage(id: string): Observable<Language> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/language/' + id).map(res => <Language>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/language/' + id).map(res => <Language>res);
   }
+
   deleteSkill(id: string): Observable<Skill> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/skill/' + id).map(res => <Skill>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/skill/' + id).map(res => <Skill>res);
   }
+
   deleteRefrence(id: string): Observable<Refrence> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/refrence/' + id).map(res => <Refrence>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/refrence/' + id).map(res => <Refrence>res);
   }
+
   deleteAwardAchivement(id: string): Observable<AwarsAchivement> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/awardAchivements/' + id).map(res => <AwarsAchivement>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/awardAchivements/' + id).map(res => <AwarsAchivement>res);
   }
+
   deleteInterest(id: string): Observable<Interest> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/interest/' + id).map(res => <Interest>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/interest/' + id).map(res => <Interest>res);
   }
+
   deleteIndustrialExposure(id: string): Observable<IndustrialExposure> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/industrialExposure/' + id).map(res => <IndustrialExposure>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/industrialExposure/' + id).map(res => <IndustrialExposure>res);
   }
+
   deleteProjectDetail(id: string): Observable<ProjectDetail> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/projectDetail/' + id).map(res => <ProjectDetail>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/projectDetail/' + id).map(res => <ProjectDetail>res);
   }
+
   deleteStrength(id: string): Observable<Strength> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/strength/' + id).map(res => <Strength>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/strength/' + id).map(res => <Strength>res);
   }
+
   deleteWeakness(id: string): Observable<Weakness> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/weakness/' + id).map(res => <Weakness>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/weakness/' + id).map(res => <Weakness>res);
   }
+
   deleteObjective(id: string): Observable<Objective> {
-    return this.apiService.get(ApiRoute.RESUME + '/delete/objective/' + id).map(res => <Objective>res);
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/objective/' + id).map(res => <Objective>res);
   }
 }

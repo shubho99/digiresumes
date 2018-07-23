@@ -268,7 +268,7 @@ export class ContactUsComponent {
 
   scrollToBottom() {
     if (window.innerWidth <= 599) {
-      window.scrollTo({left: 0, top: 650, behavior: 'smooth'});
+      window.scrollTo({left: 0, top: 700, behavior: 'smooth'});
     } else {
       window.scrollTo({left: 0, top: 1000, behavior: 'smooth'});
 
