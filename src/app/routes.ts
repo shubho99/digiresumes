@@ -7,6 +7,8 @@ import {GetStartedComponent} from './containers/get.started.component';
 import {ContactUsComponent} from './containers/contact.us.component';
 import {AnonGuard} from './guards/anon-guard';
 import {AuthGuard} from './guards/auth-guard';
+import {LogoutComponent} from './containers/logout.component';
+import {PasswordResetComponent} from './containers/password-reset.component';
 
 export const routes: Routes = [{
   path: '', component: DashboardComponent, canActivate: [AnonGuard],
@@ -30,5 +32,12 @@ export const routes: Routes = [{
     canActivateChild: [AuthGuard]
   },
   {
+    path: 'logout', component: LogoutComponent
+  },
+  {
+    path: 'password/reset/:code', component: PasswordResetComponent, canActivate: [AnonGuard]
+  },
+  {
     path: '**', component: NotFoundComponent
-  }];
+  },
+];

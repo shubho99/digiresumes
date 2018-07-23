@@ -31,6 +31,8 @@ import {StoreModule} from '@ngrx/store';
 import {reducers} from './reducers';
 import {AuthRepoService} from './modules/core/repositry/authRepo.service';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
+import {LogoutComponent} from './containers/logout.component';
+import {PasswordResetComponent} from './containers/password-reset.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
     LoginComponent,
     SafeUrlPipe,
     TruncatePipe,
-    VideoDialogComponent
+    VideoDialogComponent,
+    LogoutComponent,
+    PasswordResetComponent
   ],
   imports: [
     CoreModule,

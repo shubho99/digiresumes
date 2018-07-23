@@ -28,7 +28,10 @@ import {Component, ViewEncapsulation} from '@angular/core';
           <mat-icon>dehaze</mat-icon>
         </button>
         <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false" style="background-color: #2e2e2e">
-          <button style="color: #ff8505" mat-menu-item routerLink="" routerLinkActive="selected-small">Home</button>
+          <button style="color: #ff8505" mat-menu-item routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="
+                  selected-small
+          ">Home
+          </button>
           <button style="color: #ff8505" mat-menu-item routerLink="/get-started" routerLinkActive="selected-small">Get Started</button>
           <button style="color: #ff8505" mat-menu-item routerLink="/login" routerLinkActive="selected-small">Login
           </button>

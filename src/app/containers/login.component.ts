@@ -29,8 +29,8 @@ import {Router} from '@angular/router';
           <mat-error class="name-error" *ngIf="this.name.dirty && this.name.invalid">{{getNameError()}}</mat-error>
         </ng-container>
         <ng-container>
-          <input id='repass' placeholder='confirm password' type='password' [formControlName]="'confirmPassword'">
-          <mat-error class="confirm-password-error" *ngIf="this.confirmPassword.dirty && this.confirmPassword.invalid">
+          <input id='repass' placeholder='confirm password' type='password' [formControlName]="'confirm_password'">
+          <mat-error class="confirm-password-error" *ngIf="this.confirm_password.dirty && this.confirm_password.invalid">
             {{getConfirmPasswordError()}}
           </mat-error>
         </ng-container>
@@ -183,7 +183,7 @@ import {Router} from '@angular/router';
       margin-bottom: 10px;
       overflow: hidden;
       transition: all .3s cubic-bezier(.6, 0, .4, 1);
-      font-size: 14px;
+      font-size: 20px;
     }
 
     .email-error {
@@ -240,7 +240,7 @@ export class LoginComponent {
   loading = false;
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   email = new FormControl('', [Validators.required, Validators.email]);
-  confirmPassword = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  confirm_password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   name = new FormControl('', [Validators.required]);
   userForm: FormGroup;
 
@@ -249,7 +249,7 @@ export class LoginComponent {
       email: this.email,
       name: this.name,
       password: this.password,
-      confirmPassword: this.confirmPassword
+      confirm_password: this.confirm_password
     });
   }
 
@@ -288,8 +288,8 @@ export class LoginComponent {
   }
 
   getConfirmPasswordError() {
-    return this.confirmPassword.hasError('required') ? 'Confirm password  is Required' :
-      this.confirmPassword.hasError('minlength') ? 'Confirm password  must be of 8 character' : '';
+    return this.confirm_password.hasError('required') ? 'Confirm password  is Required' :
+      this.confirm_password.hasError('minlength') ? 'Confirm password  must be of 8 character' : '';
   }
 
 
@@ -310,8 +310,10 @@ export class LoginComponent {
   }
 
   signUp() {
+    console.log(this.password.value, this.confirm_password.value);
     this.loading = true;
-    if (this.password.value !== this.confirmPassword.value) {
+    if (this.password.value !== this.confirm_password.value) {
+      this.loading = false;
       this.alertService.error('Password and confirm password does not match');
     }
     this.authRepo.signUp(this.userForm.value).subscribe((res) => {
@@ -325,7 +327,7 @@ export class LoginComponent {
 
   resetPassword() {
     this.loading = true;
-    this.authRepo.resetPassword(this.email.value).subscribe((res) => {
+    this.authRepo.sendResetPasswordEmail(this.email.value).subscribe((res) => {
       this.loading = false;
       this.alertService.success('A Password Reset email has been sent to you at ' + this.email.value, 4000);
     }, error => {
