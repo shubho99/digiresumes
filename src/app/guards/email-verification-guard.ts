@@ -12,20 +12,19 @@ export class EmailVerificationGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    this.authRepo.getMe().filter(res => !!res).subscribe((res) => {
+    return this.authRepo.getMe().filter(res => !!res).map((res) => {
       this.isVerified = res.verified;
       this.onBoarding = res.onboarding;
-    });
-
-    if (this.isVerified === false) {
-      return true;
-    } else {
-      if (this.onBoarding === 200) {
-        return false;
+      if (this.isVerified) {
+        if (this.onBoarding === 200) {
+          return false;
+        } else {
+          this.router.navigate(['user', 'onboarding']);
+          return false;
+        }
       } else {
-        this.router.navigate(['user', 'onboarding']);
-        return false;
+        return true;
       }
-    }
+    });
   }
 }

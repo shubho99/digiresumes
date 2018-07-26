@@ -181,4 +181,11 @@ $md-secondary-accent: (
 );
 
 
+$md-palette-secondary: mat-palette($md-secondary);
+$md-palette-secondary-accent: mat-palette($md-secondary-accent);
+
+$mmb-app-theme: mat-light-theme($md-palette-secondary, $md-palette-secondary-accent);
+.alternate{
+  @include angular-material-theme($mmb-app-theme);
+}
 

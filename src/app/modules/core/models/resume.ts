@@ -3,7 +3,7 @@ import {EmploymentHistory} from './employment-history';
 import {Skill} from './skill';
 import {Language} from './language';
 import {Refrence} from './refrence';
-import {AwarsAchivement} from './awars-achivement';
+import {AwardsAchivement} from './awards-achivement';
 import {Interest} from './interest';
 import {IndustrialExposure} from './industrial-exposure';
 import {ProjectDetail} from './project-detail';
@@ -12,6 +12,7 @@ import {Weakness} from './weakness';
 import {Objective} from './objective';
 
 export interface Resume {
+  _id: string,
   name: string;
   contact_details: Contact;
   education: Education[];
@@ -19,7 +20,7 @@ export interface Resume {
   skills: Skill[];
   languages: Language[];
   refrences: Refrence[];
-  award_achivements: AwarsAchivement[];
+  award_achivements: AwardsAchivement[];
   interests: Interest[];
   industrialExposures: IndustrialExposure[];
   projectDetails: ProjectDetail[];
@@ -28,7 +29,8 @@ export interface Resume {
   objectives: Objective[];
 }
 
-export  interface Contact {
+export interface Contact {
+  _id: string;
   image_url: string;
   video_url: string;
   first_name: string;

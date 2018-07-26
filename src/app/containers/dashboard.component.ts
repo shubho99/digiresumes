@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   template: `
-  <app-header></app-header>
+    <app-header></app-header>
     <router-outlet></router-outlet>
   `,
   styles: [`
@@ -11,4 +11,7 @@ import {Component} from '@angular/core';
   `]
 })
 export class DashboardComponent {
+  constructor() {
+    document.body.className = 'intro-body';
+  }
 }

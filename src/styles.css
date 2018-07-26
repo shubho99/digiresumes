@@ -10,12 +10,14 @@ html, body {
   height: 100%;
   font-family: 'Google Sans', Roboto, sans-serif;
   letter-spacing: 1px;
-  background: linear-gradient(132deg, #ec5218, #1665c1);
-  background-size: 500% 500%;
-  animation: BackgroundGradient 10s ease infinite;
   overflow-x: hidden;
 }
 
+.intro-body{
+  background: linear-gradient(132deg, #ec5218, #1665c1);
+  background-size: 500% 500%;
+  animation: BackgroundGradient 10s ease infinite;
+}
 .alert-success {
   background-color: #dff0d8 !important;
   border-color: #d0e9c6 !important;
@@ -298,4 +300,17 @@ html, body {
 
 .hide-on-init {
   visibility: hidden;
+}
+
+.mat-horizontal-content-container{
+  height: 100vh;
+}
+
+.mat-horizontal-stepper-content{
+  height: 100vh;
+  overflow-y: scroll !important;
+}
+
+.mat-tab-labels{
+  margin-left: 30%;
 }

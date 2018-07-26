@@ -33,6 +33,7 @@ import {AuthRepoService} from './modules/core/repositry/authRepo.service';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LogoutComponent} from './containers/logout.component';
 import {PasswordResetComponent} from './containers/password-reset.component';
+import {ResumeRepoService} from './modules/core/repositry/resumeRepo.service';
 
 
 @NgModule({
