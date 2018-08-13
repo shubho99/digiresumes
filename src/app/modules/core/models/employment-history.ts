@@ -1,4 +1,5 @@
 export interface EmploymentHistory {
+  _id: string;
   employer: string;
   designation: string;
   organisation: string;
@@ -7,5 +8,5 @@ export interface EmploymentHistory {
   start_month: string;
   start_year: string;
   end_month: string;
-  end_year: string;
+  end_year: number;
 }

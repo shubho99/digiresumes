@@ -1,14 +1,17 @@
-import {ActionReducerMap, createSelector} from '@ngrx/store';
+import {ActionReducerMap, combineReducers, createSelector} from '@ngrx/store';
 import * as fromAuth from './auth';
 import {authReducer, AuthState} from './auth';
+import {userRootReducer, UserRootState} from '../modules/user/reducers';
 
 export interface RootState {
   authState: AuthState;
+  user: UserRootState;
 }
 
 
 export const reducers: ActionReducerMap<RootState> = {
-  authState: authReducer
+  authState: authReducer,
+  user : combineReducers(userRootReducer)
 };
 
 export const getRootState = (state: RootState) => state;

@@ -22,7 +22,7 @@ import {MaterialModule} from './material.module';
 import {CoreModule} from './modules/core/core.module';
 import {AuthGuard} from './guards/auth-guard';
 import {AnonGuard} from './guards/anon-guard';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './modules/core/services/auth.service';
 import {ApiService} from './modules/core/services/api.service';
 import {AlertService} from './modules/core/services/alert.service';
