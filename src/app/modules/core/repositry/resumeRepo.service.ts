@@ -6,10 +6,11 @@ import {getCurrentResumeId, getResume, getResumes, getResumesLoaded, getResumesL
 import {Observable} from 'rxjs/Observable';
 import {Resume} from '../models/resume';
 import {
-  AddCurrentResumeIdAction,
-  DeleteCurrentReusmeIdAction,
+  AddContactDetailAction,
+  AddCurrentResumeIdAction, AddSkillAction,
+  DeleteCurrentReusmeIdAction, DeleteSkillAction,
   ResumeListRequestAction,
-  ResumeListSuccessAction
+  ResumeListSuccessAction, UpdateContactDetailAction, UpdateSkillAction
 } from '../../user/actions/resume';
 
 @Injectable()
@@ -35,15 +36,59 @@ export class ResumeRepoService {
     return this.store.select(state => getResume(state, id));
   }
 
-  addCurrentResume(id: string) {
+  addCurrentResumeId(id: string) {
     this.store.dispatch(new AddCurrentResumeIdAction(id));
   }
 
-  deleteCurrentResume() {
+  deleteCurrentResumeId() {
     this.store.dispatch(new DeleteCurrentReusmeIdAction());
   }
 
   getCurrentResumeId() {
     return this.store.select(getCurrentResumeId);
+  }
+
+  addContactDetails(data: {
+    image_url: string, video_url: string, first_name: string, last_name: string,
+    phone_number: number, email: string, address: string, city: string, state: string,
+    zip_code: number, country: string, summary: string
+  }, resume_id) {
+    return this.resumeService.addContactDetails(data, resume_id).map((res) => {
+      this.store.dispatch(new AddContactDetailAction({contact: res, resume_id: resume_id}));
+      return res;
+    });
+  }
+
+  updateContactDetails(data: {
+    image_url: string, video_url: string, first_name: string, last_name: string,
+    phone_number: number, email: string, address: string, city: string, state: string,
+    zip_code: number, country: string, summary: string
+  }, contactDetailId: string, resume_id: string) {
+    return this.resumeService.updateContactDetails(data, contactDetailId).map((res) => {
+      this.store.dispatch(new UpdateContactDetailAction({contact: res, resume_id: resume_id}));
+      return res;
+    });
+  }
+
+
+  addSkill(data, resumeId: string) {
+    return this.resumeService.addSkill(data, resumeId).map((res) => {
+      this.store.dispatch(new AddSkillAction({skill: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateSkill(data, resumeId: string, skillId: string) {
+    return this.resumeService.updateSkill(data, skillId).map((res) => {
+      this.store.dispatch(new UpdateSkillAction({skill: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteSkill(resumeId: string, skillId: string) {
+    return this.resumeService.deleteSkill(skillId).map((res) => {
+      this.store.dispatch(new DeleteSkillAction({skill: res, resume_id: resumeId}));
+      return res;
+    });
   }
 }

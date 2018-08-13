@@ -22,7 +22,7 @@ import {MaterialModule} from './material.module';
 import {CoreModule} from './modules/core/core.module';
 import {AuthGuard} from './guards/auth-guard';
 import {AnonGuard} from './guards/anon-guard';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './modules/core/services/auth.service';
 import {ApiService} from './modules/core/services/api.service';
 import {AlertService} from './modules/core/services/alert.service';
@@ -33,7 +33,6 @@ import {AuthRepoService} from './modules/core/repositry/authRepo.service';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LogoutComponent} from './containers/logout.component';
 import {PasswordResetComponent} from './containers/password-reset.component';
-import {ResumeRepoService} from './modules/core/repositry/resumeRepo.service';
 
 
 @NgModule({

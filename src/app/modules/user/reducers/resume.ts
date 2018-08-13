@@ -6,7 +6,12 @@ import {
   RESUME_UPDATE,
   RESUME_DELETE,
   RESUME_ADD_SUCCESS,
-  RESUME_ADD_CONTACT_DETAIL, ADD_CURRENT_RESUME_ID, DELETE_CURRENT_RESUME_ID
+  RESUME_ADD_CONTACT_DETAIL,
+  ADD_CURRENT_RESUME_ID,
+  DELETE_CURRENT_RESUME_ID,
+  RESUME_UPDATE_CONTACT_DETAIL,
+  RESUME_ADD_SKILL,
+  RESUME_UPDATE_SKILL, RESUME_DELETE_SKILL
 } from '../actions/resume';
 import {Utils} from '../../core/utils/utils';
 import {createSelector} from '@ngrx/store';
@@ -41,7 +46,6 @@ export function reducer(state = initialState, action: Action): ResumeState {
     }
     case RESUME_LIST_SUCCESS: {
       const resume = action.payload;
-      console.log(action);
       const obj = Utils.normalize(resume);
       const ids = resume.map((res) => res._id);
       const newIds = Utils.filterDuplicateIds([...state.ids, ...ids]);
@@ -81,6 +85,49 @@ export function reducer(state = initialState, action: Action): ResumeState {
     }
     case DELETE_CURRENT_RESUME_ID: {
       return {...state, currentResumeId: null};
+    }
+    case RESUME_ADD_CONTACT_DETAIL :
+    case RESUME_UPDATE_CONTACT_DETAIL: {
+      const contactDetails = action.payload.contact;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].contact_details = contactDetails;
+      const newResume = state.entities[resume_id];
+      const newObj = {[resume_id]: newResume};
+      const entities = {...state.entities, ...newObj};
+      return {...state, ...{entities: entities}};
+    }
+
+    case RESUME_ADD_SKILL: {
+      const skill = action.payload.skill;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].skills.push(skill);
+      const newSkill = state.entities[resume_id];
+      const obj = {[resume_id]: newSkill};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+
+    case RESUME_UPDATE_SKILL: {
+      const skill = action.payload.skill;
+      const resume_id = action.payload.resume_id;
+      const skillsArray = state.entities[resume_id].skills;
+      const skillId = skillsArray.findIndex((id) => id._id === skill._id);
+      const update = skillsArray[skillId] = skill;
+      const newSkill = state.entities[resume_id];
+      const obj = {[resume_id]: newSkill};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_SKILL: {
+      const skill = action.payload.skill;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].skills.filter((object) => object._id !== skill._id);
+      const update = state.entities[resume_id].skills = filter;
+      const newSkill = state.entities[resume_id];
+      console.log(newSkill);
+      const obj = {[resume_id]: newSkill};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
     }
     default: {
       return state;

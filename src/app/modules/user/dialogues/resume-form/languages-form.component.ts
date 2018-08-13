@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-languages',
+  selector: 'app-languages-form',
   template: `
     <div fxLayout="column" fxLayoutGap="10px">
       <mat-form-field>
@@ -19,5 +19,5 @@ import {Component} from '@angular/core';
   styles: [`
   `]
 })
-export class LanguagesComponent {
+export class LanguagesFormComponent {
 }

@@ -16,17 +16,20 @@ import {ImageUploadComponent} from './components/upload/image-upload.component';
 import {UploadFromDiskComponent} from './components/upload/upload-from-disk.component';
 import {ImportVideoComponent} from './components/upload/import-video.component';
 import {ResumeFormComponent} from './containers/resume-form.component';
-import {ContactDetailsComponent} from './components/resume-form/contact-details.component';
-import {EducationComponent} from './components/resume-form/education.component';
-import {EmploymentHistoryComponent} from './components/resume-form/employment-history.component';
-import {InterestComponent} from './components/resume-form/interest.component';
-import {SkillComponent} from './components/resume-form/skill.component';
-import {LanguagesComponent} from './components/resume-form/languages.component';
-import {IndustrialExposureComponent} from './components/resume-form/industrial-exposure.component';
-import {AwardsComponent} from './components/resume-form/awards.component';
-import {ObjectivesComponent} from './components/resume-form/objectives.component';
-import {ReferenceComponent} from './components/resume-form/reference.component';
+import {ContactDetailsFormComponent} from './dialogues/resume-form/contact-details-form.component';
+import {EducationFormComponent} from './dialogues/resume-form/education-form.component';
+import {EmploymentHistoryFormComponent} from './dialogues/resume-form/employment-history-form.component';
+import {InterestFormComponent} from './dialogues/resume-form/interest-form.component';
+import {SkillFormComponent} from './dialogues/resume-form/skill-form.component';
+import {LanguagesFormComponent} from './dialogues/resume-form/languages-form.component';
+import {IndustrialExposureFormComponent} from './dialogues/resume-form/industrial-exposure-form.component';
+import {AwardsFormComponent} from './dialogues/resume-form/awards-form.component';
+import {ObjectivesFormComponent} from './dialogues/resume-form/objectives-form.component';
+import {ReferenceFormComponent} from './dialogues/resume-form/reference-form.component';
 import {ResumeRepoService} from '../core/repositry/resumeRepo.service';
+import {ContactDetailsComponent} from './components/resume-form/contact-details.component';
+import {SkillsComponent} from './components/resume-form/skills.component';
+import {SkillsCardComponent} from './components/cards/skills-card.component';
 
 @NgModule({
   declarations: [
@@ -40,24 +43,27 @@ import {ResumeRepoService} from '../core/repositry/resumeRepo.service';
     UploadFromDiskComponent,
     ImportVideoComponent,
     ResumeFormComponent,
+    ContactDetailsFormComponent,
+    EducationFormComponent,
+    EmploymentHistoryFormComponent,
+    InterestFormComponent,
+    SkillFormComponent,
+    LanguagesFormComponent,
+    IndustrialExposureFormComponent,
+    AwardsFormComponent,
+    ObjectivesFormComponent,
+    ReferenceFormComponent,
     ContactDetailsComponent,
-    EducationComponent,
-    EmploymentHistoryComponent,
-    InterestComponent,
-    SkillComponent,
-    LanguagesComponent,
-    IndustrialExposureComponent,
-    AwardsComponent,
-    ObjectivesComponent,
-    ReferenceComponent
+    SkillsComponent,
+    SkillsCardComponent
   ],
   imports: [
     SharedModule,
     UserRoutingModule,
     StoreModule.forFeature('user', userRootReducer)
   ],
-  entryComponents: [],
-  providers: [ResumeService, EmailVerificationGuard, OnboardGuard,ResumeRepoService]
+  entryComponents: [ContactDetailsFormComponent,SkillFormComponent],
+  providers: [ResumeService, EmailVerificationGuard, OnboardGuard, ResumeRepoService]
 })
 export class UserModule {
 }

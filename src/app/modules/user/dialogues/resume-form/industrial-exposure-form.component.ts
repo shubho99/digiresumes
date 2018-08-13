@@ -1,15 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-employment-history',
+  selector: 'app-industrial-exposure-form',
   template: `
     <div fxLayout="column" fxLayoutGap="10px">
-      <mat-form-field>
-        <input matInput placeholder="Employer"/>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Designation"/>
-      </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Organisation"/>
       </mat-form-field>
@@ -20,16 +14,19 @@ import {Component} from '@angular/core';
         <input matInput placeholder="State"/>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Stating Month"/>
+        <input matInput placeholder="Starting Month"/>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Starting Year"/>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="End Month"/>
       </mat-form-field>
       <mat-form-field>
-      <input matInput placeholder="End month"/>
-    </mat-form-field>
+        <input matInput type="number" placeholder="End Year"/>
+      </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="End year"/>
+        <input matInput  placeholder="Tell about your Work"/>
       </mat-form-field>
       <button style="width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">Save</button>
     </div>
@@ -37,5 +34,5 @@ import {Component} from '@angular/core';
   styles: [`
   `]
 })
-export class EmploymentHistoryComponent {
+export class IndustrialExposureFormComponent {
 }

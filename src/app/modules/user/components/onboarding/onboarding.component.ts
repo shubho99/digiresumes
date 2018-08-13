@@ -56,7 +56,7 @@ export class OnboardingComponent implements OnDestroy {
     resume$[0].takeWhile(() => this.isAlive).filter((res) => !!res).subscribe((res) => {
       if (res.length > 0) {
         this.resume = res;
-        this.resumeRepo.addCurrentResume(res[0]._id);
+        this.resumeRepo.addCurrentResumeId(res[0]._id);
         this.completed = true;
         this.loading = false;
       }

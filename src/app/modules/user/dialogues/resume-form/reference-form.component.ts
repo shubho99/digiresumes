@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-references',
+  selector: 'app-references-form',
   template: `
     <div fxLayout="column" fxLayoutGap="10px">
       <mat-form-field>
@@ -28,5 +28,5 @@ import {Component} from '@angular/core';
   styles: [`
   `]
 })
-export class ReferenceComponent {
+export class ReferenceFormComponent {
 }

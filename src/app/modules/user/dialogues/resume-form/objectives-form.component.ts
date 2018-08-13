@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-objectives',
+  selector: 'app-objectives-form',
   template: `
     <div fxLayout="column" fxLayoutGap="10px">
       <mat-form-field>
@@ -22,5 +22,5 @@ import {Component} from '@angular/core';
   styles: [`
   `]
 })
-export class ObjectivesComponent {
+export class ObjectivesFormComponent {
 }

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
 
@@ -15,6 +15,7 @@ import {Resume} from '../../core/models/resume';
               Enter Your Contact Details
             </mat-panel-description>
           </mat-expansion-panel-header>
+          <app-contact-details [resumeId]="resume._id" [contactDetails]="resume.contact_details" ></app-contact-details>
         </mat-expansion-panel>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -47,6 +48,7 @@ import {Resume} from '../../core/models/resume';
               Describe your Skills
             </mat-panel-description>
           </mat-expansion-panel-header>
+          <app-skills [skills]="resume.skills" [resumeId]="resume._id"></app-skills>
         </mat-expansion-panel>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -107,21 +109,25 @@ import {Resume} from '../../core/models/resume';
     }
   `]
 })
-export class ResumeFormComponent {
+export class ResumeFormComponent implements OnDestroy {
   resume: Resume;
+  isAlive = true;
 
   constructor(public resumeRepo: ResumeRepoService) {
     this.fetchResume();
   }
 
   fetchResume() {
-    this.resumeRepo.getCurrentResumeId().subscribe((res) => {
+    this.resumeRepo.getCurrentResumeId().takeWhile(() => this.isAlive).subscribe((res) => {
       if (res) {
-        this.resumeRepo.getResume(res).subscribe((resume) => {
-          console.log(resume);
+        this.resumeRepo.getResume(res).takeWhile(() => this.isAlive).subscribe((resume) => {
+          this.resume = resume;
         });
       }
     });
+  }
+  ngOnDestroy() {
+    this.isAlive = false;
   }
 }
 

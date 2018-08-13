@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-education',
+  selector: 'app-education-form',
   template: `
     <div fxLayout="column" fxLayoutGap="10px">
       <mat-form-field>
@@ -33,5 +33,5 @@ import {Component} from '@angular/core';
   styles: [`
   `]
 })
-export class EducationComponent {
+export class EducationFormComponent {
 }
