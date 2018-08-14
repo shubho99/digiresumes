@@ -6,7 +6,7 @@ import {ContactDetailsFormComponent} from '../../dialogues/resume-form/contact-d
 @Component({
   selector: 'app-contact-details',
   template: `
-    <div fxLayoutAlign="center center" fxLayout="column" on-mouseenter="hover=true" on-mouseleave="hover=false">
+    <div fxLayoutAlign="center center" fxLayout="column">
       <ng-container>
         <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
           <ng-container *ngIf="contactDetails">
@@ -17,16 +17,16 @@ import {ContactDetailsFormComponent} from '../../dialogues/resume-form/contact-d
             <p>{{contactDetails.country}}</p>
           </ng-container>
           <ng-container *ngIf="!contactDetails">
-            <h3>Click here to add Contact Details</h3>
+            <h3>No Contact Details added yet.</h3>
           </ng-container>
-        </div>
-        <div *ngIf="hover" class="hover">
-          <div  fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="30px">
-            <button (click)="edit()" mat-icon-button>
-              <mat-icon *ngIf="contactDetails">create</mat-icon>
-              <mat-icon *ngIf="!contactDetails">add</mat-icon>
-            </button>
-          </div>
+          <!--<div class="hover">-->
+            <!--<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="30px">-->
+              <!--<button (click)="edit()" mat-icon-button>-->
+                <!--<mat-icon *ngIf="contactDetails">create</mat-icon>-->
+                <!--<mat-icon *ngIf="!contactDetails">add</mat-icon>-->
+              <!--</button>-->
+            <!--</div>-->
+          <!--</div>-->
         </div>
       </ng-container>
     </div>
@@ -38,24 +38,22 @@ import {ContactDetailsFormComponent} from '../../dialogues/resume-form/contact-d
       left: 44%;
       color: white;
       top: 35px;
-    }
-
-    .hover {
-      position: absolute;
-      background-color: rgba(36, 36, 36, 0.81);
-      top: 18%;
-      bottom: 0;
-      right: 0;
-      left: 32%;
-      height: 15%;
-      width: 40%;
-      z-index: 100;
+      border-radius: 50%;
+      background: #4c86bd;
     }
 
     .outer-div {
-      background: lightgrey;
-      border: 1px dashed #d8d8d8;
-      width: 50%;
+      background: #e5fade;
+      border: 2.5px dashed #d8d8d8;
+      width: 95%;
+      height: 100%;
+    }
+
+    .outer-div:hover .hover {
+      background-color: rgba(36, 36, 36, 0.81);
+      height: 100%;
+      width: 100%;
+      z-index: 100;
     }
   `]
 })

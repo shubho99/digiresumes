@@ -64,7 +64,7 @@ export class SkillsCardComponent {
   hover = false;
   loading = false;
 
-  constructor(private dialog: MatDialog, private resumeRepo: ResumeRepoService,private alert:AlertService) {
+  constructor(private dialog: MatDialog, private resumeRepo: ResumeRepoService, private alert: AlertService) {
 
   }
 

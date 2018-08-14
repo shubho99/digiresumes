@@ -5,9 +5,8 @@ import {Resume} from '../../core/models/resume';
 @Component({
   selector: 'app-resume-form',
   template: `
-    <mat-card>
       <mat-accordion>
-        <h1 style="text-align: center">Enter details which you want to see on your Resume</h1>
+        <h1 style="text-align: center; margin-top: 2%">Enter details which you want to see on your Resume</h1>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>Contact Details</mat-panel-title>
@@ -91,7 +90,6 @@ import {Resume} from '../../core/models/resume';
           </mat-expansion-panel-header>
         </mat-expansion-panel>
       </mat-accordion>
-    </mat-card>
   `,
   styles: [`
     mat-expansion-panel {

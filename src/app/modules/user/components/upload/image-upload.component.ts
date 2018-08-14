@@ -3,7 +3,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 @Component({
   selector: 'app-image-upload-component',
   template: `
-    <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+    <div style="margin-top: 3%" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
       <input type="file" (change)="onFileSelected($event)" accept="image/jpeg, image/png" #fileInput hidden/>
       <h1>
         <mat-icon>cloud_upload</mat-icon>
@@ -15,7 +15,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
         <span *ngIf="!this.imageSelected">Select</span>
       </button>
       <img #previewImg height="200px"/>
-      <button mat-raised-button color="accent">Save</button>
+      <button *ngIf="this.imageSelected" mat-raised-button color="accent">Save</button>
     </div>
   `,
   styles: [`
