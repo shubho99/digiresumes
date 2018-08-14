@@ -5,12 +5,19 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
   selector: 'app-email-verification',
   template: `
     <ng-container *ngIf="!loading">
-      <div fxLayoutAlign="center center">
-        <div fxLayoutGap="10px" style="height: 50%; width: 50%" fxLayout="column">
-          <mat-card fxFlex="100%">
-            <h1>You have'nt Verified your Email yet.</h1>
-            <p>Please verify your email which is sent to {{email}} before continuing</p>
-            <button mat-raised-button color="primary">Send Email Again</button>
+      <div class="alternate" fxLayoutAlign="center center">
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-card fxFlex="100%" style="background-color: #000000; box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.2);">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-icon class="verify-icon">unsubscribe</mat-icon>
+            </div>
+            <h1 class="verify-text">You have'nt Verified your Email yet.</h1>
+            <p class="verify-text" style="margin-left: 6%">Please verify your email which is sent to {{email}} before continuing</p>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button type="submit" class="reset-button" mat-raised-button>
+                Send Email Again
+              </button>
+            </div>
           </mat-card>
         </div>
       </div>

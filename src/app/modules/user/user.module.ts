@@ -62,7 +62,7 @@ import {SkillsCardComponent} from './components/cards/skills-card.component';
     UserRoutingModule,
     StoreModule.forFeature('user', userRootReducer)
   ],
-  entryComponents: [ContactDetailsFormComponent,SkillFormComponent],
+  entryComponents: [ContactDetailsFormComponent, SkillFormComponent],
   providers: [ResumeService, EmailVerificationGuard, OnboardGuard, ResumeRepoService]
 })
 export class UserModule {
