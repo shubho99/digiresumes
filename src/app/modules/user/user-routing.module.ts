@@ -9,7 +9,7 @@ import {OnboardingIntroComponent} from './components/onboarding/onboarding-intro
 
 export const routes: Routes = [
   {
-    path: '', component: EmailVerificationComponent
+    path: '', component: EmailVerificationComponent,  canActivate: [EmailVerificationGuard]
   },
   {
     path: '', component: UserDashboardComponent
