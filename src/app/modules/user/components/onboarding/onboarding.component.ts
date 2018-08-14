@@ -7,14 +7,14 @@ import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
   template: `
     <div class="alternate">
       <mat-horizontal-stepper *ngIf="!loading" [linear]="true">
-        <mat-step [optional]="false">
+        x<mat-step [optional]="false">
           <ng-template matStepLabel>Name your Resume</ng-template>
           <app-resume-name-component [completed]="completed"></app-resume-name-component>
         </mat-step>
         <mat-step *ngIf="resume" [optional]="true">
           <ng-template matStepLabel>Upload image and Video</ng-template>
           <app-upload-component></app-upload-component>
-          <div style="    margin-left: 68%;
+          <div style="    margin-left: 45%;
     margin-top: 15%;" fxLayoutGap="10px">
             <button mat-raised-button matStepperPrevious color="primary">Prev</button>
             <button mat-raised-button matStepperNext color="accent">Next</button>
@@ -22,12 +22,12 @@ import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
         </mat-step>
         <mat-step *ngIf="resume" [optional]="false">
           <ng-template matStepLabel>Resume Details</ng-template>
+          <app-resume-form></app-resume-form>
           <div style=";
-    margin-left: 84%;" fxLayoutGap="10px">
+    margin-left: 84%; margin-top: 4%" fxLayoutGap="10px">
             <button mat-raised-button matStepperPrevious color="primary">Prev</button>
             <button mat-raised-button color="accent">Finish</button>
           </div>
-          <app-resume-form></app-resume-form>
         </mat-step>
       </mat-horizontal-stepper>
     </div>

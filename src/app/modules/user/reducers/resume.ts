@@ -1,21 +1,21 @@
 import {Resume} from '../../core/models/resume';
 import {Action} from '../../../actions/action';
 import {
-  RESUME_LIST_SUCCESS,
-  RESUME_LIST_REQUEST,
-  RESUME_UPDATE,
-  RESUME_DELETE,
-  RESUME_ADD_SUCCESS,
-  RESUME_ADD_CONTACT_DETAIL,
   ADD_CURRENT_RESUME_ID,
   DELETE_CURRENT_RESUME_ID,
-  RESUME_UPDATE_CONTACT_DETAIL,
+  RESUME_ADD_CONTACT_DETAIL,
   RESUME_ADD_SKILL,
-  RESUME_UPDATE_SKILL, RESUME_DELETE_SKILL
+  RESUME_ADD_SUCCESS,
+  RESUME_DELETE,
+  RESUME_DELETE_SKILL,
+  RESUME_LIST_REQUEST,
+  RESUME_LIST_SUCCESS,
+  RESUME_UPDATE,
+  RESUME_UPDATE_CONTACT_DETAIL,
+  RESUME_UPDATE_SKILL
 } from '../actions/resume';
 import {Utils} from '../../core/utils/utils';
 import {createSelector} from '@ngrx/store';
-import {state} from '@angular/core';
 
 export interface ResumeState {
   ids: number[];
@@ -124,7 +124,6 @@ export function reducer(state = initialState, action: Action): ResumeState {
       const filter = state.entities[resume_id].skills.filter((object) => object._id !== skill._id);
       const update = state.entities[resume_id].skills = filter;
       const newSkill = state.entities[resume_id];
-      console.log(newSkill);
       const obj = {[resume_id]: newSkill};
       const entities = {...state.entities, ...obj};
       return {...state, ...{entities: entities}};

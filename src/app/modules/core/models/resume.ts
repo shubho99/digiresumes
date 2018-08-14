@@ -12,7 +12,7 @@ import {Weakness} from './weakness';
 import {Objective} from './objective';
 
 export interface Resume {
-  _id: string,
+  _id: string;
   name: string;
   contact_details: Contact;
   education: Education[];

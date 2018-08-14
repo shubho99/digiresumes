@@ -3,7 +3,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 @Component({
   selector: 'app-upload-from-disk',
   template: `
-    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <div style="margin-top: 3%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
       <h2>Select a video from your computer to upload</h2>
       <div *ngIf="!videoSelected" fxLayoutAlign="center center" style="margin-top: 20px" fxLayout="row">
         <input type="file" #videoFile name="video" accept="video/*" (change)="selectVideo($event)" hidden>
