@@ -86,6 +86,7 @@ export class PasswordResetComponent {
 
   constructor(private authRepo: AuthRepoService, private router: Router, private route: ActivatedRoute,
               private alertService: AlertService) {
+    document.body.style.background = 'linear-gradient(132deg, #f1c232, #ff8505)';
     this.passwordResetForm = new FormGroup({
       new_password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
       confirm_password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
