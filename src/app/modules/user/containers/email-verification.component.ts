@@ -5,14 +5,16 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
   selector: 'app-email-verification',
   template: `
     <ng-container *ngIf="!loading">
-      <div class="alternate" fxLayoutAlign="center center">
+      <div  fxLayoutAlign="center center">
         <div fxLayout="column" fxLayoutGap="10px">
-          <mat-card fxFlex="100%" style="background-color: #000000; box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.2);">
+          <mat-card class="verify-mat-card" fxFlex="100%"
+                    style="background-color: #000000; box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.2);">
             <div fxLayout="row" fxLayoutAlign="center center">
               <mat-icon class="verify-icon">unsubscribe</mat-icon>
             </div>
             <h1 class="verify-text">You have'nt Verified your Email yet.</h1>
-            <p class="verify-text" style="margin-left: 6%">Please verify your email which is sent to {{email}} before continuing</p>
+            <p class="verify-text" style="margin-left: 6%">
+              Please verify your email which is sent to {{email}} before continuing</p>
             <div fxLayout="row" fxLayoutAlign="center center">
               <button type="submit" class="reset-button" mat-raised-button>
                 Send Email Again
@@ -25,6 +27,41 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
     <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`
+
+    .verify-mat-card {
+      max-width: 80%;
+      text-align: center;
+      margin-left: 10%;
+      margin-top: 16.5%;
+    }
+
+    .verify-text {
+      color: #3FC54B;
+      margin-bottom: 3%;
+    }
+
+    .verify-icon {
+      font-size: 96px;
+      display: block;
+      border: 4px solid #16CB99;
+      width: 21%;
+      height: auto;
+      padding-top: 2%;
+      padding-left: .5%;
+      border-radius: 100px;
+      color: #16cb99;
+      margin-bottom: 8%;
+      margin-top: 2%;
+      transition: all .2s;
+    }
+
+    .reset-button {
+      margin-top: 7%;
+      margin-bottom: 2%;
+      color: whitesmoke;
+      background: #16cb99;
+      text-transform: uppercase;
+    }
   `]
 })
 export class EmailVerificationComponent implements OnDestroy {

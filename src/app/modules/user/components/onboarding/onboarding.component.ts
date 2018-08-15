@@ -7,7 +7,7 @@ import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
   template: `
     <div class="alternate">
       <mat-horizontal-stepper *ngIf="!loading" [linear]="true">
-        x<mat-step [optional]="false">
+        <mat-step [optional]="false">
           <ng-template matStepLabel>Name your Resume</ng-template>
           <app-resume-name-component [completed]="completed"></app-resume-name-component>
         </mat-step>

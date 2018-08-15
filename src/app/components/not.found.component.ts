@@ -10,18 +10,18 @@ import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
       <div id='stars2'></div>
       <div id='stars3'></div>
       <div id='title' class="res-not-found-title">
-    <span class="page-404 res-not-found-page-404">
-      Page Not Found: Error 404
-    </span>
-        <br>
-        <div class="demo cover res-not-found-demo">
-          <div class="demo__content ">
-            <div class="demo__img animated zoomInDown"></div>
+        <span class="page-404 res-not-found-page-404">
+          Page Not Found: Error 404
+        </span>
+          <br>
+          <div class="demo cover res-not-found-demo">
+            <div class="demo__content ">
+              <div class="demo__img animated zoomInDown"></div>
+            </div>
           </div>
-        </div>
-        <span class="go-back res-not-found-go-back">
-          you landed in a wrong page<br><a routerLink="">go back</a>
-    </span>
+          <span class="go-back res-not-found-go-back">
+            you landed in a wrong page<br><a routerLink="">go back</a>
+          </span>
       </div>
     </div>
   `,
@@ -106,7 +106,6 @@ import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
       top: 50%;
       left: 0;
       right: 0;
-      color: #FFF;
       text-align: center;
       font-family: "lato", sans-serif;
       font-weight: 300;
