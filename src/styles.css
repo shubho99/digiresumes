@@ -277,6 +277,25 @@ html, body {
     margin-top: 10% !important;
     margin-left: 34% !important;
   }
+  .res-not-found-demo {
+    left: 75% !important;
+    top: 345% !important;
+    width: 10rem !important;
+    height: 10rem !important;
+  }
+  .res-not-found-title {
+    font-size: 29px !important;
+    /*margin-top: -67px !important;*/
+    /*margin-left: 10% !important;*/
+  }
+  .res-not-found-page-404 {
+    top: -550% !important;
+    right: 0% !important;
+  }
+  .res-not-found-go-back {
+    bottom: -815% !important;
+    right: 0% !important;
+  }
 }
 
 .video-dialog {
@@ -315,22 +334,4 @@ html, body {
   margin-left: 30%;
 }
 
-.res-not-found-demo {
-    left: 75% !important;
-    top: 345% !important;
-    width: 10rem !important;
-    height: 10rem !important;
-  }
-  .res-not-found-title {
-    font-size: 29px !important;
-    /*margin-top: -67px !important;*/
-    /*margin-left: 10% !important;*/
-  }
-  .res-not-found-page-404 {
-    top: -550% !important;
-    right: 0% !important;
-  }
-  .res-not-found-go-back {
-    bottom: -815% !important;
-    right: 0% !important;
-  }
+
