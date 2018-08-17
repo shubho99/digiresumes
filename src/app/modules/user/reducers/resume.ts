@@ -355,7 +355,8 @@ export function reducer(state = initialState, action: Action): ResumeState {
     case RESUME_ADD_REFERENCE: {
       const reference = action.payload.reference;
       const resume_id = action.payload.resume_id;
-      const update = state.entities[resume_id].references.push(reference);
+      console.log(state.entities[resume_id]);
+      const update = state.entities[resume_id].refrences.push(reference);
       const newReference = state.entities[resume_id];
       const obj = {[resume_id]: newReference};
       const entities = {...state.entities, ...obj};
@@ -364,9 +365,9 @@ export function reducer(state = initialState, action: Action): ResumeState {
     case RESUME_UPDATE_REFERENCE: {
       const reference = action.payload.reference;
       const resume_id = action.payload.resume_id;
-      const referenceArray = state.entities[resume_id].references;
-      const awardId = referenceArray.findIndex((id) => id._id === reference._id);
-      const update = referenceArray[awardId] = reference;
+      const referenceArray = state.entities[resume_id].refrences;
+      const referenceId = referenceArray.findIndex((id) => id._id === reference._id);
+      const update = referenceArray[referenceId] = reference;
       const newReference = state.entities[resume_id];
       const obj = {[resume_id]: newReference};
       const entities = {...state.entities, ...obj};
@@ -375,8 +376,8 @@ export function reducer(state = initialState, action: Action): ResumeState {
     case RESUME_DELETE_REFERENCE: {
       const reference = action.payload.reference;
       const resume_id = action.payload.resume_id;
-      const filter = state.entities[resume_id].references.filter((object) => object._id !== reference._id);
-      const update = state.entities[resume_id].references = filter;
+      const filter = state.entities[resume_id].refrences.filter((object) => object._id !== reference._id);
+      const update = state.entities[resume_id].refrences = filter;
       const newReference = state.entities[resume_id];
       const obj = {[resume_id]: newReference};
       const entities = {...state.entities, ...obj};

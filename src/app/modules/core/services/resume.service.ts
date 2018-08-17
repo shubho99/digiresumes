@@ -7,7 +7,7 @@ import {Education} from '../models/education';
 import {EmploymentHistory} from '../models/employment-history';
 import {Language} from '../models/language';
 import {Skill} from '../models/skill';
-import {Reference} from '../models/reference';
+import {Refrence} from '../models/refrence';
 import {AwardsAchivement} from '../models/awards-achivement';
 import {Interest} from '../models/interest';
 import {IndustrialExposure} from '../models/industrial-exposure';
@@ -60,8 +60,8 @@ export class ResumeService {
   addRefrence(data: {
     name: string, relationship: string, company: string, email: string,
     phone: number, address: string
-  }, resumeId: string): Observable<Reference> {
-    return this.apiService.post(ApiRoute.RESUME + '/add/refrence/' + resumeId, data).map(res => <Reference>res);
+  }, resumeId: string): Observable<Refrence> {
+    return this.apiService.post(ApiRoute.RESUME + '/add/refrence/' + resumeId, data).map(res => <Refrence>res);
   }
 
   addAward(data: { awards_and_achivements: string }, resumeId: string): Observable<AwardsAchivement> {
@@ -140,8 +140,8 @@ export class ResumeService {
     return this.apiService.patch(ApiRoute.RESUME + '/update/skill/' + skillId, data).map(res => <Skill>res);
   }
 
-  updateRefrence(data, refrenceId: string): Observable<Reference> {
-    return this.apiService.patch(ApiRoute.RESUME + '/update/refrence/' + refrenceId, data).map(res => <Reference>res);
+  updateRefrence(data, refrenceId: string): Observable<Refrence> {
+    return this.apiService.patch(ApiRoute.RESUME + '/update/refrence/' + refrenceId, data).map(res => <Refrence>res);
   }
 
   updateAwardAchivement(data, awardAchivementId: string): Observable<AwardsAchivement> {
@@ -198,8 +198,8 @@ export class ResumeService {
     return this.apiService.delete(ApiRoute.RESUME + '/delete/skill/' + id).map(res => <Skill>res);
   }
 
-  deleteRefrence(id: string): Observable<Reference> {
-    return this.apiService.delete(ApiRoute.RESUME + '/delete/refrence/' + id).map(res => <Reference>res);
+  deleteRefrence(id: string): Observable<Refrence> {
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/refrence/' + id).map(res => <Refrence>res);
   }
 
   deleteAwardAchivement(id: string): Observable<AwardsAchivement> {

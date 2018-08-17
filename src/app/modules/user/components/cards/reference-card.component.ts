@@ -8,7 +8,7 @@ import {Education} from '../../../core/models/education';
 import {EducationFormComponent} from '../../dialogues/resume-form/education-form.component';
 import {Objective} from '../../../core/models/objective';
 import {ObjectivesFormComponent} from '../../dialogues/resume-form/objectives-form.component';
-import {Reference} from '../../../core/models/reference';
+import {Refrence} from '../../../core/models/refrence';
 import {ReferenceFormComponent} from '../../dialogues/resume-form/reference-form.component';
 
 @Component({
@@ -49,7 +49,7 @@ import {ReferenceFormComponent} from '../../dialogues/resume-form/reference-form
   `]
 })
 export class ReferenceCardComponent {
-  @Input() reference: Reference;
+  @Input() reference: Refrence;
   @Input() resumeId: string;
   loading = false;
 
@@ -68,7 +68,7 @@ export class ReferenceCardComponent {
     this.loading = true;
     this.resumeRepo.deleteReference(this.resumeId, this.reference._id).subscribe((res) => {
       this.loading = false;
-      this.alert.success('Reference deleted Successfully');
+      this.alert.success('Refrence deleted Successfully');
     });
   }
 }

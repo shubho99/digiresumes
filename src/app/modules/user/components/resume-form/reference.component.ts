@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {Reference} from '../../../core/models/reference';
+import {Refrence} from '../../../core/models/refrence';
 import {ReferenceFormComponent} from '../../dialogues/resume-form/reference-form.component';
 
 @Component({
@@ -19,13 +19,14 @@ import {ReferenceFormComponent} from '../../dialogues/resume-form/reference-form
   `]
 })
 export class ReferenceComponent {
-  @Input() references: Reference[];
+  @Input() references: Refrence[];
   @Input() resumeId: string;
 
   constructor(private dialog: MatDialog) {
   }
 
   add() {
+    console.log(this.references);
     const dialogRef = this.dialog.open(ReferenceFormComponent, {
       disableClose: true,
       data: {resume_id: this.resumeId}

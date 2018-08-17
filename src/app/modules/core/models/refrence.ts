@@ -1,4 +1,4 @@
-export interface Reference {
+export interface Refrence {
   _id: string;
   name: string;
   relationship: string;

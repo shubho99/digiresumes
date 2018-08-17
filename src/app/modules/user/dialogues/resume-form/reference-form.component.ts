@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Reference} from '../../../core/models/reference';
+import {Refrence} from '../../../core/models/refrence';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {AlertService} from '../../../core/services/alert.service';
@@ -45,7 +45,7 @@ import {AlertService} from '../../../core/services/alert.service';
 })
 export class ReferenceFormComponent implements OnInit {
   form: FormGroup;
-  reference: Reference;
+  reference: Refrence;
   resumeId: string;
   loading = false;
 
@@ -85,7 +85,7 @@ export class ReferenceFormComponent implements OnInit {
     this.loading = true;
     this.resumeRepo.addReference(this.form.value, this.resumeId).subscribe((res) => {
       this.loading = false;
-      this.alert.success('Reference added Successfully');
+      this.alert.success('Refrence added Successfully');
       this.dialog.close();
     });
   }
@@ -94,7 +94,7 @@ export class ReferenceFormComponent implements OnInit {
     this.loading = true;
     this.resumeRepo.updateReference(this.form.value, this.resumeId, this.reference._id).subscribe((res) => {
       this.loading = false;
-      this.alert.success('Reference updated Successfully');
+      this.alert.success('Refrence updated Successfully');
       this.dialog.close();
     });
   }
