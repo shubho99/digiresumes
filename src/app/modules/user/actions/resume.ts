@@ -8,7 +8,7 @@ import {Language} from '../../core/models/language';
 import {IndustrialExposure} from '../../core/models/industrial-exposure';
 import {AwardsAchivement} from '../../core/models/awards-achivement';
 import {Objective} from '../../core/models/objective';
-import {Reference} from '../../core/models/reference';
+import {Refrence} from '../../core/models/refrence';
 
 export const RESUME_ADD_SUCCESS = 'add Resume';
 export const RESUME_UPDATE = 'update Resume';
@@ -273,20 +273,20 @@ export class DeleteObjectiveAction implements Action {
 export class AddReferenceAction implements Action {
   readonly type = RESUME_ADD_REFERENCE;
 
-  constructor(public payload: { reference: Reference, resume_id: string }) {
+  constructor(public payload: { reference: Refrence, resume_id: string }) {
   }
 }
 
 export class UpdateReferenceAction implements Action {
   readonly type = RESUME_UPDATE_REFERENCE;
 
-  constructor(public payload: { reference: Reference, resume_id: string }) {
+  constructor(public payload: { reference: Refrence, resume_id: string }) {
   }
 }
 
 export class DeleteReferenceAction implements Action {
   readonly type = RESUME_DELETE_REFERENCE;
 
-  constructor(public payload: { reference: Reference, resume_id: string }) {
+  constructor(public payload: { reference: Refrence, resume_id: string }) {
   }
 }

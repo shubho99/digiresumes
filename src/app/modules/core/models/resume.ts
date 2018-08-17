@@ -2,7 +2,7 @@ import {Education} from './education';
 import {EmploymentHistory} from './employment-history';
 import {Skill} from './skill';
 import {Language} from './language';
-import {Reference} from './reference';
+import {Refrence} from './refrence';
 import {AwardsAchivement} from './awards-achivement';
 import {Interest} from './interest';
 import {IndustrialExposure} from './industrial-exposure';
@@ -19,7 +19,7 @@ export interface Resume {
   employment_history: EmploymentHistory[];
   skills: Skill[];
   languages: Language[];
-  references: Reference[];
+  refrences: Refrence[];
   award_achivements: AwardsAchivement[];
   interests: Interest[];
   industrialExposures: IndustrialExposure[];
