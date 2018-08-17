@@ -21,21 +21,25 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
             </mat-form-field>
             <button fxFlexAlign="center" type="submit" mat-raised-button
                     color="accent" matStepperNext>
-              Next
+              NEXT
             </button>
           </mat-card>
         </div>
-        <div *ngIf="completed">
-          <p fxLayout="column">YOu have Already completed this step</p>
-          <button fxFlexAlign="center" type="submit" mat-raised-button
-                  color="accent" matStepperNext>
-            Next
+        <div style="margin-top: -6%;" *ngIf="completed" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start center" fxLayoutGap="20px">
+          <img style="width: 8%;" src="../../assets/images/complete.png"/>
+          <p fxLayout="column">You have Already completed this step</p>
+          <button class="space" type="submit" mat-raised-button color="accent" matStepperNext>
+            NEXT
           </button>
         </div>
       </form>
     </div>
   `,
   styles: [`
+    .space {
+      margin-left: 16%;
+      margin-top: 2%;
+    }
     mat-card {
       width: 100%;
       height: 76%;
@@ -58,6 +62,7 @@ export class ResumeNameComponent {
   @Input() completed = false;
 
   constructor() {
+    document.body.style.fontFamily = 'Yatra One, cursive';
     this.resumeForm = new FormGroup({
       name: this.nameControl
     });

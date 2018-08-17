@@ -8,35 +8,39 @@ import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
     <div class="alternate">
       <mat-horizontal-stepper *ngIf="!loading" [linear]="true">
         <mat-step [optional]="false">
-          <ng-template matStepLabel>Name your Resume</ng-template>
+            <ng-template matStepLabel>NAME YOUR RESUME</ng-template>
           <app-resume-name-component [completed]="completed"></app-resume-name-component>
         </mat-step>
         <mat-step *ngIf="resume" [optional]="true">
-          <ng-template matStepLabel>Upload image and Video</ng-template>
+          <ng-template matStepLabel>UPLOAD IMAGE AND VIDEO</ng-template>
           <app-upload-component></app-upload-component>
-          <div style="    margin-left: 45%;
+          <div style="    margin-left: 42.5%;
     margin-top: 15%;" fxLayoutGap="10px">
-            <button mat-raised-button matStepperPrevious color="primary">Prev</button>
-            <button mat-raised-button matStepperNext color="accent">Next</button>
+            <button mat-raised-button matStepperPrevious color="primary">PREV</button>
+            <button mat-raised-button matStepperNext color="accent">NEXT</button>
           </div>
         </mat-step>
         <mat-step *ngIf="resume" [optional]="false">
-          <ng-template matStepLabel>Resume Details</ng-template>
+          <ng-template matStepLabel>RESUME DETAILS</ng-template>
           <app-resume-form></app-resume-form>
-          <div style=";
-    margin-left: 84%; margin-top: 4%" fxLayoutGap="10px">
-            <button mat-raised-button matStepperPrevious color="primary">Prev</button>
-            <button mat-raised-button color="accent">Finish</button>
+          <div style="    margin-left: 82%;
+    margin-top: 4%;
+    margin-bottom: 3%;" fxLayoutGap="10px">
+            <button mat-raised-button matStepperPrevious color="primary">PREV</button>
+            <button mat-raised-button color="accent">FINISH</button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>
     </div>
     <ngx-loading [show]="loading"></ngx-loading>
   `,
-  styles: [`
-    mat-horizontal-stepper {
+  styles: [`   
+     mat-horizontal-stepper {
       background: #fafafa;
     }
+    app-upload-component {
+      font-family: 'Yatra One', cursive;
+    }   
   `],
 })
 export class OnboardingComponent implements OnDestroy {

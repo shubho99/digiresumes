@@ -6,7 +6,7 @@ import {Resume} from '../../core/models/resume';
   selector: 'app-resume-form',
   template: `
     <mat-accordion>
-      <h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">Enter details which you want to see on your Resume</h1>
+      <h1>Enter details which you want to see on your Resume</h1>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Contact Details</mat-panel-title>
@@ -100,6 +100,13 @@ import {Resume} from '../../core/models/resume';
     </mat-accordion>
   `,
   styles: [`
+    h1 {
+      color: #7de261;
+      text-align: center; 
+      margin-top: 2%; 
+      margin-bottom: 3%;
+      text-shadow: 1px 0px 2px rgba(0, 0, 0.75);
+    }
     mat-expansion-panel {
       width: 90%;
       margin-left: 7%;
