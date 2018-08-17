@@ -30,6 +30,22 @@ import {ResumeRepoService} from '../core/repositry/resumeRepo.service';
 import {ContactDetailsComponent} from './components/resume-form/contact-details.component';
 import {SkillsComponent} from './components/resume-form/skills.component';
 import {SkillsCardComponent} from './components/cards/skills-card.component';
+import {EducationCardComponent} from './components/cards/education-card.component';
+import {EducationComponent} from './components/resume-form/education.component';
+import {EmploymentHistoryCardComponent} from './components/cards/employment-history-card.component';
+import {EmploymentHistoryComponent} from './components/resume-form/employment-history.component';
+import {InterestCardComponent} from './components/cards/interest-card.component';
+import {InterestComponent} from './components/resume-form/interest.component';
+import {LanguageCardComponent} from './components/cards/language-card.component';
+import {LanguageComponent} from './components/resume-form/language.component';
+import {IndustrialExposureCardComponent} from './components/cards/industrial-exposure-card.component';
+import {IndustrialExposureComponent} from './components/resume-form/industrial-exposure.component';
+import {AwardCardComponent} from './components/cards/award-card.component';
+import {AwardComponent} from './components/resume-form/award.component';
+import {ObjectiveCardComponent} from './components/cards/objective-card.component';
+import {ObjectiveComponent} from './components/resume-form/objective.component';
+import {ReferenceCardComponent} from './components/cards/reference-card.component';
+import {ReferenceComponent} from './components/resume-form/reference.component';
 
 @NgModule({
   declarations: [
@@ -55,14 +71,41 @@ import {SkillsCardComponent} from './components/cards/skills-card.component';
     ReferenceFormComponent,
     ContactDetailsComponent,
     SkillsComponent,
-    SkillsCardComponent
+    SkillsCardComponent,
+    EducationCardComponent,
+    EducationComponent,
+    EmploymentHistoryCardComponent,
+    EmploymentHistoryComponent,
+    InterestCardComponent,
+    InterestComponent,
+    LanguageCardComponent,
+    LanguageComponent,
+    IndustrialExposureCardComponent,
+    IndustrialExposureComponent,
+    AwardCardComponent,
+    AwardComponent,
+    ObjectiveCardComponent,
+    ObjectiveComponent,
+    ReferenceCardComponent,
+    ReferenceComponent
   ],
   imports: [
     SharedModule,
     UserRoutingModule,
     StoreModule.forFeature('user', userRootReducer)
   ],
-  entryComponents: [ContactDetailsFormComponent, SkillFormComponent],
+  entryComponents: [
+    ContactDetailsFormComponent,
+    SkillFormComponent,
+    EducationFormComponent,
+    EmploymentHistoryFormComponent,
+    InterestFormComponent,
+    LanguagesFormComponent,
+    IndustrialExposureFormComponent,
+    AwardsFormComponent,
+    ObjectivesFormComponent,
+    ReferenceFormComponent
+  ],
   providers: [ResumeService, EmailVerificationGuard, OnboardGuard, ResumeRepoService]
 })
 export class UserModule {

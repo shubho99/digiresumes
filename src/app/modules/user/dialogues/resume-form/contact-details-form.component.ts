@@ -41,7 +41,10 @@ import {AlertService} from '../../../core/services/alert.service';
           <textarea formControlName="summary" matInput rows="5" placeholder="Summary"></textarea>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
-          <button type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">Update</button>
+          <button type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
+            <span *ngIf="contactDetails">Update</span>
+            <span *ngIf="!contactDetails">Add</span>
+          </button>
           <button type="button" (click)="cancel()" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="accent">Cancel
           </button>
         </div>
