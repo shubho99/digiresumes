@@ -6,11 +6,39 @@ import {getCurrentResumeId, getResume, getResumes, getResumesLoaded, getResumesL
 import {Observable} from 'rxjs/Observable';
 import {Resume} from '../models/resume';
 import {
+  AddAwardAction,
   AddContactDetailAction,
-  AddCurrentResumeIdAction, AddSkillAction,
-  DeleteCurrentReusmeIdAction, DeleteSkillAction,
+  AddCurrentResumeIdAction,
+  AddEducationAction,
+  AddEmploymentHistoryAction,
+  AddIndustrialExposureAction,
+  AddInterestAction,
+  AddLanguageAction,
+  AddObjectiveAction,
+  AddReferenceAction,
+  AddSkillAction,
+  DeleteAwardAction,
+  DeleteCurrentReusmeIdAction,
+  DeleteEducationAction,
+  DeleteEmploymentHistoryAction,
+  DeleteIndustrialExposureAction,
+  DeleteInterestAction,
+  DeleteLanguageAction,
+  DeleteObjectiveAction,
+  DeleteReferenceAction,
+  DeleteSkillAction,
   ResumeListRequestAction,
-  ResumeListSuccessAction, UpdateContactDetailAction, UpdateSkillAction
+  ResumeListSuccessAction,
+  UpdateAwardAction,
+  UpdateContactDetailAction,
+  UpdateEducationAction,
+  UpdateEmploymentHistoryAction,
+  UpdateIndustrialExposureAction,
+  UpdateInterestAction,
+  UpdateLanguageAction,
+  UpdateObjectiveAction,
+  UpdateReferenceAction,
+  UpdateSkillAction
 } from '../../user/actions/resume';
 
 @Injectable()
@@ -88,6 +116,179 @@ export class ResumeRepoService {
   deleteSkill(resumeId: string, skillId: string) {
     return this.resumeService.deleteSkill(skillId).map((res) => {
       this.store.dispatch(new DeleteSkillAction({skill: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addEducation(data, resumeId: string) {
+    return this.resumeService.addEducation(data, resumeId).map((res) => {
+      this.store.dispatch(new AddEducationAction({education: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateEducation(data, resumeId: string, educationId: string) {
+    return this.resumeService.updateEducation(data, educationId).map((res) => {
+      this.store.dispatch(new UpdateEducationAction({education: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteEducation(resumeId: string, educationId: string) {
+    return this.resumeService.deleteEducation(educationId).map((res) => {
+      this.store.dispatch(new DeleteEducationAction({education: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addEmploymentHistory(data, resumeId: string) {
+    return this.resumeService.addEmploymentHistory(data, resumeId).map((res) => {
+      this.store.dispatch(new AddEmploymentHistoryAction({employment_history: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateEmploymentHistory(data, resumeId: string, employmentHistoryId: string) {
+    return this.resumeService.updateEmploymentHistory(data, employmentHistoryId).map((res) => {
+      this.store.dispatch(new UpdateEmploymentHistoryAction({employment_history: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteEmploymentHistory(resumeId: string, employmentHistoryId: string) {
+    return this.resumeService.deleteEmploymentHistory(employmentHistoryId).map((res) => {
+      this.store.dispatch(new DeleteEmploymentHistoryAction({employment_history: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addInterest(data, resumeId: string) {
+    return this.resumeService.addInterest(data, resumeId).map((res) => {
+      this.store.dispatch(new AddInterestAction({interest: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateInterest(data, resumeId: string, interestId: string) {
+    return this.resumeService.updateInterest(data, interestId).map((res) => {
+      this.store.dispatch(new UpdateInterestAction({interest: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteInterest(resumeId: string, interestId: string) {
+    console.log(interestId);
+    return this.resumeService.deleteInterest(interestId).map((res) => {
+      this.store.dispatch(new DeleteInterestAction({interest: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addLanguage(data, resumeId: string) {
+    return this.resumeService.addLanguage(data, resumeId).map((res) => {
+      this.store.dispatch(new AddLanguageAction({language: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateLanguage(data, resumeId: string, languageId: string) {
+    return this.resumeService.updateLanguage(data, languageId).map((res) => {
+      this.store.dispatch(new UpdateLanguageAction({language: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteLanguage(resumeId: string, languageId: string) {
+    return this.resumeService.deleteLanguage(languageId).map((res) => {
+      console.log(res);
+      this.store.dispatch(new DeleteLanguageAction({language: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addIndustrialExposure(data, resumeId: string) {
+    return this.resumeService.addIndustrialExposure(data, resumeId).map((res) => {
+      this.store.dispatch(new AddIndustrialExposureAction({industrial_exposure: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateIndustrialExposure(data, resumeId: string, industrialExposureId: string) {
+    return this.resumeService.updateIndustrialExposure(data, industrialExposureId).map((res) => {
+      this.store.dispatch(new UpdateIndustrialExposureAction({industrial_exposure: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteIndustrialExposure(resumeId: string, industrialExposureId: string) {
+    return this.resumeService.deleteIndustrialExposure(industrialExposureId).map((res) => {
+      console.log(res);
+      this.store.dispatch(new DeleteIndustrialExposureAction({industrial_exposure: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addAward(data, resumeId: string) {
+    return this.resumeService.addAward(data, resumeId).map((res) => {
+      this.store.dispatch(new AddAwardAction({award: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateAward(data, resumeId: string, awardId: string) {
+    return this.resumeService.updateAwardAchivement(data, awardId).map((res) => {
+      this.store.dispatch(new UpdateAwardAction({award: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteAward(resumeId: string, awardId: string) {
+    return this.resumeService.deleteAwardAchivement(awardId).map((res) => {
+      console.log(res);
+      this.store.dispatch(new DeleteAwardAction({award: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addObjective(data, resumeId: string) {
+    return this.resumeService.addObjective(data, resumeId).map((res) => {
+      this.store.dispatch(new AddObjectiveAction({objective: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateObjective(data, resumeId: string, objectiveId: string) {
+    return this.resumeService.updateObjective(data, objectiveId).map((res) => {
+      this.store.dispatch(new UpdateObjectiveAction({objective: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteObjective(resumeId: string, objectiveId: string) {
+    return this.resumeService.deleteObjective(objectiveId).map((res) => {
+      console.log(res);
+      this.store.dispatch(new DeleteObjectiveAction({objective: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+  addReference(data, resumeId: string) {
+    return this.resumeService.addRefrence(data, resumeId).map((res) => {
+      this.store.dispatch(new AddReferenceAction({reference: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateReference(data, resumeId: string, referenceId: string) {
+    return this.resumeService.updateRefrence(data, referenceId).map((res) => {
+      this.store.dispatch(new UpdateReferenceAction({reference: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteReference(resumeId: string, referenceId: string) {
+    return this.resumeService.deleteRefrence(referenceId).map((res) => {
+      console.log(res);
+      this.store.dispatch(new DeleteReferenceAction({reference: res, resume_id: resumeId}));
       return res;
     });
   }

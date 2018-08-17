@@ -2,16 +2,29 @@ import {Resume} from '../../core/models/resume';
 import {Action} from '../../../actions/action';
 import {
   ADD_CURRENT_RESUME_ID,
-  DELETE_CURRENT_RESUME_ID,
+  DELETE_CURRENT_RESUME_ID, RESUME_ADD_AWARDS,
   RESUME_ADD_CONTACT_DETAIL,
+  RESUME_ADD_EDUCATION,
+  RESUME_ADD_EMPLOYMENT_HISTORY,
+  RESUME_ADD_INDUSTRIAL_EXPOSURE,
+  RESUME_ADD_INTEREST,
+  RESUME_ADD_LANGUAGE, RESUME_ADD_OBJECTIVE, RESUME_ADD_REFERENCE,
   RESUME_ADD_SKILL,
   RESUME_ADD_SUCCESS,
-  RESUME_DELETE,
+  RESUME_DELETE, RESUME_DELETE_AWARDS,
+  RESUME_DELETE_EDUCATION,
+  RESUME_DELETE_EMPLOYMENT_HISTORY, RESUME_DELETE_INDUSTRIAL_EXPOSURE,
+  RESUME_DELETE_INTEREST,
+  RESUME_DELETE_LANGUAGE, RESUME_DELETE_OBJECTIVES, RESUME_DELETE_REFERENCE,
   RESUME_DELETE_SKILL,
   RESUME_LIST_REQUEST,
   RESUME_LIST_SUCCESS,
-  RESUME_UPDATE,
+  RESUME_UPDATE, RESUME_UPDATE_AWARDS,
   RESUME_UPDATE_CONTACT_DETAIL,
+  RESUME_UPDATE_EDUCATION,
+  RESUME_UPDATE_EMPLOYMENT_HISTORY, RESUME_UPDATE_INDUSTRIAL_EXPOSURE,
+  RESUME_UPDATE_INTEREST,
+  RESUME_UPDATE_LANGUAGE, RESUME_UPDATE_OBJECTIVE, RESUME_UPDATE_REFERENCE,
   RESUME_UPDATE_SKILL
 } from '../actions/resume';
 import {Utils} from '../../core/utils/utils';
@@ -125,6 +138,247 @@ export function reducer(state = initialState, action: Action): ResumeState {
       const update = state.entities[resume_id].skills = filter;
       const newSkill = state.entities[resume_id];
       const obj = {[resume_id]: newSkill};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+
+    case RESUME_ADD_EDUCATION: {
+      const education = action.payload.education;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].education.push(education);
+      const newEducation = state.entities[resume_id];
+      const obj = {[resume_id]: newEducation};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_EDUCATION: {
+      const education = action.payload.education;
+      const resume_id = action.payload.resume_id;
+      const educationArray = state.entities[resume_id].education;
+      const educationId = educationArray.findIndex((id) => id._id === education._id);
+      const update = educationArray[educationId] = education;
+      const newEducation = state.entities[resume_id];
+      const obj = {[resume_id]: newEducation};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_EDUCATION: {
+      const education = action.payload.education;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].education.filter((object) => object._id !== education._id);
+      const update = state.entities[resume_id].education = filter;
+      const newEducation = state.entities[resume_id];
+      const obj = {[resume_id]: newEducation};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_EMPLOYMENT_HISTORY: {
+      const employment_history = action.payload.employment_history;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].employment_history.push(employment_history);
+      const newEmploymentHistory = state.entities[resume_id];
+      const obj = {[resume_id]: newEmploymentHistory};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_EMPLOYMENT_HISTORY: {
+      const employment_history = action.payload.employment_history;
+      const resume_id = action.payload.resume_id;
+      const employmentHistoryArray = state.entities[resume_id].employment_history;
+      const educationId = employmentHistoryArray.findIndex((id) => id._id === employment_history._id);
+      const update = employmentHistoryArray[educationId] = employment_history;
+      const newEmploymentHistory = state.entities[resume_id];
+      const obj = {[resume_id]: newEmploymentHistory};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_EMPLOYMENT_HISTORY: {
+      const employment_history = action.payload.employment_history;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].employment_history.filter((object) => object._id !== employment_history._id);
+      const update = state.entities[resume_id].employment_history = filter;
+      const newEmploymentHistory = state.entities[resume_id];
+      const obj = {[resume_id]: newEmploymentHistory};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_INTEREST: {
+      const interest = action.payload.interest;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].interests.push(interest);
+      const newInterest = state.entities[resume_id];
+      const obj = {[resume_id]: newInterest};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_INTEREST: {
+      const interest = action.payload.interest;
+      const resume_id = action.payload.resume_id;
+      const interestArray = state.entities[resume_id].interests;
+      const interestId = interestArray.findIndex((id) => id._id === interest._id);
+      const update = interestArray[interestId] = interest;
+      const newInterest = state.entities[resume_id];
+      const obj = {[resume_id]: newInterest};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_INTEREST: {
+      const interest = action.payload.interest;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].interests.filter((object) => object._id !== interest._id);
+      const update = state.entities[resume_id].interests = filter;
+      const newInterest = state.entities[resume_id];
+      const obj = {[resume_id]: newInterest};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_LANGUAGE: {
+      const language = action.payload.language;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].languages.push(language);
+      const newLanguage = state.entities[resume_id];
+      const obj = {[resume_id]: newLanguage};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_LANGUAGE: {
+      const language = action.payload.language;
+      const resume_id = action.payload.resume_id;
+      const languageArray = state.entities[resume_id].languages;
+      const languageId = languageArray.findIndex((id) => id._id === language._id);
+      const update = languageArray[languageId] = language;
+      const newLanguage = state.entities[resume_id];
+      const obj = {[resume_id]: newLanguage};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_LANGUAGE: {
+      const language = action.payload.language;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].languages.filter((object) => object._id !== language._id);
+      const update = state.entities[resume_id].languages = filter;
+      const newLanguage = state.entities[resume_id];
+      const obj = {[resume_id]: newLanguage};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_INDUSTRIAL_EXPOSURE: {
+      const industrial_exposure = action.payload.industrial_exposure;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].industrialExposures.push(industrial_exposure);
+      const newIndustrialExposure = state.entities[resume_id];
+      const obj = {[resume_id]: newIndustrialExposure};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_INDUSTRIAL_EXPOSURE: {
+      const industrial_exposure = action.payload.industrial_exposure;
+      const resume_id = action.payload.resume_id;
+      const industrialExposureArray = state.entities[resume_id].industrialExposures;
+      const languageId = industrialExposureArray.findIndex((id) => id._id === industrial_exposure._id);
+      const update = industrialExposureArray[languageId] = industrial_exposure;
+      const newIndustrialExposure = state.entities[resume_id];
+      const obj = {[resume_id]: newIndustrialExposure};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_INDUSTRIAL_EXPOSURE: {
+      const industrial_exposure = action.payload.industrial_exposure;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].industrialExposures.filter((object) => object._id !== industrial_exposure._id);
+      const update = state.entities[resume_id].industrialExposures = filter;
+      const newIndustrialExposure = state.entities[resume_id];
+      const obj = {[resume_id]: newIndustrialExposure};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_AWARDS: {
+      const award = action.payload.award;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].award_achivements.push(award);
+      const newAward = state.entities[resume_id];
+      const obj = {[resume_id]: newAward};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_AWARDS: {
+      const award = action.payload.award;
+      const resume_id = action.payload.resume_id;
+      const awardArray = state.entities[resume_id].award_achivements;
+      const awardId = awardArray.findIndex((id) => id._id === award._id);
+      const update = awardArray[awardId] = award;
+      const newAward = state.entities[resume_id];
+      const obj = {[resume_id]: newAward};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_AWARDS: {
+      const award = action.payload.award;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].award_achivements.filter((object) => object._id !== award._id);
+      const update = state.entities[resume_id].award_achivements = filter;
+      const newAward = state.entities[resume_id];
+      const obj = {[resume_id]: newAward};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_OBJECTIVE: {
+      const objective = action.payload.objective;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].objectives.push(objective);
+      const newObjective = state.entities[resume_id];
+      const obj = {[resume_id]: newObjective};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_OBJECTIVE: {
+      const objective = action.payload.objective;
+      const resume_id = action.payload.resume_id;
+      const objectiveArray = state.entities[resume_id].objectives;
+      const awardId = objectiveArray.findIndex((id) => id._id === objective._id);
+      const update = objectiveArray[awardId] = objective;
+      const newObjective = state.entities[resume_id];
+      const obj = {[resume_id]: newObjective};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_OBJECTIVES: {
+      const objective = action.payload.objective;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].objectives.filter((object) => object._id !== objective._id);
+      const update = state.entities[resume_id].objectives = filter;
+      const newObjective = state.entities[resume_id];
+      const obj = {[resume_id]: newObjective};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_REFERENCE: {
+      const reference = action.payload.reference;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].references.push(reference);
+      const newReference = state.entities[resume_id];
+      const obj = {[resume_id]: newReference};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_REFERENCE: {
+      const reference = action.payload.reference;
+      const resume_id = action.payload.resume_id;
+      const referenceArray = state.entities[resume_id].references;
+      const awardId = referenceArray.findIndex((id) => id._id === reference._id);
+      const update = referenceArray[awardId] = reference;
+      const newReference = state.entities[resume_id];
+      const obj = {[resume_id]: newReference};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_REFERENCE: {
+      const reference = action.payload.reference;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].references.filter((object) => object._id !== reference._id);
+      const update = state.entities[resume_id].references = filter;
+      const newReference = state.entities[resume_id];
+      const obj = {[resume_id]: newReference};
       const entities = {...state.entities, ...obj};
       return {...state, ...{entities: entities}};
     }
