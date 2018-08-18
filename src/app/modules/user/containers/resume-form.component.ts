@@ -6,7 +6,7 @@ import {Resume} from '../../core/models/resume';
   selector: 'app-resume-form',
   template: `
     <mat-accordion>
-      <h1 style="text-align: center; margin-top: 2%; margin-bottom: 2%;">Enter details which you want to see on your Resume</h1>
+      <h1>Enter details which you want to see on your Resume</h1>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Contact Details</mat-panel-title>
@@ -100,6 +100,12 @@ import {Resume} from '../../core/models/resume';
     </mat-accordion>
   `,
   styles: [`
+    h1 {
+      color: #7de261;
+      text-align: center; 
+      margin-top: 2%; 
+      margin-bottom: 3%;
+    }
     mat-expansion-panel {
       width: 90%;
       margin-left: 7%;
@@ -116,9 +122,8 @@ import {Resume} from '../../core/models/resume';
   `]
 })
 export class ResumeFormComponent implements OnDestroy {
-  resume: Resume;
+  resume: Resume = null;
   isAlive = true;
-
   constructor(public resumeRepo: ResumeRepoService) {
     this.fetchResume();
   }

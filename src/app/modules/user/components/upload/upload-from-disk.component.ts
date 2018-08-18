@@ -3,13 +3,13 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 @Component({
   selector: 'app-upload-from-disk',
   template: `
-    <div style="margin-top: 3%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
-      <h2>Select a video from your computer to upload</h2>
+    <div style="margin-top: 3%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px">
+      <h1>Select a video from your computer to upload</h1>
       <div *ngIf="!videoSelected" fxLayoutAlign="center center" style="margin-top: 20px" fxLayout="row">
         <input type="file" #videoFile name="video" accept="video/*" (change)="selectVideo($event)" hidden>
         <button mat-raised-button color="accent" (click)="pickfile()">
           <mat-icon>add</mat-icon>
-          <strong>Select</strong></button>
+          SELECT</button>
       </div>
       <div [hidden]="!videoSelected">
         <video id="video" #video controls>
@@ -21,11 +21,14 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
         <input type="file" #videoFile name="video" accept="video/*" (change)="selectVideo($event)" hidden>
         <button mat-raised-button color="accent" (click)="pickfile()">
           <mat-icon>cached</mat-icon>
-          <strong>Change</strong></button>
+          <strong>CHANGE</strong></button>
       </div>
     </div>
   `,
   styles: [`
+    h1 {
+      color: #7de261;
+    }
     #video {
       width: 330px;
     }

@@ -6,24 +6,22 @@ import {Router} from '@angular/router';
   template: `
     <div class="alternate">
       <div style="margin-top: 4%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px" class="logo">
-        <img src="https://1mc-kauffman.s3.amazonaws.com/u
-ploads/omc_engine/company/logo/15421/display_Logo_Vaetas_flat.png"/>
-        <h1>Welcome to Make my resume!</h1>
-        <h3>From the whole team here,thank you for trying us.
-          we are committed to make it easier for you to do great work.</h3>
-      </div>
-      <div fxLayoutAlign="center center">
-        <img class="pic" src="https://static.intercomassets.com/avatars/26230/square_128/Headshot_JR-1473381964.jpg?1473381964"/>
+        <img style="width: 36%;" src="../../assets/images/digiresume-green.png"/>
+        <h1 style="color: #7de261">Welcome to Make my resume!</h1>
+        <h3>From the whole team here, thank you for trying us.
+          We are committed to make it easier for you to do great work.</h3>
       </div>
       <h3 fxLayoutAlign="center center">John! Founder and CEO</h3>
       <div fxLayoutAlign="center center">
-        <button (click)="go()" style="margin-top: 1%" color="primary" fxLayoutAlign="end" mat-raised-button>Let's go</button>
+        <button (click)="go()" style="margin-top: 1%; text-transform: uppercase" color="accent" fxLayoutAlign="end" mat-raised-button>Let's go</button>
       </div>
     </div>
   `,
   styles: [`
+    @import url('https://fonts.googleapis.com/css?family=Yatra+One');
     h3 {
       color: rgba(51, 51, 51, 0.5);
+      margin-bottom: 50px;
     }
 
     .pic {
@@ -36,6 +34,7 @@ ploads/omc_engine/company/logo/15421/display_Logo_Vaetas_flat.png"/>
 export class OnboardingIntroComponent {
   constructor(private router: Router) {
     document.body.style.background = '#fafafa';
+    document.body.style.fontFamily = 'Yatra One, cursive';
   }
 
   go() {
