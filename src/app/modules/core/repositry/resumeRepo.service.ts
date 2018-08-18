@@ -15,7 +15,7 @@ import {
   AddInterestAction,
   AddLanguageAction,
   AddObjectiveAction,
-  AddReferenceAction,
+  AddReferenceAction, AddResumeAction,
   AddSkillAction,
   DeleteAwardAction,
   DeleteCurrentReusmeIdAction,
@@ -271,6 +271,7 @@ export class ResumeRepoService {
       return res;
     });
   }
+
   addReference(data, resumeId: string) {
     return this.resumeService.addRefrence(data, resumeId).map((res) => {
       this.store.dispatch(new AddReferenceAction({reference: res, resume_id: resumeId}));
@@ -289,6 +290,13 @@ export class ResumeRepoService {
     return this.resumeService.deleteRefrence(referenceId).map((res) => {
       console.log(res);
       this.store.dispatch(new DeleteReferenceAction({reference: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addResume(data: { name: string }) {
+    return this.resumeService.addResume(data).map(res => {
+      this.store.dispatch(new AddResumeAction(res));
       return res;
     });
   }

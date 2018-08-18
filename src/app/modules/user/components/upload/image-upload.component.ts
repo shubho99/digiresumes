@@ -21,7 +21,6 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
   styles: [`
     h1 {
       color: #7de261;
-      text-shadow: 1px 0px 2px rgba(0, 0, 0.75);
     }
   `],
 })

@@ -83,8 +83,8 @@ export function reducer(state = initialState, action: Action): ResumeState {
     }
     case RESUME_ADD_SUCCESS: {
       const resume = action.payload;
-      const obj = {[resume.id]: resume};
-      const newIds = [...state.ids, resume.id];
+      const obj = {[resume._id]: resume};
+      const newIds = [...state.ids, resume._id];
       const entities = {...state.entities, ...obj};
       return {
         ...state,

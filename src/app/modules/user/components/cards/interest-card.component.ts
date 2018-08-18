@@ -41,6 +41,10 @@ import {InterestFormComponent} from '../../dialogues/resume-form/interest-form.c
       text-align: center;
       color: white;
     }
+    h3{
+      text-align: center;
+      word-break: break-word;
+    }
   `]
 })
 export class InterestCardComponent {

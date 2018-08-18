@@ -1,14 +1,27 @@
 import {Component} from '@angular/core';
+import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
   template: `
-  <router-outlet></router-outlet>
+    <ngx-loading [show]="loading"></ngx-loading>
+    <router-outlet></router-outlet>
   `,
   styles: [`
 
   `]
 })
 export class AppComponent {
-  title = 'app';
+  loading;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((routerEvent) => {
+      if (routerEvent instanceof NavigationStart) {
+        this.loading = true;
+      }
+      if (routerEvent instanceof NavigationEnd) {
+        this.loading = false;
+      }
+    });
+  }
 }

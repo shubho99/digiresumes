@@ -9,11 +9,11 @@ import {SafeUrlPipe} from '../../pipes/safeUrl';
 @NgModule({
   imports: [
     LoadingModule.forRoot({
-      animationType: ANIMATION_TYPES.threeBounce,
+      animationType: ANIMATION_TYPES.rotatingPlane,
       backdropBackgroundColour: 'rgba(0, 0, 0, 0.5)',
-      primaryColour: '#3169ff',
-      secondaryColour: '#3169ff',
-      tertiaryColour: '#3169ff',
+      primaryColour: '#fafafa',
+      secondaryColour: '#fafafa',
+      tertiaryColour: '#fafafa',
       fullScreenBackdrop: true
     }),
     MaterialModule,

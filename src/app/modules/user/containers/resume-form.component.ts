@@ -105,7 +105,6 @@ import {Resume} from '../../core/models/resume';
       text-align: center; 
       margin-top: 2%; 
       margin-bottom: 3%;
-      text-shadow: 1px 0px 2px rgba(0, 0, 0.75);
     }
     mat-expansion-panel {
       width: 90%;
@@ -123,9 +122,8 @@ import {Resume} from '../../core/models/resume';
   `]
 })
 export class ResumeFormComponent implements OnDestroy {
-  resume: Resume;
+  resume: Resume = null;
   isAlive = true;
-
   constructor(public resumeRepo: ResumeRepoService) {
     this.fetchResume();
   }
