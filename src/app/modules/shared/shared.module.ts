@@ -8,14 +8,7 @@ import {SafeUrlPipe} from '../../pipes/safeUrl';
 
 @NgModule({
   imports: [
-    LoadingModule.forRoot({
-      animationType: ANIMATION_TYPES.rotatingPlane,
-      backdropBackgroundColour: 'rgba(0, 0, 0, 0.5)',
-      primaryColour: '#fafafa',
-      secondaryColour: '#fafafa',
-      tertiaryColour: '#fafafa',
-      fullScreenBackdrop: true
-    }),
+    LoadingModule,
     MaterialModule,
     CommonModule,
     FlexLayoutModule,

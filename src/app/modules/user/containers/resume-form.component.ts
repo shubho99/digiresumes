@@ -97,15 +97,43 @@ import {Resume} from '../../core/models/resume';
         </mat-expansion-panel-header>
         <app-reference [resumeId]="resume._id" [references]="resume.refrences"></app-reference>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Project Details</mat-panel-title>
+          <mat-panel-description>
+            Add your Project Details
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-project-detail [resumeId]="resume._id" [projectDetails]="resume.projectDetails"></app-project-detail>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Strength</mat-panel-title>
+          <mat-panel-description>
+            Add your Strengths
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-strength [resumeId]="resume._id" [strengths]="resume.strengths" ></app-strength>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Weakness</mat-panel-title>
+          <mat-panel-description>
+            Add your Weakness
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-weakness [resumeId]="resume._id" [weaknesses]="resume.weakness" ></app-weakness>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`
     h1 {
       color: #7de261;
-      text-align: center; 
-      margin-top: 2%; 
+      text-align: center;
+      margin-top: 2%;
       margin-bottom: 3%;
     }
+
     mat-expansion-panel {
       width: 90%;
       margin-left: 7%;
@@ -124,6 +152,7 @@ import {Resume} from '../../core/models/resume';
 export class ResumeFormComponent implements OnDestroy {
   resume: Resume = null;
   isAlive = true;
+
   constructor(public resumeRepo: ResumeRepoService) {
     this.fetchResume();
   }
@@ -137,6 +166,7 @@ export class ResumeFormComponent implements OnDestroy {
       }
     });
   }
+
   ngOnDestroy() {
     this.isAlive = false;
   }

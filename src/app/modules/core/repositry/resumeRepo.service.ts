@@ -14,9 +14,9 @@ import {
   AddIndustrialExposureAction,
   AddInterestAction,
   AddLanguageAction,
-  AddObjectiveAction,
+  AddObjectiveAction, AddProjectDetailAction,
   AddReferenceAction, AddResumeAction,
-  AddSkillAction,
+  AddSkillAction, AddStrengthAction, AddWeaknessAction,
   DeleteAwardAction,
   DeleteCurrentReusmeIdAction,
   DeleteEducationAction,
@@ -24,9 +24,9 @@ import {
   DeleteIndustrialExposureAction,
   DeleteInterestAction,
   DeleteLanguageAction,
-  DeleteObjectiveAction,
+  DeleteObjectiveAction, DeleteProjectDetailAction,
   DeleteReferenceAction,
-  DeleteSkillAction,
+  DeleteSkillAction, DeleteStrengthAction, DeleteWeaknessAction,
   ResumeListRequestAction,
   ResumeListSuccessAction,
   UpdateAwardAction,
@@ -36,9 +36,9 @@ import {
   UpdateIndustrialExposureAction,
   UpdateInterestAction,
   UpdateLanguageAction,
-  UpdateObjectiveAction,
+  UpdateObjectiveAction, UpdateProjectDetailAction,
   UpdateReferenceAction,
-  UpdateSkillAction
+  UpdateSkillAction, UpdateStrengthAction, UpdateWeaknessAction
 } from '../../user/actions/resume';
 
 @Injectable()
@@ -299,5 +299,72 @@ export class ResumeRepoService {
       this.store.dispatch(new AddResumeAction(res));
       return res;
     });
+  }
+
+  addProjectDetail(data, resumeId: string) {
+    return this.resumeService.addProjectDetails(data, resumeId).map((res) => {
+      this.store.dispatch(new AddProjectDetailAction({project_detail: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateProjectDetail(data, resumeId: string, projectDetailId: string) {
+    return this.resumeService.updateProjectDetail(data, projectDetailId).map((res) => {
+      this.store.dispatch(new UpdateProjectDetailAction({project_detail: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteProjectDetail(resumeId: string, projectDetailId: string) {
+    return this.resumeService.deleteProjectDetail(projectDetailId).map((res) => {
+      this.store.dispatch(new DeleteProjectDetailAction({project_detail: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addStrength(data, resumeId: string) {
+    return this.resumeService.addStrength(data, resumeId).map((res) => {
+      this.store.dispatch(new AddStrengthAction({strength: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateStrength(data, resumeId: string, projectDetailId: string) {
+    return this.resumeService.updateStrength(data, projectDetailId).map((res) => {
+      this.store.dispatch(new UpdateStrengthAction({strength: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteStrength(resumeId: string, projectDetailId: string) {
+    return this.resumeService.deleteStrength(projectDetailId).map((res) => {
+      this.store.dispatch(new DeleteStrengthAction({strength: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  addWeakness(data, resumeId: string) {
+    return this.resumeService.addWeakness(data, resumeId).map((res) => {
+      this.store.dispatch(new AddWeaknessAction({weakness: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateWeakness(data, resumeId: string, weaknessId: string) {
+    return this.resumeService.updateWeakness(data, weaknessId).map((res) => {
+      this.store.dispatch(new UpdateWeaknessAction({weakness: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  deleteWeakness(resumeId: string, weaknessId: string) {
+    console.log(resumeId,weaknessId);
+    return this.resumeService.deleteWeakness(weaknessId).map((res) => {
+      this.store.dispatch(new DeleteWeaknessAction({weakness: res, resume_id: resumeId}));
+      return res;
+    });
+  }
+
+  updateOnboarding(data: number) {
   }
 }

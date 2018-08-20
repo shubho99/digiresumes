@@ -8,15 +8,15 @@ import {
   RESUME_ADD_EMPLOYMENT_HISTORY,
   RESUME_ADD_INDUSTRIAL_EXPOSURE,
   RESUME_ADD_INTEREST,
-  RESUME_ADD_LANGUAGE, RESUME_ADD_OBJECTIVE, RESUME_ADD_REFERENCE,
-  RESUME_ADD_SKILL,
-  RESUME_ADD_SUCCESS,
+  RESUME_ADD_LANGUAGE, RESUME_ADD_OBJECTIVE, RESUME_ADD_PROJECT_DETAIL, RESUME_ADD_REFERENCE,
+  RESUME_ADD_SKILL, RESUME_ADD_STRENGTH,
+  RESUME_ADD_SUCCESS, RESUME_ADD_WEAKNESS,
   RESUME_DELETE, RESUME_DELETE_AWARDS,
   RESUME_DELETE_EDUCATION,
   RESUME_DELETE_EMPLOYMENT_HISTORY, RESUME_DELETE_INDUSTRIAL_EXPOSURE,
   RESUME_DELETE_INTEREST,
-  RESUME_DELETE_LANGUAGE, RESUME_DELETE_OBJECTIVES, RESUME_DELETE_REFERENCE,
-  RESUME_DELETE_SKILL,
+  RESUME_DELETE_LANGUAGE, RESUME_DELETE_OBJECTIVES, RESUME_DELETE_PROJECT_DETAIL, RESUME_DELETE_REFERENCE,
+  RESUME_DELETE_SKILL, RESUME_DELETE_STRENGTH, RESUME_DELETE_WEAKNESS,
   RESUME_LIST_REQUEST,
   RESUME_LIST_SUCCESS,
   RESUME_UPDATE, RESUME_UPDATE_AWARDS,
@@ -24,8 +24,8 @@ import {
   RESUME_UPDATE_EDUCATION,
   RESUME_UPDATE_EMPLOYMENT_HISTORY, RESUME_UPDATE_INDUSTRIAL_EXPOSURE,
   RESUME_UPDATE_INTEREST,
-  RESUME_UPDATE_LANGUAGE, RESUME_UPDATE_OBJECTIVE, RESUME_UPDATE_REFERENCE,
-  RESUME_UPDATE_SKILL
+  RESUME_UPDATE_LANGUAGE, RESUME_UPDATE_OBJECTIVE, RESUME_UPDATE_PROJECT_DETAIL, RESUME_UPDATE_REFERENCE,
+  RESUME_UPDATE_SKILL, RESUME_UPDATE_STRENGTH, RESUME_UPDATE_WEAKNESS
 } from '../actions/resume';
 import {Utils} from '../../core/utils/utils';
 import {createSelector} from '@ngrx/store';
@@ -380,6 +380,96 @@ export function reducer(state = initialState, action: Action): ResumeState {
       const update = state.entities[resume_id].refrences = filter;
       const newReference = state.entities[resume_id];
       const obj = {[resume_id]: newReference};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_PROJECT_DETAIL: {
+      const projectDetail = action.payload.project_detail;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].projectDetails.push(projectDetail);
+      const newProjectDetail = state.entities[resume_id];
+      const obj = {[resume_id]: newProjectDetail};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_PROJECT_DETAIL: {
+      const projectDetail = action.payload.project_detail;
+      const resume_id = action.payload.resume_id;
+      const projectDetailArray = state.entities[resume_id].projectDetails;
+      const projectDetailId = projectDetailArray.findIndex((id) => id._id === projectDetail._id);
+      const update = projectDetailArray[projectDetailId] = projectDetail;
+      const newProjectDetail = state.entities[resume_id];
+      const obj = {[resume_id]: newProjectDetail};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_PROJECT_DETAIL: {
+      const projectDetail = action.payload.project_detail;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].projectDetails.filter((object) => object._id !== projectDetail._id);
+      const update = state.entities[resume_id].projectDetails = filter;
+      const newProjectDetail = state.entities[resume_id];
+      const obj = {[resume_id]: newProjectDetail};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_STRENGTH: {
+      const strength = action.payload.strength;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].strengths.push(strength);
+      const newStrength = state.entities[resume_id];
+      const obj = {[resume_id]: newStrength};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_STRENGTH: {
+      const strength = action.payload.strength;
+      const resume_id = action.payload.resume_id;
+      const strengthArray = state.entities[resume_id].strengths;
+      const strengthId = strengthArray.findIndex((id) => id._id === strength._id);
+      const update = strengthArray[strengthId] = strength;
+      const newStrength = state.entities[resume_id];
+      const obj = {[resume_id]: newStrength};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_STRENGTH: {
+      const strength = action.payload.strength;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].strengths.filter((object) => object._id !== strength._id);
+      const update = state.entities[resume_id].strengths = filter;
+      const newStrength = state.entities[resume_id];
+      const obj = {[resume_id]: newStrength};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_ADD_WEAKNESS: {
+      const weakness = action.payload.weakness;
+      const resume_id = action.payload.resume_id;
+      const update = state.entities[resume_id].weakness.push(weakness);
+      const newWeakness = state.entities[resume_id];
+      const obj = {[resume_id]: newWeakness};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_UPDATE_WEAKNESS: {
+      const weakness = action.payload.weakness;
+      const resume_id = action.payload.resume_id;
+      const weaknessArray = state.entities[resume_id].weakness;
+      const weaknessId = weaknessArray.findIndex((id) => id._id === weakness._id);
+      const update = weaknessArray[weaknessId] = weakness;
+      const newWeakness = state.entities[resume_id];
+      const obj = {[resume_id]: newWeakness};
+      const entities = {...state.entities, ...obj};
+      return {...state, ...{entities: entities}};
+    }
+    case RESUME_DELETE_WEAKNESS: {
+      const weakness = action.payload.weakness;
+      const resume_id = action.payload.resume_id;
+      const filter = state.entities[resume_id].weakness.filter((object) => object._id !== weakness._id);
+      const update = state.entities[resume_id].weakness = filter;
+      const newWeakness = state.entities[resume_id];
+      const obj = {[resume_id]: newWeakness};
       const entities = {...state.entities, ...obj};
       return {...state, ...{entities: entities}};
     }
