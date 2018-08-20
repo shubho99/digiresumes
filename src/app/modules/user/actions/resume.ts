@@ -9,6 +9,9 @@ import {IndustrialExposure} from '../../core/models/industrial-exposure';
 import {AwardsAchivement} from '../../core/models/awards-achivement';
 import {Objective} from '../../core/models/objective';
 import {Refrence} from '../../core/models/refrence';
+import {ProjectDetail} from '../../core/models/project-detail';
+import {Strength} from '../../core/models/strength';
+import {Weakness} from '../../core/models/weakness';
 
 export const RESUME_ADD_SUCCESS = 'add Resume';
 export const RESUME_UPDATE = 'update Resume';
@@ -46,6 +49,15 @@ export const RESUME_DELETE_OBJECTIVES = 'delete objective';
 export const RESUME_ADD_REFERENCE = 'add new reference';
 export const RESUME_UPDATE_REFERENCE = 'update reference';
 export const RESUME_DELETE_REFERENCE = 'delete reference';
+export const RESUME_ADD_PROJECT_DETAIL = 'add new project detail';
+export const RESUME_UPDATE_PROJECT_DETAIL = 'update project detail';
+export const RESUME_DELETE_PROJECT_DETAIL = 'delete project detail';
+export const RESUME_ADD_STRENGTH = 'add new Strength';
+export const RESUME_UPDATE_STRENGTH = 'update Strength';
+export const RESUME_DELETE_STRENGTH = 'delete Strength';
+export const RESUME_ADD_WEAKNESS = 'add new Weakness';
+export const RESUME_UPDATE_WEAKNESS = 'update Weakness';
+export const RESUME_DELETE_WEAKNESS = 'delete Weakness';
 
 export class AddResumeAction implements Action {
   readonly type = RESUME_ADD_SUCCESS;
@@ -288,5 +300,66 @@ export class DeleteReferenceAction implements Action {
   readonly type = RESUME_DELETE_REFERENCE;
 
   constructor(public payload: { reference: Refrence, resume_id: string }) {
+  }
+}
+export class AddProjectDetailAction implements Action {
+  readonly type = RESUME_ADD_PROJECT_DETAIL;
+
+  constructor(public payload: { project_detail: ProjectDetail, resume_id: string }) {
+  }
+}
+
+export class UpdateProjectDetailAction implements Action {
+  readonly type = RESUME_UPDATE_PROJECT_DETAIL;
+
+  constructor(public payload: { project_detail: ProjectDetail, resume_id: string }) {
+  }
+}
+
+export class DeleteProjectDetailAction implements Action {
+  readonly type = RESUME_DELETE_PROJECT_DETAIL;
+
+  constructor(public payload: { project_detail: ProjectDetail, resume_id: string }) {
+  }
+}
+export class AddStrengthAction implements Action {
+  readonly type = RESUME_ADD_STRENGTH;
+
+  constructor(public payload: { strength: Strength, resume_id: string }) {
+  }
+}
+
+export class UpdateStrengthAction implements Action {
+  readonly type = RESUME_UPDATE_STRENGTH;
+
+  constructor(public payload: { strength: Strength, resume_id: string }) {
+  }
+}
+
+export class DeleteStrengthAction implements Action {
+  readonly type = RESUME_DELETE_STRENGTH;
+
+  constructor(public payload: { strength: Strength, resume_id: string }) {
+  }
+}
+
+export class AddWeaknessAction implements Action {
+  readonly type = RESUME_ADD_WEAKNESS;
+
+  constructor(public payload: { weakness: Weakness, resume_id: string }) {
+  }
+}
+
+export class UpdateWeaknessAction implements Action {
+  readonly type = RESUME_UPDATE_WEAKNESS;
+
+  constructor(public payload: { weakness: Weakness, resume_id: string }) {
+  }
+}
+
+export class DeleteWeaknessAction implements Action {
+  readonly type = RESUME_DELETE_WEAKNESS;
+
+  constructor(public payload: { weakness: Weakness, resume_id: string }) {
   }
 }

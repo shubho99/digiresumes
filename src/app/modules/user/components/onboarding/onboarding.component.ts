@@ -9,7 +9,7 @@ import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
       <mat-horizontal-stepper  [linear]="true">
         <mat-step [optional]="false">
           <ng-template matStepLabel>NAME YOUR RESUME</ng-template>
-          <app-resume-name-component [completed]="completed"></app-resume-name-component>
+          <app-resume-name-component  [completed]="completed"></app-resume-name-component>
         </mat-step>
         <mat-step *ngIf="resume.length > 0" [optional]="true">
           <ng-template matStepLabel>UPLOAD IMAGE AND VIDEO</ng-template>
@@ -22,7 +22,7 @@ import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
     margin-top: 4%;
     margin-bottom: 3%;" fxLayoutGap="10px">
             <button mat-raised-button matStepperPrevious color="primary">PREV</button>
-            <button mat-raised-button color="accent">FINISH</button>
+            <button (click)="finish()" mat-raised-button color="accent">FINISH</button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>
@@ -42,7 +42,7 @@ export class OnboardingComponent implements OnDestroy {
   resume: Resume[] = [];
   isAlive = true;
   completed;
-  loading = false;
+  loading;
 
   constructor(private resumeRepo: ResumeRepoService) {
     this.fetchResume();
@@ -67,5 +67,9 @@ export class OnboardingComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.isAlive = false;
+  }
+
+  finish(){
+
   }
 }
