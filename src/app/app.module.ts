@@ -60,11 +60,11 @@ import {PasswordResetComponent} from './containers/password-reset.component';
       maxAge: 10
     }),
     LoadingModule.forRoot({
-      animationType: ANIMATION_TYPES.rotatingPlane,
-      backdropBackgroundColour: 'rgba(0, 0, 0, 0.5)',
-      primaryColour: '#fafafa',
-      secondaryColour: '#fafafa',
-      tertiaryColour: '#fafafa',
+      animationType: ANIMATION_TYPES.cubeGrid,
+      backdropBackgroundColour: 'rgba(135, 176, 213, 0.2)',
+      primaryColour: '#538ec3',
+      secondaryColour: '#538ec3',
+      tertiaryColour: '#538ec3',
       fullScreenBackdrop: true
     }),
     AnimateOnScrollModule.forRoot(),

@@ -47,6 +47,15 @@ import {ObjectiveComponent} from './components/resume-form/objective.component';
 import {ReferenceCardComponent} from './components/cards/reference-card.component';
 import {ReferenceComponent} from './components/resume-form/reference.component';
 import {UserHeaderComponent} from './containers/user-header.component';
+import {ProjectDetailCardComponent} from './components/cards/project-detail-card.component';
+import {ProjectDetailsComponent} from './components/resume-form/project-details.component';
+import {ProjectDetailFormComponent} from './dialogues/resume-form/project-detail-form.component';
+import {StrengthCardComponent} from './components/cards/strength-card.component';
+import {StrengthComponent} from './components/resume-form/strength.component';
+import {StrengthFormComponent} from './dialogues/resume-form/strength-form.component';
+import {WeaknessCardComponent} from './components/cards/weakness-card.component';
+import {WeaknessComponent} from './components/resume-form/weakness.component';
+import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +98,16 @@ import {UserHeaderComponent} from './containers/user-header.component';
     ObjectiveCardComponent,
     ObjectiveComponent,
     ReferenceCardComponent,
-    ReferenceComponent
+    ReferenceComponent,
+    ProjectDetailCardComponent,
+    ProjectDetailsComponent,
+    ProjectDetailFormComponent,
+    StrengthCardComponent,
+    StrengthComponent,
+    StrengthFormComponent,
+    WeaknessCardComponent,
+    WeaknessComponent,
+    WeaknessFormComponent
   ],
   imports: [
     SharedModule,
@@ -106,7 +124,10 @@ import {UserHeaderComponent} from './containers/user-header.component';
     IndustrialExposureFormComponent,
     AwardsFormComponent,
     ObjectivesFormComponent,
-    ReferenceFormComponent
+    ReferenceFormComponent,
+    ProjectDetailFormComponent,
+    StrengthFormComponent,
+    WeaknessFormComponent
   ],
   providers: [ResumeService, EmailVerificationGuard, OnboardGuard, ResumeRepoService]
 })

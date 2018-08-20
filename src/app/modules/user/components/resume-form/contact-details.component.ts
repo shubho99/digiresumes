@@ -17,7 +17,8 @@ import {ContactDetailsFormComponent} from '../../dialogues/resume-form/contact-d
             <p>{{contactDetails.country}}</p>
           </ng-container>
           <ng-container *ngIf="!contactDetails">
-            <h3>No Contact Details added yet.</h3>
+            <h3 style="    height: 58px;
+    margin-top: 3%;">No Contact Details added yet.</h3>
           </ng-container>
           <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
             <div class="overlay">
