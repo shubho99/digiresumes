@@ -46,10 +46,12 @@ import {ObjectiveCardComponent} from './components/cards/objective-card.componen
 import {ObjectiveComponent} from './components/resume-form/objective.component';
 import {ReferenceCardComponent} from './components/cards/reference-card.component';
 import {ReferenceComponent} from './components/resume-form/reference.component';
+import {UserHeaderComponent} from './containers/user-header.component';
 
 @NgModule({
   declarations: [
     UserDashboardComponent,
+    UserHeaderComponent,
     OnboardingComponent,
     EmailVerificationComponent,
     OnboardingIntroComponent,

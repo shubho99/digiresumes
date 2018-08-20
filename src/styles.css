@@ -18,6 +18,9 @@ html, body {
   background-size: 500% 500%;
   animation: BackgroundGradient 10s ease infinite;
 }
+.user-background{
+  background: #fafafa;
+}
 .alert-success {
   background-color: #dff0d8 !important;
   border-color: #d0e9c6 !important;
@@ -45,6 +48,10 @@ html, body {
 .nav-bar-button:hover {
   border-bottom: 1px solid #ffdab4;
   color: #ffdab4 !important;
+}
+
+.nav-bar-button-1 {
+  color: #a8ee90 !important;
 }
 
 .polygon {
@@ -327,7 +334,7 @@ html, body {
 
 .mat-horizontal-stepper-content{
   height: 100vh;
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
 }
 
 .mat-tab-labels{
