@@ -18,7 +18,7 @@ export class OnboardGuard implements CanActivate {
       if (!this.verified) {
         this.router.navigate(['user']);
         return false;
-      } else if (this.onBoarding == 200) {
+      } else if (this.onBoarding !== 200) {
         return true;
       } else {
         this.router.navigate(['user', 'dashboard']);
