@@ -5,8 +5,8 @@ import {UserDashboardComponent} from './containers/user-dashboard.component';
 import {ResumeService} from '../core/services/resume.service';
 import {OnboardingComponent} from './components/onboarding/onboarding.component';
 import {EmailVerificationComponent} from './containers/email-verification.component';
-import {EmailVerificationGuard} from '../../guards/email-verification-guard';
-import {OnboardGuard} from '../../guards/onboard-guard';
+import {VerificationCompletedGuard} from '../../guards/verification-completed-guard.service';
+import {OnboardingIncompletedGuard} from '../../guards/onboarding-incompleted-guard.service';
 import {OnboardingIntroComponent} from './components/onboarding/onboarding-intro.component';
 import {ResumeNameComponent} from './components/onboarding/resume-name.component';
 import {userRootReducer} from './reducers';
@@ -56,6 +56,10 @@ import {StrengthFormComponent} from './dialogues/resume-form/strength-form.compo
 import {WeaknessCardComponent} from './components/cards/weakness-card.component';
 import {WeaknessComponent} from './components/resume-form/weakness.component';
 import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.component';
+import {ResumesComponent} from './components/resumes.component';
+import {SettingsComponent} from './components/settings.component';
+import {VerificationIncompletedGuardService} from '../../guards/verification-incompleted-guard.service';
+import {OnboardingCompletedGuard} from '../../guards/onboarding-completed-guard.service';
 
 @NgModule({
   declarations: [
@@ -107,7 +111,9 @@ import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.compo
     StrengthFormComponent,
     WeaknessCardComponent,
     WeaknessComponent,
-    WeaknessFormComponent
+    WeaknessFormComponent,
+    ResumesComponent,
+    SettingsComponent
   ],
   imports: [
     SharedModule,
@@ -129,7 +135,14 @@ import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.compo
     StrengthFormComponent,
     WeaknessFormComponent
   ],
-  providers: [ResumeService, EmailVerificationGuard, OnboardGuard, ResumeRepoService]
+  providers: [
+    ResumeService,
+    VerificationCompletedGuard,
+    OnboardingIncompletedGuard,
+    ResumeRepoService,
+    VerificationIncompletedGuardService,
+    OnboardingCompletedGuard
+  ]
 })
 export class UserModule {
 }

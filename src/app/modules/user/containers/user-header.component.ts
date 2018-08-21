@@ -6,13 +6,13 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
 @Component({
   selector: 'app-user-header-component',
   template: `
-    <div class="major" fxLayout="row"
+    <div  class="major" fxLayout="row"
          fxLayoutAlign="start center">
       <img style="width: 15%;" src="../../assets/images/digiresume-light-green.png"/>
       <span fxFlex="1 1 180px"></span>
       <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
            fxFlex="1 1 auto" fxHide.xs>
-        <button mat-button routerLink="/" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}"
+        <button mat-button routerLink="resumes" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}"
                 class="nav-bar-button nav-bar-button-1">Resumes
         </button>
         <button mat-button routerLink="settings" routerLinkActive="selected"
@@ -44,7 +44,7 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
     .selected {
       border: 1px solid #a8ee90 !important;
     }
-    
+
     .username {
       color: #a8ee90;
       font-weight: bold;
@@ -53,7 +53,7 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
     }
   `]
 })
-export class UserHeaderComponent implements OnDestroy{
+export class UserHeaderComponent implements OnDestroy {
   name: string;
   isAlive = true;
 

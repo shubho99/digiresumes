@@ -358,7 +358,7 @@ export class ResumeRepoService {
   }
 
   deleteWeakness(resumeId: string, weaknessId: string) {
-    console.log(resumeId,weaknessId);
+    console.log(resumeId, weaknessId);
     return this.resumeService.deleteWeakness(weaknessId).map((res) => {
       this.store.dispatch(new DeleteWeaknessAction({weakness: res, resume_id: resumeId}));
       return res;

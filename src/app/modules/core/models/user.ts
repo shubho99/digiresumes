@@ -3,5 +3,6 @@ export interface User {
   name: string;
   onboarding: string;
   verified: string;
+  code : string
 }
 

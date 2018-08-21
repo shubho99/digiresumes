@@ -4,9 +4,8 @@ import {Injectable} from '@angular/core';
 import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
 
 @Injectable()
-export class OnboardGuard implements CanActivate {
+export class OnboardingIncompletedGuard implements CanActivate {
   onBoarding;
-  verified;
 
   constructor(private router: Router, private authRepo: AuthRepoService) {
   }
@@ -14,15 +13,11 @@ export class OnboardGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     return this.authRepo.getMe().filter(res => !!res).map((res) => {
       this.onBoarding = res.onboarding;
-      this.verified = res.verified;
-      if (!this.verified) {
-        this.router.navigate(['user']);
+      if (this.onBoarding === 200) {
+        this.router.navigate(['user', 'resumes']);
         return false;
-      } else if (this.onBoarding !== 200) {
-        return true;
       } else {
-        this.router.navigate(['user', 'dashboard']);
-        return false;
+        return true;
       }
     });
   }

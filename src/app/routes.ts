@@ -5,8 +5,8 @@ import {HomeComponent} from './containers/home.component';
 import {LoginComponent} from './containers/login.component';
 import {GetStartedComponent} from './containers/get.started.component';
 import {ContactUsComponent} from './containers/contact.us.component';
-import {AnonGuard} from './guards/anon-guard';
-import {AuthGuard} from './guards/auth-guard';
+import {AnonGuard} from './guards/anon-guard.service';
+import {AuthGuard} from './guards/auth-guard.service';
 import {LogoutComponent} from './containers/logout.component';
 import {PasswordResetComponent} from './containers/password-reset.component';
 
