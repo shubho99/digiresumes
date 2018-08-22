@@ -5,8 +5,8 @@ import {UserDashboardComponent} from './containers/user-dashboard.component';
 import {ResumeService} from '../core/services/resume.service';
 import {OnboardingComponent} from './components/onboarding/onboarding.component';
 import {EmailVerificationComponent} from './containers/email-verification.component';
-import {VerificationCompletedGuard} from '../../guards/verification-completed-guard.service';
-import {OnboardingIncompletedGuard} from '../../guards/onboarding-incompleted-guard.service';
+import {VerificationCompletedGuard} from '../core/guards/verification-completed-guard';
+import {OnboardingIncompletedGuard} from '../core/guards/onboarding-incompleted-guard';
 import {OnboardingIntroComponent} from './components/onboarding/onboarding-intro.component';
 import {ResumeNameComponent} from './components/onboarding/resume-name.component';
 import {userRootReducer} from './reducers';
@@ -56,10 +56,15 @@ import {StrengthFormComponent} from './dialogues/resume-form/strength-form.compo
 import {WeaknessCardComponent} from './components/cards/weakness-card.component';
 import {WeaknessComponent} from './components/resume-form/weakness.component';
 import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.component';
-import {ResumesComponent} from './components/resumes.component';
-import {SettingsComponent} from './components/settings.component';
-import {VerificationIncompletedGuardService} from '../../guards/verification-incompleted-guard.service';
-import {OnboardingCompletedGuard} from '../../guards/onboarding-completed-guard.service';
+import {ResumesComponent} from './containers/resumes.component';
+import {SettingsComponent} from './containers/settings.component';
+import {VerificationIncompletedGuard} from '../core/guards/verification-incompleted-guard';
+import {OnboardingCompletedGuard} from '../core/guards/onboarding-completed-guard';
+import {ResumeCardComponent} from './components/resume-card.component';
+import { FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack';
+import {ResumeEditComponent} from './dialogues/resume-edit.component';
+import {ProfileSettingsComponent} from './containers/profile-settings.component';
+import {PasswordSettingComponent} from './containers/password-setting.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +118,12 @@ import {OnboardingCompletedGuard} from '../../guards/onboarding-completed-guard.
     WeaknessComponent,
     WeaknessFormComponent,
     ResumesComponent,
-    SettingsComponent
+    SettingsComponent,
+    ResumeCardComponent,
+    FlexAlignmentHackDirective,
+    ResumeEditComponent,
+    ProfileSettingsComponent,
+    PasswordSettingComponent
   ],
   imports: [
     SharedModule,
@@ -133,14 +143,15 @@ import {OnboardingCompletedGuard} from '../../guards/onboarding-completed-guard.
     ReferenceFormComponent,
     ProjectDetailFormComponent,
     StrengthFormComponent,
-    WeaknessFormComponent
+    WeaknessFormComponent,
+    ResumeEditComponent
   ],
   providers: [
     ResumeService,
     VerificationCompletedGuard,
     OnboardingIncompletedGuard,
     ResumeRepoService,
-    VerificationIncompletedGuardService,
+    VerificationIncompletedGuard,
     OnboardingCompletedGuard
   ]
 })

@@ -25,7 +25,7 @@ import {
   DeleteInterestAction,
   DeleteLanguageAction,
   DeleteObjectiveAction, DeleteProjectDetailAction,
-  DeleteReferenceAction,
+  DeleteReferenceAction, DeleteResumeAction,
   DeleteSkillAction, DeleteStrengthAction, DeleteWeaknessAction,
   ResumeListRequestAction,
   ResumeListSuccessAction,
@@ -37,7 +37,7 @@ import {
   UpdateInterestAction,
   UpdateLanguageAction,
   UpdateObjectiveAction, UpdateProjectDetailAction,
-  UpdateReferenceAction,
+  UpdateReferenceAction, UpdateResumeAction,
   UpdateSkillAction, UpdateStrengthAction, UpdateWeaknessAction
 } from '../../user/actions/resume';
 
@@ -57,11 +57,25 @@ export class ResumeRepoService {
         this.store.dispatch(new ResumeListSuccessAction(res));
       });
     });
-    return [resumes$, loaded$];
+    return [resumes$, loading$];
   }
 
   getResume(id: string): Observable<Resume> {
     return this.store.select(state => getResume(state, id));
+  }
+
+  deleteResume(id: string): Observable<Resume> {
+    return this.resumeService.deleteResume(id).map((res) => {
+      this.store.dispatch(new DeleteResumeAction(res._id));
+      return <Resume>res;
+    });
+  }
+
+  updateResume(data, id: string): Observable<Resume> {
+    return this.resumeService.updateResume(data, id).map((res) => {
+      this.store.dispatch(new UpdateResumeAction(res));
+      return <Resume>res;
+    });
   }
 
   addCurrentResumeId(id: string) {

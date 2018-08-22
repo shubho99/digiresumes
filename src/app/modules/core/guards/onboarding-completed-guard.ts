@@ -1,7 +1,7 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {Injectable} from '@angular/core';
-import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
+import {AuthRepoService} from '../repositry/authRepo.service';
 
 @Injectable()
 export class OnboardingCompletedGuard implements CanActivate {

@@ -1,19 +1,19 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {EmailVerificationComponent} from './containers/email-verification.component';
-import {VerificationCompletedGuard} from '../../guards/verification-completed-guard.service';
+import {VerificationCompletedGuard} from '../core/guards/verification-completed-guard';
 import {OnboardingComponent} from './components/onboarding/onboarding.component';
-import {OnboardingIncompletedGuard} from '../../guards/onboarding-incompleted-guard.service';
+import {OnboardingIncompletedGuard} from '../core/guards/onboarding-incompleted-guard';
 import {UserDashboardComponent} from './containers/user-dashboard.component';
 import {OnboardingIntroComponent} from './components/onboarding/onboarding-intro.component';
-import {ResumesComponent} from './components/resumes.component';
-import {SettingsComponent} from './components/settings.component';
-import {VerificationIncompletedGuardService} from '../../guards/verification-incompleted-guard.service';
-import {OnboardingCompletedGuard} from '../../guards/onboarding-completed-guard.service';
+import {ResumesComponent} from './containers/resumes.component';
+import {SettingsComponent} from './containers/settings.component';
+import {VerificationIncompletedGuard} from '../core/guards/verification-incompleted-guard';
+import {OnboardingCompletedGuard} from '../core/guards/onboarding-completed-guard';
 
 export const routes: Routes = [
   {
-    path: '', component: EmailVerificationComponent, canActivate: [VerificationIncompletedGuardService]
+    path: '', component: EmailVerificationComponent, canActivate: [VerificationIncompletedGuard]
   },
   {
     path: '', component: UserDashboardComponent, canActivate: [VerificationCompletedGuard, OnboardingCompletedGuard],
