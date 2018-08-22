@@ -8,15 +8,19 @@ import {AlertService} from '../../core/services/alert.service';
 @Component({
   selector: 'app-resume-edit',
   template: `
-    <form [formGroup]="this.form" (submit)="this.form.valid && update()">
+    <form [formGroup]="this.form" (submit)="this.form.valid && addOrUpdate()">
       <div class="alternate" fxLayout="column">
         <mat-form-field>
           <input formControlName="name" matInput placeholder="Resume name"/>
           <mat-error>Resume Name is Required</mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary">Update</button>
+        <button mat-raised-button color="primary">
+          <span *ngIf="this.resume">Update</span>
+          <span *ngIf="!this.resume">Add</span>
+        </button>
       </div>
     </form>
+    <ngx-loading [show]="loading"></ngx-loading>
 
   `,
   styles: [`
@@ -32,11 +36,19 @@ export class ResumeEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.resume = this.data.resume;
+    this.resume =  this.data ? this.data.resume : null;
     const resumeName = this.resume ? this.resume.name : null;
     this.form = new FormGroup({
       'name': new FormControl(resumeName, [Validators.required])
     });
+  }
+
+  addOrUpdate() {
+    if (this.resume) {
+      this.update();
+    } else {
+      this.add();
+    }
   }
 
   update() {
@@ -46,6 +58,18 @@ export class ResumeEditComponent implements OnInit {
       this.alertService.success('Resume Updated Successfully');
       this.dialog.close();
     }, (err) => {
+      this.loading = false;
+    });
+  }
+
+  add() {
+    console.log(this.form.value);
+    this.loading = true;
+    this.resumeRepo.addResume(this.form.value).subscribe((res) => {
+      this.loading = false;
+      this.alertService.success('Resume Added Successfully');
+      this.dialog.close();
+    }, error1 => {
       this.loading = false;
     });
   }

@@ -60,7 +60,10 @@ export class ResumeRepoService {
     return [resumes$, loading$];
   }
 
-  getResume(id: string): Observable<Resume> {
+  getResume(id: string, force = false): Observable<Resume> {
+    if (force) {
+      return this.resumeService.getResume(id);
+    }
     return this.store.select(state => getResume(state, id));
   }
 
@@ -302,7 +305,6 @@ export class ResumeRepoService {
 
   deleteReference(resumeId: string, referenceId: string) {
     return this.resumeService.deleteRefrence(referenceId).map((res) => {
-      console.log(res);
       this.store.dispatch(new DeleteReferenceAction({reference: res, resume_id: resumeId}));
       return res;
     });

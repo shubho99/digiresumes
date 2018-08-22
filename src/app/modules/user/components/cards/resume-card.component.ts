@@ -1,22 +1,23 @@
 import {Component, Input} from '@angular/core';
-import {Resume} from '../../core/models/resume';
-import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
-import {AlertService} from '../../core/services/alert.service';
+import {Resume} from '../../../core/models/resume';
+import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
+import {AlertService} from '../../../core/services/alert.service';
 import {MatDialog} from '@angular/material';
-import {ResumeEditComponent} from '../dialogues/resume-edit.component';
+import {ResumeEditComponent} from '../../dialogues/resume-edit.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-resume-card',
   template: `
     <mat-card fxLayout="column" on-mouseenter="hover=true" on-mouseleave="hover=false">
-      <img mat-card-image src="../../../../assets/images/resume.png"/>
+      <img mat-card-image src="../../../../../assets/images/resume.png"/>
       <span>{{resume.name}}</span>
       <div *ngIf="  hover" class="hover" fxLayout="column" fxLayoutGap="60px">
         <div class="icons-div" fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="50px">
           <button mat-icon-button>
             <mat-icon matTooltip="share">share</mat-icon>
           </button>
-          <button mat-icon-button>
+          <button (click)="preview()" mat-icon-button>
             <mat-icon matTooltip="preview">visibility</mat-icon>
           </button>
           <button (click)="delete()" mat-icon-button>
@@ -24,8 +25,8 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
           </button>
         </div>
         <div class="icons-div" fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="50px">
-          <button mat-icon-button>
-            <mat-icon (click)="edit()" matTooltip="edit">create</mat-icon>
+          <button (click)="edit()" matTooltip="edit Name" mat-icon-button>
+            <mat-icon>create</mat-icon>
           </button>
         </div>
       </div>
@@ -79,7 +80,8 @@ export class ResumeCardComponent {
   hover = false;
   loading = false;
 
-  constructor(private resumeRepo: ResumeRepoService, private alertService: AlertService, private dialog: MatDialog) {
+  constructor(private resumeRepo: ResumeRepoService, private alertService: AlertService,
+              private dialog: MatDialog, private router: Router) {
   }
 
   delete() {
@@ -95,5 +97,9 @@ export class ResumeCardComponent {
   edit() {
     const dialogRef = this.dialog.open(ResumeEditComponent, {data: {resume: this.resume}});
     dialogRef.updateSize('50%', '20%');
+  }
+
+  preview() {
+    this.router.navigateByUrl('/user/preview/resume/' + this.resume._id);
   }
 }

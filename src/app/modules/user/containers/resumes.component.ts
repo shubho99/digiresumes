@@ -1,11 +1,17 @@
 import {Component, OnDestroy} from '@angular/core';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
+import {MatDialog} from '@angular/material';
+import {ResumeEditComponent} from '../dialogues/resume-edit.component';
 
 @Component({
   selector: 'app-resumes',
   template: `
     <div *ngIf="this.resumes" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center">
+      <mat-card *ngIf="!this.loading" matRipple (click)="addResume()" class=addcard>
+        <mat-icon>add_box</mat-icon>
+        <mat-card-title>Add Resume</mat-card-title>
+      </mat-card>
       <app-resume-card *ngFor="let resume of resumes" [resume]="resume"></app-resume-card>
       <span *appFlexAlignmentHack></span>
     </div>
@@ -18,6 +24,30 @@ import {Resume} from '../../core/models/resume';
       width: 250px;
       margin: 15px 10px;
     }
+
+    .addcard {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      place-content: center;
+      align-items: center;
+    }
+
+    mat-icon {
+      font-size: 80px;
+      width: 80px;
+      height: 104px;
+    }
+
+    mat-card {
+      width: 80%;
+      margin: 15px 10px;
+      background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+      height: 270px;
+    }
+
   `]
 })
 export class ResumesComponent implements OnDestroy {
@@ -25,7 +55,7 @@ export class ResumesComponent implements OnDestroy {
   loading = false;
   isAlive = true;
 
-  constructor(private resumeRepo: ResumeRepoService) {
+  constructor(private resumeRepo: ResumeRepoService, private dialog: MatDialog) {
     this.fetchResumes();
   }
 
@@ -41,5 +71,10 @@ export class ResumesComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.isAlive = false;
+  }
+
+  addResume() {
+    const dialogRef = this.dialog.open(ResumeEditComponent);
+    dialogRef.updateSize('50%', '20%');
   }
 }

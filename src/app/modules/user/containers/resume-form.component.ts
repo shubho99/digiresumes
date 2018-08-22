@@ -1,6 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-resume-form',
@@ -113,7 +114,7 @@ import {Resume} from '../../core/models/resume';
             Add your Strengths
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <app-strength [resumeId]="resume._id" [strengths]="resume.strengths" ></app-strength>
+        <app-strength [resumeId]="resume._id" [strengths]="resume.strengths"></app-strength>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -122,9 +123,10 @@ import {Resume} from '../../core/models/resume';
             Add your Weakness
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <app-weakness [resumeId]="resume._id" [weaknesses]="resume.weakness" ></app-weakness>
+        <app-weakness [resumeId]="resume._id" [weaknesses]="resume.weakness"></app-weakness>
       </mat-expansion-panel>
     </mat-accordion>
+    <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`
     h1 {
@@ -150,10 +152,11 @@ import {Resume} from '../../core/models/resume';
   `]
 })
 export class ResumeFormComponent implements OnDestroy {
-  resume: Resume = null;
+  resume: Resume;
   isAlive = true;
+  loading = false;
 
-  constructor(public resumeRepo: ResumeRepoService) {
+  constructor(public resumeRepo: ResumeRepoService, private route: ActivatedRoute) {
     this.fetchResume();
   }
 
@@ -162,6 +165,16 @@ export class ResumeFormComponent implements OnDestroy {
       if (res) {
         this.resumeRepo.getResume(res).takeWhile(() => this.isAlive).subscribe((resume) => {
           this.resume = resume;
+        });
+      } else {
+        this.loading = true;
+        this.route.params.map(params => params['id']).switchMap((id) => {
+          return this.resumeRepo.getResume(id, true);
+        }).take(1).filter(res => !!res).takeWhile(() => this.isAlive).subscribe((res) => {
+          this.loading = false;
+          this.resume = res;
+        }, (err) => {
+          this.loading = false;
         });
       }
     });

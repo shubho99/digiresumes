@@ -10,6 +10,9 @@ import {ResumesComponent} from './containers/resumes.component';
 import {SettingsComponent} from './containers/settings.component';
 import {VerificationIncompletedGuard} from '../core/guards/verification-incompleted-guard';
 import {OnboardingCompletedGuard} from '../core/guards/onboarding-completed-guard';
+import {SingleResumeComponent} from './containers/single-resume.component';
+import {ResumeFormComponent} from './containers/resume-form.component';
+import {UploadComponent} from './containers/upload.component';
 
 export const routes: Routes = [
   {
@@ -19,7 +22,11 @@ export const routes: Routes = [
     path: '', component: UserDashboardComponent, canActivate: [VerificationCompletedGuard, OnboardingCompletedGuard],
     children: [{
       path: 'resumes', component: ResumesComponent
-    }, {path: 'settings', component: SettingsComponent}]
+    }, {path: 'settings', component: SettingsComponent},
+      {path: 'preview/resume/:id', component: SingleResumeComponent},
+      {path: 'edit/resume/:id', component: ResumeFormComponent},
+      {path: 'edit/profile/:id', component: UploadComponent},
+    ]
   },
   {
     path: 'onboarding', canActivate: [OnboardingIncompletedGuard, VerificationCompletedGuard],

@@ -60,11 +60,12 @@ import {ResumesComponent} from './containers/resumes.component';
 import {SettingsComponent} from './containers/settings.component';
 import {VerificationIncompletedGuard} from '../core/guards/verification-incompleted-guard';
 import {OnboardingCompletedGuard} from '../core/guards/onboarding-completed-guard';
-import {ResumeCardComponent} from './components/resume-card.component';
+import {ResumeCardComponent} from './components/cards/resume-card.component';
 import { FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack';
 import {ResumeEditComponent} from './dialogues/resume-edit.component';
 import {ProfileSettingsComponent} from './containers/profile-settings.component';
 import {PasswordSettingComponent} from './containers/password-setting.component';
+import {SingleResumeComponent} from './containers/single-resume.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import {PasswordSettingComponent} from './containers/password-setting.component'
     FlexAlignmentHackDirective,
     ResumeEditComponent,
     ProfileSettingsComponent,
-    PasswordSettingComponent
+    PasswordSettingComponent,
+    SingleResumeComponent
   ],
   imports: [
     SharedModule,
