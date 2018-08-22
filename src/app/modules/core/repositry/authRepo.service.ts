@@ -49,7 +49,7 @@ export class AuthRepoService {
     });
   }
 
-  updateOnboarding(data: { onboarding: string }): Observable<User> {
+  updateOnboarding(data: {onboarding: number}): Observable<User> {
     return this.authService.updateOnboarding(data).map((res) => {
       this.store.dispatch(new UserUpdateAction(res));
       return <User>res;

@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SafeUrlPipe} from '../../pipes/safeUrl';
+import {FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {SafeUrlPipe} from '../../pipes/safeUrl';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [],
+  declarations: [
+  ],
 })
 
 export class SharedModule {

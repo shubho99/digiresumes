@@ -1,21 +1,35 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {EmailVerificationComponent} from './containers/email-verification.component';
-import {EmailVerificationGuard} from '../../guards/email-verification-guard';
+import {VerificationCompletedGuard} from '../core/guards/verification-completed-guard';
 import {OnboardingComponent} from './components/onboarding/onboarding.component';
-import {OnboardGuard} from '../../guards/onboard-guard';
+import {OnboardingIncompletedGuard} from '../core/guards/onboarding-incompleted-guard';
 import {UserDashboardComponent} from './containers/user-dashboard.component';
 import {OnboardingIntroComponent} from './components/onboarding/onboarding-intro.component';
+import {ResumesComponent} from './containers/resumes.component';
+import {SettingsComponent} from './containers/settings.component';
+import {VerificationIncompletedGuard} from '../core/guards/verification-incompleted-guard';
+import {OnboardingCompletedGuard} from '../core/guards/onboarding-completed-guard';
+import {SingleResumeComponent} from './containers/single-resume.component';
+import {ResumeFormComponent} from './containers/resume-form.component';
+import {UploadComponent} from './containers/upload.component';
 
 export const routes: Routes = [
   {
-    path: '', component: EmailVerificationComponent, canActivate: [EmailVerificationGuard]
+    path: '', component: EmailVerificationComponent, canActivate: [VerificationIncompletedGuard]
   },
   {
-    path: '', component: UserDashboardComponent
+    path: '', component: UserDashboardComponent, canActivate: [VerificationCompletedGuard, OnboardingCompletedGuard],
+    children: [{
+      path: 'resumes', component: ResumesComponent
+    }, {path: 'settings', component: SettingsComponent},
+      {path: 'preview/resume/:id', component: SingleResumeComponent},
+      {path: 'edit/resume/:id', component: ResumeFormComponent},
+      {path: 'edit/profile/:id', component: UploadComponent},
+    ]
   },
   {
-    path: 'onboarding', canActivate: [OnboardGuard],
+    path: 'onboarding', canActivate: [OnboardingIncompletedGuard, VerificationCompletedGuard],
     children: [{path: '', component: OnboardingIntroComponent}, {path: 'add', component: OnboardingComponent}]
   }
 ];

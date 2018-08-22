@@ -76,7 +76,7 @@ export class UpdateResumeAction implements Action {
 export class DeleteResumeAction implements Action {
   readonly type = RESUME_DELETE;
 
-  constructor(public payload: Resume) {
+  constructor(public payload: string) {
   }
 }
 

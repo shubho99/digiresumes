@@ -25,7 +25,7 @@ import {
   DeleteInterestAction,
   DeleteLanguageAction,
   DeleteObjectiveAction, DeleteProjectDetailAction,
-  DeleteReferenceAction,
+  DeleteReferenceAction, DeleteResumeAction,
   DeleteSkillAction, DeleteStrengthAction, DeleteWeaknessAction,
   ResumeListRequestAction,
   ResumeListSuccessAction,
@@ -37,7 +37,7 @@ import {
   UpdateInterestAction,
   UpdateLanguageAction,
   UpdateObjectiveAction, UpdateProjectDetailAction,
-  UpdateReferenceAction,
+  UpdateReferenceAction, UpdateResumeAction,
   UpdateSkillAction, UpdateStrengthAction, UpdateWeaknessAction
 } from '../../user/actions/resume';
 
@@ -57,11 +57,28 @@ export class ResumeRepoService {
         this.store.dispatch(new ResumeListSuccessAction(res));
       });
     });
-    return [resumes$, loaded$];
+    return [resumes$, loading$];
   }
 
-  getResume(id: string): Observable<Resume> {
+  getResume(id: string, force = false): Observable<Resume> {
+    if (force) {
+      return this.resumeService.getResume(id);
+    }
     return this.store.select(state => getResume(state, id));
+  }
+
+  deleteResume(id: string): Observable<Resume> {
+    return this.resumeService.deleteResume(id).map((res) => {
+      this.store.dispatch(new DeleteResumeAction(res._id));
+      return <Resume>res;
+    });
+  }
+
+  updateResume(data, id: string): Observable<Resume> {
+    return this.resumeService.updateResume(data, id).map((res) => {
+      this.store.dispatch(new UpdateResumeAction(res));
+      return <Resume>res;
+    });
   }
 
   addCurrentResumeId(id: string) {
@@ -288,7 +305,6 @@ export class ResumeRepoService {
 
   deleteReference(resumeId: string, referenceId: string) {
     return this.resumeService.deleteRefrence(referenceId).map((res) => {
-      console.log(res);
       this.store.dispatch(new DeleteReferenceAction({reference: res, resume_id: resumeId}));
       return res;
     });
@@ -358,7 +374,7 @@ export class ResumeRepoService {
   }
 
   deleteWeakness(resumeId: string, weaknessId: string) {
-    console.log(resumeId,weaknessId);
+    console.log(resumeId, weaknessId);
     return this.resumeService.deleteWeakness(weaknessId).map((res) => {
       this.store.dispatch(new DeleteWeaknessAction({weakness: res, resume_id: resumeId}));
       return res;

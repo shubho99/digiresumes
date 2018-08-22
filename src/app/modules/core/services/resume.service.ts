@@ -15,6 +15,7 @@ import {ProjectDetail} from '../models/project-detail';
 import {Strength} from '../models/strength';
 import {Weakness} from '../models/weakness';
 import {Objective} from '../models/objective';
+import {User} from '../models/user';
 
 @Injectable()
 export class ResumeService {
@@ -43,7 +44,7 @@ export class ResumeService {
   }
 
   addEmploymentHistory(data: {
-    employer: string, designation: string, city: string, state: string, organisation : string,
+    employer: string, designation: string, city: string, state: string, organisation: string,
     start_month: string, start_year: string, end_month: string, end_year: number
   }, resumeId: string): Observable<EmploymentHistory> {
     return this.apiService.post(ApiRoute.RESUME + '/add/employmentHistory/' + resumeId, data).map(res => <EmploymentHistory>res);
@@ -118,6 +119,8 @@ export class ResumeService {
   updateResume(data, resumeId: string): Observable<Resume> {
     return this.apiService.patch(ApiRoute.RESUME + '/update/resume/' + resumeId, data).map(res => <Resume>res);
   }
+
+
 
   updateContactDetails(data, contactDetailId: string): Observable<Contact> {
     return this.apiService.patch(ApiRoute.RESUME + '/update/contactDetails/' + contactDetailId, data).map(res => <Contact>res);

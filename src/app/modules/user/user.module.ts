@@ -5,8 +5,8 @@ import {UserDashboardComponent} from './containers/user-dashboard.component';
 import {ResumeService} from '../core/services/resume.service';
 import {OnboardingComponent} from './components/onboarding/onboarding.component';
 import {EmailVerificationComponent} from './containers/email-verification.component';
-import {EmailVerificationGuard} from '../../guards/email-verification-guard';
-import {OnboardGuard} from '../../guards/onboard-guard';
+import {VerificationCompletedGuard} from '../core/guards/verification-completed-guard';
+import {OnboardingIncompletedGuard} from '../core/guards/onboarding-incompleted-guard';
 import {OnboardingIntroComponent} from './components/onboarding/onboarding-intro.component';
 import {ResumeNameComponent} from './components/onboarding/resume-name.component';
 import {userRootReducer} from './reducers';
@@ -56,6 +56,16 @@ import {StrengthFormComponent} from './dialogues/resume-form/strength-form.compo
 import {WeaknessCardComponent} from './components/cards/weakness-card.component';
 import {WeaknessComponent} from './components/resume-form/weakness.component';
 import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.component';
+import {ResumesComponent} from './containers/resumes.component';
+import {SettingsComponent} from './containers/settings.component';
+import {VerificationIncompletedGuard} from '../core/guards/verification-incompleted-guard';
+import {OnboardingCompletedGuard} from '../core/guards/onboarding-completed-guard';
+import {ResumeCardComponent} from './components/cards/resume-card.component';
+import { FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack';
+import {ResumeEditComponent} from './dialogues/resume-edit.component';
+import {ProfileSettingsComponent} from './containers/profile-settings.component';
+import {PasswordSettingComponent} from './containers/password-setting.component';
+import {SingleResumeComponent} from './containers/single-resume.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +117,15 @@ import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.compo
     StrengthFormComponent,
     WeaknessCardComponent,
     WeaknessComponent,
-    WeaknessFormComponent
+    WeaknessFormComponent,
+    ResumesComponent,
+    SettingsComponent,
+    ResumeCardComponent,
+    FlexAlignmentHackDirective,
+    ResumeEditComponent,
+    ProfileSettingsComponent,
+    PasswordSettingComponent,
+    SingleResumeComponent
   ],
   imports: [
     SharedModule,
@@ -127,9 +145,17 @@ import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.compo
     ReferenceFormComponent,
     ProjectDetailFormComponent,
     StrengthFormComponent,
-    WeaknessFormComponent
+    WeaknessFormComponent,
+    ResumeEditComponent
   ],
-  providers: [ResumeService, EmailVerificationGuard, OnboardGuard, ResumeRepoService]
+  providers: [
+    ResumeService,
+    VerificationCompletedGuard,
+    OnboardingIncompletedGuard,
+    ResumeRepoService,
+    VerificationIncompletedGuard,
+    OnboardingCompletedGuard
+  ]
 })
 export class UserModule {
 }

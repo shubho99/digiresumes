@@ -53,7 +53,7 @@ export function reducer(state = initialState, action: Action): ResumeState {
     }
     case RESUME_UPDATE: {
       const resume = action.payload;
-      const entity = {[resume.id]: resume};
+      const entity = {[resume._id]: resume};
       const entities = {...state.entities, ...entity};
       return {...state, entities: entities};
     }
