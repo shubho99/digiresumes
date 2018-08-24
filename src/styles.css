@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /**/
+@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua');
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +20,7 @@ html, body {
   animation: BackgroundGradient 10s ease infinite;
 }
 .user-background{
-  background: #fafafa;
+  background: #eee;
 }
 .alert-success {
   background-color: #dff0d8 !important;

@@ -22,7 +22,7 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
     span {
       height: 255px;
       width: 250px;
-      margin: 15px 10px;
+      margin: 20px 20px;
     }
 
     .addcard {
@@ -38,14 +38,18 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
       font-size: 80px;
       width: 80px;
       height: 104px;
+      color: #538ec3;
     }
 
     mat-card {
       width: 80%;
-      margin: 15px 10px;
-      background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
+      margin: 20px 20px;
+      /*background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);*/
+      background: #eaf1f8;
       box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
       height: 270px;
+      text-transform: uppercase;
+      color: #538ec3;
     }
 
   `]
