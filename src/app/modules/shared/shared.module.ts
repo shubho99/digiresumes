@@ -23,8 +23,10 @@ import {FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    SafeUrlPipe
   ],
   declarations: [
+    SafeUrlPipe
   ],
 })
 

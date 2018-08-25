@@ -30,6 +30,8 @@
     "@ngrx/entity": "^5.2.0",
     "@ngrx/store": "^5.2.0",
     "@ngrx/store-devtools": "^5.2.0",
+    "@types/gapi": "0.0.36",
+    "@types/gapi.auth2": "0.0.47",
     "@types/lodash": "^4.14.106",
     "animate.css": "^3.6.1",
     "core-js": "^2.4.1",

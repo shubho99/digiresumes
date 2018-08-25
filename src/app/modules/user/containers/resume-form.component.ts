@@ -6,7 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-resume-form',
   template: `
-    <mat-accordion>
+    <mat-accordion *ngIf="resume" class="alternate">
       <h1>Enter details which you want to see on your Resume</h1>
       <mat-expansion-panel>
         <mat-expansion-panel-header>

@@ -29,7 +29,7 @@ export class ResumeService {
   }
 
   addContactDetails(data: {
-    image_url: string, video_url: string, first_name: string, last_name: string,
+     first_name: string, last_name: string,
     phone_number: number, email: string, address: string, city: string, state: string,
     zip_code: number, country: string, summary: string
   }, resumeId: string): Observable<Contact> {
@@ -100,10 +100,10 @@ export class ResumeService {
     return this.apiService.post(ApiRoute.RESUME + '/add/objective/' + resumeId, data).map(res => <Objective>res);
   }
 
-  addOrUpdateImage(imageUrl, contactDetailId: string): Observable<Contact> {
+  addOrUpdateImage(imageUrl, resumeId: string): Observable<Resume> {
     const formData: FormData = new FormData();
     formData.append('profile_image', imageUrl);
-    return this.apiService.post(ApiRoute.RESUME + '/add/objective/' + contactDetailId, formData).map(res => <Contact>res);
+    return this.apiService.post(ApiRoute.RESUME + '/add/objective/' + resumeId, formData).map(res => <Resume>res);
   }
 
   // Get dataApi
@@ -176,8 +176,8 @@ export class ResumeService {
     return this.apiService.patch(ApiRoute.RESUME + '/update/objective/' + ObjectiveId, data).map(res => <Objective>res);
   }
 
-  addOrUpdateVideo(data, contactDetailId: string): Observable<Contact> {
-    return this.apiService.patch(ApiRoute.RESUME + '/import/video/' + contactDetailId, data).map(res => <Contact>res);
+  addOrUpdateVideo(data: { video_url: string }, resumeId: string): Observable<Resume> {
+    return this.apiService.patch(ApiRoute.RESUME + '/import/video/' + resumeId, data).map(res => <Resume>res);
   }
 
   // Delete Api

@@ -66,6 +66,9 @@ import {ResumeEditComponent} from './dialogues/resume-edit.component';
 import {ProfileSettingsComponent} from './containers/profile-settings.component';
 import {PasswordSettingComponent} from './containers/password-setting.component';
 import {SingleResumeComponent} from './containers/single-resume.component';
+import {YoutubeUploadComponent} from './components/upload/youtube-upload.component';
+import {YoutubeService} from '../core/services/youtube.service';
+import {SafeUrlPipe} from '../../pipes/safeUrl';
 
 @NgModule({
   declarations: [
@@ -125,7 +128,8 @@ import {SingleResumeComponent} from './containers/single-resume.component';
     ResumeEditComponent,
     ProfileSettingsComponent,
     PasswordSettingComponent,
-    SingleResumeComponent
+    SingleResumeComponent,
+    YoutubeUploadComponent,
   ],
   imports: [
     SharedModule,
@@ -146,7 +150,8 @@ import {SingleResumeComponent} from './containers/single-resume.component';
     ProjectDetailFormComponent,
     StrengthFormComponent,
     WeaknessFormComponent,
-    ResumeEditComponent
+    ResumeEditComponent,
+    YoutubeUploadComponent
   ],
   providers: [
     ResumeService,
@@ -154,7 +159,8 @@ import {SingleResumeComponent} from './containers/single-resume.component';
     OnboardingIncompletedGuard,
     ResumeRepoService,
     VerificationIncompletedGuard,
-    OnboardingCompletedGuard
+    OnboardingCompletedGuard,
+    YoutubeService
   ]
 })
 export class UserModule {

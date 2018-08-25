@@ -14,6 +14,9 @@ import {Objective} from './objective';
 export interface Resume {
   _id: string;
   name: string;
+  user_id: string;
+  image_url: string;
+  video_url: string;
   contact_details: Contact;
   education: Education[];
   employment_history: EmploymentHistory[];
@@ -31,8 +34,6 @@ export interface Resume {
 
 export interface Contact {
   _id: string;
-  image_url: string;
-  video_url: string;
   first_name: string;
   last_name: string;
   phone_number: number;

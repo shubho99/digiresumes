@@ -27,6 +27,9 @@ export class Utils {
   static filterDuplicateIds(ids: number[]) {
     return ids.filter((elem, index, self) => index === self.indexOf(elem));
   }
+  static getYoutubeUrlFromId(id: string): string {
+    return 'https://www.youtube.com/watch?v=' + id;
+  }
 
 }
 

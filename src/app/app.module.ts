@@ -33,6 +33,7 @@ import {AuthRepoService} from './modules/core/repositry/authRepo.service';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LogoutComponent} from './containers/logout.component';
 import {PasswordResetComponent} from './containers/password-reset.component';
+import {SharedModule} from './modules/shared/shared.module';
 
 
 @NgModule({
@@ -45,7 +46,6 @@ import {PasswordResetComponent} from './containers/password-reset.component';
     GetStartedComponent,
     ContactUsComponent,
     LoginComponent,
-    SafeUrlPipe,
     TruncatePipe,
     VideoDialogComponent,
     LogoutComponent,
@@ -53,6 +53,7 @@ import {PasswordResetComponent} from './containers/password-reset.component';
   ],
   imports: [
     CoreModule,
+    SharedModule,
     RouterModule,
     RouterModule.forRoot(routes),
     StoreModule.forRoot(reducers),
