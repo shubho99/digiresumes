@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
     <mat-card fxLayout="column" on-mouseenter="hover=true" on-mouseleave="hover=false">
       <img mat-card-image src="../../../../../assets/images/resume.png"/>
       <span>{{resume.name}}</span>
-      <div *ngIf="  hover" class="hover" fxLayout="column" fxLayoutGap="60px">
+      <div *ngIf="hover" class="hover" fxLayout="column" fxLayoutGap="60px">
         <div class="icons-div" fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="50px">
           <button mat-icon-button>
             <mat-icon matTooltip="share">share</mat-icon>
@@ -36,8 +36,11 @@ import {Router} from '@angular/router';
   styles: [`
     mat-card {
       width: 250px;
-      margin: 15px 10px;
-      background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
+      margin: 20px 0px;
+      /*background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);*/
+      background: #eaf1f8;
+      color: #538ec3;
+      text-transform: uppercase;
       box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
       height: 271px;
       transition: all 0.5s;
@@ -53,7 +56,7 @@ import {Router} from '@angular/router';
     .icons-div {
       position: absolute;
       bottom: 25%;
-      left: 6%;
+      left: 1%;
     }
 
     mat-icon {
@@ -69,9 +72,13 @@ import {Router} from '@angular/router';
       right: 0;
       left: 0;
       z-index: 100;
-      height: calc(100% - 65px);
+      height: calc(100% - 45px);
       width: 100%;
-      opacity: 0.8;
+      opacity: 0;
+    }
+    .hover:hover {
+      opacity: 0.9;
+      transition: opacity .8s;
     }
   `]
 })
