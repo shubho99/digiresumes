@@ -2,11 +2,20 @@ import {NgModule} from '@angular/core';
 import {
   MatButtonModule,
   MatCardModule,
-  MatDialogModule, MatExpansionModule,
+  MatDialogModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatMenuModule, MatRippleModule, MatSelectModule, MatSnackBarModule, MatStepperModule, MatTableModule, MatTabsModule, MatTooltipModule
+  MatMenuModule,
+  MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSnackBarModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatTooltipModule
 } from '@angular/material';
 
 const modules = [
@@ -23,7 +32,11 @@ const modules = [
   MatExpansionModule,
   MatSelectModule,
   MatTooltipModule,
-  MatRippleModule
+  MatRippleModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule
+
 ];
 
 @NgModule({

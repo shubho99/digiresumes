@@ -6,7 +6,7 @@ import {Resume} from '../../core/models/resume';
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div style="margin-top: 1%; margin-left: 1%" class="alternate" fxLayout="row" fxLayoutGap="20px">
+    <div  style="margin-top: 1%; margin-left: 1%" class="alternate" fxLayout="row" fxLayoutGap="20px">
       <button (click)="editResume()" mat-raised-button color="primary">Edit Resume</button>
       <button (click)="editProfile()" mat-raised-button color="accent">Edit profile Video or Picture</button>
     </div>

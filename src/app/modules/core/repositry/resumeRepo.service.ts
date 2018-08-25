@@ -4,7 +4,7 @@ import {RootState} from '../../../reducers';
 import {Store} from '@ngrx/store';
 import {getCurrentResumeId, getResume, getResumes, getResumesLoaded, getResumesLoading} from '../../user/reducers';
 import {Observable} from 'rxjs/Observable';
-import {Resume} from '../models/resume';
+import {Contact, Resume} from '../models/resume';
 import {
   AddAwardAction,
   AddContactDetailAction,
@@ -94,7 +94,7 @@ export class ResumeRepoService {
   }
 
   addContactDetails(data: {
-    image_url: string, video_url: string, first_name: string, last_name: string,
+    first_name: string, last_name: string,
     phone_number: number, email: string, address: string, city: string, state: string,
     zip_code: number, country: string, summary: string
   }, resume_id) {
@@ -105,7 +105,7 @@ export class ResumeRepoService {
   }
 
   updateContactDetails(data: {
-    image_url: string, video_url: string, first_name: string, last_name: string,
+    first_name: string, last_name: string,
     phone_number: number, email: string, address: string, city: string, state: string,
     zip_code: number, country: string, summary: string
   }, contactDetailId: string, resume_id: string) {
@@ -381,6 +381,10 @@ export class ResumeRepoService {
     });
   }
 
-  updateOnboarding(data: number) {
+  addOrUpdateVideo(data: { video_url: string }, resumeId: string): Observable<Resume> {
+    return this.resumeService.addOrUpdateVideo(data, resumeId).map((res) => {
+      this.store.dispatch(new UpdateResumeAction(res));
+      return res;
+    });
   }
 }
