@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnDestroy, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {ActivatedRoute} from '@angular/router';

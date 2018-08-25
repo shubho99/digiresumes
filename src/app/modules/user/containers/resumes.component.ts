@@ -7,7 +7,7 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
 @Component({
   selector: 'app-resumes',
   template: `
-    <div *ngIf="this.resumes" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center">
+    <div *ngIf="this.resumes" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center" fxLayoutGap="20px">
       <mat-card *ngIf="!this.loading" matRipple (click)="addResume()" class=addcard>
         <mat-icon>add_box</mat-icon>
         <mat-card-title>Add Resume</mat-card-title>
@@ -29,7 +29,7 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      max-width: 100%;
+      width: 150%;
       place-content: center;
       align-items: center;
     }

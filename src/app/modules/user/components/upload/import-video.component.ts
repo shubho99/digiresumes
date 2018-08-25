@@ -12,7 +12,7 @@ import {AlertService} from '../../../core/services/alert.service';
       <div style="margin-top: 3%" fxLayout="column" fxLayoutGap="50px">
         <h2>Import Video from Youtube URL</h2>
         <mat-form-field>
-          <input matInput placeholder="Youtube URL">
+          <input matInput formControlName="video_url" placeholder="Youtube URL">
           <mat-error>Provide YouTube Video URL</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end center">
