@@ -1,6 +1,6 @@
 import * as fromResumes from './resume';
 import {RootState} from '../../../reducers';
-import {ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
+import {ActionReducerMap, createSelector} from '@ngrx/store';
 
 
 export interface UserRootState {
@@ -8,7 +8,7 @@ export interface UserRootState {
 }
 
 export const userRootReducer: ActionReducerMap<UserRootState> = {
-  resumes: fromResumes.reducer
+  resumes: fromResumes.reducer,
 };
 export const getUserRootState = (state: RootState) => state.user;
 
@@ -23,6 +23,8 @@ export const getResume = (state: RootState, id: string) => {
   const entities = getResumesEntities(state);
   return entities[id];
 };
+
+
 
 
 

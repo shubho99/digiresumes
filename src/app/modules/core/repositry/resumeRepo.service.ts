@@ -60,10 +60,7 @@ export class ResumeRepoService {
     return [resumes$, loading$];
   }
 
-  getResume(id: string, force = false): Observable<Resume> {
-    if (force) {
-      return this.resumeService.getResume(id);
-    }
+  getResume(id: string): Observable<Resume> {
     return this.store.select(state => getResume(state, id));
   }
 
@@ -383,6 +380,20 @@ export class ResumeRepoService {
 
   addOrUpdateVideo(data: { video_url: string }, resumeId: string): Observable<Resume> {
     return this.resumeService.addOrUpdateVideo(data, resumeId).map((res) => {
+      this.store.dispatch(new UpdateResumeAction(res));
+      return res;
+    });
+  }
+
+  addOrUpdateImage(img: File, resumeId: string): Observable<Resume> {
+    return this.resumeService.addOrUpdateImage(img, resumeId).map((res) => {
+      this.store.dispatch(new UpdateResumeAction(res));
+      return res;
+    });
+  }
+
+  deleteImage(data: { image_url: string }, resumeId: string): Observable<Resume> {
+    return this.resumeService.deleteImage(data, resumeId).map((res) => {
       this.store.dispatch(new UpdateResumeAction(res));
       return res;
     });
