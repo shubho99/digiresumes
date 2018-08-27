@@ -77,7 +77,7 @@ export class ImageUploadComponent {
         this.loading = true;
         this.route.params.map(params => params['id']).switchMap((id) => {
           return this.resumeRepo.getResume(id);
-        }).take(1).filter(res => !!res).takeWhile(() => this.isAlive).subscribe((res) => {
+        }).filter(res => !!res).takeWhile(() => this.isAlive).subscribe((res) => {
           this.loading = false;
           this.resume = res;
           this.isUploaded = !!this.resume.image_url;
