@@ -34,6 +34,8 @@ import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LogoutComponent} from './containers/logout.component';
 import {PasswordResetComponent} from './containers/password-reset.component';
 import {SharedModule} from './modules/shared/shared.module';
+import {ResumeRepoService} from './modules/core/repositry/resumeRepo.service';
+import {ResumeService} from './modules/core/services/resume.service';
 
 
 @NgModule({
@@ -76,7 +78,16 @@ import {SharedModule} from './modules/shared/shared.module';
     HttpClientModule
   ],
   entryComponents: [VideoDialogComponent],
-  providers: [AuthGuard, AnonGuard, ApiService, AuthService, AlertService, AuthRepoService],
+  providers: [
+    AuthGuard,
+    AnonGuard,
+    ApiService,
+    AuthService,
+    AlertService,
+    AuthRepoService,
+    ResumeRepoService,
+    ResumeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

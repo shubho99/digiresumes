@@ -29,7 +29,7 @@ export class ResumeService {
   }
 
   addContactDetails(data: {
-     first_name: string, last_name: string,
+    first_name: string, last_name: string,
     phone_number: number, email: string, address: string, city: string, state: string,
     zip_code: number, country: string, summary: string
   }, resumeId: string): Observable<Contact> {
@@ -100,10 +100,14 @@ export class ResumeService {
     return this.apiService.post(ApiRoute.RESUME + '/add/objective/' + resumeId, data).map(res => <Objective>res);
   }
 
-  addOrUpdateImage(imageUrl, resumeId: string): Observable<Resume> {
+  addOrUpdateImage(image: File, resumeId: string): Observable<Resume> {
     const formData: FormData = new FormData();
-    formData.append('profile_image', imageUrl);
-    return this.apiService.post(ApiRoute.RESUME + '/add/objective/' + resumeId, formData).map(res => <Resume>res);
+    formData.append('profile_image', image);
+    return this.apiService.post(ApiRoute.RESUME + '/add/image/' + resumeId, formData).map(res => <Resume>res);
+  }
+
+  deleteImage(data: { image_url: string }, resumeId: string): Observable<Resume> {
+    return this.apiService.delete(ApiRoute.RESUME + '/delete/image/' + resumeId, data).map(res => <Resume>res);
   }
 
   // Get dataApi
@@ -119,7 +123,6 @@ export class ResumeService {
   updateResume(data, resumeId: string): Observable<Resume> {
     return this.apiService.patch(ApiRoute.RESUME + '/update/resume/' + resumeId, data).map(res => <Resume>res);
   }
-
 
 
   updateContactDetails(data, contactDetailId: string): Observable<Contact> {

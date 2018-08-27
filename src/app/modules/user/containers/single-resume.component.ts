@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
@@ -45,7 +45,6 @@ import {Resume} from '../../core/models/resume';
       <button (click)="editResume()" mat-raised-button color="primary">Edit Resume</button>
       <button (click)="editProfile()" mat-raised-button color="accent">Edit profile Video or Picture</button>
     </div>
-    <h1>{{resume.name}}</h1>
     <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`
@@ -87,8 +86,8 @@ import {Resume} from '../../core/models/resume';
     }
   `]
 })
-export class SingleResumeComponent implements OnInit {
-  resume: Resume;
+export class SingleResumeComponent implements OnInit, OnDestroy {
+  resume: Resume = null;
   isAlive = true;
   loading = false;
 
@@ -98,7 +97,7 @@ export class SingleResumeComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.route.params.map(params => params['id']).switchMap((id) => {
-      return this.resumeRepo.getResume(id, true);
+      return this.resumeRepo.getResume(id);
     }).take(1).filter(res => !!res).takeWhile(() => this.isAlive).subscribe((res) => {
       this.loading = false;
       this.resume = res;
@@ -113,5 +112,9 @@ export class SingleResumeComponent implements OnInit {
 
   editResume() {
     this.router.navigateByUrl('/user/edit/resume/' + this.resume._id);
+  }
+
+  ngOnDestroy() {
+    this.isAlive = false;
   }
 }

@@ -103,7 +103,7 @@ export class UploadFromDiskComponent implements OnDestroy {
       } else {
         this.loading = true;
         this.route.params.map(params => params['id']).switchMap((id) => {
-          return this.resumeRepo.getResume(id, true);
+          return this.resumeRepo.getResume(id);
         }).take(1).filter(res => !!res).takeWhile(() => this.isAlive).subscribe((res) => {
           this.loading = false;
           this.resume = res;
