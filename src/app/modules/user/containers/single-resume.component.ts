@@ -16,11 +16,11 @@ import {Resume} from '../../core/models/resume';
               <mat-icon>book</mat-icon>
               <span>Education</span>
             </div>
-          </mat-card-header>    
+          </mat-card-header>
           <mat-card-content>
             <div fxLayout="column" class="education-card" fxLayoutGap="20px">
               <div class="container" fxFlex="column">
-                <!--<h1 *ngFor="Let resume of resume.education">{{resume}}</h1>-->
+                <div *ngFor="let resume of this.resume['interests']">{{resume.interest}}</div>
                 <p>Firebase gives you functionality like analytics, databases, messaging
                   and crash reporting so you can move quickly and focus on your users</p>
               </div>
@@ -35,13 +35,13 @@ import {Resume} from '../../core/models/resume';
                   and crash reporting so you can move quickly and focus on your users</p>
               </div>
             </div>
-          </mat-card-content>         
+          </mat-card-content>
         </mat-card>
         <mat-card fxLayout="column">
         </mat-card>
       </div>
-    </div>      
-    <div  style="margin-top: 1%; margin-left: 1%" class="alternate" fxLayout="row" fxLayoutGap="20px">
+    </div>
+    <div style="margin-top: 1%; margin-left: 1%" class="alternate" fxLayout="row" fxLayoutGap="20px">
       <button (click)="editResume()" mat-raised-button color="primary">Edit Resume</button>
       <button (click)="editProfile()" mat-raised-button color="accent">Edit profile Video or Picture</button>
     </div>
@@ -56,6 +56,7 @@ import {Resume} from '../../core/models/resume';
       margin-left: 15%;
       margin-top: 2.4%;
     }
+
     mat-card {
       background: #eaf1f8;
       box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
@@ -63,19 +64,23 @@ import {Resume} from '../../core/models/resume';
       margin-left: 2.5%;
       margin-top: 3.7%;
     }
+
     mat-icon {
       padding-top: 1.3%;
       font-size: 35px;
     }
+
     .username {
       color: #767270;
       font-size: 35px;
       text-transform: uppercase;
     }
+
     .education-card {
       margin-top: 5% !important;
       margin-left: 15%;
     }
+
     .container {
       padding-bottom: 5%;
       border-bottom: 1px solid #767270;
@@ -83,7 +88,7 @@ import {Resume} from '../../core/models/resume';
   `]
 })
 export class SingleResumeComponent implements OnInit {
-  resume: Resume = null;
+  resume: Resume;
   isAlive = true;
   loading = false;
 
