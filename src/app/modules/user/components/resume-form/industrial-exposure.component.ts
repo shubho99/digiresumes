@@ -13,8 +13,8 @@ import {IndustrialExposureFormComponent} from '../../dialogues/resume-form/indus
   selector: 'app-industrial-exposure',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-industrial-exposure-card *ngFor="let industrialExposure of industrialExposures" [resumeId]="resumeId"
-                                   [industrial_exposure]="industrialExposure"></app-industrial-exposure-card>
+      <app-industrial-exposure-form-card *ngFor="let industrialExposure of industrialExposures" [resumeId]="resumeId"
+                                   [industrial_exposure]="industrialExposure"></app-industrial-exposure-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add IndustrialExposure</button>
     </div>
 

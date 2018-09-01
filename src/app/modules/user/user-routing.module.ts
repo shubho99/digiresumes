@@ -13,19 +13,21 @@ import {OnboardingCompletedGuard} from '../core/guards/onboarding-completed-guar
 import {SingleResumeComponent} from './containers/single-resume.component';
 import {ResumeFormComponent} from './containers/resume-form.component';
 import {UploadComponent} from './containers/upload.component';
+import {EditResumeGuard} from '../core/guards/edit-resume-guard';
 
 export const routes: Routes = [
   {
     path: '', component: EmailVerificationComponent, canActivate: [VerificationIncompletedGuard]
   },
+  {path: 'view/resume/:id', component: SingleResumeComponent},
   {
     path: '', component: UserDashboardComponent, canActivate: [VerificationCompletedGuard, OnboardingCompletedGuard],
     children: [{
       path: 'resumes', component: ResumesComponent
     }, {path: 'settings', component: SettingsComponent},
-      {path: 'preview/resume/:id', component: SingleResumeComponent},
-      {path: 'edit/resume/:id', component: ResumeFormComponent},
-      {path: 'edit/profile/:id', component: UploadComponent},
+      {path: 'preview/resume/:id', component: SingleResumeComponent, canActivate: [EditResumeGuard]},
+      {path: 'edit/resume/:id', component: ResumeFormComponent, canActivate: [EditResumeGuard]},
+      {path: 'edit/profile/:id', component: UploadComponent, canActivate: [EditResumeGuard]},
     ]
   },
   {

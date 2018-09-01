@@ -7,8 +7,8 @@ import {ReferenceFormComponent} from '../../dialogues/resume-form/reference-form
   selector: 'app-reference',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-reference-card *ngFor="let reference of references" [resumeId]="resumeId"
-                                 [reference]="reference"  ></app-reference-card>
+      <app-reference-form-card *ngFor="let reference of references" [resumeId]="resumeId"
+                                 [reference]="reference"  ></app-reference-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Reference</button>
     </div>
   `,

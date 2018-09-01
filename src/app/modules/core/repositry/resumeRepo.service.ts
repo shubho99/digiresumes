@@ -60,8 +60,15 @@ export class ResumeRepoService {
     return [resumes$, loading$];
   }
 
-  getResume(id: string): Observable<Resume> {
-    return this.store.select(state => getResume(state, id));
+  getResume(id: string, force = false): Observable<Resume> {
+    if (force) {
+      return this.resumeService.getResume(id).map(res => {
+        return res;
+      });
+    }
+    return this.store.select(state => getResume(state, id)).map(res => {
+      return res;
+    });
   }
 
   deleteResume(id: string): Observable<Resume> {

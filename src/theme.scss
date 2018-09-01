@@ -1,5 +1,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/theming';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import "~ngx-sharebuttons/styles/share-buttons";
+@import "~ngx-sharebuttons/styles/themes/default/default-theme";
+
 @include mat-core();
 
 $mmb-primary: (

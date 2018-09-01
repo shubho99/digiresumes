@@ -8,8 +8,8 @@ import {StrengthFormComponent} from '../../dialogues/resume-form/strength-form.c
   selector: 'app-strength',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-strength-card *ngFor="let strength of strengths" [resumeId]="resumeId"
-                         [strength]="strength"></app-strength-card>
+      <app-strength-form-card *ngFor="let strength of strengths" [resumeId]="resumeId"
+                         [strength]="strength"></app-strength-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Strength</button>
     </div>
 

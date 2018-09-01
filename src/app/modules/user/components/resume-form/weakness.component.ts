@@ -7,8 +7,8 @@ import {WeaknessFormComponent} from '../../dialogues/resume-form/weakness-form.c
   selector: 'app-weakness',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-weakness-card *ngFor="let weakness of weaknesses" [resumeId]="resumeId"
-                         [weakness]="weakness"></app-weakness-card>
+      <app-weakness-form-card *ngFor="let weakness of weaknesses" [resumeId]="resumeId"
+                         [weakness]="weakness"></app-weakness-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Weakness</button>
     </div>
 

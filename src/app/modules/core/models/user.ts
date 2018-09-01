@@ -4,5 +4,6 @@ export interface User {
   onboarding: string;
   verified: string;
   code: string;
+  _id: string;
 }
 

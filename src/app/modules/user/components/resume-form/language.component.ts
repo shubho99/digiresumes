@@ -7,8 +7,8 @@ import {LanguagesFormComponent} from '../../dialogues/resume-form/languages-form
   selector: 'app-language',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-language-card *ngFor="let language of languages" [resumeId]="resumeId"
-                                   [language]="language"></app-language-card>
+      <app-language-form-card *ngFor="let language of languages" [resumeId]="resumeId"
+                                   [language]="language"></app-language-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Language</button>
     </div>
 
