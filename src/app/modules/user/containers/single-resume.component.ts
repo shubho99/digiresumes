@@ -7,7 +7,7 @@ import {AuthService} from '../../core/services/auth.service';
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div fxLayout="row" *ngIf="this.resume">
+    <div fxLayout="row" *ngIf="this.resume" >
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
@@ -20,7 +20,7 @@ import {AuthService} from '../../core/services/auth.service';
           <ng-container *ngTemplateOutlet="weaknessTemplate"></ng-container>
         </div>
       </mat-card>
-      <div fxLayout="column">
+      <div fxLayout="column" style="width: 100%">
         <iframe *ngIf="this.resume.video_url" width="100%" height="100%" frameborder="0" allowfullscreen="true"
                 [src]="this.resume.video_url | safeUrl"></iframe>
         <ng-container *ngTemplateOutlet="educationTemplate"></ng-container>
@@ -285,8 +285,8 @@ import {AuthService} from '../../core/services/auth.service';
 
     iframe {
       width: 81%;
-      height: 15%;
-      margin-top: 4%;
+      height: 29%;
+      margin-top: 4.5%;
       margin-left: 2%;
     }
 
