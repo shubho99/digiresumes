@@ -11,8 +11,8 @@ import {ObjectivesFormComponent} from '../../dialogues/resume-form/objectives-fo
   selector: 'app-objective',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-objective-card *ngFor="let objective of objectives" [resumeId]="resumeId"
-                          [objective]="objective"></app-objective-card>
+      <app-objective-form-card *ngFor="let objective of objectives" [resumeId]="resumeId"
+                          [objective]="objective"></app-objective-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Objective</button>
     </div>
 

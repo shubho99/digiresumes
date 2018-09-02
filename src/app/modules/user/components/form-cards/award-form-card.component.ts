@@ -1,27 +1,18 @@
 import {Component, Input} from '@angular/core';
-import {Skill} from '../../../core/models/skill';
 import {MatDialog} from '@angular/material';
-import {SkillFormComponent} from '../../dialogues/resume-form/skill-form.component';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {AlertService} from '../../../core/services/alert.service';
-import {Education} from '../../../core/models/education';
-import {EducationFormComponent} from '../../dialogues/resume-form/education-form.component';
-import {Objective} from '../../../core/models/objective';
-import {ObjectivesFormComponent} from '../../dialogues/resume-form/objectives-form.component';
-import {Refrence} from '../../../core/models/refrence';
-import {ReferenceFormComponent} from '../../dialogues/resume-form/reference-form.component';
+import {AwardsAchivement} from '../../../core/models/awards-achivement';
+import {AwardsFormComponent} from '../../dialogues/resume-form/awards-form.component';
 
 @Component({
-  selector: 'app-reference-card',
+  selector: 'app-award-form-card',
   template: `
-    <div fxLayoutAlign="center center" fxLayout="column">
+    <div style="height: 60px" fxLayoutAlign="center center" fxLayout="column">
       <ng-container>
         <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
           <ng-container>
-            <h3>{{reference.name}}</h3>
-            <h3>{{reference.email}}</h3>
-            <p>{{reference.phone}}</p>
-            <p>{{reference.relationship}}</p>
+            <h3>{{award.awards_and_achivements}}</h3>
           </ng-container>
           <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
             <div class="overlay">
@@ -48,8 +39,8 @@ import {ReferenceFormComponent} from '../../dialogues/resume-form/reference-form
     }
   `]
 })
-export class ReferenceCardComponent {
-  @Input() reference: Refrence;
+export class AwardFormCardComponent {
+  @Input() award: AwardsAchivement;
   @Input() resumeId: string;
   loading = false;
 
@@ -57,18 +48,18 @@ export class ReferenceCardComponent {
   }
 
   edit() {
-    const dialogRef = this.dialog.open(ReferenceFormComponent, {
+    const dialogRef = this.dialog.open(AwardsFormComponent, {
       disableClose: true,
-      data: {reference: this.reference, resume_id: this.resumeId}
+      data: {award: this.award, resume_id: this.resumeId}
     });
     dialogRef.updateSize('90%', '90%');
   }
 
   delete() {
     this.loading = true;
-    this.resumeRepo.deleteReference(this.resumeId, this.reference._id).subscribe((res) => {
+    this.resumeRepo.deleteAward(this.resumeId, this.award._id).subscribe((res) => {
       this.loading = false;
-      this.alert.success('Refrence deleted Successfully');
+      this.alert.success('Award Achievement deleted Successfully');
     });
   }
 }

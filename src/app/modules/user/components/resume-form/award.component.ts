@@ -11,7 +11,7 @@ import {AwardsFormComponent} from '../../dialogues/resume-form/awards-form.compo
   selector: 'app-award',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-award-card *ngFor="let award of awards" [resumeId]="resumeId" [award]="award"></app-award-card>
+      <app-award-form-card *ngFor="let award of awards" [resumeId]="resumeId" [award]="award"></app-award-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Award And Achievement</button>
     </div>
   `,

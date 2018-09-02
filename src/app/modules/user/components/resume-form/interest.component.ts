@@ -7,8 +7,8 @@ import {InterestFormComponent} from '../../dialogues/resume-form/interest-form.c
   selector: 'app-interest',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-interest-card *ngFor="let interest of interests" [resumeId]="resumeId"
-                                   [interest]="interest"></app-interest-card>
+      <app-interest-form-card *ngFor="let interest of interests" [resumeId]="resumeId"
+                                   [interest]="interest"></app-interest-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Interest</button>
     </div>
 

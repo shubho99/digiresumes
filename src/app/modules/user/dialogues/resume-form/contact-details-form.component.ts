@@ -23,6 +23,12 @@ import {AlertService} from '../../../core/services/alert.service';
           <input formControlName="email" matInput placeholder="Email"/>
         </mat-form-field>
         <mat-form-field>
+          <input formControlName="linkedin_url" matInput placeholder="Linked in url(optional)"/>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="website_url" matInput placeholder="Website url(optional)"/>
+        </mat-form-field>
+        <mat-form-field>
           <textarea formControlName="address" matInput rows="5" placeholder="Address"></textarea>
         </mat-form-field>
         <mat-form-field>
@@ -80,6 +86,8 @@ export class ContactDetailsFormComponent implements OnInit {
     const zipCode = this.contactDetails ? this.contactDetails.zip_code : null;
     const country = this.contactDetails ? this.contactDetails.country : null;
     const summary = this.contactDetails ? this.contactDetails.summary : null;
+    const linkedInUrl = this.contactDetails ? this.contactDetails.linkedin_url : null;
+    const website_url = this.contactDetails ? this.contactDetails.website_url : null;
     this.form = new FormGroup({
       'first_name': new FormControl(firstName, [Validators.required]),
       'last_name': new FormControl(lastName, [Validators.required]),
@@ -91,6 +99,8 @@ export class ContactDetailsFormComponent implements OnInit {
       'zip_code': new FormControl(zipCode, [Validators.required]),
       'country': new FormControl(country, [Validators.required]),
       'summary': new FormControl(summary, [Validators.required]),
+      'linkedin_url': new FormControl(linkedInUrl),
+      'website_url': new FormControl(website_url)
     });
   }
 

@@ -1,6 +1,7 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {Injectable} from '@angular/core';
+import {AuthService} from '../services/auth.service';
 
 @Injectable()
 export class AnonGuard implements CanActivate {
@@ -8,7 +9,7 @@ export class AnonGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const isLoggedIn = !!localStorage.getItem('auth_token');
+    const isLoggedIn = AuthService.getAuthToken();
 
     if (!isLoggedIn) {
       return true;

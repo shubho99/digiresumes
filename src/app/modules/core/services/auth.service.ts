@@ -20,6 +20,10 @@ export class AuthService {
     localStorage.setItem(AUTH_TOKEN, token);
   }
 
+  static getAuthToken() {
+    return localStorage.getItem(AUTH_TOKEN);
+  }
+
   signUp(data: { email: string, password: string, name: string, confirm_password: string }): Observable<User> {
     return this.apiService.post(ApiRoute.USER + '/signup', data).map(res => <User>res);
   }
@@ -40,7 +44,7 @@ export class AuthService {
     return this.apiService.patch(ApiRoute.USER + '/update/password', data).map(res => <User>res);
   }
 
-  updateOnboarding(data: {onboarding: number}): Observable<User> {
+  updateOnboarding(data: { onboarding: number }): Observable<User> {
     return this.apiService.patch(ApiRoute.USER + '/update/onboarding', data).map(res => <User>res);
   }
 

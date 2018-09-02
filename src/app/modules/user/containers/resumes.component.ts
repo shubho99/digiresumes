@@ -29,7 +29,7 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      width: 150%;
+      width: 1000px;
       place-content: center;
       align-items: center;
     }

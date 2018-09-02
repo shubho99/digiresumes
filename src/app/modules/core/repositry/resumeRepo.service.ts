@@ -60,8 +60,15 @@ export class ResumeRepoService {
     return [resumes$, loading$];
   }
 
-  getResume(id: string): Observable<Resume> {
-    return this.store.select(state => getResume(state, id));
+  getResume(id: string, force = false): Observable<Resume> {
+    if (force) {
+      return this.resumeService.getResume(id).map(res => {
+        return res;
+      });
+    }
+    return this.store.select(state => getResume(state, id)).filter(res => !!res).map(res => {
+      return res;
+    });
   }
 
   deleteResume(id: string): Observable<Resume> {
@@ -93,7 +100,7 @@ export class ResumeRepoService {
   addContactDetails(data: {
     first_name: string, last_name: string,
     phone_number: number, email: string, address: string, city: string, state: string,
-    zip_code: number, country: string, summary: string
+    zip_code: number, country: string, summary: string; linkedin_url?: string; website_url?: string
   }, resume_id) {
     return this.resumeService.addContactDetails(data, resume_id).map((res) => {
       this.store.dispatch(new AddContactDetailAction({contact: res, resume_id: resume_id}));
@@ -104,7 +111,7 @@ export class ResumeRepoService {
   updateContactDetails(data: {
     first_name: string, last_name: string,
     phone_number: number, email: string, address: string, city: string, state: string,
-    zip_code: number, country: string, summary: string
+    zip_code: number, country: string, summary: string; linkedin_url?: string; website_url?: string
   }, contactDetailId: string, resume_id: string) {
     return this.resumeService.updateContactDetails(data, contactDetailId).map((res) => {
       this.store.dispatch(new UpdateContactDetailAction({contact: res, resume_id: resume_id}));
@@ -371,7 +378,6 @@ export class ResumeRepoService {
   }
 
   deleteWeakness(resumeId: string, weaknessId: string) {
-    console.log(resumeId, weaknessId);
     return this.resumeService.deleteWeakness(weaknessId).map((res) => {
       this.store.dispatch(new DeleteWeaknessAction({weakness: res, resume_id: resumeId}));
       return res;
@@ -387,6 +393,7 @@ export class ResumeRepoService {
 
   addOrUpdateImage(img: File, resumeId: string): Observable<Resume> {
     return this.resumeService.addOrUpdateImage(img, resumeId).map((res) => {
+      console.log(res);
       this.store.dispatch(new UpdateResumeAction(res));
       return res;
     });
@@ -394,6 +401,13 @@ export class ResumeRepoService {
 
   deleteImage(data: { image_url: string }, resumeId: string): Observable<Resume> {
     return this.resumeService.deleteImage(data, resumeId).map((res) => {
+      this.store.dispatch(new UpdateResumeAction(res));
+      return res;
+    });
+  }
+
+  updateViews(data: { views: number }, resumeId: string): Observable<Resume> {
+    return this.resumeService.updateViews(data, resumeId).map((res) => {
       this.store.dispatch(new UpdateResumeAction(res));
       return res;
     });

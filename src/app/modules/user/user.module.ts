@@ -29,31 +29,31 @@ import {ReferenceFormComponent} from './dialogues/resume-form/reference-form.com
 import {ResumeRepoService} from '../core/repositry/resumeRepo.service';
 import {ContactDetailsComponent} from './components/resume-form/contact-details.component';
 import {SkillsComponent} from './components/resume-form/skills.component';
-import {SkillsCardComponent} from './components/cards/skills-card.component';
-import {EducationCardComponent} from './components/cards/education-card.component';
+import {SkillsFormCardComponent} from './components/form-cards/skills-form-card.component';
+import {EducationFormCardComponent} from './components/form-cards/education-form--card.component';
 import {EducationComponent} from './components/resume-form/education.component';
-import {EmploymentHistoryCardComponent} from './components/cards/employment-history-card.component';
+import {EmploymentHistoryFormCardComponent} from './components/form-cards/employment-history-form-card.component';
 import {EmploymentHistoryComponent} from './components/resume-form/employment-history.component';
-import {InterestCardComponent} from './components/cards/interest-card.component';
+import {InterestFormCardComponent} from './components/form-cards/interest-form-card.component';
 import {InterestComponent} from './components/resume-form/interest.component';
-import {LanguageCardComponent} from './components/cards/language-card.component';
+import {LanguageFormCardComponent} from './components/form-cards/language-form-card.component';
 import {LanguageComponent} from './components/resume-form/language.component';
-import {IndustrialExposureCardComponent} from './components/cards/industrial-exposure-card.component';
+import {IndustrialExposureFormCardComponent} from './components/form-cards/industrial-exposure-form-card.component';
 import {IndustrialExposureComponent} from './components/resume-form/industrial-exposure.component';
-import {AwardCardComponent} from './components/cards/award-card.component';
+import {AwardFormCardComponent} from './components/form-cards/award-form-card.component';
 import {AwardComponent} from './components/resume-form/award.component';
-import {ObjectiveCardComponent} from './components/cards/objective-card.component';
+import {ObjectiveFormCardComponent} from './components/form-cards/objective-form-card.component';
 import {ObjectiveComponent} from './components/resume-form/objective.component';
-import {ReferenceCardComponent} from './components/cards/reference-card.component';
+import {ReferenceFormCardComponent} from './components/form-cards/reference-form-card.component';
 import {ReferenceComponent} from './components/resume-form/reference.component';
 import {UserHeaderComponent} from './containers/user-header.component';
-import {ProjectDetailCardComponent} from './components/cards/project-detail-card.component';
+import {ProjectDetailFormCardComponent} from './components/form-cards/project-detail-form-card.component';
 import {ProjectDetailsComponent} from './components/resume-form/project-details.component';
 import {ProjectDetailFormComponent} from './dialogues/resume-form/project-detail-form.component';
-import {StrengthCardComponent} from './components/cards/strength-card.component';
+import {StrengthFormCardComponent} from './components/form-cards/strength-form-card.component';
 import {StrengthComponent} from './components/resume-form/strength.component';
 import {StrengthFormComponent} from './dialogues/resume-form/strength-form.component';
-import {WeaknessCardComponent} from './components/cards/weakness-card.component';
+import {WeaknessFormCardComponent} from './components/form-cards/weakness-form-card.component';
 import {WeaknessComponent} from './components/resume-form/weakness.component';
 import {WeaknessFormComponent} from './dialogues/resume-form/weakness-form.component';
 import {ResumesComponent} from './containers/resumes.component';
@@ -61,14 +61,29 @@ import {SettingsComponent} from './containers/settings.component';
 import {VerificationIncompletedGuard} from '../core/guards/verification-incompleted-guard';
 import {OnboardingCompletedGuard} from '../core/guards/onboarding-completed-guard';
 import {ResumeCardComponent} from './components/cards/resume-card.component';
-import { FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack';
+import {FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack';
 import {ResumeEditComponent} from './dialogues/resume-edit.component';
 import {ProfileSettingsComponent} from './containers/profile-settings.component';
 import {PasswordSettingComponent} from './containers/password-setting.component';
 import {SingleResumeComponent} from './containers/single-resume.component';
 import {YoutubeUploadComponent} from './components/upload/youtube-upload.component';
 import {YoutubeService} from '../core/services/youtube.service';
-import {SafeUrlPipe} from '../../pipes/safeUrl';
+import {ContactDetailCardComponent} from './components/cards/contact-detail-card.component';
+import {SkillCardComponent} from './components/cards/skill-card.component';
+import {LanguageCardComponent} from './components/cards/language-card.component';
+import {StrengthCardComponent} from './components/cards/strength-card.component';
+import {WeaknessCardComponent} from './components/cards/weakness-card.component';
+import {EducationCardComponent} from './components/cards/education-card.component';
+import {EmploymentHistoryCardComponent} from './components/cards/employment-history-card.component';
+import {InterestCardComponent} from './components/cards/interest-card.component';
+import {IndustrialExposureCardComponent} from './components/cards/industrial-exposure.-card.component';
+import {AwardCardComponent} from './components/cards/award-card.component';
+import {ObjectiveCardComponent} from './components/cards/objective-card.component';
+import {RefrenceCardComponent} from './components/cards/refrence-card.component';
+import {ProjectDetailCardComponent} from './components/cards/project-detail-card.component';
+import {EditResumeGuard} from '../core/guards/edit-resume-guard';
+import {ShareComponent} from './dialogues/share.component';
+import {ResumeButtonsComponent} from './components/resume-buttons.component';
 
 @NgModule({
   declarations: [
@@ -95,30 +110,30 @@ import {SafeUrlPipe} from '../../pipes/safeUrl';
     ReferenceFormComponent,
     ContactDetailsComponent,
     SkillsComponent,
-    SkillsCardComponent,
-    EducationCardComponent,
+    SkillsFormCardComponent,
+    EducationFormCardComponent,
     EducationComponent,
-    EmploymentHistoryCardComponent,
+    EmploymentHistoryFormCardComponent,
     EmploymentHistoryComponent,
-    InterestCardComponent,
+    InterestFormCardComponent,
     InterestComponent,
-    LanguageCardComponent,
+    LanguageFormCardComponent,
     LanguageComponent,
-    IndustrialExposureCardComponent,
+    IndustrialExposureFormCardComponent,
     IndustrialExposureComponent,
-    AwardCardComponent,
+    AwardFormCardComponent,
     AwardComponent,
-    ObjectiveCardComponent,
+    ObjectiveFormCardComponent,
     ObjectiveComponent,
-    ReferenceCardComponent,
+    ReferenceFormCardComponent,
     ReferenceComponent,
-    ProjectDetailCardComponent,
+    ProjectDetailFormCardComponent,
     ProjectDetailsComponent,
     ProjectDetailFormComponent,
-    StrengthCardComponent,
+    StrengthFormCardComponent,
     StrengthComponent,
     StrengthFormComponent,
-    WeaknessCardComponent,
+    WeaknessFormCardComponent,
     WeaknessComponent,
     WeaknessFormComponent,
     ResumesComponent,
@@ -130,6 +145,21 @@ import {SafeUrlPipe} from '../../pipes/safeUrl';
     PasswordSettingComponent,
     SingleResumeComponent,
     YoutubeUploadComponent,
+    ContactDetailCardComponent,
+    SkillCardComponent,
+    LanguageCardComponent,
+    StrengthCardComponent,
+    WeaknessCardComponent,
+    EducationCardComponent,
+    EmploymentHistoryCardComponent,
+    InterestCardComponent,
+    IndustrialExposureCardComponent,
+    AwardCardComponent,
+    ObjectiveCardComponent,
+    RefrenceCardComponent,
+    ProjectDetailCardComponent,
+    ShareComponent,
+    ResumeButtonsComponent
   ],
   imports: [
     SharedModule,
@@ -151,7 +181,8 @@ import {SafeUrlPipe} from '../../pipes/safeUrl';
     StrengthFormComponent,
     WeaknessFormComponent,
     ResumeEditComponent,
-    YoutubeUploadComponent
+    YoutubeUploadComponent,
+    ShareComponent
   ],
   providers: [
     ResumeService,
@@ -160,7 +191,8 @@ import {SafeUrlPipe} from '../../pipes/safeUrl';
     ResumeRepoService,
     VerificationIncompletedGuard,
     OnboardingCompletedGuard,
-    YoutubeService
+    YoutubeService,
+    EditResumeGuard,
   ]
 })
 export class UserModule {

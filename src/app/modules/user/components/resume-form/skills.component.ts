@@ -7,7 +7,7 @@ import {MatDialog} from '@angular/material';
   selector: 'app-skills',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-skill-card *ngFor="let skill of skills" [resumeId]="resumeId" [skill]="skill"></app-skill-card>
+      <app-skill-form-card *ngFor="let skill of skills" [resumeId]="resumeId" [skill]="skill"></app-skill-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Skill</button>
     </div>
 

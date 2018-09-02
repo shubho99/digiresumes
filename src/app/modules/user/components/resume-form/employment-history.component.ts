@@ -11,8 +11,8 @@ import {EmploymentHistoryFormComponent} from '../../dialogues/resume-form/employ
   selector: 'app-employment-history',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-employment-history-card *ngFor="let employmentHistory of employmentHistories" [resumeId]="resumeId"
-                                   [employmentHistory]="employmentHistory"></app-employment-history-card>
+      <app-employment-history-form-card *ngFor="let employmentHistory of employmentHistories" [resumeId]="resumeId"
+                                        [employmentHistory]="employmentHistory"></app-employment-history-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Employment History</button>
     </div>
 

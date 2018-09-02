@@ -6,6 +6,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SafeUrlPipe} from '../../pipes/safeUrl';
 import {FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack';
+import {ClipboardModule, ClipboardService} from 'ngx-clipboard';
+import {ShareButtonsModule} from 'ngx-sharebuttons';
 
 @NgModule({
   imports: [
@@ -15,6 +17,8 @@ import {FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    ClipboardModule,
+    ShareButtonsModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -23,11 +27,15 @@ import {FlexAlignmentHackDirective} from '../core/directives/flex-alignment-hack
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    SafeUrlPipe
+    SafeUrlPipe,
+    ClipboardModule,
+    ShareButtonsModule
   ],
   declarations: [
-    SafeUrlPipe
+    SafeUrlPipe,
   ],
+  providers: [
+  ]
 })
 
 export class SharedModule {

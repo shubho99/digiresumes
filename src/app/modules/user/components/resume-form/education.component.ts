@@ -9,7 +9,8 @@ import {EducationFormComponent} from '../../dialogues/resume-form/education-form
   selector: 'app-education',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-education-card *ngFor="let education of educations" [resumeId]="resumeId" [education]="education" ></app-education-card>
+      <app-education-form-card *ngFor="let education of educations" [resumeId]="resumeId" 
+                               [education]="education" ></app-education-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Education</button>
     </div>
 

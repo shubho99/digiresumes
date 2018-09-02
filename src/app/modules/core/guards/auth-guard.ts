@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Injectable} from '@angular/core';
 import {ResumeRepoService} from '../repositry/resumeRepo.service';
 import {AuthRepoService} from '../repositry/authRepo.service';
+import {AuthService} from '../services/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivateChild {
@@ -11,9 +12,16 @@ export class AuthGuard implements CanActivateChild {
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const isLoggedIn = !!localStorage.getItem('auth_token');
+    const isLoggedIn = AuthService.getAuthToken();
 
-    if (!isLoggedIn) {
+    if (state.url.split('/')[2] === 'view' && !isLoggedIn) {
+      const resumeId = state.url.split('/')[4];
+      const resume = this.resumeRepo.getResume(resumeId, true);
+      return resume.filter((res) => !!res).map((data) => {
+        return true;
+      });
+    } else if (!isLoggedIn) {
+      this.router.navigate(['']);
       return false;
     }
     const user$ = this.authRepo.getMe();
@@ -25,7 +33,6 @@ export class AuthGuard implements CanActivateChild {
         return true;
       }
     });
-
   }
 
 }

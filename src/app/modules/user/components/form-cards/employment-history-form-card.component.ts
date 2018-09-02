@@ -1,25 +1,21 @@
 import {Component, Input} from '@angular/core';
-import {Skill} from '../../../core/models/skill';
 import {MatDialog} from '@angular/material';
-import {SkillFormComponent} from '../../dialogues/resume-form/skill-form.component';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {AlertService} from '../../../core/services/alert.service';
-import {Education} from '../../../core/models/education';
-import {EducationFormComponent} from '../../dialogues/resume-form/education-form.component';
-import {IndustrialExposure} from '../../../core/models/industrial-exposure';
-import {IndustrialExposureFormComponent} from '../../dialogues/resume-form/industrial-exposure-form.component';
+import {EmploymentHistory} from '../../../core/models/employment-history';
+import {EmploymentHistoryFormComponent} from '../../dialogues/resume-form/employment-history-form.component';
 
 @Component({
-  selector: 'app-industrial-exposure-card',
+  selector: 'app-employment-history-form-card',
   template: `
     <div fxLayoutAlign="center center" fxLayout="column">
       <ng-container>
         <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
           <ng-container>
-            <h3>{{industrial_exposure.work}}</h3>
-            <h3>{{industrial_exposure.organisation}}</h3>
-            <p>{{industrial_exposure.city}}</p>
-            <p>{{industrial_exposure.state}}</p>
+            <h3>{{employmentHistory.employer}}</h3>
+            <h3>{{employmentHistory.organisation}}</h3>
+            <p>{{employmentHistory.designation}}</p>
+            <p>{{employmentHistory.city}}</p>
           </ng-container>
           <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
             <div class="overlay">
@@ -46,8 +42,8 @@ import {IndustrialExposureFormComponent} from '../../dialogues/resume-form/indus
     }
   `]
 })
-export class IndustrialExposureCardComponent {
-  @Input() industrial_exposure: IndustrialExposure;
+export class EmploymentHistoryFormCardComponent {
+  @Input() employmentHistory: EmploymentHistory;
   @Input() resumeId: string;
   loading = false;
 
@@ -55,18 +51,18 @@ export class IndustrialExposureCardComponent {
   }
 
   edit() {
-    const dialogRef = this.dialog.open(IndustrialExposureFormComponent, {
+    const dialogRef = this.dialog.open(EmploymentHistoryFormComponent, {
       disableClose: true,
-      data: {industrial_exposure: this.industrial_exposure, resume_id: this.resumeId}
+      data: {employment_history: this.employmentHistory, resume_id: this.resumeId}
     });
     dialogRef.updateSize('90%', '90%');
   }
 
   delete() {
     this.loading = true;
-    this.resumeRepo.deleteIndustrialExposure(this.resumeId, this.industrial_exposure._id).subscribe((res) => {
+    this.resumeRepo.deleteEmploymentHistory(this.resumeId, this.employmentHistory._id).subscribe((res) => {
       this.loading = false;
-      this.alert.success('Industrial exposure deleted Successfully');
+      this.alert.success('Employment History deleted Successfully');
     });
   }
 }

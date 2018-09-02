@@ -11,8 +11,8 @@ import {ProjectDetailFormComponent} from '../../dialogues/resume-form/project-de
   selector: 'app-project-detail',
   template: `
     <div fxLayout="column" fxLayoutGap="40px">
-      <app-project-detail-card *ngFor="let projectDetail of projectDetails" [resumeId]="resumeId"
-                               [projectDetail]="projectDetail"></app-project-detail-card>
+      <app-project-detail-form-card *ngFor="let projectDetail of projectDetails" [resumeId]="resumeId"
+                               [projectDetail]="projectDetail"></app-project-detail-form-card>
       <button (click)="add()" mat-raised-button color="primary">Add Project Detail</button>
     </div>
 

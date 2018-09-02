@@ -5,6 +5,7 @@ import {AlertService} from '../../../core/services/alert.service';
 import {MatDialog} from '@angular/material';
 import {ResumeEditComponent} from '../../dialogues/resume-edit.component';
 import {Router} from '@angular/router';
+import {ShareComponent} from '../../dialogues/share.component';
 
 @Component({
   selector: 'app-resume-card',
@@ -14,7 +15,7 @@ import {Router} from '@angular/router';
       <span>{{resume.name}}</span>
       <div *ngIf="hover" class="hover" fxLayout="column" fxLayoutGap="60px">
         <div class="icons-div" fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="50px">
-          <button mat-icon-button>
+          <button (click)="share()" mat-icon-button>
             <mat-icon matTooltip="share">share</mat-icon>
           </button>
           <button (click)="preview()" mat-icon-button>
@@ -76,6 +77,7 @@ import {Router} from '@angular/router';
       width: 100%;
       opacity: 0;
     }
+
     .hover:hover {
       opacity: 0.9;
       transition: opacity .8s;
@@ -108,5 +110,10 @@ export class ResumeCardComponent {
 
   preview() {
     this.router.navigateByUrl('/user/preview/resume/' + this.resume._id);
+  }
+
+  share() {
+    const dialogRef = this.dialog.open(ShareComponent, {data: this.resume._id});
+    dialogRef.updateSize('70%', '30%');
   }
 }
