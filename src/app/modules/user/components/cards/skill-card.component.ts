@@ -10,7 +10,7 @@ import {Skill} from '../../../core/models/skill';
   styles: [`
    
     h4, p {
-      color: #767270;
+      color: whitesmoke;
     }
   `]
 })

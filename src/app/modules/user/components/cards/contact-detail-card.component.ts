@@ -18,20 +18,20 @@ import {ShareComponent} from '../../dialogues/share.component';
     </button>
     <app-resume-buttons [resumeId]="this.resumeId" *ngIf="!this.isView"></app-resume-buttons>
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 10%">
-      <mat-icon style="font-size: 25px">account_circle</mat-icon>
-      <p class="contact-summary container-1">{{contactDetails.summary}}</p>
+      <mat-icon style="font-size: 25px">account_circle</mat-icon>      
+      <p class="contact-summary container-1">{{contactDetails.summary}}</p>      
     </div>
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
       <mat-icon style="font-size: 25px">call</mat-icon>
       <p class="contact-summary">{{contactDetails.phone_number}}</p>
     </div>
     <div *ngIf="this.contactDetails.linkedin_url" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
-      <i class="fa fa-linkedin"></i>
-      <p (click)="openLinkedInUrl()" class="contact-summary"><u>{{contactDetails.linkedin_url}}</u></p>
+      <i style="font-size: 25px" class="fa fa-linkedin"></i>
+      <p (click)="openLinkedInUrl()" style="cursor: pointer;" class="contact-summary"><u>{{contactDetails.linkedin_url}}</u></p>
     </div>
     <div *ngIf="this.contactDetails.website_url" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
-      <i class="fa fa-link"></i>
-      <p (click)="openWebsiteUrl()" class="contact-summary"><u>{{contactDetails.website_url}}</u></p>
+      <i style="font-size: 25px" class="fa fa-link"></i>
+      <p (click)="openWebsiteUrl()" style="cursor: pointer;" class="contact-summary"><u>{{contactDetails.website_url}}</u></p>
     </div>
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
       <mat-icon style="font-size: 25px">email</mat-icon>
@@ -52,13 +52,13 @@ import {ShareComponent} from '../../dialogues/share.component';
     .profile-pic {
       background-color: transparent;
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: cover;
       background-position: center center;
-      margin-bottom: 11%;
+      margin-bottom: 10%;
       border: 3px solid white;
-      width: 50%;
-      height: 200px;
-      margin-left: 25%;
+      width: 75%;
+      height: 215px;
+      margin-left: 13%;
     }
 
     h2 {

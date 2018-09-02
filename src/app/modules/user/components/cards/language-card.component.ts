@@ -10,7 +10,8 @@ import {Language} from '../../../core/models/language';
   styles: [`
    
     h4, p {
-      color: #767270;
+      /*color: #767270;*/
+      color: whitesmoke;
     }
   `]
 })
