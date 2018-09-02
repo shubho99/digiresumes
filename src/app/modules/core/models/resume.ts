@@ -17,6 +17,7 @@ export interface Resume {
   user_id: string;
   image_url: string;
   video_url: string;
+  views: string;
   contact_details: Contact;
   education: Education[];
   employment_history: EmploymentHistory[];
@@ -37,6 +38,8 @@ export interface Contact {
   first_name: string;
   last_name: string;
   phone_number: number;
+  linkedin_url: string;
+  website_url: string;
   email: string;
   address: string;
   city: string;

@@ -11,7 +11,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
-          <app-contact-detail-card *ngIf="this.resume.contact_details !== null" [resumeId]="this.resume._id"
+          <app-contact-detail-card *ngIf="this.resume.contact_details" [resumeId]="this.resume._id"
                                    [isView]="this.isView" [contactDetails]="this.resume.contact_details" [img_url]="this.resume.image_url">
           </app-contact-detail-card>
           <ng-container *ngTemplateOutlet="skillTemplate"></ng-container>
@@ -21,7 +21,7 @@ import {AuthService} from '../../core/services/auth.service';
         </div>
       </mat-card>
       <div fxLayout="column">
-        <iframe width="100%" height="100%" frameborder="0" allowfullscreen="true"
+        <iframe *ngIf="this.resume.video_url" width="100%" height="100%" frameborder="0" allowfullscreen="true"
                 [src]="this.resume.video_url | safeUrl"></iframe>
         <ng-container *ngTemplateOutlet="educationTemplate"></ng-container>
         <ng-container *ngTemplateOutlet="employmentHistory"></ng-container>
@@ -33,12 +33,8 @@ import {AuthService} from '../../core/services/auth.service';
         <ng-container *ngTemplateOutlet="projectDetailTemplate"></ng-container>
       </div>
     </div>
-    <p *ngIf="!this.resume.contact_details || !this.resume.skills.length || 
- !this.resume.weakness.length || !this.resume.languages.length || !this.resume.strengths.length"
-       style="text-align: center; margin-top: 4%">Please Fill some
-      Details to see the Resume</p>
+    <ng-container *ngTemplateOutlet="buttonsTemplate"></ng-container>
     <ngx-loading [show]="loading"></ngx-loading>
-
     <ng-template #skillTemplate>
       <div *ngIf="this.resume.skills.length" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
         <mat-icon style="font-size: 25px">calendar_today</mat-icon>
@@ -236,6 +232,14 @@ import {AuthService} from '../../core/services/auth.service';
         </mat-card-content>
       </mat-card>
     </ng-template>
+    <ng-template #buttonsTemplate>
+      <div *ngIf="!this.resume.contact_details && !this.resume.skills.length &&
+ !this.resume.weakness.length && !this.resume.languages.length && !this.resume.strengths.length"
+           fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+        <p style="margin-top: 4%">Please fill some details to see your Resume</p>
+        <app-resume-buttons [resumeId]="this.resume._id"></app-resume-buttons>
+      </div>
+    </ng-template>
 
   `,
   styles: [`
@@ -330,5 +334,9 @@ export class SingleResumeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.isAlive = false;
+  }
+
+  updateViews() {
+    this.resumeRepo.updateViews({views: 3}, this.resume._id);
   }
 }

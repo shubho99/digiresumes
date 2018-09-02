@@ -4,7 +4,14 @@ import {Observable} from 'rxjs/Observable';
 import {User} from '../models/user';
 import {getLoggedIn, getLoggingIn, getUser, RootState} from '../../../reducers';
 import {Store} from '@ngrx/store';
-import {LoginRequestAction, LoginSuccessAction, LogoutAction, UserProfileSuccessAction, UserUpdateAction} from '../../../actions/user';
+import {
+  LoginRequestAction,
+  LoginSuccessAction,
+  LogoutAction,
+  UserProfileRequestAction,
+  UserProfileSuccessAction,
+  UserUpdateAction
+} from '../../../actions/user';
 
 
 @Injectable()
@@ -72,6 +79,7 @@ export class AuthRepoService {
     const user$ = this.store.select(getUser);
     logginIn$.combineLatest(loggedIn$, (logginIn, loggedIn) => logginIn || loggedIn).take(1)
       .filter(value => !value || force).subscribe(() => {
+        this.store.dispatch(new UserProfileRequestAction());
       this.authService.fetchUser().subscribe((res) => {
         this.store.dispatch(new UserProfileSuccessAction(res));
       });

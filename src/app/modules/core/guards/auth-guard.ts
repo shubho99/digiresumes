@@ -21,6 +21,7 @@ export class AuthGuard implements CanActivateChild {
         return true;
       });
     } else if (!isLoggedIn) {
+      this.router.navigate(['']);
       return false;
     }
     const user$ = this.authRepo.getMe();

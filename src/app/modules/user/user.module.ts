@@ -83,6 +83,7 @@ import {RefrenceCardComponent} from './components/cards/refrence-card.component'
 import {ProjectDetailCardComponent} from './components/cards/project-detail-card.component';
 import {EditResumeGuard} from '../core/guards/edit-resume-guard';
 import {ShareComponent} from './dialogues/share.component';
+import {ResumeButtonsComponent} from './components/resume-buttons.component';
 
 @NgModule({
   declarations: [
@@ -157,7 +158,8 @@ import {ShareComponent} from './dialogues/share.component';
     ObjectiveCardComponent,
     RefrenceCardComponent,
     ProjectDetailCardComponent,
-    ShareComponent
+    ShareComponent,
+    ResumeButtonsComponent
   ],
   imports: [
     SharedModule,

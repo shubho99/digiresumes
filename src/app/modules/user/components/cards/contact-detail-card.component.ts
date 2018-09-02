@@ -16,19 +16,7 @@ import {ShareComponent} from '../../dialogues/share.component';
             color="primary" mat-raised-button>Build
       Your Resume For free
     </button>
-    <div *ngIf="!this.isView" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center start">
-      <button (click)="editResume()" mat-mini-fab>
-        <mat-icon style="font-size: 25px" matTooltip="edit-resume">assignment</mat-icon>
-      </button>
-      <button (click)="editProfile()" mat-mini-fab>
-        <mat-icon style="font-size: 25px" matTooltip="edit-profile video or picture">
-          videocam
-        </mat-icon>
-      </button>
-      <button (click)="share()" mat-mini-fab>
-        <mat-icon style="font-size: 25px" matTooltip="share">share</mat-icon>
-      </button>
-    </div>
+    <app-resume-buttons [resumeId]="this.resumeId" *ngIf="!this.isView"></app-resume-buttons>
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 10%">
       <mat-icon style="font-size: 25px">account_circle</mat-icon>
       <p class="contact-summary container-1">{{contactDetails.summary}}</p>
@@ -36,6 +24,14 @@ import {ShareComponent} from '../../dialogues/share.component';
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
       <mat-icon style="font-size: 25px">call</mat-icon>
       <p class="contact-summary">{{contactDetails.phone_number}}</p>
+    </div>
+    <div *ngIf="this.contactDetails.linkedin_url" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
+      <i class="fa fa-linkedin"></i>
+      <p (click)="openLinkedInUrl()" class="contact-summary"><u>{{contactDetails.linkedin_url}}</u></p>
+    </div>
+    <div *ngIf="this.contactDetails.website_url" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
+      <i class="fa fa-link"></i>
+      <p (click)="openWebsiteUrl()" class="contact-summary"><u>{{contactDetails.website_url}}</u></p>
     </div>
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
       <mat-icon style="font-size: 25px">email</mat-icon>
@@ -60,9 +56,9 @@ import {ShareComponent} from '../../dialogues/share.component';
       background-position: center center;
       margin-bottom: 11%;
       border: 3px solid white;
-      width: 64%;
+      width: 50%;
       height: 200px;
-      margin-left: 19%;
+      margin-left: 25%;
     }
 
     h2 {
@@ -109,6 +105,14 @@ export class ContactDetailCardComponent implements AfterContentInit {
   share() {
     const dialogRef = this.dialog.open(ShareComponent, {data: this.resumeId});
     dialogRef.updateSize('70%', '30%');
+  }
+
+  openLinkedInUrl() {
+    window.open(this.contactDetails.linkedin_url, '_blank');
+  }
+
+  openWebsiteUrl() {
+    window.open(this.contactDetails.website_url, '_blank');
   }
 
 }
