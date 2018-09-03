@@ -180,7 +180,7 @@ export class ResumeService {
   }
 
   updateViews(data: { views: number }, resumeId: string): Observable<Resume> {
-    return this.apiService.patch(ApiRoute.RESUME + '/update/resume/views/' + resumeId, data).map((res) => {
+    return this.apiService.patch(ApiRoute.USER + '/update/resume/views/' + resumeId, data).map((res) => {
       return <Resume>res;
     });
   }

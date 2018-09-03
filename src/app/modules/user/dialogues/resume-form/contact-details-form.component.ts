@@ -47,11 +47,11 @@ import {AlertService} from '../../../core/services/alert.service';
           <textarea formControlName="summary" matInput rows="5" placeholder="Summary"></textarea>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
-          <button type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
+          <button [disabled]="this.form.invalid" type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
             <span *ngIf="contactDetails">Update</span>
             <span *ngIf="!contactDetails">Add</span>
           </button>
-          <button [disabled]="this.form.invalid" type="button" (click)="cancel()"
+          <button  type="button" (click)="cancel()"
                   style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="accent">Cancel
           </button>
         </div>
@@ -69,7 +69,7 @@ export class ContactDetailsFormComponent implements OnInit {
   resume_id: string;
   loading = false;
   webValid = '^(?:http(s)?:\\/\\/)?[\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\._~:/?#[\\]@!\\$&\'\\(\\)\\*\\+,;=.]+$';
-  linkedInValid = '^https:\\\\/\\\\/[a-z]{2,3}\\\\.linkedin\\\\.com\\\\/.*$';
+  mobValid = '^\\+[1-9]{1}[0-9]{3,14}$';
 
   constructor(public dialog: MatDialogRef<ContactDetailsFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService,
@@ -94,7 +94,7 @@ export class ContactDetailsFormComponent implements OnInit {
     this.form = new FormGroup({
       'first_name': new FormControl(firstName, [Validators.required]),
       'last_name': new FormControl(lastName, [Validators.required]),
-      'phone_number': new FormControl(phoneNumber, [Validators.required]),
+      'phone_number': new FormControl(phoneNumber, [Validators.required, Validators.pattern(this.mobValid)]),
       'email': new FormControl(email, [Validators.required]),
       'address': new FormControl(address, [Validators.required]),
       'city': new FormControl(city, [Validators.required]),
@@ -102,7 +102,7 @@ export class ContactDetailsFormComponent implements OnInit {
       'zip_code': new FormControl(zipCode, [Validators.required]),
       'country': new FormControl(country, [Validators.required]),
       'summary': new FormControl(summary, [Validators.required]),
-      'linkedin_url': new FormControl(linkedInUrl, [Validators.pattern(this.linkedInValid)]),
+      'linkedin_url': new FormControl(linkedInUrl, [Validators.pattern(this.webValid)]),
       'website_url': new FormControl(website_url, [Validators.pattern(this.webValid)])
     });
   }

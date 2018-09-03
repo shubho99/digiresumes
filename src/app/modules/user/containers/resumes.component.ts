@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, NgZone, OnDestroy} from '@angular/core';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
 import {MatDialog} from '@angular/material';
