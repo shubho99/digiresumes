@@ -21,6 +21,13 @@ import {ShareComponent} from '../dialogues/share.component';
     </div>
   `,
   styles: [`
+    button {
+      background-color: #f1c232 !important;
+    }
+
+    mat-icon {
+      color: black !important;
+    }
   `]
 })
 export class ResumeButtonsComponent {

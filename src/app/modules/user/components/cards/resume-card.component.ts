@@ -16,19 +16,22 @@ import {ShareComponent} from '../../dialogues/share.component';
       <div *ngIf="hover" class="hover" fxLayout="column" fxLayoutGap="60px">
         <div class="icons-div" fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="50px">
           <button (click)="share()" mat-icon-button>
-            <mat-icon matTooltip="share">share</mat-icon>
+            <mat-icon class="icon" matTooltip="share">share</mat-icon>
           </button>
           <button (click)="preview()" mat-icon-button>
-            <mat-icon matTooltip="preview">visibility</mat-icon>
+            <mat-icon class="icon" matTooltip="preview">visibility</mat-icon>
           </button>
           <button (click)="delete()" mat-icon-button>
-            <mat-icon matTooltip="delete">delete</mat-icon>
+            <mat-icon class="icon" matTooltip="delete">delete</mat-icon>
           </button>
         </div>
         <div class="icons-div" fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="50px">
           <button (click)="edit()" matTooltip="edit Name" mat-icon-button>
-            <mat-icon>create</mat-icon>
+            <mat-icon class="icon">create</mat-icon>
           </button>
+            <button (click)="download()" matTooltip="download Resume" mat-icon-button>
+              <i class="fa fa-download icon" aria-hidden="true"></i>v
+            </button>
         </div>
       </div>
     </mat-card>
@@ -60,7 +63,7 @@ import {ShareComponent} from '../../dialogues/share.component';
       left: 1%;
     }
 
-    mat-icon {
+    .icon {
       color: white;
       font-size: 50px;
     }
@@ -115,5 +118,9 @@ export class ResumeCardComponent {
   share() {
     const dialogRef = this.dialog.open(ShareComponent, {data: this.resume._id});
     dialogRef.updateSize('70%', '30%');
+  }
+
+  download() {
+    this.router.navigateByUrl('/user/resume/template/' + this.resume._id);
   }
 }

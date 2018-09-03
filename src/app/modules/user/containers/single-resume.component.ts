@@ -7,7 +7,7 @@ import {AuthService} from '../../core/services/auth.service';
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div fxLayout="row" *ngIf="this.resume" >
+    <div class="alternate" fxLayout="row" *ngIf="this.resume" >
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
