@@ -51,7 +51,8 @@ import {AlertService} from '../../../core/services/alert.service';
             <span *ngIf="contactDetails">Update</span>
             <span *ngIf="!contactDetails">Add</span>
           </button>
-          <button type="button" (click)="cancel()" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="accent">Cancel
+          <button [disabled]="this.form.invalid" type="button" (click)="cancel()"
+                  style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="accent">Cancel
           </button>
         </div>
       </div>
@@ -67,6 +68,8 @@ export class ContactDetailsFormComponent implements OnInit {
   contactDetails: Contact;
   resume_id: string;
   loading = false;
+  webValid = '^(?:http(s)?:\\/\\/)?[\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\._~:/?#[\\]@!\\$&\'\\(\\)\\*\\+,;=.]+$';
+  linkedInValid = '^https:\\\\/\\\\/[a-z]{2,3}\\\\.linkedin\\\\.com\\\\/.*$';
 
   constructor(public dialog: MatDialogRef<ContactDetailsFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService,
@@ -99,8 +102,8 @@ export class ContactDetailsFormComponent implements OnInit {
       'zip_code': new FormControl(zipCode, [Validators.required]),
       'country': new FormControl(country, [Validators.required]),
       'summary': new FormControl(summary, [Validators.required]),
-      'linkedin_url': new FormControl(linkedInUrl),
-      'website_url': new FormControl(website_url)
+      'linkedin_url': new FormControl(linkedInUrl, [Validators.pattern(this.linkedInValid)]),
+      'website_url': new FormControl(website_url, [Validators.pattern(this.webValid)])
     });
   }
 

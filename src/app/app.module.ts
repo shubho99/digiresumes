@@ -28,7 +28,7 @@ import {ApiService} from './modules/core/services/api.service';
 import {AlertService} from './modules/core/services/alert.service';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreModule} from '@ngrx/store';
-import {reducers} from './reducers';
+import {reducerProvider, reducers, reducerToken} from './reducers';
 import {AuthRepoService} from './modules/core/repositry/authRepo.service';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LogoutComponent} from './containers/logout.component';
@@ -58,7 +58,7 @@ import {ResumeService} from './modules/core/services/resume.service';
     SharedModule,
     RouterModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducerToken),
     StoreDevtoolsModule.instrument({
       maxAge: 10
     }),
@@ -70,7 +70,6 @@ import {ResumeService} from './modules/core/services/resume.service';
       tertiaryColour: '#538ec3',
       fullScreenBackdrop: true
     }),
-    AnimateOnScrollModule.forRoot(),
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,

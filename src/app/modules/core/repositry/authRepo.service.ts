@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {User} from '../models/user';
 import {getLoggedIn, getLoggingIn, getUser, RootState} from '../../../reducers';
 import {Store} from '@ngrx/store';
+import 'rxjs/add/operator/combineLatest';
 import {
   LoginRequestAction,
   LoginSuccessAction,

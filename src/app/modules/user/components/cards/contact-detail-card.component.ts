@@ -8,7 +8,7 @@ import {ShareComponent} from '../../dialogues/share.component';
 @Component({
   selector: 'app-contact-detail-card',
   template: `
-    <button mat-fab class="profile-pic" [ngStyle]="{'background-image':'url('+this.url+')'}"></button>
+    <button (click)="onClick()" mat-fab class="profile-pic" [ngStyle]="{'background-image':'url('+this.url+')'}"></button>
     <h2 fxLayoutAlign="center start">
       {{contactDetails.first_name}} {{contactDetails.last_name}}
     </h2>
@@ -26,12 +26,12 @@ import {ShareComponent} from '../../dialogues/share.component';
       <p class="contact-summary">{{contactDetails.phone_number}}</p>
     </div>
     <div *ngIf="this.contactDetails.linkedin_url" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
-      <i class="fa fa-linkedin"></i>
-      <p (click)="openLinkedInUrl()" class="contact-summary"><u>{{contactDetails.linkedin_url}}</u></p>
+      <i style="font-size: 25px" class="fa fa-linkedin"></i>
+      <p (click)="openLinkedInUrl()" style="cursor: pointer;" class="contact-summary"><u>{{contactDetails.linkedin_url}}</u></p>
     </div>
     <div *ngIf="this.contactDetails.website_url" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
-      <i class="fa fa-link"></i>
-      <p (click)="openWebsiteUrl()" class="contact-summary"><u>{{contactDetails.website_url}}</u></p>
+      <i style="font-size: 25px" class="fa fa-link"></i>
+      <p (click)="openWebsiteUrl()" style="cursor: pointer;" class="contact-summary"><u>{{contactDetails.website_url}}</u></p>
     </div>
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
       <mat-icon style="font-size: 25px">email</mat-icon>
@@ -52,13 +52,13 @@ import {ShareComponent} from '../../dialogues/share.component';
     .profile-pic {
       background-color: transparent;
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: cover;
       background-position: center center;
-      margin-bottom: 11%;
+      margin-bottom: 10%;
       border: 3px solid white;
-      width: 50%;
-      height: 200px;
-      margin-left: 25%;
+      width: 75%;
+      height: 215px;
+      margin-left: 13%;
     }
 
     h2 {
@@ -113,6 +113,10 @@ export class ContactDetailCardComponent implements AfterContentInit {
 
   openWebsiteUrl() {
     window.open(this.contactDetails.website_url, '_blank');
+  }
+
+  onClick() {
+    this.router.navigateByUrl('/user/edit/profile/' + this.resumeId);
   }
 
 }

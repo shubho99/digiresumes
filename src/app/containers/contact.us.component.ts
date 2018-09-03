@@ -11,8 +11,8 @@ import {AlertService} from '../modules/core/services/alert.service';
       <!--<img style="width: 106%; height: 100%" src="../../assets/images/contact-us.jpg"/>-->
       <!--</div>-->
       <div>
-        <h1 class="res-contact-h1 contact-h1" animateOnScroll animationName="animated fadeInLeft">Contact Us</h1>
-        <p class="company-text mac-contact-us-p res-contact-company-text" animateOnScroll animationName="animated fadeInLeft">Our Company is
+        <h1 class="res-contact-h1 contact-h1" animateOnScroll >Contact Us</h1>
+        <p class="company-text mac-contact-us-p res-contact-company-text" >Our Company is
           here to provide you more information,answer any questions you may have <br>
           and create an effective solution for your need</p>
       </div>
@@ -24,7 +24,7 @@ import {AlertService} from '../modules/core/services/alert.service';
     </div>
     <div class="u-margin-bottom-small-1"></div>
     <div class="book mac-contact-us-card res-contact-book">
-      <div class="book__form" animateOnScroll animationName="animated fadeInLeft" style="animation-delay: .4s">
+      <div class="book__form"  style="animation-delay: .4s">
         <form class="form mac-contact-form res-contact-form" (submit)=" contactUsForm.valid &&  onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small res-contact-bottom-margin">
             <h2 class="heading-secondary res-contact-heading-secondary">

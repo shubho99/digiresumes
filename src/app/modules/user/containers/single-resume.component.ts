@@ -47,7 +47,7 @@ import {AuthService} from '../../core/services/auth.service';
 
     <ng-template #languageTemplate>
       <div *ngIf="this.resume.languages.length" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
-        <mat-icon style="font-size: 25px">calendar_today</mat-icon>
+        <i class="fa fa-bullhorn" style="font-size: 25px"></i>
         <div fxFlex="column" class="container-1">
           <h4 style="color: #fff; margin-bottom: 5%">Languages</h4>
           <app-language-card *ngFor="let language of this.resume['languages']" [language]="language">
@@ -81,7 +81,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.education.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <mat-icon>book</mat-icon>
+            <i class="fa fa-graduation-cap" style="font-size: 35px"></i>
             <p>Education</p>
           </div>
         </mat-card-header>
@@ -100,7 +100,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.employment_history.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <mat-icon>book</mat-icon>
+            <i class="fa fa-briefcase" style="font-size: 35px"></i>
             <p>Experience</p>
           </div>
         </mat-card-header>
@@ -119,7 +119,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.interests.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <mat-icon>book</mat-icon>
+            <i class="fa fa-plane fa-rotate-270" style="font-size: 35px"></i>
             <p>Hobbies and interest</p>
           </div>
         </mat-card-header>
@@ -138,7 +138,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.industrialExposures.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <mat-icon>book</mat-icon>
+            <i class="fa fa-user-graduate" style="font-size: 35px"></i>
             <p>industrial exposure</p>
           </div>
         </mat-card-header>
@@ -158,7 +158,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.award_achivements.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <mat-icon>book</mat-icon>
+            <i class="fa fa-user-award" style="font-size: 35px"></i>
             <p>awards and achievement</p>
           </div>
         </mat-card-header>
@@ -178,7 +178,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.objectives.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <mat-icon>book</mat-icon>
+            <i class="fa fa-lightbulb" style="font-size: 35px"></i>
             <p>objective</p>
           </div>
         </mat-card-header>
@@ -197,7 +197,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.refrences.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <mat-icon>book</mat-icon>
+            <i class="fa fa-users" style="font-size: 35px"></i>
             <p>reference</p>
           </div>
         </mat-card-header>
@@ -217,7 +217,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.projectDetails.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <mat-icon>book</mat-icon>
+            <i class="fa fa-newspaper" style="font-size: 35px"></i>
             <p>project details</p>
           </div>
         </mat-card-header>
@@ -271,8 +271,8 @@ import {AuthService} from '../../core/services/auth.service';
     .side-bar-card {
       background: #538EC3;
       box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
-      width: 30%;
-      margin-left: 15%;
+      width: 325px;
+      margin-left: 12%;
     }
 
     mat-card {
@@ -296,7 +296,7 @@ import {AuthService} from '../../core/services/auth.service';
     }
 
     .education-card {
-      margin-left: 15%;
+      margin-left: 17.5%;
     }
 
 
