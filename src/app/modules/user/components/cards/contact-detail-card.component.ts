@@ -8,7 +8,7 @@ import {ShareComponent} from '../../dialogues/share.component';
 @Component({
   selector: 'app-contact-detail-card',
   template: `
-    <button mat-fab class="profile-pic" [ngStyle]="{'background-image':'url('+this.url+')'}"></button>
+    <button (click)="onClick()" mat-fab class="profile-pic" [ngStyle]="{'background-image':'url('+this.url+')'}"></button>
     <h2 fxLayoutAlign="center start">
       {{contactDetails.first_name}} {{contactDetails.last_name}}
     </h2>
@@ -18,8 +18,8 @@ import {ShareComponent} from '../../dialogues/share.component';
     </button>
     <app-resume-buttons [resumeId]="this.resumeId" *ngIf="!this.isView"></app-resume-buttons>
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 10%">
-      <mat-icon style="font-size: 25px">account_circle</mat-icon>      
-      <p class="contact-summary container-1">{{contactDetails.summary}}</p>      
+      <mat-icon style="font-size: 25px">account_circle</mat-icon>
+      <p class="contact-summary container-1">{{contactDetails.summary}}</p>
     </div>
     <div fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
       <mat-icon style="font-size: 25px">call</mat-icon>
@@ -113,6 +113,10 @@ export class ContactDetailCardComponent implements AfterContentInit {
 
   openWebsiteUrl() {
     window.open(this.contactDetails.website_url, '_blank');
+  }
+
+  onClick() {
+    this.router.navigateByUrl('/user/edit/profile/' + this.resumeId);
   }
 
 }

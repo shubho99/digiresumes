@@ -13,7 +13,7 @@ import {Resume} from '../../../core/models/resume';
         <mat-icon>cloud_upload</mat-icon>
         Upload Profile Image
       </h1>
-      <button mat-raised-button type="button" fxFlexAlign="center" color="accent" (click)="selectFile()">
+      <button *ngIf="!this.isUploaded" mat-raised-button type="button" fxFlexAlign="center" color="accent" (click)="selectFile()">
         <mat-icon>{{icon}}</mat-icon>
         <span *ngIf="this.imageSelected">CHANGE</span>
         <span *ngIf="!this.imageSelected">SELECT</span>

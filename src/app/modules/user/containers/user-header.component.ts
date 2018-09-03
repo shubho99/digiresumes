@@ -1,7 +1,7 @@
-import {Component, OnDestroy, ViewEncapsulation} from '@angular/core';
-import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
-import {Router, RouterLink} from '@angular/router';
+import {Component, OnDestroy} from '@angular/core';
+import {Router} from '@angular/router';
 import {AuthRepoService} from '../../core/repositry/authRepo.service';
+import 'rxjs/add/operator/takeWhile';
 
 @Component({
   selector: 'app-user-header-component',
