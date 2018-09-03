@@ -67,6 +67,7 @@ export class ContactDetailsFormComponent implements OnInit {
   contactDetails: Contact;
   resume_id: string;
   loading = false;
+  webValid = '^(?:http(s)?:\\/\\/)?[\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\._~:/?#[\\]@!\\$&\'\\(\\)\\*\\+,;=.]+$';
 
   constructor(public dialog: MatDialogRef<ContactDetailsFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService,
@@ -100,7 +101,7 @@ export class ContactDetailsFormComponent implements OnInit {
       'country': new FormControl(country, [Validators.required]),
       'summary': new FormControl(summary, [Validators.required]),
       'linkedin_url': new FormControl(linkedInUrl),
-      'website_url': new FormControl(website_url)
+      'website_url': new FormControl(website_url, [Validators.pattern(this.webValid)])
     });
   }
 
