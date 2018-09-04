@@ -175,15 +175,14 @@ export class ResumeService {
     return this.apiService.patch(ApiRoute.RESUME + '/update/weakness/' + weaknessId, data).map(res => <Weakness>res);
   }
 
+  updateViewsCount(data: { views: number }, id: string): Observable<Resume> {
+    return this.apiService.patch(ApiRoute.RESUME + '/update/resume/views/' + id, data).map(res => <Resume>res);
+  }
+
   updateObjective(data, ObjectiveId: string): Observable<Objective> {
     return this.apiService.patch(ApiRoute.RESUME + '/update/objective/' + ObjectiveId, data).map(res => <Objective>res);
   }
 
-  updateViews(data: { views: number }, resumeId: string): Observable<Resume> {
-    return this.apiService.patch(ApiRoute.USER + '/update/resume/views/' + resumeId, data).map((res) => {
-      return <Resume>res;
-    });
-  }
 
   addOrUpdateVideo(data: { video_url: string }, resumeId: string): Observable<Resume> {
     return this.apiService.patch(ApiRoute.RESUME + '/import/video/' + resumeId, data).map(res => <Resume>res);

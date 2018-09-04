@@ -2,48 +2,62 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
-import * as pdf from 'jspdf';
+
 
 @Component({
   selector: 'app-template',
   template: `
-    <div  id="html" #html  fxLayout="column" fxLayoutGap="5px" fxFlexAlign="center center">
+    <div id="html" class="html" fxLayout="column" fxLayoutGap="5px" fxFlexAlign="center center">
       <div>
-        <h1 class="name">{{this.resume.contact_details.first_name}}
+        <h1 class="name center-align">{{this.resume.contact_details.first_name}}
           {{this.resume.contact_details.last_name}}</h1>
         <p class="center-align small-p">{{this.resume.contact_details.address}}<br>
           {{this.resume.contact_details.city}},{{this.resume.contact_details.state}}-{{this.resume.contact_details.zip_code}}<br>
           {{this.resume.contact_details.phone_number}}
         </p>
-        <a  class="center-align" href="#">{{this.resume.contact_details.email}}</a>
+        <h5 class="center-align"><u>{{this.resume.contact_details.email}}</u></h5>
       </div>
-      <div >
+      <div>
         <p class="center-align">{{this.resume.contact_details.summary}}</p>
       </div>
+      <style>
+        .name {
+          text-transform: uppercase !important;
+          font-size: 40px;
+        }
+
+        .center-align {
+          text-align: center;
+        }
+
+        .small-p {
+          font-size: 15px;
+          color: #767270;
+          word-break: break-word;
+        }
+
+        @media print {
+          .html {
+            visibility: visible;
+          }
+        }
+
+        @page {
+          margin: 0mm;
+          size: auto;
+        }
+      </style>
     </div>
     <button mat-button color="primary" (click)="download()">save</button>
 
   `,
-  styles: [`    
+  styles: [`
 
-    .name {
-      text-transform: uppercase !important;
-      font-size: 40px;
-      margin-left: 25%;
-    }
-
-    a {
-      font-size: 15px;
-    }
-
-    .small-p {
-      font-size: 15px;
-      color: #767270;
-    }
   `]
 })
 export class TemplatesComponent implements OnInit, OnDestroy {
   @ViewChild('html') html: ElementRef;
+  @ViewChild('my_mm') my_mm: ElementRef;
   isAlive = true;
   resume: Resume;
 
@@ -64,19 +78,9 @@ export class TemplatesComponent implements OnInit, OnDestroy {
   }
 
   download() {
-    const specialElementHandler = {
-      '#html': function (element, renderer) {
-        return true;
-      }
-    };
-    const doc = new pdf();
-    const content = this.html.nativeElement;
-    doc.setFont('Roboto');
-    doc.fromHTML(content, 20, 20, {
-      'width': 180,
-      'elementHandlers': specialElementHandler
-    });
-    doc.save('test');
+    document.body.style.visibility = 'hidden';
+    window.print();
+    document.body.style.visibility = 'visible';
   }
-
 }
+

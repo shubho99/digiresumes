@@ -1,4 +1,4 @@
-import {Component, OnDestroy, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-user-dashboard',
