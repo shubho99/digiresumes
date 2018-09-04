@@ -7,7 +7,7 @@ import {Resume} from '../../core/models/resume';
 @Component({
   selector: 'app-template',
   template: `
-    <div id="html" class="html" fxLayout="column" fxLayoutGap="5px" fxFlexAlign="center center">
+    <div fxLayout="column" class="html" fxLayoutGap="5px" fxFlexAlign="center center">
       <div>
         <h1 class="name center-align">{{this.resume.contact_details.first_name}}
           {{this.resume.contact_details.last_name}}</h1>
@@ -43,8 +43,8 @@ import {Resume} from '../../core/models/resume';
         }
 
         @page {
-          margin: 0mm;
-          size: auto;
+          margin: 0mm !important;
+          size: auto !important;
         }
       </style>
     </div>
@@ -57,7 +57,6 @@ import {Resume} from '../../core/models/resume';
 })
 export class TemplatesComponent implements OnInit, OnDestroy {
   @ViewChild('html') html: ElementRef;
-  @ViewChild('my_mm') my_mm: ElementRef;
   isAlive = true;
   resume: Resume;
 
