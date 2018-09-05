@@ -17,7 +17,7 @@ export interface Resume {
   user_id: string;
   image_url: string;
   video_url: string;
-  views: string;
+  views: number;
   contact_details: Contact;
   education: Education[];
   employment_history: EmploymentHistory[];

@@ -1,17 +1,20 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
 import {AuthService} from '../../core/services/auth.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div class="alternate" fxLayout="row" *ngIf="this.resume" >
+    <div class="alternate" fxLayout="row" *ngIf="this.resume">
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
-          <app-contact-detail-card *ngIf="this.resume.contact_details" [resumeId]="this.resume._id"
+          <span  class="views-span" *ngIf="this.resume && !this.isView">
+            <i class="fa fa-eye" aria-hidden="true"></i>Views:{{this.resume.views}}</span>
+          <app-contact-detail-card *ngIf="this.resume" [resumeId]="this.resume._id"
                                    [isView]="this.isView" [contactDetails]="this.resume.contact_details" [img_url]="this.resume.image_url">
           </app-contact-detail-card>
           <ng-container *ngTemplateOutlet="skillTemplate"></ng-container>
@@ -138,7 +141,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.industrialExposures.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-user-graduate" style="font-size: 35px"></i>
+            <i class="fa fa-industry" style="font-size: 35px"></i>
             <p>industrial exposure</p>
           </div>
         </mat-card-header>
@@ -158,7 +161,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.award_achivements.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-user-award" style="font-size: 35px"></i>
+            <i class="fa fa-trophy" aria-hidden="true" style="font-size: 35px"></i>
             <p>awards and achievement</p>
           </div>
         </mat-card-header>
@@ -178,7 +181,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.objectives.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-lightbulb" style="font-size: 35px"></i>
+            <i class="fa fa-lightbulb-o" aria-hidden="true" style="font-size: 35px"></i>
             <p>objective</p>
           </div>
         </mat-card-header>
@@ -217,7 +220,7 @@ import {AuthService} from '../../core/services/auth.service';
       <mat-card *ngIf="this.resume.projectDetails.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-newspaper" style="font-size: 35px"></i>
+            <i class="fa fa-newspaper-o" style="font-size: 35px"></i>
             <p>project details</p>
           </div>
         </mat-card-header>
@@ -283,6 +286,18 @@ import {AuthService} from '../../core/services/auth.service';
       margin-top: 35px;
     }
 
+    .views-span {
+      margin-bottom: 30px;
+      background: #bdb9b9b8;
+      width: 44%;
+      height: 24px;
+      border-radius: 2%;
+      color: white;
+      text-align: center;
+      margin-left: 65%;
+      margin-top: -9%;
+    }
+
     iframe {
       width: 81%;
       height: 29%;
@@ -302,7 +317,7 @@ import {AuthService} from '../../core/services/auth.service';
 
   `]
 })
-export class SingleResumeComponent implements OnInit, OnDestroy {
+export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
   resume: Resume = null;
   isAlive = true;
   loading = false;
@@ -336,7 +351,14 @@ export class SingleResumeComponent implements OnInit, OnDestroy {
     this.isAlive = false;
   }
 
-  updateViews() {
-    this.resumeRepo.updateViews({views: 3}, this.resume._id);
+  ngAfterViewInit() {
+    if (this.isView) {
+      this.update();
+    }
+  }
+
+  update() {
+    this.resumeRepo.updateViews({views: ++this.resume.views}, this.resume._id).take(1).subscribe((res) => {
+    });
   }
 }

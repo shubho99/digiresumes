@@ -61,6 +61,7 @@ export class ResumeRepoService {
   }
 
   getResume(id: string, force = false): Observable<Resume> {
+    console.log('called repo');
     if (force) {
       return this.resumeService.getResume(id).map(res => {
         return res;
@@ -80,6 +81,13 @@ export class ResumeRepoService {
 
   updateResume(data, id: string): Observable<Resume> {
     return this.resumeService.updateResume(data, id).map((res) => {
+      this.store.dispatch(new UpdateResumeAction(res));
+      return <Resume>res;
+    });
+  }
+
+  updateViews(data: { views: number }, id: string): Observable<Resume> {
+    return this.resumeService.updateViewsCount(data, id).map((res) => {
       this.store.dispatch(new UpdateResumeAction(res));
       return <Resume>res;
     });
@@ -401,13 +409,6 @@ export class ResumeRepoService {
 
   deleteImage(data: { image_url: string }, resumeId: string): Observable<Resume> {
     return this.resumeService.deleteImage(data, resumeId).map((res) => {
-      this.store.dispatch(new UpdateResumeAction(res));
-      return res;
-    });
-  }
-
-  updateViews(data: { views: number }, resumeId: string): Observable<Resume> {
-    return this.resumeService.updateViews(data, resumeId).map((res) => {
       this.store.dispatch(new UpdateResumeAction(res));
       return res;
     });
