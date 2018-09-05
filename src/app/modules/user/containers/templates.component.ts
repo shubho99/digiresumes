@@ -15,11 +15,12 @@ import {Resume} from '../../core/models/resume';
           {{this.resume.contact_details.city}},{{this.resume.contact_details.state}}-{{this.resume.contact_details.zip_code}}<br>
           {{this.resume.contact_details.phone_number}}
         </p>
-        <h5 class="center-align"><u>{{this.resume.contact_details.email}}</u></h5>
+        <h5 style="color: #538ec3" class="center-align"><u>{{this.resume.contact_details.email}}</u></h5>
       </div>
-      <div>
+      <div style="margin-top: 1%">
         <p class="center-align">{{this.resume.contact_details.summary}}</p>
       </div>
+      <span></span>
       <style>
         .name {
           text-transform: uppercase !important;
@@ -48,7 +49,7 @@ import {Resume} from '../../core/models/resume';
         }
       </style>
     </div>
-    <button mat-button color="primary" (click)="download()">save</button>
+    <button mat-raised-button color="primary" (click)="download()">Save</button>
 
   `,
   styles: [`

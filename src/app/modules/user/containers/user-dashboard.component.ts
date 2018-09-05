@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -9,8 +9,12 @@ import {Component} from '@angular/core';
   styles: [`
   `]
 })
-export class UserDashboardComponent {
+export class UserDashboardComponent implements OnDestroy {
   constructor() {
     document.body.className = 'user-background';
+  }
+
+  ngOnDestroy() {
+    document.body.className = 'intro-body';
   }
 }

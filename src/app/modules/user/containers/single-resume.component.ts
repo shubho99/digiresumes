@@ -141,7 +141,7 @@ import {Observable} from 'rxjs/Observable';
       <mat-card *ngIf="this.resume.industrialExposures.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-user-graduate" style="font-size: 35px"></i>
+            <i class="fa fa-industry" style="font-size: 35px"></i>
             <p>industrial exposure</p>
           </div>
         </mat-card-header>
@@ -161,7 +161,7 @@ import {Observable} from 'rxjs/Observable';
       <mat-card *ngIf="this.resume.award_achivements.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-user-award" style="font-size: 35px"></i>
+            <i class="fa fa-trophy" aria-hidden="true" style="font-size: 35px"></i>
             <p>awards and achievement</p>
           </div>
         </mat-card-header>
@@ -181,7 +181,7 @@ import {Observable} from 'rxjs/Observable';
       <mat-card *ngIf="this.resume.objectives.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-lightbulb" style="font-size: 35px"></i>
+            <i class="fa fa-lightbulb-o" aria-hidden="true" style="font-size: 35px"></i>
             <p>objective</p>
           </div>
         </mat-card-header>
@@ -220,7 +220,7 @@ import {Observable} from 'rxjs/Observable';
       <mat-card *ngIf="this.resume.projectDetails.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-newspaper" style="font-size: 35px"></i>
+            <i class="fa fa-newspaper-o" style="font-size: 35px"></i>
             <p>project details</p>
           </div>
         </mat-card-header>
