@@ -6,7 +6,7 @@ import {ShareComponent} from '../dialogues/share.component';
 @Component({
   selector: 'app-resume-buttons',
   template: `
-    <div *ngIf="!this.isView" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center start">
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center start">
       <button (click)="editResume()" mat-mini-fab>
         <mat-icon style="font-size: 25px" matTooltip="edit-resume">assignment</mat-icon>
       </button>

@@ -12,8 +12,11 @@ import {Observable} from 'rxjs/Observable';
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
-          <span  class="views-span" *ngIf="this.resume && !this.isView">
-            <i class="fa fa-eye" aria-hidden="true"></i>Views:{{this.resume.views}}</span>
+          <button mat-mini-fab class="views-span" *ngIf="this.resume && !this.isView">
+            <mat-icon style="font-size: 25px" matTooltip="Views:{{this.resume.views}}" aria-hidden="true">
+              remove_red_eye
+            </mat-icon>
+          </button>          
           <app-contact-detail-card *ngIf="this.resume" [resumeId]="this.resume._id"
                                    [isView]="this.isView" [contactDetails]="this.resume.contact_details" [img_url]="this.resume.image_url">
           </app-contact-detail-card>
@@ -281,27 +284,25 @@ import {Observable} from 'rxjs/Observable';
     mat-card {
       background: white;
       box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
-      width: 80%;
+      width: 80%;      
       margin-left: 2.5%;
       margin-top: 35px;
     }
 
-    .views-span {
-      margin-bottom: 30px;
-      background: #bdb9b9b8;
-      width: 44%;
-      height: 24px;
-      border-radius: 2%;
-      color: white;
-      text-align: center;
-      margin-left: 65%;
-      margin-top: -9%;
+    .views-span {      
+      position: absolute;
+      left: 62px;
+      top: 44px;      
+      color: black;      
+      color: black !important;
+      background: #f1c232 !important;
+      z-index: 2;
     }
 
     iframe {
       width: 81%;
-      height: 29%;
-      margin-top: 4.5%;
+      height: 360px;
+      margin-top: 36px;
       margin-left: 2%;
     }
 
@@ -312,8 +313,7 @@ import {Observable} from 'rxjs/Observable';
 
     .education-card {
       margin-left: 17.5%;
-    }
-
+    }   
 
   `]
 })

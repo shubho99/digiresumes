@@ -1,11 +1,10 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
-import {Resume} from '../../core/models/resume';
-
+import {Resume} from '../../../core/models/resume';
+import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 
 @Component({
-  selector: 'app-template',
+  selector: 'app-side-panel',
   template: `
     <div class="html page-wrap">
       <img src="../../../../assets/images/testimonial.png" alt="Photo of user" id="pic"/>
@@ -312,10 +311,10 @@ import {Resume} from '../../core/models/resume';
 
   `]
 })
-export class TemplatesComponent implements OnInit, OnDestroy {
+export class SidePanelComponent implements OnInit, OnDestroy {
   @ViewChild('html') html: ElementRef;
+  @Input() resume: Resume;
   isAlive = true;
-  resume: Resume;
 
   constructor(private router: Router, private route: ActivatedRoute,
               private resumeRepo: ResumeRepoService) {

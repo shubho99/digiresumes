@@ -4,7 +4,7 @@ import {Interest} from '../../../core/models/interest';
 @Component({
   selector: 'app-interest-card',
   template: `
-    <ul>
+    <ul style="list-style-type: square">
       <li>
         {{interest.interest}}
       </li>
