@@ -2,206 +2,99 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
-
+import {ApiService} from '../../core/services/api.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-template',
   template: `
-    <div class="html page-wrap">
-      <img src="../../../../assets/images/testimonial.png" alt="Photo of user" id="pic"/>
-      <div id="contact-info" class="vcard">
-        <!-- Microformats! -->
-        <h1 class="fn">
-          {{this.resume.contact_details.first_name}} {{this.resume.contact_details.last_name}}
-        </h1>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <mat-icon>call</mat-icon>
-          <p style="margin-bottom: 2% !important;"><span>{{this.resume.contact_details.phone_number}}</span></p>
-        </div>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <mat-icon>email</mat-icon>
-          <a class="email" href="#">{{this.resume.contact_details.email}}</a>
-        </div>
-        <div *ngIf="this.resume.contact_details.linkedin_url" fxLayout="row" fxLayoutGap="20px">
-          <i style="font-size: 25px" class="fa fa-linkedin"></i>
-          <a class="email" (click)="openLinkedInUrl()">{{this.resume.contact_details.linkedin_url}}</a>
-        </div>
-        <div *ngIf="this.resume.contact_details.website_url" fxLayout="row" fxLayoutGap="20px">
-          <i style="font-size: 25px" class="fa fa-link"></i>
-          <a class="email" (click)="openWebsiteUrl()">{{this.resume.contact_details.website_url}}</a>
-        </div>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <mat-icon style="font-size: 25px">home</mat-icon>
-          <p>
-            {{this.resume.contact_details.address}}, <br>
-            {{this.resume.contact_details.city}}, {{this.resume.contact_details.state}} -
-            {{this.resume.contact_details.zip_code}}
-            <br> {{this.resume.contact_details.country}}
-          </p>
-        </div>
-      </div>
-      <div id="objective">
-        <p>
-          {{this.resume.contact_details.summary}}
+
+    <div fxLayout="column" id="html" class="html" fxLayoutGap="5px" fxFlexAlign="center center">
+      <div>
+        <h1 style="text-transform: uppercase !important;
+          font-size: 40px; text-align: center">{{this.resume.contact_details.first_name}}
+          {{this.resume.contact_details.last_name}}</h1>
+        <p class="center-align small-p">{{this.resume.contact_details.address}}<br>
+          {{this.resume.contact_details.city}},{{this.resume.contact_details.state}}-{{this.resume.contact_details.zip_code}}<br>
+          {{this.resume.contact_details.phone_number}}
         </p>
+        <h5 style="color: #538ec3" class="center-align"><u>{{this.resume.contact_details.email}}</u></h5>
       </div>
-      <div class="clear"></div>
-      <dl>
-        <dd class="clear"></dd>
-        <ng-container *ngIf="this.resume.education.length">
-          <dt>Education</dt>
-          <dd>
-            <app-education-card style="line-height: 17pt" *ngFor="let education of this.resume['education']"
-                                [education]="education"></app-education-card>
-          </dd>
-          <dd class="clear"></dd>
+      <div style="margin-top: 1%">
+        <p style="    border-bottom: 2px solid;
+    padding-bottom: 30px;font-family: SERIF;font-size: 18px" class="center-align">{{this.resume.contact_details.summary}}</p>
+      </div>
+      <div>
+        <h1>PROFESSIONAL EXPERIENCE</h1>
+        <ng-container *ngFor="let industrialExposure of this.resume['industrialExposures']">
+          <h3 class="h3-span">{{industrialExposure.organisation}}</h3>
+          <span class="h3-span" style="color: #5da4d9" *ngIf="industrialExposure.end_month">
+                    {{industrialExposure.start_month}} {{industrialExposure.start_year}} - 
+                    {{industrialExposure.end_month}} {{industrialExposure.end_year}}
+                  </span>
+          <span class="h3-span" style="color: #5da4d9" *ngIf="!industrialExposure.end_month">
+                    {{industrialExposure.start_month}} {{industrialExposure.start_year}}
+                  </span>
+          <h4 class="indus-p-h4">
+            {{industrialExposure.city}}, {{industrialExposure.state}}
+          </h4>
+          <p class="container indus-p-h4">{{industrialExposure.work}}</p>
         </ng-container>
-
-        <ng-container *ngIf="this.resume.skills.length">
-          <dt>Skills</dt>
-          <dd style="margin-top: 4%">
-            <ng-container *ngFor="let skill of this.resume['skills']">
-              <p style="color: #767270;">{{this.skill.skill}}</p>
-              <mat-progress-bar *ngIf="this.skill.level === 'intermediate'" mode="determinate" value="70"></mat-progress-bar>
-              <mat-progress-bar *ngIf="this.skill.level === 'advance'" mode="determinate" value="90"></mat-progress-bar>
-              <mat-progress-bar *ngIf="this.skill.level === 'basic'" mode="determinate" value="50"></mat-progress-bar>
-            </ng-container>
-          </dd>
-          <dd class="clear"></dd>
+      </div>
+      <div>
+        <h1>EDUCATION</h1>
+        <ng-container *ngFor="let education of this.resume['education']">
+          <app-education-card [education]="education"></app-education-card>
         </ng-container>
-
-        <ng-container *ngIf="this.resume.languages.length">
-          <dt>Language</dt>
-          <dd style="margin-top: 4%">
-            <ng-container *ngFor="let language of this.resume['languages']">
-              <p style="color: #767270;">{{language.name}}</p>
-              <mat-progress-bar *ngIf="this.language.level === 'intermediate'" mode="determinate" value="70"></mat-progress-bar>
-              <mat-progress-bar *ngIf="this.language.level === 'advance'" mode="determinate" value="90"></mat-progress-bar>
-              <mat-progress-bar *ngIf="this.language.level === 'basic'" mode="determinate" value="50"></mat-progress-bar>
-            </ng-container>
-          </dd>
-          <dd class="clear"></dd>
+      </div>
+      <div class="border">
+        <h1 style="margin-bottom: 2%">ADDITIONAL SKILLS</h1>
+        <ng-container *ngFor="let skill of this.resume['skills']">
+          <ul>
+            <li>
+              {{skill.skill}}
+            </li>
+          </ul>
         </ng-container>
-
-        <ng-container *ngIf="this.resume.employment_history.length">
-          <dt>Experience</dt>
-          <dd>
-            <app-employment-history-card style="line-height: 17pt" *ngFor="let employmentHistory of this.resume['employment_history']"
-                                         [employmentHistory]="employmentHistory"></app-employment-history-card>
-          </dd>
-          <dd class="clear"></dd>
+      </div>
+      <div class="border">
+        <h1 style="margin-bottom: 2%">AWARD AND ACHIEVEMENTS</h1>
+        <ng-container *ngFor="let award of this.resume['award_achivements']">
+          <ul>
+            <li>
+              {{award.awards_and_achivements}}
+            </li>
+          </ul>
         </ng-container>
-
-        <ng-container *ngIf="this.resume.interests.length">
-          <dt>Hobbies</dt>
-          <dd style="margin-top: 4%;padding-left: 2.5%;">
-            <app-interest-card style="line-height: 17pt" *ngFor="let interest of this.resume['interests']" [interest]="interest">
-            </app-interest-card>
-          </dd>
-          <dd class="clear"></dd>
+      </div>
+      <div class="border">
+        <h1>PROJECT DETAILS</h1>
+        <ng-container *ngFor="let projectDetail of this.resume['projectDetails']">
+          <app-project-detail-card [projectDetail]="projectDetail"></app-project-detail-card>
         </ng-container>
-
-        <ng-container *ngIf="this.resume.weakness.length">
-          <dt>Weakness</dt>
-          <dd style="margin-top: 4%;">
-            <ng-container *ngFor="let weakness of this.resume['weakness']">
-              <ul style="color: #767270;list-style-type: square">
-                <li>
-                  {{weakness.name}}
-                </li>
-              </ul>
-            </ng-container>
-          </dd>
-          <dd class="clear"></dd>
+      </div>
+      <div class="border">
+        <h1>OBJECTIVES</h1>
+        <ng-container *ngFor="let objective of this.resume['objectives']">
+          <app-objective-card [objective]="objective"></app-objective-card>
         </ng-container>
-
-        <ng-container *ngIf="this.resume.strengths.length">
-          <dt>Strength</dt>
-          <dd style="margin-top: 4%;">
-            <ng-container *ngFor="let strength of this.resume['strengths']">
-              <ul style="color: #767270;list-style-type: square">
-                <li>
-                  {{strength.name}}
-                </li>
-              </ul>
-            </ng-container>
-          </dd>
-          <dd class="clear"></dd>
+      </div>
+      <div class="border">
+        <h1>ADDITIONAL INTERESTS</h1>
+        <ng-container *ngFor="let interest of this.resume['interests']">
+          <app-interest-card [interest]="interest"></app-interest-card>
         </ng-container>
-
-        <ng-container *ngIf="this.resume.industrialExposures.length">
-          <dt>Training And Internship</dt>
-          <dd>
-            <app-industrial-exposure-card style="line-height: 17pt" *ngFor="let industrialExposure of
-                this.resume['industrialExposures']" [industrialExposure]="industrialExposure">
-            </app-industrial-exposure-card>
-          </dd>
-          <dd class="clear"></dd>
+      </div>
+      <div class="border">
+        <h1>LANGUAGES I SPEAK</h1>
+        <ng-container *ngFor="let language of this.resume['languages']">
+          <p class="contact-summary">{{language.name}}</p>
         </ng-container>
-
-        <ng-container *ngIf="this.resume.award_achivements.length">
-          <dt>Awards And Achievement</dt>
-          <dd style="margin-top: 4%;padding-left: 2.5%;">
-            <app-award-card style="line-height: 17pt" *ngFor="let award of this.resume['award_achivements']"
-                            [award]="award">
-            </app-award-card>
-          </dd>
-          <dd class="clear"></dd>
-        </ng-container>
-
-        <ng-container *ngIf="this.resume.objectives.length">
-          <dt>Objective</dt>
-          <dd>
-            <app-objective-card style="line-height: 17pt" *ngFor="let objective of this.resume['objectives']" [objective]="objective">
-            </app-objective-card>
-          </dd>
-          <dd class="clear"></dd>
-        </ng-container>
-
-        <ng-container *ngIf="this.resume.refrences.length">
-          <dt>References</dt>
-          <dd>
-            <app-refrence-card style="line-height: 17pt" *ngFor="let refrence of this.resume['refrences']"
-                               [refrence]="refrence">
-            </app-refrence-card>
-          </dd>
-          <dd class="clear"></dd>
-        </ng-container>
-
-        <ng-container *ngIf="this.resume.projectDetails.length">
-          <dt>Projects</dt>
-          <dd>
-            <app-project-detail-card *ngFor="let projectDetail of this.resume['projectDetails']"
-                                     [projectDetail]="projectDetail">
-            </app-project-detail-card>
-          </dd>
-          <dd class="clear"></dd>
-        </ng-container>
-
-      </dl>
-      <div class="clear"></div>
+      </div>
       <style type="text/css">
-        mat-icon {
-          font-size: 25px;
-        }
-
-        .fn {
-          text-transform: capitalize;
-        }
-
-        .clear {
-          clear: both;
-        }
-
-        .page-wrap {
-          width: 57%;
-          margin: 40px auto 60px;
-        }
-
-        #pic {
-          float: right;
-          width: 30%;
-          margin: -20px -2px 0px 0px;
+        .name {
+          text-transform: uppercase !important;
+          font-size: 40px;
         }
 
         h1 {
@@ -232,6 +125,36 @@ import {Resume} from '../../core/models/resume';
 
         p {
           margin: 0 0 16px 0;
+        }
+        .h3-span {
+          text-transform: uppercase;
+          color: #767270;
+          margin-top: 5%;
+        }
+
+        div {
+          margin-left: 1%;
+        }
+
+        .border {
+          border-bottom: 1px solid #767270;
+          padding-bottom: 6px;
+        }
+
+        .container {
+          padding-bottom: 4%;
+          border-bottom: 1px solid #767270;
+        }
+
+        .indus-p-h4 {
+          color: #767270;
+        }
+
+        ul {
+          color: #767270;
+          font-weight: bold;
+          font-size: 16px;
+          margin-left: 3%;
         }
 
         a {
@@ -305,7 +228,9 @@ import {Resume} from '../../core/models/resume';
         /*}*/
       </style>
     </div>
-    <button mat-raised-button color="primary" (click)="download()">Save</button>
+    <div>
+      <button mat-raised-button color="primary" (click)="Export2Doc('html','test')">Save</button>
+    </div>
 
   `,
   styles: [`
@@ -319,7 +244,6 @@ export class TemplatesComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router, private route: ActivatedRoute,
               private resumeRepo: ResumeRepoService) {
-    document.body.style.background = 'url(../../../../assets/images/noise.jpg)';
   }
 
   ngOnInit() {
@@ -334,18 +258,52 @@ export class TemplatesComponent implements OnInit, OnDestroy {
     this.isAlive = false;
   }
 
-  download() {
-    document.body.style.visibility = 'hidden';
-    window.print();
-    document.body.style.visibility = 'visible';
-  }
+  // download() {
+  //   const data = {
+  //     html: document.getElementById('html')
+  //   };
+  //   this.service.post('https://resume-app-api.herokuapp.com/api/resume/add/pdf', data,
+  //     {responseType: 'arraybuffer'}).subscribe((res) => {
+  //     console.log(res);
+  //     const file = new Blob([res], {type: 'application/pdf'});
+  //     const fileURL = URL.createObjectURL(file);
+  //     window.open(fileURL);
+  //   });
+  // }
 
-  openLinkedInUrl() {
-    window.open(this.resume.contact_details.linkedin_url, '_blank');
-  }
+  Export2Doc(element, filename = '') {
+    const html = document.getElementById(element).innerHTML;
+    const blob = new Blob(['\ufeff', html], {
+      type: 'application/msword'
+    });
 
-  openWebsiteUrl() {
-    window.open(this.resume.contact_details.website_url, '_blank');
+    // Specify link url
+    const url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+
+    // Specify file name
+    filename = filename ? filename + '.docx' : 'document.docx';
+
+    // Create download link element
+    const downloadLink = document.createElement('a');
+
+    document.body.appendChild(downloadLink);
+
+    if (navigator.msSaveOrOpenBlob) {
+      navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+      // Create a link to the file
+      downloadLink.href = url;
+
+      // Setting the file name
+      downloadLink.download = filename;
+
+      //triggering the function
+      downloadLink.click();
+    }
+
+    document.body.removeChild(downloadLink);
   }
 }
+
+
 
