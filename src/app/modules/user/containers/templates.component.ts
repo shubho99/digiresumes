@@ -8,6 +8,7 @@ import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-template',
   template: `
+
     <div fxLayout="column" id="html" class="html" fxLayoutGap="5px" fxFlexAlign="center center">
       <div>
         <h1 style="text-transform: uppercase !important;
@@ -96,16 +97,35 @@ import {HttpClient} from '@angular/common/http';
           font-size: 40px;
         }
 
-        .center-align {
-          text-align: center;
+        h1 {
+          margin: 0 0 16px 0;
+          padding: 0 0 16px 0;
+          font-size: 42px;
+          font-weight: bold;
+          letter-spacing: -2px;
+          border-bottom: 1px solid #999;
         }
 
-        .small-p {
-          font-size: 15px;
-          color: #767270;
-          word-break: break-word;
+        h2 {
+          font-size: 20px;
+          margin: 0 0 6px 0;
+          position: relative;
         }
 
+        h2 span {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          font-style: italic;
+          font-family: Georgia, Serif;
+          font-size: 16px;
+          color: #999;
+          font-weight: normal;
+        }
+
+        p {
+          margin: 0 0 16px 0;
+        }
         .h3-span {
           text-transform: uppercase;
           color: #767270;
@@ -136,6 +156,76 @@ import {HttpClient} from '@angular/common/http';
           font-size: 16px;
           margin-left: 3%;
         }
+
+        a {
+          color: #999;
+          text-decoration: none;
+          cursor: pointer;
+          margin-bottom: 2%;
+        }
+
+        a:hover {
+          color: black;
+        }
+
+        ul {
+          margin: 0 0 32px 17px;
+        }
+
+        #objective {
+          width: 500px;
+          float: left;
+          margin-bottom: -2%;
+        }
+
+        #objective p {
+          font-family: Georgia, Serif;
+          font-style: italic;
+          color: #666;
+        }
+
+        dt {
+          font-style: italic;
+          font-weight: bold;
+          font-size: 18px;
+          text-align: right;
+          padding: 0 26px 0 0;
+          width: 150px;
+          float: left;
+          margin-top: 3%;
+          height: 100px;
+          border-right: 1px solid #999;
+        }
+
+        dd {
+          width: 600px;
+          float: right;
+        }
+
+        dd.clear {
+          float: none;
+          margin: 0;
+          height: 15px;
+        }
+
+        /*@media print {*/
+        /*body, html, .html {*/
+        /*height: 88.5%;*/
+        /*width: 97%;*/
+        /*}*/
+        /*.html {*/
+        /*visibility: visible;*/
+        /*}*/
+        /**/
+        /*}*/
+
+        /*@page {*/
+        /*margin-left: 10mm !important;*/
+        /*margin-right: 0mm !important;*/
+        /*margin-top: 10mm !important;*/
+        /*margin-bottom: 0mm !important;*/
+        /*size: auto !important;*/
+        /*}*/
       </style>
     </div>
     <div>
@@ -153,7 +243,7 @@ export class TemplatesComponent implements OnInit, OnDestroy {
   resume: Resume;
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private resumeRepo: ResumeRepoService, private service: HttpClient) {
+              private resumeRepo: ResumeRepoService) {
   }
 
   ngOnInit() {
@@ -213,7 +303,6 @@ export class TemplatesComponent implements OnInit, OnDestroy {
 
     document.body.removeChild(downloadLink);
   }
-
 }
 
 

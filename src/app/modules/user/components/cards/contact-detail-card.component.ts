@@ -57,7 +57,7 @@ import {ShareComponent} from '../../dialogues/share.component';
       margin-bottom: 10%;
       border: 3px solid white;
       width: 75%;
-      height: 215px;
+      height: 200px;
       margin-left: 13%;
     }
 

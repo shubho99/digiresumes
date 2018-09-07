@@ -15,7 +15,7 @@ import {Refrence} from '../../../core/models/refrence';
   `,
   styles: [`
     h3, span {
-      text-transform: uppercase;
+      text-transform: capitalize;
       color: #767270;
       margin-top: 5%;
     }
