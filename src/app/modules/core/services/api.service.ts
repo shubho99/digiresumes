@@ -21,11 +21,12 @@ export class ApiService {
       .catch(this.handleError.bind(this));
   }
 
-  post(url: string, data: any): Observable<Object> {
+  post(url: string, data: any, responseType ?: 'json'): Observable<Object> {
     return this.http.post(this.baseUrl + url, data, {
-      headers: this.getAuthHeader()
+      headers: this.getAuthHeader(), responseType : responseType
     }).catch(this.handleError.bind(this));
   }
+
 
 
   patch(url: string, data: any): Observable<Object> {

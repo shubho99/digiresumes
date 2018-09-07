@@ -70,6 +70,7 @@ import {ResumeService} from './modules/core/services/resume.service';
       tertiaryColour: '#538ec3',
       fullScreenBackdrop: true
     }),
+
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
