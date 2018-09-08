@@ -30,7 +30,7 @@ import {ShareComponent} from '../../dialogues/share.component';
             <mat-icon class="icon">create</mat-icon>
           </button>
             <button (click)="download()" matTooltip="download Resume" mat-icon-button>
-              <i class="fa fa-download icon" aria-hidden="true"></i>v
+              <i class="fa fa-download icon" aria-hidden="true"></i>
             </button>
         </div>
       </div>
