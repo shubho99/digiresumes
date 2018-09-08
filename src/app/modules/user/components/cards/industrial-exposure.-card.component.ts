@@ -10,7 +10,7 @@ import {IndustrialExposure} from '../../../core/models/industrial-exposure';
                     {{industrialExposure.end_month}} {{industrialExposure.end_year}}
                   </span>
     <span style="color: #5da4d9" *ngIf="!industrialExposure.end_month">
-                    {{industrialExposure.start_month}} {{industrialExposure.start_year}}
+                    {{industrialExposure.start_month}} {{industrialExposure.start_year}} - Present
                   </span>
     <h4>
       {{industrialExposure.city}}, {{industrialExposure.state}}

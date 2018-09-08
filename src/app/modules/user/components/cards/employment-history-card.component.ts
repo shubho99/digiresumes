@@ -14,7 +14,7 @@ import {EmploymentHistory} from '../../../core/models/employment-history';
                     {{employmentHistory.end_month}} {{employmentHistory.end_year}}
                   </span>
     <span style="color: #5da4d9" *ngIf="!employmentHistory.end_month">
-                    {{employmentHistory.start_month}} {{employmentHistory.start_year}}
+                    {{employmentHistory.start_month}} {{employmentHistory.start_year}} - Present
                   </span>
     <h4 class="container">
       {{employmentHistory.city}}, {{employmentHistory.state}} <br>
