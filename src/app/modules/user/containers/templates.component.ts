@@ -9,7 +9,8 @@ import {HttpClient} from '@angular/common/http';
   template: `
    <!--<app-classic-template  [resume]="resume" (downloadTemplate)="download($event)"></app-classic-template>-->
     <!--<app-side-panel-template [resume]="resume" (downloadTemplate)="download($event)"></app-side-panel-template>-->
-   <app-royal-template [resume]="resume" (downloadTemplate)="download($event)"></app-royal-template>
+   <!--<app-royal-template [resume]="resume" (downloadTemplate)="download($event)"></app-royal-template>-->
+   <app-blues-template [resume]="resume" (downloadTemplate)="download($event)"></app-blues-template>
     <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`
@@ -44,7 +45,7 @@ export class TemplatesComponent implements OnInit, OnDestroy {
       html: html
     };
     console.log(html);
-    this.service.post('https://resume-app-api.herokuapp.com/api/resume/add/pdf', data,
+    this.service.post('http://localhost:5000/api/resume/add/pdf', data,
       {responseType: 'arraybuffer'}).subscribe((res) => {
       const file = new Blob([res], {type: 'application/pdf'});
       const fileURL = URL.createObjectURL(file);
@@ -54,5 +55,5 @@ export class TemplatesComponent implements OnInit, OnDestroy {
   }
 }
 
-
+//https://resume-app-api.herokuapp.com
 

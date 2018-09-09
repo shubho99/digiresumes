@@ -116,7 +116,9 @@ export class ContactDetailCardComponent implements AfterContentInit {
   }
 
   onClick() {
-    this.router.navigateByUrl('/user/edit/profile/' + this.resumeId);
+    if (!this.isView) {
+      this.router.navigateByUrl('/user/edit/profile/' + this.resumeId);
+    }
   }
 
 }

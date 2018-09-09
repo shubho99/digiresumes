@@ -88,6 +88,7 @@ import {TemplatesComponent} from './containers/templates.component';
 import {SidePanelTemplateComponent} from './components/templates/side-panel-template.component';
 import {ClassicTemplateComponent} from './components/templates/classic-template.component';
 import {RoyalTemplateComponent} from './components/templates/royal-template.component';
+import {BluesTemplateComponent} from './components/templates/blues-template.component';
 
 @NgModule({
   declarations: [
@@ -167,7 +168,8 @@ import {RoyalTemplateComponent} from './components/templates/royal-template.comp
     TemplatesComponent,
     SidePanelTemplateComponent,
     ClassicTemplateComponent,
-    RoyalTemplateComponent
+    RoyalTemplateComponent,
+    BluesTemplateComponent
   ],
   imports: [
     SharedModule,
