@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-royal-template',
