@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core';
   template: `
     <h3>{{education.degree_type}}
       <span style="text-transform: lowercase !important; font-size: 10pt;">@{{education.school_name}}</span></h3>
-    <span style="color: #5da4d9">{{education.graduation_month}} {{education.graduation_year}}</span>
+    <span style="color: #5da4d9; float: right; margin-top: -5%;">{{education.graduation_month}} {{education.graduation_year}}</span>
     <h4 class="container">
       {{education.city}}, {{education.state}} <br>
       {{education.field}} - {{education.percentage}}
@@ -22,6 +22,10 @@ import {Component, Input} from '@angular/core';
     
     h4, p {
       color: #767270;
+    }
+    
+    h4{    
+      text-transform: capitalize;    
     }
   `]
 })

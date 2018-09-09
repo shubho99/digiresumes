@@ -4,12 +4,9 @@ import {ProjectDetail} from '../../../core/models/project-detail';
 @Component({
   selector: 'app-project-detail-card',
   template: `
-    <h3>
-      {{projectDetail.title}}<br>
-      {{projectDetail.description}}<br>
-      {{projectDetail.duration}}<br>
-      {{projectDetail.role}}
-    </h3>
+    <h3>{{projectDetail.title}} <span style="text-transform: none; font-size: 13pt">as a {{projectDetail.role}}</span>
+      <span style="color: #5da4d9; font-weight: 100"> - {{projectDetail.duration}}</span></h3>   
+    <p style="margin-top: 4%;" class="container">{{projectDetail.description}}</p>
   `,
   styles: [`
     h3, span {

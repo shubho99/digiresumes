@@ -391,7 +391,7 @@ html, body {
 }
 .container {
   padding-bottom: 4%;
-  border-bottom: 1px solid #767270;
+  border-bottom: 1px solid #ddd;
 }
 
 .container-1 {

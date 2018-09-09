@@ -53,7 +53,7 @@ import {Observable} from 'rxjs/Observable';
 
     <ng-template #languageTemplate>
       <div *ngIf="this.resume.languages.length" fxLayout="row" fxLayoutGap="50px" style="color: #fff; margin-top: 5%">
-        <i class="fa fa-bullhorn" style="font-size: 25px"></i>
+        <i class="fa fa-bullhorn" style="font-size: 25px; color: #fff"></i>
         <div fxFlex="column" class="container-1">
           <h4 style="color: #fff; margin-bottom: 5%">Languages</h4>
           <app-language-card *ngFor="let language of this.resume['languages']" [language]="language">
@@ -259,7 +259,7 @@ import {Observable} from 'rxjs/Observable';
 
     h4, p {
       color: #767270;
-    }
+    } 
 
     h2 {
       color: #fff;
@@ -315,10 +315,11 @@ import {Observable} from 'rxjs/Observable';
       margin-left: 17.5%;
     }
 
-    p {
+    p,i {
       color: #a85f46;
 
     }
+   
   `]
 })
 export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {

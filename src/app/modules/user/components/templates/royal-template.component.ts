@@ -6,13 +6,13 @@ import {Resume} from '../../../core/models/resume';
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-card>
-        <div fxLayout="column" id="html" fxLayoutGap="5px" fxFlexAlign="center center" style="margin-left:2%;margin-right: 2%">
+        <div fxLayout="column" id="html" fxLayoutGap="5px" fxFlexAlign="center center">
           <div id="cv" class="instaFade">
             <div class="mainDetails">
               <div id="name">
                 <h1 style="text-transform:uppercase" class="quickFade delayTwo">{{this.resume.contact_details.first_name}}
                   {{this.resume.contact_details.last_name}}</h1>
-                <h2 class="quickFade delayThree">{{this.resume.contact_details.country}}</h2>
+                <!--<h2 class="quickFade delayThree">{{this.resume.employment_history.}}</h2>-->
               </div>
               <div id="contactDetails" class="quickFade delayFour">
                 <ul>
@@ -46,12 +46,14 @@ import {Resume} from '../../../core/models/resume';
 
                 <div class="sectionContent">
                   <ng-container *ngFor="let work of this.resume['employment_history']">
-                    <article>
+                    <article style="margin-bottom: 4%">
                       <h2>{{work.designation}}</h2>
-                      <p *ngIf="work.end_year"
-                         class="subDetails">{{work.start_month}} {{work.start_year}} - {{work.end_month}} {{work.end_year}}</p>
-                      <p *ngIf="!work.end_year"
-                         class="subDetails">{{work.start_month}} {{work.start_year}} - Present</p>
+                      <span style="color: #5da4d9;float: right;
+                         margin-top: -20px;" *ngIf="work.end_year"
+                            class="subDetails">{{work.start_month}} {{work.start_year}} - {{work.end_month}} {{work.end_year}}</span>
+                      <span style="color: #5da4d9;float: right;
+                         margin-top: -20px;" *ngIf="!work.end_year"
+                            class="subDetails">{{work.start_month}} {{work.start_year}} - Present</span>
                       <p>{{work.employer}}</p>
                     </article>
                   </ng-container>
@@ -77,13 +79,14 @@ import {Resume} from '../../../core/models/resume';
                 </div>
                 <div class="sectionContent">
                   <ng-container *ngFor="let education of this.resume['education']">
-                    <article style="border-bottom: 1px solid #dedede">
+                    <article style="margin-bottom: 4%;">
                       <h2>{{education.school_name}}</h2>
                       <p class="subDetails">Qualification</p>
                       <h3>{{education.degree_type}}
                         <span style="text-transform: lowercase !important; font-size: 10pt;">@{{education.school_name}}</span></h3>
-                      <span style="color: #5da4d9">{{education.graduation_month}} {{education.graduation_year}}</span>
-                      <h4 >
+                      <span class="subDetails" style="color: #5da4d9;float: right;
+    margin-top: -62px;">{{education.graduation_month}} {{education.graduation_year}}</span>
+                      <h4>
                         {{education.city}}, {{education.state}} <br>
                         {{education.field}} - {{education.percentage}}
                       </h4>
@@ -111,7 +114,7 @@ import {Resume} from '../../../core/models/resume';
                 </div>
                 <div class="sectionContent">
                   <ng-container *ngFor="let objective of this.resume['objectives']">
-                    <article style="border-bottom: 1px solid #dedede">
+                    <article style="margin-bottom: 4%">
                       <h2>{{objective.objective}}</h2>
                       <h3>{{objective.place}}</h3>
                       <h3>{{objective.declaration}}</h3>
@@ -127,13 +130,15 @@ import {Resume} from '../../../core/models/resume';
                 </div>
                 <div class="sectionContent">
                   <ng-container *ngFor="let industrialExposure of this.resume['industrialExposures']">
-                    <article>
+                    <article style="margin-bottom: 4%">
                       <h3>{{industrialExposure.organisation}}</h3>
-                      <span *ngIf="industrialExposure.end_year" style="color: #5da4d9">
+                      <span class="subDetails" *ngIf="industrialExposure.end_year" style="color: #5da4d9;float: right;
+    margin-top: -20px;">
                     {{industrialExposure.start_month}} {{industrialExposure.start_year}} - 
                     {{industrialExposure.end_month}} {{industrialExposure.end_year}}
                   </span>
-                      <span style="color: #5da4d9" *ngIf="!industrialExposure.end_month">
+                      <span class="subDetails" style="color: #5da4d9;float: right;
+    margin-top: -20px;" *ngIf="!industrialExposure.end_month">
                     {{industrialExposure.start_month}} {{industrialExposure.start_year}} - Present
                   </span>
                       <h4>
@@ -151,7 +156,7 @@ import {Resume} from '../../../core/models/resume';
                 </div>
                 <div class="sectionContent">
                   <ng-container *ngFor="let projectDetail of this.resume['projectDetails']">
-                    <article>
+                    <article style="margin-bottom: 4%">
                       <h3>
                         {{projectDetail.title}}<br>
                         {{projectDetail.description}}<br>
@@ -168,7 +173,7 @@ import {Resume} from '../../../core/models/resume';
                   <h1>Awards</h1>
                 </div>
                 <div class="sectionContent">
-                  <article style="border-bottom: 1px solid #dedede">
+                  <article>
                     <ng-container *ngFor="let award of this.resume['award_achivements']">
                       <ul style="list-style-type: circle">
                         <li>
@@ -237,7 +242,7 @@ import {Resume} from '../../../core/models/resume';
                 </div>
                 <div class="sectionContent">
                   <ng-container *ngFor="let refrence of this.resume['refrences']">
-                    <article>
+                    <article style="margin-bottom: 4%">
                       <h3>
                         {{refrence.name}}<br>
                         {{refrence.relationship}}<br>
@@ -256,7 +261,7 @@ import {Resume} from '../../../core/models/resume';
         </div>
         <div class="hover" fxLayout="column">
           <div style="    margin-top: 55%;
-    margin-left: 46%;" fxLayout="row">
+          margin-left: 46%;" fxLayout="row">
             <button mat-button color="primary" (click)="download()">Save
             </button>
           </div>
@@ -272,8 +277,6 @@ import {Resume} from '../../../core/models/resume';
             padding: 0;
             vertical-align: baseline;
           }
-
-         
 
           article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
             display: block;
@@ -292,11 +295,10 @@ import {Resume} from '../../../core/models/resume';
           p {
             font-size: 1em;
             line-height: 1.4em;
-            margin-bottom: 20px;
+
             color: #444;
           }
 
-         
           #cv {
             width: 90%;
             max-width: 800px;
@@ -375,7 +377,7 @@ import {Resume} from '../../../core/models/resume';
 
           section {
             border-top: 1px solid #dedede;
-            padding: 20px 0 0;
+            padding: 20px 0 0px;
           }
 
           section:first-child {
@@ -394,6 +396,7 @@ import {Resume} from '../../../core/models/resume';
           .sectionContent {
             float: right;
             width: 72.5%;
+            margin-bottom: 20px;
           }
 
           .sectionTitle h1 {
@@ -420,7 +423,7 @@ import {Resume} from '../../../core/models/resume';
             -moz-column-count: 3;
             -webkit-column-count: 3;
             column-count: 3;
-            margin-bottom: 20px;
+
             font-size: 1em;
             color: #444;
           }
@@ -630,6 +633,8 @@ import {Resume} from '../../../core/models/resume';
     </div>
   `,
   styles: [`
+    @import url('https://fonts.googleapis.com/css?family=Rokkitt');
+
     mat-card {
       width: 8in;
       margin-top: 1%;
@@ -669,25 +674,24 @@ export class RoyalTemplateComponent {
     const html = `<html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+ <style type="text/css">
           html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del,
           dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset,
           form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
           figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-            border: 0;
             font: inherit;
             font-size: 100%;
             margin: 0;
             padding: 0;
             vertical-align: baseline;
           }
- 
+
           article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
             display: block;
           }
 
           html, body {
-            background: #181818;
             font-family: 'Lato', helvetica, arial, sans-serif;
             font-size: 16px;
             color: #222;
@@ -700,7 +704,7 @@ export class RoyalTemplateComponent {
           p {
             font-size: 1em;
             line-height: 1.4em;
-            margin-bottom: 20px;
+
             color: #444;
           }
 
@@ -782,7 +786,7 @@ export class RoyalTemplateComponent {
 
           section {
             border-top: 1px solid #dedede;
-            padding: 20px 0 0;
+            padding: 20px 0 0px;
           }
 
           section:first-child {
@@ -801,6 +805,7 @@ export class RoyalTemplateComponent {
           .sectionContent {
             float: right;
             width: 72.5%;
+            margin-bottom: 20px;
           }
 
           .sectionTitle h1 {
@@ -827,7 +832,7 @@ export class RoyalTemplateComponent {
             -moz-column-count: 3;
             -webkit-column-count: 3;
             column-count: 3;
-            margin-bottom: 20px;
+
             font-size: 1em;
             color: #444;
           }
@@ -851,7 +856,6 @@ export class RoyalTemplateComponent {
           @media all and (max-width: 601px) {
             #cv {
               width: 95%;
-              margin: 0px;
               min-width: 280px;
             }
 
@@ -911,6 +915,127 @@ export class RoyalTemplateComponent {
             #cv {
               width: 100%;
             }
+          }
+
+          @-webkit-keyframes reset {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 0;
+            }
+          }
+
+          @-webkit-keyframes fade-in {
+            0% {
+              opacity: 0;
+            }
+            40% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+
+          @-moz-keyframes reset {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 0;
+            }
+          }
+
+          @-moz-keyframes fade-in {
+            0% {
+              opacity: 0;
+            }
+            40% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+
+          @keyframes reset {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 0;
+            }
+          }
+
+          @keyframes fade-in {
+            0% {
+              opacity: 0;
+            }
+            40% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+
+          .instaFade {
+            -webkit-animation-name: reset, fade-in;
+            -webkit-animation-duration: 1.5s;
+            -webkit-animation-timing-function: ease-in;
+
+            -moz-animation-name: reset, fade-in;
+            -moz-animation-duration: 1.5s;
+            -moz-animation-timing-function: ease-in;
+
+            animation-name: reset, fade-in;
+            animation-duration: 1.5s;
+            animation-timing-function: ease-in;
+          }
+
+          .quickFade {
+            -webkit-animation-name: reset, fade-in;
+            -webkit-animation-duration: 2.5s;
+            -webkit-animation-timing-function: ease-in;
+
+            -moz-animation-name: reset, fade-in;
+            -moz-animation-duration: 2.5s;
+            -moz-animation-timing-function: ease-in;
+
+            animation-name: reset, fade-in;
+            animation-duration: 2.5s;
+            animation-timing-function: ease-in;
+          }
+
+          .delayOne {
+            -webkit-animation-delay: 0, .5s;
+            -moz-animation-delay: 0, .5s;
+            animation-delay: 0, .5s;
+          }
+
+          .delayTwo {
+            -webkit-animation-delay: 0, 1s;
+            -moz-animation-delay: 0, 1s;
+            animation-delay: 0, 1s;
+          }
+
+          .delayThree {
+            -webkit-animation-delay: 0, 1.5s;
+            -moz-animation-delay: 0, 1.5s;
+            animation-delay: 0, 1.5s;
+          }
+
+          .delayFour {
+            -webkit-animation-delay: 0, 2s;
+            -moz-animation-delay: 0, 2s;
+            animation-delay: 0, 2s;
+          }
+
+          .delayFive {
+            -webkit-animation-delay: 0, 2.5s;
+            -moz-animation-delay: 0, 2.5s;
+            animation-delay: 0, 2.5s;
           }
         </style>
         <body>
