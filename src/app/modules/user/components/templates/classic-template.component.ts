@@ -21,14 +21,14 @@ import {Resume} from '../../../core/models/resume';
               <u>{{this.resume.contact_details.email}}</u></h5>
           </div>
           <div style="margin-top:1%;margin-left:1%;">
-            <p style="border-bottom-width:2px;border-bottom-style:solid;
-        padding-bottom:30px;font-family:SERIF;font-size:18px;text-align:center;">
+            <p style="border-bottom-width:1px;border-bottom-style:solid;
+        padding-bottom:22px;font-family:SERIF;font-size:18px;text-align:center;margin-top: 5%">
               {{this.resume.contact_details.summary}}</p>
           </div>
           <div style="margin-left:1%;">
-            <h1>EXPERIENCE AS INTERN</h1>
+            <h1>EXPERIENCE</h1>
             <ng-container *ngFor="let industrialExposure of this.resume['industrialExposures']">
-              <h3 style="text-transform:uppercase;color:#767270;margin-top:5%;">
+              <h3 style="text-transform:uppercase;color:#767270;margin-top:3%;">
                 {{industrialExposure.organisation}}</h3>
               <span *ngIf="industrialExposure.end_month" style="color:#5da4d9;
           text-transform:uppercase;margin-top:5%;">
@@ -42,134 +42,116 @@ import {Resume} from '../../../core/models/resume';
               <h4 style="color:#767270;">
                 {{industrialExposure.city}}, {{industrialExposure.state}}
               </h4>
-              <p style="padding-bottom:4%;border-bottom-width:1px;border-bottom-style:solid;
-          border-bottom-color:#767270;color:#767270;">
+              <p style="padding-bottom:4%;color:#767270;">
                 {{industrialExposure.work}}</p>
             </ng-container>
           </div>
           <div style="margin-left:1%;">
             <h1>Work Experience</h1>
             <ng-container *ngFor="let work of this.resume['employment_history']">
-              <h2>{{work.designation}}</h2>
-              <p *ngIf="work.end_year"
-              >{{work.start_month}} {{work.start_year}} - {{work.end_month}} {{work.end_year}}</p>
-              <p *ngIf="!work.end_year">{{work.start_month}} {{work.start_year}} - Present</p>
-              <p style="padding-bottom:4%;border-bottom-width:1px;border-bottom-style:solid;
-          border-bottom-color:#767270;color:#767270;">{{work.employer}}</p>
+              <h2 style="margin-top:3%;color:#767270;">{{work.designation}}</h2>
+              <span *ngIf="work.end_year" style="color:#5da4d9;
+          text-transform:uppercase;margin-top:5%;"
+              >{{work.start_month}} {{work.start_year}} - {{work.end_month}} {{work.end_year}}</span>
+              <span *ngIf="!work.end_year" style="color:#5da4d9;
+          text-transform:uppercase;margin-top:5%;">
+                {{work.start_month}} {{work.start_year}} - Present</span>
+              <h4 style="padding-bottom:4%;color:#767270;">{{work.employer}}</h4>
             </ng-container>
           </div>
           <div style="margin-left:1%;">
             <h1>EDUCATION</h1>
             <ng-container *ngFor="let education of this.resume['education']">
-              <h3 style="text-transform:uppercase;color:#767270;margin-top:5%;">
+              <h3 style="text-transform:uppercase;color:#767270;margin-top:3%;">
                 {{education.degree_type}}
                 <span style="text-transform:lowercase !important;font-size:10pt;color:#767270;margin-top:5%;">
               @{{education.school_name}}</span></h3>
               <span style="color:#5da4d9;text-transform:uppercase;margin-top:5%;">
             {{education.graduation_month}} {{education.graduation_year}}</span>
-              <h4 style="padding-bottom:4%;border-bottom-width:1px;border-bottom-style:solid;
-          border-bottom-color:#767270;color:#767270;">
+              <h4 style="padding-bottom:4%;color:#767270;">
                 {{education.city}}, {{education.state}} <br>
                 {{education.field}} - {{education.percentage}}
               </h4>
             </ng-container>
           </div>
-          <div style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#767270;
+          <div style="margin-left:1%;
       padding-bottom:6px;">
             <h1 style="margin-bottom:2%;">ADDITIONAL SKILLS</h1>
             <ng-container *ngFor="let skill of this.resume['skills']">
-              <ul style="color:#767270;font-weight:bold;font-size:16px;margin-left:3%; list-style-type: circle">
+              <ul style="color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%; list-style-type: circle">
                 <li>
                   {{skill.skill}}
                 </li>
               </ul>
             </ng-container>
           </div>
-          <div style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
+          <div style="margin-left:1%;padding-bottom:6px;">
             <h1 style="margin-bottom:2%;">AWARD AND ACHIEVEMENTS</h1>
             <ng-container *ngFor="let award of this.resume['award_achivements']">
-              <ul style="color:#767270;font-weight:bold;font-size:16px;margin-left:3%;">
+              <ul style="color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%; list-style-type: circle">
                 <li>
                   {{award.awards_and_achivements}}
                 </li>
               </ul>
             </ng-container>
           </div>
-          <div style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
-            <h1>PROJECT DETAILS</h1>
-            <ng-container *ngFor="let projectDetail of this.resume['projectDetails']">
-              <h3 class="h3-span" style="text-transform:uppercase;color:#767270;margin-top:5%;">
-                {{projectDetail.title}}<br>
-                {{projectDetail.description}}<br>
-                {{projectDetail.duration}}<br>
-                {{projectDetail.role}}
-              </h3>
-            </ng-container>
-          </div>
-          <div class="border" style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
+          
+          <div class="border" style="margin-left:1%;padding-bottom:6px;">
             <h1>OBJECTIVES</h1>
             <ng-container *ngFor="let objective of this.resume['objectives']">
-              <h3 class="h3-span" style="text-transform:uppercase;color:#767270;margin-top:5%;">
+              <h4 class="h3-span" style="text-transform:uppercase;color:#767270;margin-top:3%;">
                 {{objective.objective}}<br>
                 {{objective.date}}<br>
                 {{objective.place}}
-              </h3>
+              </h4>
               <p class="indus-p-h4" style="color:#767270;">{{objective.declaration}}</p>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
+          <div class="border" style="margin-left:1%;padding-bottom:6px;">
             <h1>ADDITIONAL INTERESTS</h1>
             <ng-container *ngFor="let interest of this.resume['interests']">
-              <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;">
+              <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%;">
                 <li>
                   {{interest.interest}}
                 </li>
               </ul>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
+          <div class="border" style="margin-left:1%;padding-bottom:6px;">
             <h1>LANGUAGES I SPEAK</h1>
             <ng-container *ngFor="let language of this.resume['languages']">
-              <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;">
+              <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%;">
                 <li>
-                  {{language.name}}
+                  {{language.name}}   
                 </li>
               </ul>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
+          <div class="border" style="margin-left:1%;">
             <h1>PROJECT DETAILS</h1>
             <ng-container *ngFor="let projectDetail of this.resume['projectDetails']">
-              <h3>
+              <h4 style="margin-top:3%;padding-bottom:6px;">
                 {{projectDetail.title}}<br>
                 {{projectDetail.description}}<br>
                 {{projectDetail.duration}}<br>
                 {{projectDetail.role}}
-              </h3>
+              </h4>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
+          <div class="border" style="margin-left:1%;">
             <h1>STRENGTH</h1>
             <ng-container *ngFor="let strength of this.resume['strengths']">
-              <ul>
+              <ul style=" list-style-type: circle;margin-top: 3%;padding-bottom:6px;">
                 <li>
                   {{strength.name}}
                 </li>
               </ul>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
+          <div class="border" style="margin-left:1%;">
             <h1>WEAKNESS</h1>
             <ng-container *ngFor="let weakness of this.resume['weakness']">
-              <ul>
+              <ul style=" list-style-type: circle;margin-top: 3%;padding-bottom:6px;">
                 <li>
                   {{weakness.name}}
                 </li>
@@ -177,17 +159,17 @@ import {Resume} from '../../../core/models/resume';
             </ng-container>
           </div>
           <div class="border" style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;padding-bottom:6px;">
+      border-bottom-color:#767270;">
             <h1>Reference</h1>
             <ng-container *ngFor="let refrence of this.resume['refrences']">
-              <h3>
+              <h4 style="padding-bottom:10px;margin-top: 3%">
                 {{refrence.name}}<br>
                 {{refrence.relationship}}<br>
                 {{refrence.company}}<br>
                 {{refrence.email}}<br>
                 {{refrence.phone}}<br>
                 {{refrence.address}}
-              </h3>
+              </h4>
             </ng-container>
           </div>
         </div>
@@ -209,6 +191,7 @@ import {Resume} from '../../../core/models/resume';
     }
 
     h1 {
+      padding-top: 22px;
       font-weight: 100;
       color: #a85f46;
     }
@@ -247,9 +230,9 @@ import {Resume} from '../../../core/models/resume';
       font-size: 60px;
     }
 
-    #html {
-      background: #fafafa;
-    }
+    /*#html {*/
+      /*background: #fafafa;*/
+    /*}*/
 
     .hover:hover {
       opacity: 0.9;
@@ -274,12 +257,11 @@ export class ClassicTemplateComponent {
         Roboto+Mono:400,500,700|Material+Icons"
   >
 <style type="text/css">
- #html{
-      background: red;
-    }
+ 
 h1{
 font-weight:100;
-      color: #a85f46;
+color: #a85f46;
+ padding-top: 22px;
 font-size: 25px;
 font-family: 'Google Sans', Roboto, sans-serif;
 }

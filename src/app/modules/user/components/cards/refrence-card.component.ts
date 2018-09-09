@@ -4,11 +4,10 @@ import {Refrence} from '../../../core/models/refrence';
 @Component({
   selector: 'app-refrence-card',
   template: `
-    <h3>
-      {{refrence.name}}<br>
-      {{refrence.relationship}}<br>
-      {{refrence.company}}<br>
-      {{refrence.email}}<br>
+    <h3 class="container">
+      {{refrence.name}} <span style="text-transform: lowercase; font-size: 10pt;">@{{refrence.company}}</span><br>
+      {{refrence.relationship}}<br>      
+      <span style="text-transform: lowercase">{{refrence.email}}</span><br>
       {{refrence.phone}}<br>
       {{refrence.address}}
     </h3>

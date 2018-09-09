@@ -8,14 +8,14 @@ import {EmploymentHistory} from '../../../core/models/employment-history';
       <span style="text-transform: lowercase !important; font-size: 10pt;">
                   @{{employmentHistory.organisation}}
                   </span>
-    </h3>
-    <span style="color: #5da4d9" *ngIf="employmentHistory.end_month">
-                    {{employmentHistory.start_month}} {{employmentHistory.start_year}} - 
-                    {{employmentHistory.end_month}} {{employmentHistory.end_year}}
-                  </span>
-    <span style="color: #5da4d9" *ngIf="!employmentHistory.end_month">
-                    {{employmentHistory.start_month}} {{employmentHistory.start_year}} - Present
-                  </span>
+    </h3>    
+      <span style="color: #5da4d9;float: right; margin-top: -5%;" *ngIf="employmentHistory.end_month">
+                      {{employmentHistory.start_month}} {{employmentHistory.start_year}} - 
+                      {{employmentHistory.end_month}} {{employmentHistory.end_year}}
+                    </span>
+      <span style="color: #5da4d9;float: right; margin-top: -5%;" *ngIf="!employmentHistory.end_month">
+                      {{employmentHistory.start_month}} {{employmentHistory.start_year}} - Present
+                    </span>    
     <h4 class="container">
       {{employmentHistory.city}}, {{employmentHistory.state}} <br>
       {{employmentHistory.employer}}
@@ -32,6 +32,9 @@ import {EmploymentHistory} from '../../../core/models/employment-history';
       color: #767270;
     }
 
+    h4{
+      text-transform: capitalize;
+    }
 
   `]
 })
