@@ -8,12 +8,12 @@ import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div class="alternate" fxLayout="row" *ngIf="this.resume">
+    <div  class="alternate instaFade" fxLayout="row" *ngIf="this.resume">
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
-          <button mat-mini-fab class="views-span" *ngIf="this.resume && !this.isView">
-            <mat-icon style="font-size: 25px" matTooltip="Views:{{this.resume.views}}" aria-hidden="true">
+          <button matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span" *ngIf="this.resume && !this.isView">
+            <mat-icon style="font-size: 25px"  aria-hidden="true">
               remove_red_eye
             </mat-icon>
           </button>
@@ -249,8 +249,8 @@ import {Observable} from 'rxjs/Observable';
 
   `,
   styles: [`
-
-
+    
+   
     h3, span {
       text-transform: uppercase;
       color: #767270;
@@ -276,17 +276,20 @@ import {Observable} from 'rxjs/Observable';
 
     .side-bar-card {
       background: #538EC3;
-      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+      /*box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);*/
       width: 325px;
       margin-left: 12%;
+      box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3) !important;
     }
 
     mat-card {
       background: white;
-      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
       width: 80%;
       margin-left: 2.5%;
       margin-top: 35px;
+      // box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.2) !important;
+      box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3) !important;   
+
     }
 
     .views-span {
@@ -317,8 +320,8 @@ import {Observable} from 'rxjs/Observable';
 
     p {
       color: #a85f46;
-
     }
+  
   `]
 })
 export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -329,7 +332,7 @@ export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private router: Router, private route: ActivatedRoute,
               private resumeRepo: ResumeRepoService) {
-    document.body.style.background = '#fafafa';
+    document.body.style.backgroundImage = 'url("../../../../assets/images/back.jpg")';
   }
 
   ngOnInit() {
@@ -353,6 +356,7 @@ export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.isAlive = false;
+    document.body.style.background = '#fafafa';
   }
 
   ngAfterViewInit() {
