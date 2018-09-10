@@ -8,9 +8,10 @@ import {HttpClient} from '@angular/common/http';
   selector: 'app-template',
   template: `
    <!--<app-classic-template  [resume]="resume" (downloadTemplate)="download($event)"></app-classic-template>-->
-    <app-side-panel-template [resume]="resume" (downloadTemplate)="download($event)"></app-side-panel-template>
+    <!--<app-side-panel-template [resume]="resume" (downloadTemplate)="download($event)"></app-side-panel-template>-->
    <!--<app-royal-template [resume]="resume" (downloadTemplate)="download($event)"></app-royal-template>-->
    <app-blues-template [resume]="resume" (downloadTemplate)="download($event)"></app-blues-template>
+   <!--<app-modern-template [resume]="resume" (downloadTemplate)="download($event)"></app-modern-template>-->
     <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`

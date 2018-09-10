@@ -283,7 +283,7 @@ import {Observable} from 'rxjs/Observable';
     }
 
     mat-card {
-      background: white;
+      background: #eaf1f8;
       width: 80%;
       margin-left: 2.5%;
       margin-top: 35px;
