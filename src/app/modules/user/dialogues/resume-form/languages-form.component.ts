@@ -5,6 +5,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AlertService} from '../../../core/services/alert.service';
 import {Language} from '../../../core/models/language';
+import {Levels} from '../../../core/utils/utils';
 
 @Component({
   selector: 'app-languages-form',
@@ -13,12 +14,22 @@ import {Language} from '../../../core/models/language';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input formControlName="name" matInput placeholder="Mention your Language"/>
+          <mat-error>This Field is Required</mat-error>
         </mat-form-field>
-        <mat-form-field>
-          <input formControlName="level" matInput placeholder="Level"/>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="represent" matInput placeholder="Represent"/>
+        <mat-form-field class="date-field">
+          <div fxLayout="row">
+            <input formControlName="level" matInput placeholder="Level">
+            <mat-menu [overlapTrigger]="false" #startingMonth="matMenu">
+              <mat-list style="height: 300px">
+                <mat-list-item *ngFor="let level of this.levels" (click)="updateLevel(level)">{{level}}
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+            <button mat-icon-button type="button" [matMenuTriggerFor]="startingMonth">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+          </div>
+          <mat-error>Please provide A Valid Level</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
@@ -40,6 +51,7 @@ export class LanguagesFormComponent implements OnInit {
   language: Language;
   resumeId: string;
   loading = false;
+  levels = Levels;
 
   constructor(public dialog: MatDialogRef<SkillFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService,
@@ -55,7 +67,6 @@ export class LanguagesFormComponent implements OnInit {
     this.form = new FormGroup({
       'name': new FormControl(name, [Validators.required]),
       'level': new FormControl(level, [Validators.required]),
-      'represent': new FormControl(represent, [Validators.required]),
     });
   }
 
@@ -87,5 +98,9 @@ export class LanguagesFormComponent implements OnInit {
 
   cancel() {
     this.dialog.close();
+  }
+
+  updateLevel(level) {
+    this.form.patchValue({level: level});
   }
 }

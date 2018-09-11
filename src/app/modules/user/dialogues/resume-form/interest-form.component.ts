@@ -13,6 +13,7 @@ import {Interest} from '../../../core/models/interest';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <textarea formControlName="interest" rows="5" matInput placeholder="Describe your interest"></textarea>
+          <mat-hint>This Field is Required</mat-hint>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">

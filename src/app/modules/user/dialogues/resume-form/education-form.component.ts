@@ -5,6 +5,7 @@ import {SkillFormComponent} from './skill-form.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {AlertService} from '../../../core/services/alert.service';
 import {Education} from '../../../core/models/education';
+import {Months} from '../../../core/utils/utils';
 
 @Component({
   selector: 'app-education-form',
@@ -13,27 +14,48 @@ import {Education} from '../../../core/models/education';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input formControlName="school_name" matInput placeholder="School or college Name"/>
+          <mat-error>School or College name is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="city" matInput placeholder="City"/>
+          <mat-error>City is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="state" matInput placeholder="State"/>
+          <mat-error>State is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="field" matInput placeholder="Field"/>
+          <mat-error>Field is Required</mat-error>
+          <mat-hint>Example - B.Tech in Computer Science</mat-hint>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="percentage" matInput placeholder="Percentage"/>
+          <mat-error>Percentage is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="degree_type" matInput placeholder="Degree type"/>
+          <mat-error>Degree type is Required</mat-error>
+          <mat-hint>Example - Diploma,Graduation</mat-hint>
         </mat-form-field>
-        <mat-form-field>
-          <input formControlName="graduation_month" matInput placeholder="Graduation month"/>
+        <mat-form-field class="date-field">
+          <div fxLayout="row">
+            <input formControlName="graduation_month" matInput placeholder="Starting Month" required>
+            <mat-menu [overlapTrigger]="false" #listIdMenu="matMenu">
+              <mat-list style="height: 300px">
+                <mat-list-item *ngFor="let month of this.months" (click)="updateMonth(month)">{{month}}
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+            <button mat-icon-button type="button" [matMenuTriggerFor]="listIdMenu">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+          </div>
+          <mat-error>Please provide Starting Month</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="graduation_year" matInput placeholder="Graduation year"/>
+          <mat-error>Graduation Year is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
@@ -49,6 +71,9 @@ import {Education} from '../../../core/models/education';
 
   `,
   styles: [`
+    mat-hint {
+      color: #538ec3 !important;
+    }
   `]
 })
 export class EducationFormComponent implements OnInit {
@@ -56,6 +81,7 @@ export class EducationFormComponent implements OnInit {
   education: Education;
   resumeId: string;
   loading = false;
+  months = Months;
 
   constructor(public dialog: MatDialogRef<SkillFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService,
@@ -114,6 +140,10 @@ export class EducationFormComponent implements OnInit {
 
   cancel() {
     this.dialog.close();
+  }
+
+  updateMonth(month) {
+    this.form.patchValue({graduation_month: month});
   }
 }
 

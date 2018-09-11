@@ -12,21 +12,27 @@ import {AlertService} from '../../../core/services/alert.service';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input formControlName="name" matInput placeholder="Mention your Name"/>
+          <mat-error>Name is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="relationship" matInput placeholder="Relationship"/>
+          <mat-error>This Field is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="company" matInput placeholder="Company"/>
+          <mat-error>Company Name is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="email" matInput type="email" placeholder="Email"/>
+          <mat-error>A valid Email is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input formControlName="phone" matInput type="number" placeholder="Mobile Number"/>
+          <input formControlName="phone" matInput  placeholder="Mobile Number"/>
+          <mat-error>Mobile Number is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="address" matInput placeholder="Address"/>
+          <mat-error>Address is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">

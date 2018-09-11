@@ -10,7 +10,7 @@ import {AlertService} from '../../../core/services/alert.service';
   template: `
     <div fxLayoutAlign="center center" fxLayout="column">
       <ng-container>
-        <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
+        <div class="outer-div" style="height:  66px;" fxLayoutAlign="center center" fxLayout="column">
           <ng-container *ngIf="skill">
             <h3>{{skill.skill}}</h3>
             <h3>{{skill.level}}</h3>

@@ -12,7 +12,8 @@ import {Strength} from '../../../core/models/strength';
     <form [formGroup]="this.form" (submit)="this.form.valid && addOrUpdate()">
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
-          <input formControlName="name" matInput placeholder="title"/>
+          <input formControlName="name" matInput placeholder="Name your Strength"/>
+          <mat-error>This field is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">

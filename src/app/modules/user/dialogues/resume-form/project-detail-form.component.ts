@@ -14,15 +14,19 @@ import {ProjectDetail} from '../../../core/models/project-detail';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input formControlName="title" matInput placeholder="title"/>
+          <mat-error>Title is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <textarea formControlName="description" matInput placeholder="Description"></textarea>
+          <mat-error>Description is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="duration" matInput placeholder="duration"/>
+          <mat-error>Duration is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="role" matInput placeholder="role"/>
+          <mat-error>Role is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">

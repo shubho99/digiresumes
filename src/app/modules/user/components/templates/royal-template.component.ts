@@ -9,7 +9,7 @@ import {Meta} from '@angular/platform-browser';
       <mat-card>
         <div fxLayout="column" id="html" fxLayoutGap="5px" fxFlexAlign="center center">
           <div id="cv" class="instaFade">
-            <div class="mainDetails">
+            <div class="mainDetails" *ngIf="this.resume.contact_details">
               <div id="name">
                 <h1 style="text-transform:uppercase" class="quickFade delayTwo">{{this.resume.contact_details.first_name}}
                   {{this.resume.contact_details.last_name}}</h1>
@@ -29,7 +29,7 @@ import {Meta} from '@angular/platform-browser';
               <div class="clear"></div>
             </div>
             <div id="mainArea" class="quickFade delayFive">
-              <section>
+              <section *ngIf="this.resume.contact_details">
                 <article>
                   <div class="sectionTitle">
                     <h1>Personal Profile</h1>
@@ -40,7 +40,7 @@ import {Meta} from '@angular/platform-browser';
                 </article>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.employment_history.length">
                 <div class="sectionTitle">
                   <h1>Work Experience</h1>
                 </div>
@@ -61,7 +61,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.skills.length">
                 <div class="sectionTitle">
                   <h1>Key Skills</h1>
                 </div>
@@ -74,7 +74,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.education.length">
                 <div class="sectionTitle">
                   <h1>Education</h1>
                 </div>
@@ -96,7 +96,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.languages.length">
                 <div class="sectionTitle">
                   <h1>Language I Speak</h1>
                 </div>
@@ -109,7 +109,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.objectives.length">
                 <div class="sectionTitle">
                   <h1>Objective</h1>
                 </div>
@@ -125,7 +125,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.industrialExposures.length">
                 <div class="sectionTitle">
                   <h1>Industrial Exposure as Intern</h1>
                 </div>
@@ -151,7 +151,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.projectDetails.length">
                 <div class="sectionTitle">
                   <h1>Project Details</h1>
                 </div>
@@ -169,7 +169,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.award_achivements.length">
                 <div class="sectionTitle">
                   <h1>Awards</h1>
                 </div>
@@ -186,7 +186,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.interests.length">
                 <div class="sectionTitle">
                   <h1>Interests</h1>
                 </div>
@@ -203,7 +203,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.weakness.length">
                 <div class="sectionTitle">
                   <h1>Weakness</h1>
                 </div>
@@ -220,7 +220,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.strengths.length">
                 <div class="sectionTitle">
                   <h1>Strength</h1>
                 </div>
@@ -237,7 +237,7 @@ import {Meta} from '@angular/platform-browser';
                 </div>
                 <div class="clear"></div>
               </section>
-              <section>
+              <section *ngIf="this.resume.refrences.length">
                 <div class="sectionTitle">
                   <h1>Reference</h1>
                 </div>
@@ -916,127 +916,6 @@ export class RoyalTemplateComponent {
             #cv {
               width: 100%;
             }
-          }
-
-          @-webkit-keyframes reset {
-            0% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 0;
-            }
-          }
-
-          @-webkit-keyframes fade-in {
-            0% {
-              opacity: 0;
-            }
-            40% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 1;
-            }
-          }
-
-          @-moz-keyframes reset {
-            0% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 0;
-            }
-          }
-
-          @-moz-keyframes fade-in {
-            0% {
-              opacity: 0;
-            }
-            40% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 1;
-            }
-          }
-
-          @keyframes reset {
-            0% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 0;
-            }
-          }
-
-          @keyframes fade-in {
-            0% {
-              opacity: 0;
-            }
-            40% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 1;
-            }
-          }
-
-          .instaFade {
-            -webkit-animation-name: reset, fade-in;
-            -webkit-animation-duration: 1.5s;
-            -webkit-animation-timing-function: ease-in;
-
-            -moz-animation-name: reset, fade-in;
-            -moz-animation-duration: 1.5s;
-            -moz-animation-timing-function: ease-in;
-
-            animation-name: reset, fade-in;
-            animation-duration: 1.5s;
-            animation-timing-function: ease-in;
-          }
-
-          .quickFade {
-            -webkit-animation-name: reset, fade-in;
-            -webkit-animation-duration: 2.5s;
-            -webkit-animation-timing-function: ease-in;
-
-            -moz-animation-name: reset, fade-in;
-            -moz-animation-duration: 2.5s;
-            -moz-animation-timing-function: ease-in;
-
-            animation-name: reset, fade-in;
-            animation-duration: 2.5s;
-            animation-timing-function: ease-in;
-          }
-
-          .delayOne {
-            -webkit-animation-delay: 0, .5s;
-            -moz-animation-delay: 0, .5s;
-            animation-delay: 0, .5s;
-          }
-
-          .delayTwo {
-            -webkit-animation-delay: 0, 1s;
-            -moz-animation-delay: 0, 1s;
-            animation-delay: 0, 1s;
-          }
-
-          .delayThree {
-            -webkit-animation-delay: 0, 1.5s;
-            -moz-animation-delay: 0, 1.5s;
-            animation-delay: 0, 1.5s;
-          }
-
-          .delayFour {
-            -webkit-animation-delay: 0, 2s;
-            -moz-animation-delay: 0, 2s;
-            animation-delay: 0, 2s;
-          }
-
-          .delayFive {
-            -webkit-animation-delay: 0, 2.5s;
-            -moz-animation-delay: 0, 2.5s;
-            animation-delay: 0, 2.5s;
           }
         </style>
         <body>

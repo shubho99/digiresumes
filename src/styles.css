@@ -400,7 +400,8 @@ html, body {
   margin-bottom: 15%;
 }
 
-
-
+.date-field {
+  width: 10% !important;
+}
 
 
