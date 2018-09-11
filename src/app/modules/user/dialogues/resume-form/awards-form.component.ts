@@ -15,6 +15,7 @@ import {AwardsAchivement} from '../../../core/models/awards-achivement';
         <mat-form-field>
           <textarea formControlName="awards_and_achivements" rows="5" matInput
                     placeholder="Describe about your awards and achievement"></textarea>
+          <mat-error>This Field is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">

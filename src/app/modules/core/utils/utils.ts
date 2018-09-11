@@ -27,6 +27,7 @@ export class Utils {
   static filterDuplicateIds(ids: number[]) {
     return ids.filter((elem, index, self) => index === self.indexOf(elem));
   }
+
   static getYoutubeUrlFromId(id: string): string {
     return 'https://www.youtube.com/watch?v=' + id;
   }
@@ -34,7 +35,10 @@ export class Utils {
 }
 
 
-
 interface Entity {
   _id: number;
 }
+
+export const Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+  'October', 'November', 'December'];
+export const Levels = ['basic', 'intermediate', 'advance'];

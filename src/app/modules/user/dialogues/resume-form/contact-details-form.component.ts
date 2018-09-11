@@ -12,15 +12,19 @@ import {AlertService} from '../../../core/services/alert.service';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input formControlName="first_name" matInput placeholder="First Name"/>
+          <mat-error>First name is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="last_name" matInput placeholder="Last Name"/>
+          <mat-error>Last name is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="phone_number" matInput placeholder="Mobile Number"/>
+          <mat-error>A valid Mobile Number  is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="email" matInput placeholder="Email"/>
+          <mat-error>A Valid Email is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="linkedin_url" matInput placeholder="Linked in url(optional)"/>
@@ -30,21 +34,27 @@ import {AlertService} from '../../../core/services/alert.service';
         </mat-form-field>
         <mat-form-field>
           <textarea formControlName="address" matInput rows="5" placeholder="Address"></textarea>
+          <mat-error>Address is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="city" matInput placeholder="City"/>
+          <mat-error>City is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="state" matInput placeholder="State"/>
+          <mat-error>State is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="zip_code" matInput type="number" placeholder="Zip Code"/>
+          <mat-error>Zip Code is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="country" matInput placeholder="Country"/>
+          <mat-error>Country is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <textarea formControlName="summary" matInput rows="5" placeholder="Summary"></textarea>
+          <mat-error>Summary is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button [disabled]="this.form.invalid" type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
@@ -69,7 +79,6 @@ export class ContactDetailsFormComponent implements OnInit {
   resume_id: string;
   loading = false;
   webValid = '^(?:http(s)?:\\/\\/)?[\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\._~:/?#[\\]@!\\$&\'\\(\\)\\*\\+,;=.]+$';
-  mobValid = '^\\+[1-9]{1}[0-9]{3,14}$';
 
   constructor(public dialog: MatDialogRef<ContactDetailsFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService,
@@ -94,7 +103,7 @@ export class ContactDetailsFormComponent implements OnInit {
     this.form = new FormGroup({
       'first_name': new FormControl(firstName, [Validators.required]),
       'last_name': new FormControl(lastName, [Validators.required]),
-      'phone_number': new FormControl(phoneNumber, [Validators.required, Validators.pattern(this.mobValid)]),
+      'phone_number': new FormControl(phoneNumber, [Validators.required]),
       'email': new FormControl(email, [Validators.required]),
       'address': new FormControl(address, [Validators.required]),
       'city': new FormControl(city, [Validators.required]),
@@ -129,6 +138,7 @@ export class ContactDetailsFormComponent implements OnInit {
   }
 
   updateContactDetails() {
+    console.log(this.form.value);
     this.loading = true;
     this.resumeRepo.updateContactDetails(this.form.value, this.contactDetails._id, this.resume_id).subscribe(() => {
       this.loading = false;

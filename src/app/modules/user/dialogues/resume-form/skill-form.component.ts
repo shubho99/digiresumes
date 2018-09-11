@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {Skill} from '../../../core/models/skill';
 import {AlertService} from '../../../core/services/alert.service';
+import {Levels} from '../../../core/utils/utils';
 
 @Component({
   selector: 'app-skills-form',
@@ -12,12 +13,22 @@ import {AlertService} from '../../../core/services/alert.service';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input matInput formControlName="skill" placeholder="Mention your skill"/>
+          <mat-error>This Field is Required</mat-error>
         </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="level" placeholder="Level"/>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="represent" placeholder="Represent"/>
+        <mat-form-field class="date-field">
+          <div fxLayout="row">
+            <input formControlName="level" matInput placeholder="Level">
+            <mat-menu [overlapTrigger]="false" #startingMonth="matMenu">
+              <mat-list style="height: 300px">
+                <mat-list-item *ngFor="let level of this.levels" (click)="updateLevel(level)">{{level}}
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+            <button mat-icon-button type="button" [matMenuTriggerFor]="startingMonth">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+          </div>
+          <mat-error>Please provide A Valid Level</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
@@ -40,6 +51,7 @@ export class SkillFormComponent implements OnInit {
   skill: Skill;
   resumeId: string;
   loading = false;
+  levels = Levels;
 
   constructor(public dialog: MatDialogRef<SkillFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService, private alert: AlertService) {
@@ -50,11 +62,9 @@ export class SkillFormComponent implements OnInit {
     this.skill = this.data.skill;
     const skill = this.skill ? this.skill.skill : null;
     const level = this.skill ? this.skill.level : null;
-    const represent = this.skill ? this.skill.represent : null;
     this.form = new FormGroup({
       'skill': new FormControl(skill, [Validators.required]),
       'level': new FormControl(level, [Validators.required]),
-      'represent': new FormControl(represent, [Validators.required]),
     });
   }
 
@@ -87,5 +97,9 @@ export class SkillFormComponent implements OnInit {
 
       this.dialog.close();
     });
+  }
+
+  updateLevel(level) {
+    this.form.patchValue({level: level});
   }
 }

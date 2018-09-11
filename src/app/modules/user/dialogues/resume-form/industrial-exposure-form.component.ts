@@ -5,45 +5,74 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AlertService} from '../../../core/services/alert.service';
 import {IndustrialExposure} from '../../../core/models/industrial-exposure';
+import {Months} from '../../../core/utils/utils';
 
 @Component({
   selector: 'app-industrial-exposure-form',
   template: `
     <form [formGroup]="form" (submit)="this.form.valid && addOrUpdate()">
-    <div class="alternate" fxLayout="column" fxLayoutGap="10px">
-      <mat-form-field>
-        <input formControlName="organisation" matInput placeholder="Organisation"/>
-      </mat-form-field>
-      <mat-form-field>
-        <input formControlName="city" matInput placeholder="City"/>
-      </mat-form-field>
-      <mat-form-field>
-        <input formControlName="state" matInput placeholder="State"/>
-      </mat-form-field>
-      <mat-form-field>
-        <input formControlName="start_month" matInput placeholder="Starting Month"/>
-      </mat-form-field>
-      <mat-form-field>
-        <input formControlName="start_year" matInput type="number" placeholder="Starting Year"/>
-      </mat-form-field>
-      <mat-form-field>
-        <input formControlName="end_month" matInput placeholder="End Month"/>
-      </mat-form-field>
-      <mat-form-field>
-        <input formControlName="end_year" matInput type="number" placeholder="End Year"/>
-      </mat-form-field>
-      <mat-form-field>
-        <input formControlName="work" matInput placeholder="Tell about your Work"/>
-      </mat-form-field>
-      <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
-        <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
-          <span *ngIf="industrialExposure">Update</span>
-          <span *ngIf="!industrialExposure">Add</span>
-        </button>
-        <button (click)="cancel()" type="button" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="accent">Cancel
-        </button>
+      <div class="alternate" fxLayout="column" fxLayoutGap="10px">
+        <mat-form-field>
+          <input formControlName="organisation" matInput placeholder="Organisation"/>
+          <mat-hint>Organisation is Required</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="city" matInput placeholder="City"/>
+          <mat-hint>City is Required</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="state" matInput placeholder="State"/>
+          <mat-hint>State is Required</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="date-field">
+          <div fxLayout="row">
+            <input formControlName="start_month" matInput placeholder="Starting Month">
+            <mat-menu [overlapTrigger]="false" #startMonth="matMenu">
+              <mat-list style="height: 300px">
+                <mat-list-item *ngFor="let month of this.months" (click)="updateMonth(month)">{{month}}
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+            <button mat-icon-button type="button" [matMenuTriggerFor]="startMonth">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+          </div>
+          <mat-error>Please provide Starting Month</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="start_year" matInput type="number" placeholder="Starting Year"/>
+          <mat-hint>Starting Year is Required</mat-hint>
+        </mat-form-field>
+        <mat-form-field style="width: 25%">
+          <div fxLayout="row">
+            <input formControlName="end_month" matInput placeholder="End Month(Don't fill if still Working)">
+            <mat-menu [overlapTrigger]="false" #listIdMenu="matMenu">
+              <mat-list style="height: 300px">
+                <mat-list-item *ngFor="let month of this.months" (click)="updateEndMonth(month)">{{month}}
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+            <button mat-icon-button type="button" [matMenuTriggerFor]="listIdMenu">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+          </div>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="end_year" matInput type="number" placeholder="End Year (Leave this if you are Still Working)"/>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="work" matInput placeholder="Tell about your Work"/>
+          <mat-hint>This Field is Required</mat-hint>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+          <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
+            <span *ngIf="industrialExposure">Update</span>
+            <span *ngIf="!industrialExposure">Add</span>
+          </button>
+          <button (click)="cancel()" type="button" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="accent">Cancel
+          </button>
+        </div>
       </div>
-    </div>
     </form>
     <ngx-loading [show]="loading"></ngx-loading>
   `,
@@ -55,6 +84,7 @@ export class IndustrialExposureFormComponent implements OnInit {
   industrialExposure: IndustrialExposure;
   resumeId: string;
   loading = false;
+  months = Months;
 
   constructor(public dialog: MatDialogRef<SkillFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService,
@@ -78,8 +108,8 @@ export class IndustrialExposureFormComponent implements OnInit {
       'state': new FormControl(state, [Validators.required]),
       'start_month': new FormControl(start_month, [Validators.required]),
       'start_year': new FormControl(start_year, [Validators.required]),
-      'end_month': new FormControl(end_month, [Validators.required]),
-      'end_year': new FormControl(end_year, [Validators.required]),
+      'end_month': new FormControl(end_month),
+      'end_year': new FormControl(end_year),
       'work': new FormControl(work, [Validators.required]),
     });
   }
@@ -112,5 +142,13 @@ export class IndustrialExposureFormComponent implements OnInit {
 
   cancel() {
     this.dialog.close();
+  }
+
+  updateMonth(month) {
+    this.form.patchValue({start_month: month});
+  }
+
+  updateEndMonth(month) {
+    this.form.patchValue({end_month: month});
   }
 }

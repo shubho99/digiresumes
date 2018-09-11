@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Education} from '../../../core/models/education';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {SkillFormComponent} from './skill-form.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {AlertService} from '../../../core/services/alert.service';
 import {EmploymentHistory} from '../../../core/models/employment-history';
+import {Months} from '../../../core/utils/utils';
 
 @Component({
   selector: 'app-employment-history-form',
@@ -13,31 +13,61 @@ import {EmploymentHistory} from '../../../core/models/employment-history';
     <form [formGroup]="this.form" (submit)="this.form.valid && addOrUpdate()">
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
-          <input formControlName="employer" matInput placeholder="Employer"/>
-        </mat-form-field>
-        <mat-form-field>
           <input formControlName="designation" matInput placeholder="Designation"/>
+          <mat-error>Designation is Required</mat-error>
+          <mat-hint>Example - Web Developer</mat-hint>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="organisation" matInput placeholder="Organisation"/>
+          <mat-error>Organisation is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="city" matInput placeholder="City"/>
+          <mat-error>City is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="state" matInput placeholder="State"/>
+          <mat-error>State is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input formControlName="start_month" matInput placeholder="Starting Month"/>
+          <textarea formControlName="employer" matInput placeholder="Explain About Your Work"></textarea>
+          <mat-error>This Field is Required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="date-field">
+          <div fxLayout="row">
+            <input formControlName="start_month" matInput placeholder="Starting Month">
+            <mat-menu [overlapTrigger]="false" #startingMonth="matMenu">
+              <mat-list style="height: 300px">
+                <mat-list-item *ngFor="let month of this.months" (click)="updateStartMonth(month)">{{month}}
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+            <button mat-icon-button type="button" [matMenuTriggerFor]="startingMonth">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+          </div>
+          <mat-error>Please provide Starting Month</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="start_year" matInput placeholder="Starting Year"/>
+          <mat-error>Starting Year is Required</mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 25%">
+          <div fxLayout="row">
+            <input formControlName="end_month" matInput placeholder="End Month(Don't fill if still Working)">
+            <mat-menu [overlapTrigger]="false" #listIdMenu="matMenu">
+              <mat-list style="height: 300px">
+                <mat-list-item *ngFor="let month of this.months" (click)="updateEndMonth(month)">{{month}}
+                </mat-list-item>
+              </mat-list>
+            </mat-menu>
+            <button mat-icon-button type="button" [matMenuTriggerFor]="listIdMenu">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+          </div>
         </mat-form-field>
         <mat-form-field>
-          <input formControlName="end_month" matInput placeholder="End month"/>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="end_year" matInput placeholder="End year"/>
+          <input formControlName="end_year" matInput placeholder="End year(Don't fill if still Working)"/>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
@@ -52,6 +82,9 @@ import {EmploymentHistory} from '../../../core/models/employment-history';
     <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`
+    mat-hint {
+      color: #538ec3 !important;
+    }
   `]
 })
 export class EmploymentHistoryFormComponent implements OnInit {
@@ -59,6 +92,7 @@ export class EmploymentHistoryFormComponent implements OnInit {
   employmentHistory: EmploymentHistory;
   resumeId: string;
   loading = false;
+  months = Months;
 
   constructor(public dialog: MatDialogRef<SkillFormComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any, private resumeRepo: ResumeRepoService,
@@ -118,6 +152,15 @@ export class EmploymentHistoryFormComponent implements OnInit {
       this.alert.success('Employment History  updated Successfully');
       this.dialog.close();
     });
+  }
+
+  updateStartMonth(month) {
+    console.log(this.form.value);
+    this.form.patchValue({start_month: month});
+  }
+
+  updateEndMonth(month) {
+    this.form.patchValue({end_month: month});
   }
 
 }

@@ -7,7 +7,7 @@ import {Resume} from '../../../core/models/resume';
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-card>
         <div fxLayout="column" id="html" fxLayoutGap="5px" fxFlexAlign="center center" style="margin-left:2%;margin-right: 2%">
-          <div style="margin-left:1%;">
+          <div style="margin-left:1%;" *ngIf="this.resume.contact_details">
             <h1 style="text-transform:uppercase !important;font-size:30px;text-align:center;">
               {{this.resume.contact_details.first_name}}
               {{this.resume.contact_details.last_name}}</h1>
@@ -20,13 +20,13 @@ import {Resume} from '../../../core/models/resume';
             <h5 style="color:#538ec3;text-align:center;"><i class="fa fa-envelope" aria-hidden="true"></i>
               <u>{{this.resume.contact_details.email}}</u></h5>
           </div>
-          <div style="margin-top:1%;margin-left:1%;">
+          <div *ngIf="this.resume.contact_details" style="margin-top:1%;margin-left:1%;">
             <p style="border-bottom-width:1px;border-bottom-style:solid;
         padding-bottom:22px;font-family:SERIF;font-size:18px;text-align:center;margin-top: 5%">
               {{this.resume.contact_details.summary}}</p>
           </div>
-          <div style="margin-left:1%;">
-            <h1>EXPERIENCE</h1>
+          <div style="margin-left:1%;" *ngIf="this.resume.industrialExposures.length">
+            <h1>EXPERIENCE as an Intern</h1>
             <ng-container *ngFor="let industrialExposure of this.resume['industrialExposures']">
               <h3 style="text-transform:uppercase;color:#767270;margin-top:3%;">
                 {{industrialExposure.organisation}}</h3>
@@ -46,7 +46,7 @@ import {Resume} from '../../../core/models/resume';
                 {{industrialExposure.work}}</p>
             </ng-container>
           </div>
-          <div style="margin-left:1%;">
+          <div style="margin-left:1%;" *ngIf="this.resume.employment_history.length">
             <h1>Work Experience</h1>
             <ng-container *ngFor="let work of this.resume['employment_history']">
               <h2 style="margin-top:3%;color:#767270;">{{work.designation}}</h2>
@@ -59,7 +59,7 @@ import {Resume} from '../../../core/models/resume';
               <h4 style="padding-bottom:4%;color:#767270;">{{work.employer}}</h4>
             </ng-container>
           </div>
-          <div style="margin-left:1%;">
+          <div style="margin-left:1%;" *ngIf="this.resume.education.length"> 
             <h1>EDUCATION</h1>
             <ng-container *ngFor="let education of this.resume['education']">
               <h3 style="text-transform:uppercase;color:#767270;margin-top:3%;">
@@ -75,7 +75,7 @@ import {Resume} from '../../../core/models/resume';
             </ng-container>
           </div>
           <div style="margin-left:1%;
-      padding-bottom:6px;">
+      padding-bottom:6px;" *ngIf="this.resume.skills.length">
             <h1 style="margin-bottom:2%;">ADDITIONAL SKILLS</h1>
             <ng-container *ngFor="let skill of this.resume['skills']">
               <ul style="color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%; list-style-type: circle">
@@ -85,7 +85,7 @@ import {Resume} from '../../../core/models/resume';
               </ul>
             </ng-container>
           </div>
-          <div style="margin-left:1%;padding-bottom:6px;">
+          <div style="margin-left:1%;padding-bottom:6px;" *ngIf="this.resume.award_achivements.length">
             <h1 style="margin-bottom:2%;">AWARD AND ACHIEVEMENTS</h1>
             <ng-container *ngFor="let award of this.resume['award_achivements']">
               <ul style="color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%; list-style-type: circle">
@@ -96,7 +96,7 @@ import {Resume} from '../../../core/models/resume';
             </ng-container>
           </div>
           
-          <div class="border" style="margin-left:1%;padding-bottom:6px;">
+          <div class="border" style="margin-left:1%;padding-bottom:6px;" *ngIf="this.resume.objectives.length">
             <h1>OBJECTIVES</h1>
             <ng-container *ngFor="let objective of this.resume['objectives']">
               <h4 class="h3-span" style="text-transform:uppercase;color:#767270;margin-top:3%;">
@@ -107,7 +107,7 @@ import {Resume} from '../../../core/models/resume';
               <p class="indus-p-h4" style="color:#767270;">{{objective.declaration}}</p>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;padding-bottom:6px;">
+          <div class="border" style="margin-left:1%;padding-bottom:6px;" *ngIf="this.resume.interests.length">
             <h1>ADDITIONAL INTERESTS</h1>
             <ng-container *ngFor="let interest of this.resume['interests']">
               <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%;">
@@ -117,7 +117,7 @@ import {Resume} from '../../../core/models/resume';
               </ul>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;padding-bottom:6px;">
+          <div class="border" style="margin-left:1%;padding-bottom:6px;" *ngIf="this.resume.languages.length">
             <h1>LANGUAGES I SPEAK</h1>
             <ng-container *ngFor="let language of this.resume['languages']">
               <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%;">
@@ -127,7 +127,7 @@ import {Resume} from '../../../core/models/resume';
               </ul>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;">
+          <div class="border" style="margin-left:1%;" *ngIf="this.resume.projectDetails.length">
             <h1>PROJECT DETAILS</h1>
             <ng-container *ngFor="let projectDetail of this.resume['projectDetails']">
               <h4 style="margin-top:3%;padding-bottom:6px;">
@@ -138,7 +138,7 @@ import {Resume} from '../../../core/models/resume';
               </h4>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;">
+          <div class="border" style="margin-left:1%;" *ngIf="this.resume.strengths.length">
             <h1>STRENGTH</h1>
             <ng-container *ngFor="let strength of this.resume['strengths']">
               <ul style=" list-style-type: circle;margin-top: 3%;padding-bottom:6px;">
@@ -148,7 +148,7 @@ import {Resume} from '../../../core/models/resume';
               </ul>
             </ng-container>
           </div>
-          <div class="border" style="margin-left:1%;">
+          <div class="border" style="margin-left:1%;" *ngIf="this.resume.weakness.length">
             <h1>WEAKNESS</h1>
             <ng-container *ngFor="let weakness of this.resume['weakness']">
               <ul style=" list-style-type: circle;margin-top: 3%;padding-bottom:6px;">
@@ -159,7 +159,7 @@ import {Resume} from '../../../core/models/resume';
             </ng-container>
           </div>
           <div class="border" style="margin-left:1%;border-bottom-width:1px;border-bottom-style:solid;
-      border-bottom-color:#767270;">
+      border-bottom-color:#767270;" *ngIf="this.resume.refrences.length">
             <h1>Reference</h1>
             <ng-container *ngFor="let refrence of this.resume['refrences']">
               <h4 style="padding-bottom:10px;margin-top: 3%">

@@ -64,9 +64,9 @@ import {ActivatedRoute} from '@angular/router';
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>Industrial Exposure</mat-panel-title>
+          <mat-panel-title>Industrial Exposure as an Intern</mat-panel-title>
           <mat-panel-description>
-            Describe about your Industrial Exposure
+            Describe about your Industrial Exposure as an Intern
           </mat-panel-description>
         </mat-expansion-panel-header>
         <app-industrial-exposure [resumeId]="resume._id" [industrialExposures]="resume.industrialExposures"></app-industrial-exposure>

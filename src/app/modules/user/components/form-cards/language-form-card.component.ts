@@ -1,11 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Skill} from '../../../core/models/skill';
 import {MatDialog} from '@angular/material';
-import {SkillFormComponent} from '../../dialogues/resume-form/skill-form.component';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {AlertService} from '../../../core/services/alert.service';
-import {Education} from '../../../core/models/education';
-import {EducationFormComponent} from '../../dialogues/resume-form/education-form.component';
 import {Language} from '../../../core/models/language';
 import {LanguagesFormComponent} from '../../dialogues/resume-form/languages-form.component';
 
@@ -14,7 +10,7 @@ import {LanguagesFormComponent} from '../../dialogues/resume-form/languages-form
   template: `
     <div fxLayoutAlign="center center" fxLayout="column">
       <ng-container>
-        <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
+        <div class="outer-div" style="height:  66px;" fxLayoutAlign="center center" fxLayout="column">
           <ng-container>
             <h3>{{language.name}}</h3>
             <h3>{{language.level}}</h3>

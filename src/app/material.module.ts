@@ -6,7 +6,7 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatMenuModule,
   MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule,
   MatRippleModule,
@@ -35,7 +35,8 @@ const modules = [
   MatRippleModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatRadioModule
+  MatRadioModule,
+  MatListModule
 
 ];
 

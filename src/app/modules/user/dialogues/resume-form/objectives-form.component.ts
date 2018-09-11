@@ -13,15 +13,19 @@ import {Objective} from '../../../core/models/objective';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input formControlName="objective" matInput placeholder="Your Objective"/>
+          <mat-error>This Field is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="date" matInput type="number" placeholder="Date"/>
+          <mat-error>Date is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="place" matInput placeholder="Place"/>
+          <mat-error>Place is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="declaration" matInput placeholder="Declaration"/>
+          <mat-error>Declaration is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
