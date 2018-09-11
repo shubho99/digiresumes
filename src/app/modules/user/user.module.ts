@@ -84,12 +84,14 @@ import {ProjectDetailCardComponent} from './components/cards/project-detail-card
 import {EditResumeGuard} from '../core/guards/edit-resume-guard';
 import {ShareComponent} from './dialogues/share.component';
 import {ResumeButtonsComponent} from './components/resume-buttons.component';
-import {TemplatesComponent} from './containers/templates.component';
-import {SidePanelTemplateComponent} from './components/templates/side-panel-template.component';
+import {SingleTemplateComponent} from './containers/single-template.component';
+import {TraditionalPanelTemplateComponent} from './components/templates/traditional-panel-template.component';
 import {ClassicTemplateComponent} from './components/templates/classic-template.component';
 import {RoyalTemplateComponent} from './components/templates/royal-template.component';
 import {ModernTemplateComponent} from 'app/modules/user/components/templates/modern-template.component';
 import {BluesTemplateComponent} from './components/templates/blues-template.component';
+import {TemplatesComponent} from './containers/templates.component';
+import {TemplateCardComponent} from './components/template-card.component';
 
 @NgModule({
   declarations: [
@@ -166,12 +168,14 @@ import {BluesTemplateComponent} from './components/templates/blues-template.comp
     ProjectDetailCardComponent,
     ShareComponent,
     ResumeButtonsComponent,
-    TemplatesComponent,
-    SidePanelTemplateComponent,
+    SingleTemplateComponent,
+    TraditionalPanelTemplateComponent,
     ClassicTemplateComponent,
     RoyalTemplateComponent,
     ModernTemplateComponent,
-    BluesTemplateComponent
+    BluesTemplateComponent,
+    TemplatesComponent,
+    TemplateCardComponent
   ],
   imports: [
     SharedModule,

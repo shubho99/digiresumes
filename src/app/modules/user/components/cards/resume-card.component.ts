@@ -121,6 +121,6 @@ export class ResumeCardComponent {
   }
 
   download() {
-    this.router.navigateByUrl('/user/resume/template/' + this.resume._id);
+    this.router.navigateByUrl('/user/resume/templates/' + this.resume._id);
   }
 }

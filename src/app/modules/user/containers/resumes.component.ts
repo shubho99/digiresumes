@@ -7,15 +7,18 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
 @Component({
   selector: 'app-resumes',
   template: `
-    <div *ngIf="this.resumes" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center" fxLayoutGap="20px">
-      <mat-card *ngIf="!this.loading" matRipple (click)="addResume()" class=addcard>
-        <mat-icon>add_box</mat-icon>
-        <mat-card-title>Add Resume</mat-card-title>
-      </mat-card>
-      <app-resume-card *ngFor="let resume of resumes" [resume]="resume"></app-resume-card>
-      <span *appFlexAlignmentHack></span>
+    <div *ngIf="this.resumes"  fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+      <div   style="flex-flow: wrap"  fxLayoutAlign=" start center" fxLayoutGap="20px">
+        <mat-card *ngIf="!this.loading" matRipple (click)="addResume()" class=addcard>
+          <mat-icon>add_box</mat-icon>
+          <mat-card-title>Add Resume</mat-card-title>
+        </mat-card>
+        <app-resume-card *ngFor="let resume of resumes" [resume]="resume"></app-resume-card>
+        <span *appFlexAlignmentHack></span>
+      </div>
+      <p style="margin-top: 7%; text-align: center" *ngIf="!this.resumes">No resume added yet.</p>
     </div>
-    <p style="margin-top: 7%; text-align: center" *ngIf="!this.resumes">No resume added yet.</p>
+
     <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`
@@ -29,7 +32,7 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      width: 1000px;
+      width: 250px;
       place-content: center;
       align-items: center;
     }
