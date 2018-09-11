@@ -14,7 +14,8 @@ import {Resume} from '../../../core/models/resume';
               <!--<h3><span itemprop="jobTitle">Freelance Writer &amp; Web Developer</span></h3>-->
               <small style="margin-bottom: 10px" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                 {{this.resume.contact_details.address}}<br>
-                {{this.resume.contact_details.city}},{{this.resume.contact_details.state}}-{{this.resume.contact_details.zip_code}}
+                {{this.resume.contact_details.city}},{{this.resume.contact_details.state}}-
+                {{this.resume.contact_details.zip_code}}
               </small>
               <small><span itemprop="email"><i style="padding-right: 18px;color: #ba0018" class="fa fa-phone" aria-hidden="true">                
               </i>{{this.resume.contact_details.phone_number}}</span></small>
@@ -70,7 +71,8 @@ import {Resume} from '../../../core/models/resume';
           <section id="industrial-exposure" *ngIf="this.resume.industrialExposures.length">
             <h2>Training</h2>
             <ng-container itemprop="alumniOf" *ngFor="let industrialExposure of this.resume['industrialExposures']">
-              <h3><span>{{industrialExposure.organisation}}</span> - {{industrialExposure.city}}, {{industrialExposure.state}}</h3>
+              <h3><span>{{industrialExposure.organisation}}</span> - {{industrialExposure.city}},
+                {{industrialExposure.state}}</h3>
               <div class="emph">{{industrialExposure.work}}</div>
               <div style="padding-left: 35px;margin-bottom: 15px" class="row">
                 <div class="col-right light" *ngIf="industrialExposure.end_month">
@@ -183,7 +185,8 @@ import {Resume} from '../../../core/models/resume';
         <div class="hover" fxLayout="column">
           <div style="    margin-top: 55%;
         margin-left: 46%;" fxLayout="row">
-            <i id="hover-i" (click)="download()" class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+            <i id="hover-i" (click)="download()" 
+               class="fa fa-arrow-circle-down" aria-hidden="true"></i>
           </div>
         </div>
       </mat-card>

@@ -61,7 +61,6 @@ export class ResumeRepoService {
   }
 
   getResume(id: string, force = false): Observable<Resume> {
-    console.log('called repo');
     if (force) {
       return this.resumeService.getResume(id).map(res => {
         return res;

@@ -14,6 +14,7 @@ import {SingleResumeComponent} from './containers/single-resume.component';
 import {ResumeFormComponent} from './containers/resume-form.component';
 import {UploadComponent} from './containers/upload.component';
 import {EditResumeGuard} from '../core/guards/edit-resume-guard';
+import {SingleTemplateComponent} from './containers/single-template.component';
 import {TemplatesComponent} from './containers/templates.component';
 
 export const routes: Routes = [
@@ -29,7 +30,8 @@ export const routes: Routes = [
       {path: 'preview/resume/:id', component: SingleResumeComponent, canActivate: [EditResumeGuard]},
       {path: 'edit/resume/:id', component: ResumeFormComponent, canActivate: [EditResumeGuard]},
       {path: 'edit/profile/:id', component: UploadComponent, canActivate: [EditResumeGuard]},
-      {path: 'resume/template/:id', component: TemplatesComponent, canActivate: [EditResumeGuard]},
+      {path: 'resume/template/:id/:templateId', component: SingleTemplateComponent, canActivate: [EditResumeGuard]},
+      {path: 'resume/templates/:id', component: TemplatesComponent, canActivate: [EditResumeGuard]},
     ]
   },
   {

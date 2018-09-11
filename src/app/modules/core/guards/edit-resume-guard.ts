@@ -16,11 +16,9 @@ export class EditResumeGuard implements CanActivate {
     const resumeId = state.url.split('/')[4];
     const resume$ = this.resumeRepo.getResume(resumeId);
     const user$ = this.authRepo.getMe();
-
       return user$.combineLatest(resume$, (user, resume) => {
         return {user, resume};
       }).filter((data) => !!data.user || !!data.resume).map(data => {
-        console.log(data);
           if (data.user._id === data.resume.user_id) {
             return true;
           } else {

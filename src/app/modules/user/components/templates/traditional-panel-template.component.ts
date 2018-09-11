@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
 
 @Component({
-  selector: 'app-side-panel-template',
+  selector: 'app-traditional-template',
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-card>
@@ -240,7 +240,7 @@ import {Resume} from '../../../core/models/resume';
     }
   `]
 })
-export class SidePanelTemplateComponent {
+export class TraditionalPanelTemplateComponent {
   @Input() resume: Resume;
   @Output() downloadTemplate = new EventEmitter<string>();
 
