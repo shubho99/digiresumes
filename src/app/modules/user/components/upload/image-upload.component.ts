@@ -42,18 +42,26 @@ export class ImageUploadComponent {
   isAlive = true;
   isUploaded = false;
   url = '';
+  MAX_FILE_SIZE = 5 * 1000 * 1000;
 
   constructor(private resumeRepo: ResumeRepoService, private route: ActivatedRoute, private alertService: AlertService) {
     this.fetchResume();
   }
 
   onFileSelected(event) {
-    this.icon = 'cached';
-    this.imageSelected = true;
-    this.isUploaded = false;
     const file = event.target.files[0];
     this.file = file;
-    this.previewImg.nativeElement.src = window.URL.createObjectURL(this.file);
+    if (this.file.size > this.MAX_FILE_SIZE) {
+      return this.alertService.error('Image must be smaller than 5mb');
+    }
+    if (file.type === 'image/png' || 'image/jpg' || 'image/jpeg' || 'image/JPG') {
+      this.icon = 'cached';
+      this.imageSelected = true;
+      this.isUploaded = false;
+      this.previewImg.nativeElement.src = window.URL.createObjectURL(this.file);
+    } else {
+      this.alertService.error('Image must be of type png,jpg or jpeg');
+    }
   }
 
   selectFile() {
