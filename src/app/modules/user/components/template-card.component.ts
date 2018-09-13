@@ -23,7 +23,7 @@ import {Router} from '@angular/router';
     }
 
     img {
-      width: 240px;
+      width: 239px;
       height: 300px;
     }
 
