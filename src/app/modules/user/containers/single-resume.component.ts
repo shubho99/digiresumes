@@ -1,19 +1,22 @@
+
+import {filter, take, map} from 'rxjs/operators';
 import {AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
 import {AuthService} from '../../core/services/auth.service';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
+import {switchMap, takeWhile} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div  class="alternate instaFade" fxLayout="row" *ngIf="this.resume">
+    <div class="alternate instaFade" fxLayout="row" *ngIf="this.resume">
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
           <button matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span" *ngIf="this.resume && !this.isView">
-            <mat-icon style="font-size: 25px"  aria-hidden="true">
+            <mat-icon style="font-size: 25px" aria-hidden="true">
               remove_red_eye
             </mat-icon>
           </button>
@@ -249,8 +252,8 @@ import {Observable} from 'rxjs/Observable';
 
   `,
   styles: [`
-    
-   
+
+
     h3, span {
       text-transform: uppercase;
       color: #767270;
@@ -259,7 +262,7 @@ import {Observable} from 'rxjs/Observable';
 
     h4, p {
       color: #767270;
-    } 
+    }
 
     h2 {
       color: #fff;
@@ -287,8 +290,8 @@ import {Observable} from 'rxjs/Observable';
       width: 80%;
       margin-left: 2.5%;
       margin-top: 35px;
-      // box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.2) !important;
-      box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3) !important;   
+    / / box-shadow: 1 px 1 px 8 px 8 px rgba(0, 0, 0, 0.2) !important;
+      box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3) !important;
 
     }
 
@@ -318,10 +321,10 @@ import {Observable} from 'rxjs/Observable';
       margin-left: 17.5%;
     }
 
-    p,i {
+    p, i {
       color: #a85f46;
     }
-    
+
   `]
 })
 export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -340,12 +343,12 @@ export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
     this.isView = param === 'view' ? true : false;
     const token = AuthService.getAuthToken();
     this.loading = true;
-    this.route.params.map(params => params['id']).switchMap((id) => {
+    this.route.params.pipe(map(params => params['id']), switchMap((id) => {
       if (this.isView && !token) {
         return this.resumeRepo.getResume(id, true);
       }
       return this.resumeRepo.getResume(id);
-    }).filter(res => !!res).takeWhile(() => this.isAlive).subscribe((res) => {
+    })).pipe(filter(res => !!res)).pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
       this.loading = false;
       this.resume = res;
     }, (err) => {
@@ -366,7 +369,7 @@ export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   update() {
-    this.resumeRepo.updateViews({views: ++this.resume.views}, this.resume._id).take(1).subscribe((res) => {
+    this.resumeRepo.updateViews({views: ++this.resume.views}, this.resume._id).pipe(take(1)).subscribe((res) => {
     });
   }
 }

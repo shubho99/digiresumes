@@ -1,6 +1,7 @@
+import {take} from 'rxjs/operators';
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription, Observable, timer} from 'rxjs';
 import {YoutubeService} from '../../../core/services/youtube.service';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
@@ -8,70 +9,71 @@ import {AlertService} from '../../../core/services/alert.service';
 import {Router} from '@angular/router';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
 import {Utils} from '../../../core/utils/utils';
-import {Observable} from 'rxjs/Observable';
 import {Resume} from '../../../core/models/resume';
+import {takeWhile} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-youtube-upload',
-  template: `<div class="alternate">
-    <div  *ngIf="!importFailed && youtubeService.profile$ | async as profile">
-      <span>Connected Youtube Account: <strong>{{profile.getEmail()}}</strong></span>
-      <span class="change" *ngIf="youtubeService.isAuthInit$ | async"
-            (click)="youtubeService.signIn()">change account</span>
-      <hr>
-    </div>
-    <form *ngIf="(youtubeService.profile$ | async) && !importing && !importFailed" fxLayout="column"
-          fxLayoutAlign="center stretch"
-          fxFlexAlign="center" fxLayoutGap="10px"
-          [formGroup]="videoForm" (ngSubmit)="videoForm.get('privacyStatus').markAsTouched(); videoForm.valid && onSubmit()" novalidate>
-      <mat-form-field style="width: 100%">
-        <input matInput placeholder="Title of video" formControlName="title">
-        <mat-error>Title is required</mat-error>
-      </mat-form-field>
-      <mat-form-field style="width: 100%">
-        <textarea matInput placeholder="Description of video (optional)" formControlName="description"></textarea>
-      </mat-form-field>
-      <mat-radio-group formControlName="privacyStatus" style="padding-bottom: 18px">
-        <mat-radio-button value="unlisted"
-                          matTooltip="Only people to whom you share/email the video will be able to view your video">
-          Keep my video private
-        </mat-radio-button>
-        <mat-radio-button value="public"
-                          matTooltip="Your video will be public on YouTube and search engines will also crawl it">
-          I want maximum views so make it public
-        </mat-radio-button>
-        <mat-error *ngIf="videoForm.get('privacyStatus').touched && videoForm.get('privacyStatus').invalid"
-                   style="margin-bottom: -18px">
-          Select one of the options
-        </mat-error>
-      </mat-radio-group>
-      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="loading">
-        <mat-progress-bar
-          color="accent"
-          [value]="percentUploaded"
-          [bufferValue]="100">
-        </mat-progress-bar>
-        <button mat-icon-button (click)="onCancel()">
-          <mat-icon>cancel</mat-icon>
-        </button>
+  template: `
+    <div class="alternate">
+      <div *ngIf="!importFailed && youtubeService.profile$ | async as profile">
+        <span>Connected Youtube Account: <strong>{{profile.getEmail()}}</strong></span>
+        <span class="change" *ngIf="youtubeService.isAuthInit$ | async"
+              (click)="youtubeService.signIn()">change account</span>
+        <hr>
       </div>
-      <button mat-raised-button fxFlexAlign="end" *ngIf="!loading" color="accent">Upload</button>
-    </form>
+      <form *ngIf="(youtubeService.profile$ | async) && !importing && !importFailed" fxLayout="column"
+            fxLayoutAlign="center stretch"
+            fxFlexAlign="center" fxLayoutGap="10px"
+            [formGroup]="videoForm" (ngSubmit)="videoForm.get('privacyStatus').markAsTouched(); videoForm.valid && onSubmit()" novalidate>
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Title of video" formControlName="title">
+          <mat-error>Title is required</mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <textarea matInput placeholder="Description of video (optional)" formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-radio-group formControlName="privacyStatus" style="padding-bottom: 18px">
+          <mat-radio-button value="unlisted"
+                            matTooltip="Only people to whom you share/email the video will be able to view your video">
+            Keep my video private
+          </mat-radio-button>
+          <mat-radio-button value="public"
+                            matTooltip="Your video will be public on YouTube and search engines will also crawl it">
+            I want maximum views so make it public
+          </mat-radio-button>
+          <mat-error *ngIf="videoForm.get('privacyStatus').touched && videoForm.get('privacyStatus').invalid"
+                     style="margin-bottom: -18px">
+            Select one of the options
+          </mat-error>
+        </mat-radio-group>
+        <div fxLayout="row" fxLayoutAlign="start center" *ngIf="loading">
+          <mat-progress-bar
+            color="accent"
+            [value]="percentUploaded"
+            [bufferValue]="100">
+          </mat-progress-bar>
+          <button mat-icon-button (click)="onCancel()">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div>
+        <button mat-raised-button fxFlexAlign="end" *ngIf="!loading" color="accent">Upload</button>
+      </form>
 
-    <div fxLayout="column" fxLayoutAlign="start center"
-         *ngIf="(youtubeService.isAuthInit$ | async ) && !(youtubeService.isSignedIn$ | async)">
-      <h2>Please (re)connect your youtube account to upload the video</h2>
-      <button mat-raised-button (click)="youtubeService.signIn()" color="accent">Connect YouTube account</button>
+      <div fxLayout="column" fxLayoutAlign="start center"
+           *ngIf="(youtubeService.isAuthInit$ | async ) && !(youtubeService.isSignedIn$ | async)">
+        <h2>Please (re)connect your youtube account to upload the video</h2>
+        <button mat-raised-button (click)="youtubeService.signIn()" color="accent">Connect YouTube account</button>
+      </div>
+      <div *ngIf="importing" fxLayoutAlign="center start">
+        <mat-spinner color="accent"></mat-spinner>
+      </div>
+      <div *ngIf="importFailed" fxLayout="column" fxLayoutAlign="start center">
+        <h2>Video uploaded to YouTube successfully but import to Vaetas failed.</h2>
+        <button mat-raised-button color="accent" (click)="importVideo()">Try Importing Again</button>
+        <button mat-raised-button color="primary" (click)="dialogRef.close()">Cancel</button>
+      </div>
     </div>
-    <div *ngIf="importing" fxLayoutAlign="center start">
-      <mat-spinner color="accent"></mat-spinner>
-    </div>
-    <div *ngIf="importFailed" fxLayout="column" fxLayoutAlign="start center">
-      <h2>Video uploaded to YouTube successfully but import to Vaetas failed.</h2>
-      <button mat-raised-button color="accent" (click)="importVideo()">Try Importing Again</button>
-      <button mat-raised-button color="primary" (click)="dialogRef.close()">Cancel</button>
-    </div>
-  </div>
   `,
   styles: [`
     .change {
@@ -104,7 +106,7 @@ export class YoutubeUploadComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.resumeId = this.data.resume._id;
-    console.log(this.data.resume,this.data.video);
+    console.log(this.data.resume, this.data.video);
     this.videoForm = new FormGroup({
       'title': new FormControl(null, [Validators.required]),
       'description': new FormControl(),
@@ -141,9 +143,9 @@ export class YoutubeUploadComponent implements OnInit, OnDestroy {
               {
                 horizontalPosition: 'center',
                 verticalPosition: 'top',
-                extraClasses: ['alert-error']
+                panelClass: ['alert-error']
               })
-              .onAction().take(1).subscribe(() => window.open('https://www.youtube.com/create_channel',
+              .onAction().pipe(take(1)).subscribe(() => window.open('https://www.youtube.com/create_channel',
               '_blank'));
           } else {
             this.alertService.error(errorObject.error.message);
@@ -162,7 +164,7 @@ export class YoutubeUploadComponent implements OnInit, OnDestroy {
   importVideo() {
     this.importing = true;
     this.importFailed = null;
-    Observable.timer(0, 10000).take(10).takeWhile(() => this.alive && !this.imported).subscribe(() => {
+    timer(0, 10000).pipe(take(10)).pipe(takeWhile(() => this.alive && !this.imported)).subscribe(() => {
       this.resumeRepo.addOrUpdateVideo({video_url: this.videoUrl}, this.resumeId)
         .subscribe((resp) => {
           this.loading = false;

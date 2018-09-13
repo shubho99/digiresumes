@@ -1,3 +1,5 @@
+
+import {filter, takeWhile} from 'rxjs/operators';
 import {Component, OnDestroy} from '@angular/core';
 import {AuthRepoService} from '../../core/repositry/authRepo.service';
 import {AlertService} from '../../core/services/alert.service';
@@ -78,7 +80,7 @@ export class EmailVerificationComponent implements OnDestroy {
 
   fetchEmail() {
     this.loading = true;
-    this.authRepo.getMe().takeWhile(() => this.isAlive).filter(res => !!res).subscribe((res) => {
+    this.authRepo.getMe().pipe(takeWhile(() => this.isAlive),filter(res => !!res),).subscribe((res) => {
       this.email = res.email;
       this.code = res.code;
       this.loading = false;

@@ -11,7 +11,7 @@ export class AlertService {
       duration: duration,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      extraClasses: ['alert', 'alert-success']
+      panelClass: ['alert', 'alert-success']
     });
   }
 
@@ -20,7 +20,7 @@ export class AlertService {
       duration: duration,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      extraClasses: ['alert']
+      panelClass: ['alert']
     });
   }
 
@@ -29,7 +29,7 @@ export class AlertService {
       duration: duration,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      extraClasses: ['alert', 'alert-error']
+      panelClass: ['alert', 'alert-error']
     });
   }
 }

@@ -1,5 +1,7 @@
+
+import {map, filter} from 'rxjs/operators';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {combineLatest, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {AuthRepoService} from '../repositry/authRepo.service';
 import {ResumeRepoService} from '../repositry/resumeRepo.service';
@@ -16,16 +18,17 @@ export class EditResumeGuard implements CanActivate {
     const resumeId = state.url.split('/')[4];
     const resume$ = this.resumeRepo.getResume(resumeId);
     const user$ = this.authRepo.getMe();
-      return user$.combineLatest(resume$, (user, resume) => {
-        return {user, resume};
-      }).filter((data) => !!data.user || !!data.resume).map(data => {
-          if (data.user._id === data.resume.user_id) {
-            return true;
-          } else {
-            this.router.navigate(['user', 'resumes']);
-            this.alertService.error(`Sorry, You does'nt have permission to edit this resume`);
-            return false;
-          }
-      });
-    }
+    const combined$ = combineLatest(user$, resume$);
+   return combined$.pipe(filter((data) => !!data[0] || !!data[1]),map(data => {
+      const user = data[0];
+      const resume = data[1];
+      if (user._id === resume.user_id) {
+        return true;
+      } else {
+        this.router.navigate(['user', 'resumes']);
+        this.alertService.error(`Sorry, You does'nt have permission to edit this resume`);
+        return false;
+      }
+    }),);
   }
+}

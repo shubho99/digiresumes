@@ -1,3 +1,5 @@
+
+import {filter, takeWhile} from 'rxjs/operators';
 import {Component, NgZone, OnDestroy} from '@angular/core';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
@@ -68,10 +70,10 @@ export class ResumesComponent implements OnDestroy {
 
   fetchResumes() {
     const resume$ = this.resumeRepo.getAllResumes();
-    resume$[0].takeWhile(() => this.isAlive).filter(res => !!res).subscribe((res) => {
+    resume$[0].pipe(takeWhile(() => this.isAlive),filter(res => !!res),).subscribe((res) => {
       this.resumes = res;
     });
-    resume$[1].takeWhile(() => this.isAlive).subscribe((res) => {
+    resume$[1].pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
       this.loading = res;
     });
   }

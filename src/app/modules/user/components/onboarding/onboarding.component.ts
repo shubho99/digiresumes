@@ -1,3 +1,5 @@
+
+import {filter, takeWhile} from 'rxjs/operators';
 import {Component, OnDestroy} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
@@ -53,7 +55,7 @@ export class OnboardingComponent implements OnDestroy {
   fetchResume() {
     this.loading = true;
     const resume$ = this.resumeRepo.getAllResumes();
-    resume$[0].takeWhile(() => this.isAlive).filter((res) => !!res).subscribe((res) => {
+    resume$[0].pipe(takeWhile(() => this.isAlive),filter((res) => !!res),).subscribe((res) => {
       if (res.length > 0) {
         this.resume = res;
         this.resumeRepo.addCurrentResumeId(res[0]._id);
