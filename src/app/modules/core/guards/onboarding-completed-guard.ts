@@ -1,5 +1,7 @@
+
+import {map, filter} from 'rxjs/operators';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {AuthRepoService} from '../repositry/authRepo.service';
 
@@ -11,7 +13,7 @@ export class OnboardingCompletedGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authRepo.getMe().filter(res => !!res).map((res) => {
+    return this.authRepo.getMe().pipe(filter(res => !!res),map((res) => {
       this.onBoarding = res.onboarding;
       if (this.onBoarding === 200) {
         return true;
@@ -19,6 +21,6 @@ export class OnboardingCompletedGuard implements CanActivate {
         this.router.navigate(['user', 'onboarding']);
         return false;
       }
-    });
+    }),);
   }
 }

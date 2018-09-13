@@ -1,14 +1,17 @@
-/// <reference path="../../../../../node_modules/@types/gapi/index.d.ts" />
-/// <reference path="../../../../../node_modules/@types/gapi.auth2/index.d.ts" />
+
+/// <reference path="../../../../../node_modules/@types/gapi/index.d.ts"/>
+/// <reference path="../../../../../node_modules/@types/gapi.auth2/index.d.ts"/>
+import {map} from 'rxjs/operators';
+
 import {Injectable, NgZone} from '@angular/core';
 import GoogleUser = gapi.auth2.GoogleUser;
 import AuthResponse = gapi.auth2.AuthResponse;
 import GoogleAuth = gapi.auth2.GoogleAuth;
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject, Observable} from 'rxjs';
 import BasicProfile = gapi.auth2.BasicProfile;
 import {HttpClient, HttpHeaders, HttpParams, HttpRequest} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
+import {switchMap} from 'rxjs/internal/operators';
 
 @Injectable()
 export class YoutubeService {
@@ -22,8 +25,8 @@ export class YoutubeService {
   constructor(private http: HttpClient, public zone: NgZone) {
     gapi.load('auth2', () => this.zone.run(() => this.initAuth()));
 
-    this.profile$ = this.user$.map((user) =>
-      user && user.getBasicProfile() ? user.getBasicProfile() : null) as BehaviorSubject<BasicProfile>;
+    this.profile$ = this.user$.pipe(map((user) =>
+      user && user.getBasicProfile() ? user.getBasicProfile() : null)) as BehaviorSubject<BasicProfile>;
 
     this.user$.subscribe((user) => {
       if (user) {
@@ -79,8 +82,8 @@ export class YoutubeService {
   hasChannel(): Observable<boolean> {
     const params = new HttpParams().set('mine', 'true').set('part', 'status');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.accessToken);
-    return this.http.get('https://www.googleapis.com/youtube/v3/channels', {params: params, headers: headers})
-      .map(res => res['pageInfo'].totalResults > 0 && res['items'][0].status.isLinked);
+    return this.http.get('https://www.googleapis.com/youtube/v3/channels', {params: params, headers: headers}).pipe(
+      map(res => res['pageInfo'].totalResults > 0 && res['items'][0].status.isLinked));
   }
 
   uploadVideo(video: any, input: { title: string, description: string, privacyStatus: string, tags?: string[] }): Observable<any> {
@@ -108,12 +111,13 @@ export class YoutubeService {
       .set('X-Upload-Content-Type', 'video/*');
 
     const url = 'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status,contentDetails';
-    return this.http.post(url, data, {headers: headers, observe: 'response', responseType: 'text'}).switchMap((res) => {
-      const req = new HttpRequest('PUT', res.headers.get('location'), video, {
-        reportProgress: true,
-      });
-      return this.http.request(req);
-    });
+    return this.http.post(url, data, {headers: headers, observe: 'response', responseType: 'text'})
+      .pipe(switchMap((res) => {
+        const req = new HttpRequest('PUT', res.headers.get('location'), video, {
+          reportProgress: true,
+        });
+        return this.http.request(req);
+      }));
   }
 
   public signOut() {

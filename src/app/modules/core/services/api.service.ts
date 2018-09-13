@@ -1,9 +1,12 @@
+
+import {throwError as observableThrowError, Observable} from 'rxjs';
+
+import {catchError} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {AlertService} from './alert.service';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ApiService {
@@ -17,14 +20,14 @@ export class ApiService {
       params: data,
       headers: this.getAuthHeader()
     };
-    return this.http.get(this.baseUrl + url, options)
-      .catch(this.handleError.bind(this));
+    return this.http.get(this.baseUrl + url, options).pipe(
+      catchError(this.handleError.bind(this)));
   }
 
   post(url: string, data: any, responseType ?: 'json'): Observable<Object> {
     return this.http.post(this.baseUrl + url, data, {
       headers: this.getAuthHeader(), responseType : responseType
-    }).catch(this.handleError.bind(this));
+    }).pipe(catchError(this.handleError.bind(this)));
   }
 
 
@@ -32,14 +35,14 @@ export class ApiService {
   patch(url: string, data: any): Observable<Object> {
     return this.http.patch(this.baseUrl + url, data, {
       headers: this.getAuthHeader()
-    }).catch(this.handleError.bind(this));
+    }).pipe(catchError(this.handleError.bind(this)));
   }
 
   delete(url: string, data?: any): Observable<Object> {
     return this.http.request('delete', this.baseUrl + url, {
       body: data,
       headers: this.getAuthHeader()
-    }).catch(this.handleError.bind(this));
+    }).pipe(catchError(this.handleError.bind(this)));
   }
 
   private getAuthHeader(): { [header: string]: string | string[]; } {
@@ -70,6 +73,6 @@ export class ApiService {
 
     this.alertService.error(message);
 
-    return Observable.throw({messages: message, error: error});
+    return observableThrowError({messages: message, error: error});
   }
 }

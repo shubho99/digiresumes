@@ -1,3 +1,5 @@
+
+import {takeWhile} from 'rxjs/operators';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthRepoService} from '../../core/repositry/authRepo.service';
 import {User} from '../../core/models/user';
@@ -53,7 +55,7 @@ loading = false;
 
   ngOnInit() {
     this.loading = true;
-    this.authRepo.getMe().takeWhile(() => this.isAlive).subscribe((res) => {
+    this.authRepo.getMe().pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
       this.loading = false;
       this.user = res;
     });

@@ -1,7 +1,10 @@
+
+import {filter, map, takeWhile} from 'rxjs/operators';
 import {Component, OnDestroy} from '@angular/core';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
 import {ActivatedRoute} from '@angular/router';
+import {switchMap} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-resume-form',
@@ -161,16 +164,16 @@ export class ResumeFormComponent implements OnDestroy {
   }
 
   fetchResume() {
-    this.resumeRepo.getCurrentResumeId().takeWhile(() => this.isAlive).subscribe((res) => {
+    this.resumeRepo.getCurrentResumeId().pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
       if (res) {
-        this.resumeRepo.getResume(res).takeWhile(() => this.isAlive).subscribe((resume) => {
+        this.resumeRepo.getResume(res).pipe(takeWhile(() => this.isAlive)).subscribe((resume) => {
           this.resume = resume;
         });
       } else {
         this.loading = true;
-        this.route.params.map(params => params['id']).switchMap((id) => {
+        this.route.params.pipe(map(params => params['id']), switchMap((id) => {
           return this.resumeRepo.getResume(id);
-        }).filter(res => !!res).takeWhile(() => this.isAlive).subscribe((res) => {
+        })).pipe(filter(res => !!res)).pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
           this.loading = false;
           this.resume = res;
         }, (err) => {

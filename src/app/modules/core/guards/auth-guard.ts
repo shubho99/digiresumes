@@ -1,5 +1,7 @@
+
+import {map, filter, combineLatest} from 'rxjs/operators';
 import {ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {ResumeRepoService} from '../repositry/resumeRepo.service';
 import {AuthRepoService} from '../repositry/authRepo.service';
@@ -17,22 +19,22 @@ export class AuthGuard implements CanActivateChild {
     if (state.url.split('/')[2] === 'view' && !isLoggedIn) {
       const resumeId = state.url.split('/')[4];
       const resume = this.resumeRepo.getResume(resumeId, true);
-      return resume.filter((res) => !!res).map((data) => {
+      return resume.pipe(filter((res) => !!res),map((data) => {
         return true;
-      });
+      }),);
     } else if (!isLoggedIn) {
       this.router.navigate(['']);
       return false;
     }
     const user$ = this.authRepo.getMe();
     const resume$ = this.resumeRepo.getAllResumes()[0];
-    return user$.combineLatest(resume$, (user, resumes) => {
+    return user$.pipe(combineLatest(resume$, (user, resumes) => {
       return {user, resumes};
-    }).map((data) => {
+    }),map((data) => {
       if (data) {
         return true;
       }
-    });
+    }),);
   }
 
 }

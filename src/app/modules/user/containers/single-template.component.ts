@@ -1,9 +1,12 @@
-import {Component, OnDestroy, OnInit,} from '@angular/core';
+
+import {filter, map, switchMap} from 'rxjs/operators';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
 import {HttpClient} from '@angular/common/http';
 import {TemplateType} from '../../core/utils/utils';
+import {takeWhile} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-template',
@@ -42,7 +45,7 @@ export class SingleTemplateComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.fetchResume();
-    this.route.params.map(params => params['templateId']).subscribe((res) => {
+    this.route.params.pipe(map(params => params['templateId'])).subscribe((res) => {
       this.templateId = res;
     });
   }
@@ -53,9 +56,9 @@ export class SingleTemplateComponent implements OnInit, OnDestroy {
 
   fetchResume() {
     this.loading = true;
-    this.route.params.map(params => params['id']).switchMap((id) => {
+    this.route.params.pipe(map(params => params['id']), switchMap((id) => {
       return this.resumeRepo.getResume(id);
-    }).filter(res => !!res).takeWhile(() => this.isAlive).subscribe((res) => {
+    })).pipe(filter(res => !!res)).pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
       this.resume = res;
       this.loading = false;
     });

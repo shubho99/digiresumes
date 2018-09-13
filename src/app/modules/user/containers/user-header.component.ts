@@ -1,7 +1,9 @@
+
+import {filter, takeWhile} from 'rxjs/operators';
 import {Component, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthRepoService} from '../../core/repositry/authRepo.service';
-import 'rxjs/add/operator/takeWhile';
+
 
 @Component({
   selector: 'app-user-header-component',
@@ -58,7 +60,7 @@ export class UserHeaderComponent implements OnDestroy {
   isAlive = true;
 
   constructor(private authRepo: AuthRepoService, private router: Router) {
-    this.authRepo.getMe().takeWhile(() => this.isAlive).filter(res => !!res).subscribe((res) => {
+    this.authRepo.getMe().pipe(takeWhile(() => this.isAlive),filter(res => !!res),).subscribe((res) => {
       this.name = res.name;
     });
   }
