@@ -218,6 +218,12 @@ html, body {
   }
   /* app-upload-end */
 
+  .res-templates {
+    display: flow-root !important;
+    margin-left: 11% !important;
+  }
+
+  
   .res-polygon {
     height: 65% !important;
     margin-top: 21% !important;
