@@ -8,7 +8,8 @@ import {ShareComponent} from '../../dialogues/share.component';
 @Component({
   selector: 'app-contact-detail-card',
   template: `
-    <button (click)="onClick()" mat-fab class="profile-pic" [ngStyle]="{'background-image':'url('+this.url+')'}"></button>
+    <button (click)="onClick()" mat-fab class="profile-pic res-profile-pic" 
+            [ngStyle]="{'background-image':'url('+this.url+')'}"></button>
     <h2 fxLayoutAlign="center start">
       {{contactDetails.first_name}} {{contactDetails.last_name}}
     </h2>

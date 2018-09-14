@@ -11,11 +11,12 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div class="alternate instaFade" fxLayout="row" *ngIf="this.resume">
-      <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
- this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card">
+    <div class="alternate instaFade" fxLayout="row" fxLayout.xs="column" *ngIf="this.resume">
+        <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
+ this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card res-side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
-          <button matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span" *ngIf="this.resume && !this.isView">
+          <button matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span" 
+                  *ngIf="this.resume && !this.isView">
             <mat-icon style="font-size: 25px" aria-hidden="true">
               remove_red_eye
             </mat-icon>
@@ -29,7 +30,8 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
           <ng-container *ngTemplateOutlet="weaknessTemplate"></ng-container>
         </div>
       </mat-card>
-      <div fxLayout="column" style="width: 100%">
+      
+      <div class="res-single-resume-card" fxLayout="column" fxLayoutAlign.xs="start" style="width: 100%">
         <iframe *ngIf="this.resume.video_url" width="100%" height="100%" frameborder="0" allowfullscreen="true"
                 [src]="this.resume.video_url | safeUrl"></iframe>
         <ng-container *ngTemplateOutlet="educationTemplate"></ng-container>
@@ -95,7 +97,7 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
           </div>
         </mat-card-header>
         <mat-card-content>
-          <div fxLayout="column" class="education-card" fxLayoutGap="20px">
+          <div fxLayout="column" class="education-card res-education-card" fxLayoutGap="20px">
             <div fxFlex="column">
               <app-education-card style="line-height: 17pt" *ngFor="let education of this.resume['education']"
                                   [education]="education"></app-education-card>
@@ -114,7 +116,7 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
           </div>
         </mat-card-header>
         <mat-card-content>
-          <div fxLayout="column" class="education-card" fxLayoutGap="20px">
+          <div fxLayout="column" class="education-card res-education-card" fxLayoutGap="20px">
             <div fxFlex="column">
               <app-employment-history-card style="line-height: 17pt" *ngFor="let employmentHistory of this.resume['employment_history']"
                                            [employmentHistory]="employmentHistory"></app-employment-history-card>
@@ -128,12 +130,12 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
       <mat-card *ngIf="this.resume.interests.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-plane fa-rotate-270" style="font-size: 35px"></i>
+            <i class="fa fa-plane fa-rotate-270 res-icon-interest" style="font-size: 35px"></i>
             <p>Hobbies and interest</p>
           </div>
         </mat-card-header>
         <mat-card-content style="margin: 5%;">
-          <div fxLayout="column" class="education-card" fxLayoutGap="20px">
+          <div fxLayout="column" class="education-card res-education-card" fxLayoutGap="20px">
             <div fxFlex="column">
               <app-interest-card style="line-height: 17pt" *ngFor="let interest of this.resume['interests']" [interest]="interest">
               </app-interest-card>
@@ -152,7 +154,7 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
           </div>
         </mat-card-header>
         <mat-card-content>
-          <div fxLayout="column" class="education-card" fxLayoutGap="20px">
+          <div fxLayout="column" class="education-card res-education-card" fxLayoutGap="20px">
             <div fxFlex="column">
               <app-industrial-exposure-card style="line-height: 17pt" *ngFor="let industrialExposure of
                 this.resume['industrialExposures']" [industrialExposure]="industrialExposure">
@@ -167,12 +169,12 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
       <mat-card *ngIf="this.resume.award_achivements.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutGap="50px" class="contact-username">
-            <i class="fa fa-trophy" aria-hidden="true" style="font-size: 35px"></i>
+            <i class="fa fa-trophy res-icon-award" aria-hidden="true" style="font-size: 35px"></i>
             <p>awards and achievement</p>
           </div>
         </mat-card-header>
         <mat-card-content style="margin: 5%;">
-          <div fxLayout="column" class="education-card" fxLayoutGap="20px">
+          <div fxLayout="column" class="education-card res-education-card" fxLayoutGap="20px">
             <div fxFlex="column">
               <app-award-card style="line-height: 17pt" *ngFor="let award of this.resume['award_achivements']"
                               [award]="award">
@@ -192,7 +194,7 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
           </div>
         </mat-card-header>
         <mat-card-content>
-          <div fxLayout="column" class="education-card" fxLayoutGap="20px">
+          <div fxLayout="column" class="education-card res-education-card" fxLayoutGap="20px">
             <div fxFlex="column">
               <app-objective-card style="line-height: 17pt" *ngFor="let objective of this.resume['objectives']" [objective]="objective">
               </app-objective-card>
@@ -211,7 +213,7 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
           </div>
         </mat-card-header>
         <mat-card-content>
-          <div fxLayout="column" class="education-card" fxLayoutGap="20px">
+          <div fxLayout="column" class="education-card res-education-card" fxLayoutGap="20px">
             <div fxFlex="column">
               <app-refrence-card style="line-height: 17pt" *ngFor="let refrence of this.resume['refrences']"
                                  [refrence]="refrence">
@@ -231,7 +233,7 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
           </div>
         </mat-card-header>
         <mat-card-content>
-          <div fxLayout="column" class="education-card" fxLayoutGap="20px">
+          <div fxLayout="column" class="education-card res-education-card" fxLayoutGap="20px">
             <div fxFlex="column">
               <app-project-detail-card *ngFor="let projectDetail of this.resume['projectDetails']"
                                        [projectDetail]="projectDetail">
