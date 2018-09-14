@@ -223,7 +223,18 @@ html, body {
     margin-left: 11% !important;
   }
 
-  
+  .width-setting {
+    width: 150% !important;
+  }
+  .res-profile-settings {
+    margin-left: 128% !important;
+    margin-bottom: 10% !important;
+  }
+  .res-profile-container {
+    margin-left: -35% !important;
+    border-bottom: 0px solid #80808017 !important;
+  }
+
   .res-polygon {
     height: 65% !important;
     margin-top: 21% !important;

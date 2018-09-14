@@ -10,19 +10,21 @@ import {User} from '../../core/models/user';
     <div  class="alternate" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="30px" style="margin: 20px;">
       <div fxLayout="row" fxLayoutAlign="center center">
         <h1 style="color: #8de773">Settings</h1></div>
-      <div class="profile-container" fxLayout="row" fxLayoutAlign="start stretch">
+      <div class="profile-container res-profile-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
         <div style="width: 35%">
-          <h2>Profile</h2>
+          <h2 class="res-profile-settings">Profile</h2>
         </div>
-        <div style="width: 65%;">
+        <div style="width: 65%;" class="width-setting">
           <app-profile-settings [user]="this.user"></app-profile-settings>
         </div>
       </div>
-      <div class="profile-container profile-container-1" fxLayout="row" fxLayoutAlign="start stretch">
+      <div fxLayout="row" fxHide.gt-xs style="border-bottom: 2px solid #80808017; width: 100%;"></div>
+      <div class="profile-container profile-container-1 res-profile-container" fxLayout="row"
+           fxLayout.xs="column" fxLayoutAlign="start stretch">
         <div style="width: 35%">
-          <h2>Password</h2>
+          <h2 class="res-profile-settings">Password</h2>
         </div>
-        <div style="width: 65%;">
+        <div style="width: 65%;" class="width-setting">
           <app-password-setting></app-password-setting>
         </div>
       </div>
