@@ -80,7 +80,7 @@ export class EmailVerificationComponent implements OnDestroy {
 
   fetchEmail() {
     this.loading = true;
-    this.authRepo.getMe().pipe(takeWhile(() => this.isAlive),filter(res => !!res),).subscribe((res) => {
+    this.authRepo.getMe().pipe(takeWhile(() => this.isAlive), filter(res => !!res)).subscribe((res) => {
       this.email = res.email;
       this.code = res.code;
       this.loading = false;

@@ -11,7 +11,7 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
   template: `
     <div *ngIf="this.resumes"  fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
       <div   style="flex-flow: wrap"  fxLayoutAlign=" start center" fxLayoutGap="20px">
-        <mat-card *ngIf="!this.loading" matRipple (click)="addResume()" class=addcard>
+        <mat-card *ngIf="!this.loading" matRipple (click)="addResume()" class="addcard res-addcard-resume">
           <mat-icon>add_box</mat-icon>
           <mat-card-title>Add Resume</mat-card-title>
         </mat-card>
@@ -20,7 +20,7 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
       </div>
       <p style="margin-top: 7%; text-align: center" *ngIf="!this.resumes">No resume added yet.</p>
     </div>
-
+      
     <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`

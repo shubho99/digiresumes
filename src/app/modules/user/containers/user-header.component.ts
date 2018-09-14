@@ -1,16 +1,14 @@
-
-import {filter, takeWhile} from 'rxjs/operators';
 import {Component, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthRepoService} from '../../core/repositry/authRepo.service';
-
+import {filter, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-header-component',
   template: `
-    <div  class="major" fxLayout="row"
+    <div  class="major res-header" fxLayout="row"
          fxLayoutAlign="start center">
-      <img style="width: 15%;" src="../../assets/images/digiresume-light-green.png"/>
+      <img class="img-res" style="width: 15%;" src="../../assets/images/digiresume-light-green.png"/>
       <span fxFlex="1 1 180px"></span>
       <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
            fxFlex="1 1 auto" fxHide.xs>
@@ -32,6 +30,27 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
           <span style="padding-top: 2%">{{name}}</span>
         </div>
       </div>
+      <div fxLayoutAlign="start center " fxFlex="100%" fxHide.gt-xs>
+        <button class="res-icon-menu" style="color: #a8ee90;" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>dehaze</mat-icon>
+        </button>
+        <mat-menu class="res-menu-user" #menu="matMenu" direction="vertical" [overlapTrigger]="false">
+          <div class="res-menu-content-user">
+            <div style="margin-bottom: 20%;
+    font-size: 20px;" fxLayout="row" fxLayoutGap="10px" class="username" fxLayoutAlign="center start">
+              <mat-icon>account_circle</mat-icon>
+              <span>{{name}}</span>
+            </div>
+            <button style="color: #a8ee90;" mat-menu-item routerLink="resumes" routerLinkActive="selected-small1">Resumes
+            </button>
+            <button style="color: #a8ee90;" mat-menu-item routerLink="settings" routerLinkActive="selected-small1">Settings</button>
+            <button style="color: #a8ee90;" mat-menu-item routerLink="helpcenter" routerLinkActive="selected-small1">Help Center
+            </button>
+            <button style="color: #a8ee90;" mat-menu-item (click)="logout()" routerLinkActive="selected-small1">Logout
+            </button>
+          </div>          
+        </mat-menu>
+      </div>
     </div>
   `,
   styles: [`
@@ -47,12 +66,19 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
       border: 1px solid #a8ee90 !important;
     }
 
+    .selected-small1 {
+      border: 1px solid #a8ee90 !important;
+      width: 60% !important;
+      /*text-align: center !important;*/
+    }
+
     .username {
       color: #a8ee90;
       font-weight: bold;
       text-decoration: none;
       text-transform: uppercase;
     }
+       
   `]
 })
 export class UserHeaderComponent implements OnDestroy {
@@ -60,7 +86,7 @@ export class UserHeaderComponent implements OnDestroy {
   isAlive = true;
 
   constructor(private authRepo: AuthRepoService, private router: Router) {
-    this.authRepo.getMe().pipe(takeWhile(() => this.isAlive),filter(res => !!res),).subscribe((res) => {
+    this.authRepo.getMe().pipe(takeWhile(() => this.isAlive), filter(res => !!res)).subscribe((res) => {
       this.name = res.name;
     });
   }
