@@ -198,6 +198,7 @@ html, body {
   }
   /* app-single-resume-end */
 
+  /* app-upload-start */
   .res-expansion-panel-width {
     height: 65px !important;
   }
@@ -205,6 +206,18 @@ html, body {
     margin-left: 5% !important;
     margin-top: 2% !important;
   }
+  .res-upload-tab {
+    margin-left: -18.5% !important;
+  }
+  .res-upload-video {
+    margin-left: -33px;
+  }
+  .res-import-video {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  /* app-upload-end */
+
   .res-polygon {
     height: 65% !important;
     margin-top: 21% !important;

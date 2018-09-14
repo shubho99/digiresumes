@@ -13,8 +13,8 @@ import {switchMap} from 'rxjs/internal/operators';
   template: `
     <form [formGroup]="this.form" (submit)="this.form.valid && addVideo()">
       <div style="margin-top: 3%" fxLayout="column" fxLayoutGap="50px">
-        <h2>Import Video from Youtube URL</h2>
-        <mat-form-field>
+        <h1>Import Video from Youtube URL</h1>
+        <mat-form-field class="res-import-video">
           <input matInput formControlName="video_url" placeholder="Youtube URL">
           <mat-error>Provide YouTube Video URL</mat-error>
         </mat-form-field>
@@ -29,6 +29,10 @@ import {switchMap} from 'rxjs/internal/operators';
 
   `,
   styles: [`
+    h1 {
+      color: #7de261;
+      text-align: center;
+    }
   `]
 })
 
