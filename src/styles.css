@@ -198,6 +198,13 @@ html, body {
   }
   /* app-single-resume-end */
 
+  .res-expansion-panel-width {
+    height: 65px !important;
+  }
+  mat-expansion-panel {
+    margin-left: 5% !important;
+    margin-top: 2% !important;
+  }
   .res-polygon {
     height: 65% !important;
     margin-top: 21% !important;
