@@ -1,3 +1,5 @@
+import {isPlatformBrowser} from '@angular/common';
+
 export enum ApiRoute {
   USER = '/user',
   RESUME = '/resume',
@@ -30,6 +32,9 @@ export class Utils {
 
   static getYoutubeUrlFromId(id: string): string {
     return 'https://www.youtube.com/watch?v=' + id;
+  }
+  static isPlatformBrowser(): boolean {
+    return isPlatformBrowser('browser');
   }
 
 }

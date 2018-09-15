@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
 import {AlertService} from '../modules/core/services/alert.service';
+import {Utils} from '../modules/core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-contact-us',
@@ -11,8 +13,8 @@ import {AlertService} from '../modules/core/services/alert.service';
       <!--<img style="width: 106%; height: 100%" src="../../assets/images/contact-us.jpg"/>-->
       <!--</div>-->
       <div>
-        <h1 class="res-contact-h1 contact-h1" animateOnScroll >Contact Us</h1>
-        <p class="company-text mac-contact-us-p res-contact-company-text" >Our Company is
+        <h1 class="res-contact-h1 contact-h1" animateOnScroll>Contact Us</h1>
+        <p class="company-text mac-contact-us-p res-contact-company-text">Our Company is
           here to provide you more information,answer any questions you may have <br>
           and create an effective solution for your need</p>
       </div>
@@ -24,7 +26,7 @@ import {AlertService} from '../modules/core/services/alert.service';
     </div>
     <div class="u-margin-bottom-small-1"></div>
     <div class="book mac-contact-us-card res-contact-book">
-      <div class="book__form"  style="animation-delay: .4s">
+      <div class="book__form" style="animation-delay: .4s">
         <form class="form mac-contact-form res-contact-form" (submit)=" contactUsForm.valid &&  onSend()" [formGroup]="contactUsForm">
           <div class="u-margin-bottom-small res-contact-bottom-margin">
             <h2 class="heading-secondary res-contact-heading-secondary">
@@ -232,8 +234,10 @@ export class ContactUsComponent {
   contactUsForm: FormGroup;
   loading = false;
 
-  constructor(private authRepo: AuthRepoService, private alertService: AlertService) {
-    document.body.style.overflowX = 'visible';
+  constructor(private authRepo: AuthRepoService, private alertService: AlertService, @Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflowX = 'visible';
+    }
     this.contactUsForm = new FormGroup({
       name: this.fullNameControl,
       email: this.emailControl,

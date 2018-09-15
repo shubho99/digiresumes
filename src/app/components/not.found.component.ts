@@ -1,5 +1,7 @@
-import {Component, EventEmitter, OnDestroy, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Inject, OnDestroy, Output, PLATFORM_ID, ViewEncapsulation} from '@angular/core';
 import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
+import {Utils} from '../modules/core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-not-found',
@@ -13,13 +15,13 @@ import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
         <span class="page-404 res-not-found-page-404">
           Page Not Found: Error 404
         </span>
-          <br>
-          <div class="demo cover res-not-found-demo">
-            <div class="demo__content ">
-              <div class="demo__img animated zoomInDown"></div>
-            </div>
+        <br>
+        <div class="demo cover res-not-found-demo">
+          <div class="demo__content ">
+            <div class="demo__img animated zoomInDown"></div>
           </div>
-          <span class="go-back res-not-found-go-back">
+        </div>
+        <span class="go-back res-not-found-go-back">
             you landed in a wrong page<br><a routerLink="">go back</a>
           </span>
       </div>
@@ -230,12 +232,16 @@ import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
 })
 
 export class NotFoundComponent implements OnDestroy {
-  constructor() {
-    document.body.style.background = 'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)';
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.background = 'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)';
+    }
   }
 
   ngOnDestroy() {
-    document.body.style.background = 'none';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.background = 'none';
+    }
   }
 }
 

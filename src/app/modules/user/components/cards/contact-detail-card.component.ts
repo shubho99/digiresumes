@@ -1,14 +1,15 @@
-import {AfterContentInit, Component, Input} from '@angular/core';
+import {AfterContentInit, Component, Inject, Input, PLATFORM_ID} from '@angular/core';
 import {Contact} from '../../../core/models/resume';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../core/services/auth.service';
 import {MatDialog} from '@angular/material';
 import {ShareComponent} from '../../dialogues/share.component';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-contact-detail-card',
   template: `
-    <button (click)="onClick()" mat-fab class="profile-pic res-profile-pic" 
+    <button (click)="onClick()" mat-fab class="profile-pic res-profile-pic"
             [ngStyle]="{'background-image':'url('+this.url+')'}"></button>
     <h2 fxLayoutAlign="center start">
       {{contactDetails.first_name}} {{contactDetails.last_name}}
@@ -79,11 +80,11 @@ export class ContactDetailCardComponent implements AfterContentInit {
   @Input() resumeId: string;
   @Input() img_url: string;
   @Input() isView = false;
-  token = AuthService.getAuthToken();
+  token = '';
   url = '';
 
-  constructor(private router: Router, private dialog: MatDialog) {
-
+  constructor(private router: Router, private dialog: MatDialog, @Inject(PLATFORM_ID) private platformId: any) {
+    this.token = isPlatformBrowser(this.platformId) ? AuthService.getAuthToken() : null;
   }
 
   ngAfterContentInit() {

@@ -1,8 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
 import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AlertService} from '../modules/core/services/alert.service';
+import {Utils} from '../modules/core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-password-reset',
@@ -85,8 +87,10 @@ export class PasswordResetComponent {
   loading = false;
 
   constructor(private authRepo: AuthRepoService, private router: Router, private route: ActivatedRoute,
-              private alertService: AlertService) {
-    document.body.style.background = 'linear-gradient(132deg, #f1c232, #ff8505)';
+              private alertService: AlertService, @Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.background = 'linear-gradient(132deg, #f1c232, #ff8505)';
+    }
     this.passwordResetForm = new FormGroup({
       new_password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
       confirm_password: new FormControl(null, [Validators.required, Validators.minLength(8)]),

@@ -1,15 +1,17 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {AuthService} from '../services/auth.service';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class AnonGuard implements CanActivate {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: any) {
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const isLoggedIn = AuthService.getAuthToken();
+    const isLoggedIn = isPlatformBrowser(this.platformId) ? AuthService.getAuthToken() : null;
 
     if (!isLoggedIn) {
       return true;

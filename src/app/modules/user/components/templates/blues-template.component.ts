@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output, PLATFORM_ID} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
+import {Utils} from '../../../core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-blues-template',
@@ -64,7 +66,7 @@ import {Resume} from '../../../core/models/resume';
             </ng-container>
           </div>
           <div *ngIf="this.resume.refrences.length">
-           <ng-container *ngTemplateOutlet="referenceTemplate"></ng-container>
+            <ng-container *ngTemplateOutlet="referenceTemplate"></ng-container>
           </div>
         </div>
         <div class="hover" fxLayout="column">
@@ -86,19 +88,19 @@ import {Resume} from '../../../core/models/resume';
         </ul>
       </div>
     </ng-template>
-<ng-template #referenceTemplate>
-  <h1 class="education-heading">References</h1>
-  <ng-container *ngFor="let refrence of this.resume['refrences']">
-    <h3 class="container h3-span">
-      {{refrence.name}} <span class="h3-span" style="text-transform: lowercase; font-size: 10pt;">
+    <ng-template #referenceTemplate>
+      <h1 class="education-heading">References</h1>
+      <ng-container *ngFor="let refrence of this.resume['refrences']">
+        <h3 class="container h3-span">
+          {{refrence.name}} <span class="h3-span" style="text-transform: lowercase; font-size: 10pt;">
                 @{{refrence.company}}</span><br>
-      {{refrence.relationship}}<br>
-      <span class="h3-span" style="text-transform: lowercase">{{refrence.email}}</span><br>
-      {{refrence.phone}}<br>
-      {{refrence.address}}
-    </h3>
-  </ng-container>
-</ng-template>
+          {{refrence.relationship}}<br>
+          <span class="h3-span" style="text-transform: lowercase">{{refrence.email}}</span><br>
+          {{refrence.phone}}<br>
+          {{refrence.address}}
+        </h3>
+      </ng-container>
+    </ng-template>
     <ng-template #objectiveTemplate>
       <h1 class="education-heading">Objective</h1>
       <ng-container *ngFor="let objective of this.resume['objectives']">
@@ -310,13 +312,15 @@ export class BluesTemplateComponent {
 
   @Output() downloadTemplate = new EventEmitter<string>();
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
 
   }
 
   download() {
-    const innerHtml = document.getElementById('html').innerHTML;
-    const html = `<html>
+    if (isPlatformBrowser(this.platformId)) {
+
+      const innerHtml = document.getElementById('html').innerHTML;
+      const html = `<html>
 <head>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link rel="stylesheet"
@@ -390,6 +394,7 @@ ${innerHtml}
 </body>
 </head>
 </html>`;
-    this.downloadTemplate.emit(html);
+      this.downloadTemplate.emit(html);
+    }
   }
 }

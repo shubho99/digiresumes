@@ -7,11 +7,9 @@ import {getReducers, reducerToken} from '../../reducers';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
-    BrowserModule,
   ],
   exports: [
     BrowserAnimationsModule,
-    BrowserModule,
   ],
   declarations: [
   ],

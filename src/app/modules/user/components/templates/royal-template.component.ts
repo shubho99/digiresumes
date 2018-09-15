@@ -1,6 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output, PLATFORM_ID} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
 import {Meta} from '@angular/platform-browser';
+import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
+import {Utils} from '../../../core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-royal-template',
@@ -667,12 +670,13 @@ export class RoyalTemplateComponent {
   @Output() downloadTemplate = new EventEmitter<string>();
 
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
   }
 
   download() {
-    const innterHtml = document.getElementById('html').innerHTML;
-    const html = `<html>
+    if (isPlatformBrowser(this.platformId)) {
+      const innterHtml = document.getElementById('html').innerHTML;
+      const html = `<html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
@@ -923,6 +927,7 @@ ${innterHtml}
 </body>
 </head>
 </html>`;
-    this.downloadTemplate.emit(html);
+      this.downloadTemplate.emit(html);
+    }
   }
 }

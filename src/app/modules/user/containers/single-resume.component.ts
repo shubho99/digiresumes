@@ -1,21 +1,22 @@
-
 import {filter, take, map} from 'rxjs/operators';
-import {AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, Inject, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';
 import {Resume} from '../../core/models/resume';
 import {AuthService} from '../../core/services/auth.service';
 import {Observable} from 'rxjs';
 import {switchMap, takeWhile} from 'rxjs/internal/operators';
+import {Utils} from '../../core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-single-resume',
   template: `
     <div class="alternate instaFade" fxLayout="row" fxLayout.xs="column" *ngIf="this.resume">
-        <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
+      <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card res-side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
-          <button matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span" 
+          <button matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span"
                   *ngIf="this.resume && !this.isView">
             <mat-icon style="font-size: 25px" aria-hidden="true">
               remove_red_eye
@@ -30,7 +31,7 @@ import {switchMap, takeWhile} from 'rxjs/internal/operators';
           <ng-container *ngTemplateOutlet="weaknessTemplate"></ng-container>
         </div>
       </mat-card>
-      
+
       <div class="res-single-resume-card" fxLayout="column" fxLayoutAlign.xs="start" style="width: 100%">
         <iframe *ngIf="this.resume.video_url" width="100%" height="100%" frameborder="0" allowfullscreen="true"
                 [src]="this.resume.video_url | safeUrl"></iframe>
@@ -336,14 +337,16 @@ export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
   isView = false;
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private resumeRepo: ResumeRepoService) {
-    document.body.style.backgroundImage = 'url("../../../../assets/images/back.jpg")';
+              private resumeRepo: ResumeRepoService, @Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.backgroundImage = 'url("../../../../assets/images/back.jpg")';
+    }
   }
 
   ngOnInit() {
     const param = this.router.url.split('/')[2];
     this.isView = param === 'view' ? true : false;
-    const token = AuthService.getAuthToken();
+    const token = isPlatformBrowser(this.platformId) ?  AuthService.getAuthToken() : null;
     this.loading = true;
     this.route.params.pipe(map(params => params['id']), switchMap((id) => {
       if (this.isView && !token) {
@@ -361,7 +364,9 @@ export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.isAlive = false;
-    document.body.style.background = '#fafafa';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.background = '#fafafa';
+    }
   }
 
   ngAfterViewInit() {
