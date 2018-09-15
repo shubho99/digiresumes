@@ -10,7 +10,7 @@ import {ShareComponent} from '../../dialogues/share.component';
 @Component({
   selector: 'app-resume-card',
   template: `
-    <mat-card fxLayout="column" on-mouseenter="hover=true" on-mouseleave="hover=false">
+    <mat-card class="res-resume-card" fxLayout="column" on-mouseenter="hover=true" on-mouseleave="hover=false">
       <img mat-card-image src="../../../../../assets/images/resume.png"/>
       <span>{{resume.name}}</span>
       <div *ngIf="hover" class="hover" fxLayout="column" fxLayoutGap="60px">
