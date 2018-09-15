@@ -1,6 +1,5 @@
-
 import {filter, take, combineLatest, map} from 'rxjs/operators';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
@@ -15,13 +14,14 @@ import {
   UserProfileSuccessAction,
   UserUpdateAction
 } from '../../../actions/user';
+import {isPlatformBrowser} from '@angular/common';
 
 
 @Injectable()
 export class AuthRepoService {
 
 
-  constructor(private authService: AuthService, private store: Store<RootState>) {
+  constructor(private authService: AuthService, private store: Store<RootState>, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
   signUp(data: { email: string, password: string, name: string, confirm_password: string }): Observable<Object> {
@@ -35,8 +35,10 @@ export class AuthRepoService {
   login(data: { email: string, password: string }): Observable<User> {
     this.store.dispatch(new LoginRequestAction());
     return this.authService.login(data).pipe(map((res) => {
-      AuthService.setAuthToken((res as any).token);
-      this.store.dispatch(new LoginSuccessAction((res as any).user));
+      if (isPlatformBrowser(this.platformId)) {
+        AuthService.setAuthToken((res as any).token);
+        this.store.dispatch(new LoginSuccessAction((res as any).user));
+      }
       return <User>res;
     }));
   }
@@ -59,7 +61,7 @@ export class AuthRepoService {
     }));
   }
 
-  updateOnboarding(data: {onboarding: number}): Observable<User> {
+  updateOnboarding(data: { onboarding: number }): Observable<User> {
     return this.authService.updateOnboarding(data).pipe(map((res) => {
       this.store.dispatch(new UserUpdateAction(res));
       return <User>res;
@@ -80,9 +82,9 @@ export class AuthRepoService {
     const loggedIn$ = this.store.select(getLoggedIn);
     const logginIn$ = this.store.select(getLoggingIn);
     const user$ = this.store.select(getUser);
-    logginIn$.pipe(combineLatest(loggedIn$, (logginIn, loggedIn) => logginIn || loggedIn),take(1),
+    logginIn$.pipe(combineLatest(loggedIn$, (logginIn, loggedIn) => logginIn || loggedIn), take(1),
       filter(value => !value || force),).subscribe(() => {
-        this.store.dispatch(new UserProfileRequestAction());
+      this.store.dispatch(new UserProfileRequestAction());
       this.authService.fetchUser().subscribe((res) => {
         this.store.dispatch(new UserProfileSuccessAction(res));
       });
@@ -91,8 +93,10 @@ export class AuthRepoService {
   }
 
   logout() {
-    AuthService.clearAuthToken();
-    this.store.dispatch(new LogoutAction());
+    if (isPlatformBrowser(this.platformId)) {
+      AuthService.clearAuthToken();
+      this.store.dispatch(new LogoutAction());
+    }
   }
 
 }

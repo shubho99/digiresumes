@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,9 @@ import {Component} from '@angular/core';
   `]
 })
 export class DashboardComponent {
-  constructor() {
-    document.body.className = 'intro-body';
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.className = 'intro-body';
+    }
   }
 }

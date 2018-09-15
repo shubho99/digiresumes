@@ -36,6 +36,7 @@ import {PasswordResetComponent} from './containers/password-reset.component';
 import {SharedModule} from './modules/shared/shared.module';
 import {ResumeRepoService} from './modules/core/repositry/resumeRepo.service';
 import {ResumeService} from './modules/core/services/resume.service';
+import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
 
 
 @NgModule({
@@ -54,6 +55,8 @@ import {ResumeService} from './modules/core/services/resume.service';
     PasswordResetComponent
   ],
   imports: [
+    BrowserModule.withServerTransition({ appId: 'resume-builder' }),
+    BrowserTransferStateModule,
     CoreModule,
     SharedModule,
     RouterModule,

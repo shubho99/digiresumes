@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output, PLATFORM_ID} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
+import {Utils} from '../../../core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-classic-template',
@@ -59,7 +61,7 @@ import {Resume} from '../../../core/models/resume';
               <h4 style="padding-bottom:4%;color:#767270;">{{work.employer}}</h4>
             </ng-container>
           </div>
-          <div style="margin-left:1%;" *ngIf="this.resume.education.length"> 
+          <div style="margin-left:1%;" *ngIf="this.resume.education.length">
             <h1>EDUCATION</h1>
             <ng-container *ngFor="let education of this.resume['education']">
               <h3 style="text-transform:uppercase;color:#767270;margin-top:3%;">
@@ -95,7 +97,7 @@ import {Resume} from '../../../core/models/resume';
               </ul>
             </ng-container>
           </div>
-          
+
           <div class="border" style="margin-left:1%;padding-bottom:6px;" *ngIf="this.resume.objectives.length">
             <h1>OBJECTIVES</h1>
             <ng-container *ngFor="let objective of this.resume['objectives']">
@@ -122,7 +124,7 @@ import {Resume} from '../../../core/models/resume';
             <ng-container *ngFor="let language of this.resume['languages']">
               <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%;">
                 <li>
-                  {{language.name}}   
+                  {{language.name}}
                 </li>
               </ul>
             </ng-container>
@@ -231,7 +233,7 @@ import {Resume} from '../../../core/models/resume';
     }
 
     /*#html {*/
-      /*background: #fafafa;*/
+    /*background: #fafafa;*/
     /*}*/
 
     .hover:hover {
@@ -245,12 +247,13 @@ export class ClassicTemplateComponent {
   @Output() downloadTemplate = new EventEmitter<string>();
 
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
   }
 
   download() {
-    const innerHtml = document.getElementById('html').innerHTML;
-    const html = `<html><head>
+    if (isPlatformBrowser(this.platformId)) {
+      const innerHtml = document.getElementById('html').innerHTML;
+      const html = `<html><head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link rel="stylesheet"
         href="//fonts.googleapis.com/css?family=Google+Sans:400|Roboto:400,400italic,500,500italic,700,700italic|
@@ -284,6 +287,7 @@ font-family: 'Google Sans', Roboto, sans-serif;
 ${innerHtml}
 </body>
 </head></html>`;
-    this.downloadTemplate.emit(html);
+      this.downloadTemplate.emit(html);
+    }
   }
 }

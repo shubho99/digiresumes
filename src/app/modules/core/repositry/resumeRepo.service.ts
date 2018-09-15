@@ -1,6 +1,5 @@
-
 import {map, filter, take, combineLatest} from 'rxjs/operators';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {ResumeService} from '../services/resume.service';
 import {RootState} from '../../../reducers';
 import {Store} from '@ngrx/store';
@@ -42,17 +41,19 @@ import {
   UpdateReferenceAction, UpdateResumeAction,
   UpdateSkillAction, UpdateStrengthAction, UpdateWeaknessAction
 } from '../../user/actions/resume';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class ResumeRepoService {
   constructor(private resumeService: ResumeService, private store: Store<RootState>) {
   }
 
+
   getAllResumes(force = false): [Observable<Resume[]>, Observable<boolean>] {
     const loaded$ = this.store.select(getResumesLoaded);
     const loading$ = this.store.select(getResumesLoading);
     const resumes$ = this.store.select(getResumes);
-    loading$.pipe(combineLatest(loaded$, (loading, loaded) => loading || loaded),take(1),
+    loading$.pipe(combineLatest(loaded$, (loading, loaded) => loading || loaded), take(1),
       filter(value => !value || force),).subscribe(() => {
       this.store.dispatch(new ResumeListRequestAction());
       this.resumeService.getAllResumes().subscribe((res) => {
@@ -68,7 +69,7 @@ export class ResumeRepoService {
         return res;
       }));
     }
-    return this.store.select(state => getResume(state, id)).pipe(filter(res => !!res),map(res => {
+    return this.store.select(state => getResume(state, id)).pipe(filter(res => !!res), map(res => {
       return res;
     }),);
   }

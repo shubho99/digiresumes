@@ -1,4 +1,6 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, Inject, OnDestroy, PLATFORM_ID} from '@angular/core';
+import {Utils} from '../../core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,11 +12,15 @@ import {Component, OnDestroy} from '@angular/core';
   `]
 })
 export class UserDashboardComponent implements OnDestroy {
-  constructor() {
-    document.body.className = 'user-background';
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.className = 'user-background';
+    }
   }
 
   ngOnDestroy() {
-    document.body.className = 'intro-body';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.className = 'intro-body';
+    }
   }
 }

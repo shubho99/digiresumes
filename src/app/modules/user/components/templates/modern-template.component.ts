@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output, PLATFORM_ID} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
+import {Utils} from '../../../core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-modern-template',
@@ -520,13 +522,15 @@ export class ModernTemplateComponent {
 
   @Output() downloadTemplate = new EventEmitter<string>();
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
 
   }
 
   download() {
-    const innerHtml = document.getElementById('html').innerHTML;
-    const html = `<html>
+    if (isPlatformBrowser(this.platformId)) {
+
+      const innerHtml = document.getElementById('html').innerHTML;
+      const html = `<html>
 <head>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link href="https://fonts.googleapis.com/css?family=Balthazar|Simonetta:400,900" rel="stylesheet">
@@ -751,7 +755,8 @@ ${innerHtml}
 </body>
 </head>
 </html>`;
-    this.downloadTemplate.emit(html);
+      this.downloadTemplate.emit(html);
+    }
   }
 }
 

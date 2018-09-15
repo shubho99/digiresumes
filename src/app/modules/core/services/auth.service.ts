@@ -1,10 +1,11 @@
-
 import {map} from 'rxjs/operators';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
-import {ApiRoute} from '../utils/utils';
+import {ApiRoute, Utils} from '../utils/utils';
+import {ResumeRepoService} from '../repositry/resumeRepo.service';
+import {isPlatformBrowser} from '@angular/common';
 
 
 const AUTH_TOKEN = 'auth_token';
@@ -15,15 +16,15 @@ export class AuthService {
   }
 
   static clearAuthToken() {
-    localStorage.removeItem(AUTH_TOKEN);
+      localStorage.removeItem(AUTH_TOKEN);
   }
 
   static setAuthToken(token: string) {
-    localStorage.setItem(AUTH_TOKEN, token);
+      localStorage.setItem(AUTH_TOKEN, token);
   }
 
   static getAuthToken() {
-    return localStorage.getItem(AUTH_TOKEN);
+      return localStorage.getItem(AUTH_TOKEN);
   }
 
   signUp(data: { email: string, password: string, name: string, confirm_password: string }): Observable<User> {

@@ -1,8 +1,9 @@
-
 import {filter, takeWhile} from 'rxjs/operators';
-import {Component, OnDestroy} from '@angular/core';
+import {Component, Inject, OnDestroy, PLATFORM_ID} from '@angular/core';
 import {AuthRepoService} from '../../core/repositry/authRepo.service';
 import {AlertService} from '../../core/services/alert.service';
+import {Utils} from '../../core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-email-verification',
@@ -73,8 +74,10 @@ export class EmailVerificationComponent implements OnDestroy {
   isAlive = true;
   code;
 
-  constructor(private authRepo: AuthRepoService, private alert: AlertService) {
-    document.body.style.background = 'linear-gradient(to right bottom, #7de261, #427bb5)';
+  constructor(private authRepo: AuthRepoService, private alert: AlertService, @Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.background = 'linear-gradient(to right bottom, #7de261, #427bb5)';
+    }
     this.fetchEmail();
   }
 

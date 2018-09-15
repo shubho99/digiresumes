@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
 import {Router} from '@angular/router';
+import {Utils} from '../../../core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-user-onboarding-intro',
@@ -13,12 +15,15 @@ import {Router} from '@angular/router';
       </div>
       <h3 fxLayoutAlign="center center">John! Founder and CEO</h3>
       <div fxLayoutAlign="center center">
-        <button (click)="go()" style="margin-top: 1%; text-transform: uppercase" color="accent" fxLayoutAlign="end" mat-raised-button>Let's go</button>
+        <button (click)="go()" style="margin-top: 1%; text-transform: uppercase" color="accent" fxLayoutAlign="end" mat-raised-button>Let's
+          go
+        </button>
       </div>
     </div>
   `,
   styles: [`
     @import url('https://fonts.googleapis.com/css?family=Yatra+One');
+
     h3 {
       color: rgba(51, 51, 51, 0.5);
       margin-bottom: 50px;
@@ -32,9 +37,11 @@ import {Router} from '@angular/router';
   `]
 })
 export class OnboardingIntroComponent {
-  constructor(private router: Router) {
-    document.body.style.background = '#fafafa';
-    document.body.style.fontFamily = 'Yatra One, cursive';
+  constructor(private router: Router,@Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.background = '#fafafa';
+      document.body.style.fontFamily = 'Yatra One, cursive';
+    }
   }
 
   go() {
