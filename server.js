@@ -33,14 +33,13 @@ app.engine(
   })
 );
 
-app.set('view engine', 'html');
 
-app.get('/**/*', (req, res) => {
-  res.render(join(DIST_FOLDER, APP_NAME, 'index'), {
-    req,
-    res
-  });
-});
+// app.get('/**/*', (req, res) => {
+//   res.render(join(DIST_FOLDER, APP_NAME, 'index'), {
+//     req,
+//     res
+//   });
+// });
 
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, APP_NAME));
