@@ -1,4 +1,3 @@
-
 import {filter, take, map, takeWhile} from 'rxjs/operators';
 import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
@@ -107,7 +106,7 @@ export class UploadFromDiskComponent implements OnDestroy {
         this.loading = true;
         this.route.params.pipe(map(params => params['id']), switchMap((id) => {
           return this.resumeRepo.getResume(id);
-        })).pipe(take(1),filter(res => !!res),).pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
+        })).pipe(take(1), filter(res => !!res),).pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
           this.loading = false;
           this.resume = res;
           this.isUploaded = !!this.resume.video_url;
