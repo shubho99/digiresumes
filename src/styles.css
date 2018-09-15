@@ -151,8 +151,88 @@ html, body {
   }
   /* user-header-end */
 
+  /* app-resume-start */
   .res-addcard-resume {
-    
+    margin-left: 20% !important;
+    transform: translate(-80%,0%);
+    left: 50%;
+  }
+
+  .res-resume-card {
+    margin-left: 35% !important;
+    /* -webkit-transform: translate(-80%,0%); */
+    transform: translate(-50%,0%);
+    left: 50%;
+  }
+  /* app-resume-end */
+
+  /* app-single-resume-start */
+  .res-single-resume-card {
+    max-width: 118% !important;
+    width: 118% !important;
+  }
+
+  .res-profile-pic {
+    width: 58% !important;
+    margin-left: 21% !important;
+  }
+
+  .res-views-span {
+    left: 24% !important;
+  }
+
+  .res-side-bar-card {
+    width: 96% !important;
+    margin-left: 2% !important;
+  }
+
+  .res-education-card {
+    margin-left: 0% !important;
+  }
+  .res-icon-interest{
+    margin-right: 12px !important;
+    margin-left: 28px !important;
+  }
+  .res-icon-award {
+    margin-right: 21px !important;
+  }
+  /* app-single-resume-end */
+
+  /* app-upload-start */
+  .res-expansion-panel-width {
+    height: 65px !important;
+  }
+  mat-expansion-panel {
+    margin-left: 5% !important;
+    margin-top: 2% !important;
+  }
+  .res-upload-tab {
+    margin-left: -18.5% !important;
+  }
+  .res-upload-video {
+    margin-left: -33px;
+  }
+  .res-import-video {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  /* app-upload-end */
+
+  .res-templates {
+    display: flow-root !important;
+    margin-left: 11% !important;
+  }
+
+  .width-setting {
+    width: 150% !important;
+  }
+  .res-profile-settings {
+    margin-left: 128% !important;
+    margin-bottom: 10% !important;
+  }
+  .res-profile-container {
+    margin-left: -35% !important;
+    border-bottom: 0px solid #80808017 !important;
   }
 
   .res-polygon {

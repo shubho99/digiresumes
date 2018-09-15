@@ -6,7 +6,7 @@ import {ActivatedRoute} from '@angular/router';
   selector: 'app-templates',
   template: `
     <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
-      <div style="flex-flow: wrap" class="alternate" fxLayoutAlign=" start center" fxLayoutGap="30px">
+      <div style="flex-flow: wrap" class="alternate res-templates" fxLayoutAlign=" start center" fxLayoutGap="30px">
         <app-template-card *ngFor="let template of this.templates" [resumeId]="resumeId"
                            [template]="template"></app-template-card>
         <span *appFlexAlignmentHack></span>

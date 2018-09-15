@@ -25,11 +25,11 @@ import {switchMap} from 'rxjs/internal/operators';
         <video *ngIf="!this.isUploaded" id="video" #video controls>
           Your browser does not support HTML5 video.
         </video>
-        <iframe *ngIf="this.isUploaded" [src]=" url| safeUrl" #iframe width="124%" height="212px" frameborder="0"
-                allowfullscreen="true">
+        <iframe *ngIf="this.isUploaded" [src]=" url| safeUrl" #iframe width="124%" height="212px" frameborder="0" 
+                class="res-upload-video"   allowfullscreen="true">
         </iframe>
       </div>
-      <div *ngIf="this.videoSelected" fxLayoutAlign="center center" fxLayout="row" fxLayoutGap="20px">
+      <div *ngIf="this.videoSelected" fxLayoutAlign="center center" fxLayout="row" fxLayoutGap="20px" fxLayoutGap.xs="5px">
         <button *ngIf="this.isUploaded" mat-raised-button color="accent"
                 (click)="deleteVideo()">Delete Video
         </button>
@@ -47,6 +47,7 @@ import {switchMap} from 'rxjs/internal/operators';
   styles: [`
     h1 {
       color: #7de261;
+      text-align: center;
     }
 
     #video {
@@ -106,7 +107,8 @@ export class UploadFromDiskComponent implements OnDestroy {
         this.loading = true;
         this.route.params.pipe(map(params => params['id']), switchMap((id) => {
           return this.resumeRepo.getResume(id);
-        })).pipe(take(1), filter(res => !!res),).pipe(takeWhile(() => this.isAlive)).subscribe((res) => {
+        })).pipe(take(1), filter(res => !!res),).pipe(takeWhile(() => this.isAlive))
+          .subscribe((res) => {
           this.loading = false;
           this.resume = res;
           this.isUploaded = !!this.resume.video_url;
