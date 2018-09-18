@@ -159,10 +159,10 @@ html, body {
   }
 
   .res-resume-card {
-    margin-left: 35% !important;
+
     /* -webkit-transform: translate(-80%,0%); */
     transform: translate(-50%,0%);
-    left: 50%;
+    left: 48.5%;
   }
   /* app-resume-end */
 
@@ -235,6 +235,24 @@ html, body {
     border-bottom: 0px solid #80808017 !important;
   }
 
+  .res-blue-container {
+    width: 95%!important;
+    position: relative !important;
+    margin-top: 10px !important;
+  }
+
+  .res-text-align {
+    margin-left: -25% !important;
+  }
+  .res-down {
+    float: initial !important;
+  }
+  .res-menu-button {
+    position: absolute;
+    left: 80%;
+    top: 84%;
+    width: 40px;
+  }
   .res-polygon {
     height: 65% !important;
     margin-top: 21% !important;

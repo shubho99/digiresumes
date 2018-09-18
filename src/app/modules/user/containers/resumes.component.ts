@@ -10,10 +10,10 @@ import {ResumeEditComponent} from '../dialogues/resume-edit.component';
   selector: 'app-resumes',
   template: `
     <div *ngIf="this.resumes"  fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
-      <div   style="flex-flow: wrap"  fxLayoutAlign=" start center" fxLayoutGap="20px">
+      <div   style="flex-flow: wrap" class="alternate res-templates" fxLayoutAlign=" start center" fxLayoutGap="20px">
         <mat-card *ngIf="!this.loading" matRipple (click)="addResume()" class="addcard res-addcard-resume">
           <mat-icon>add_box</mat-icon>
-          <mat-card-title>Add Resume</mat-card-title>
+          <mat-card-title style="color: #538ec3;">Add Resume</mat-card-title>
         </mat-card>
         <app-resume-card *ngFor="let resume of resumes" [resume]="resume"></app-resume-card>
         <span *appFlexAlignmentHack></span>
