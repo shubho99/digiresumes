@@ -6,15 +6,13 @@ import {HeaderComponent} from './containers/header.component';
 import {DashboardComponent} from './containers/dashboard.component';
 import {NotFoundComponent} from './components/not.found.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
+import {PreloadAllModules, RouterModule} from '@angular/router';
 import {routes} from './routes';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {AnimateOnScrollModule} from 'ng2-animate-on-scroll';
 
 import {HomeComponent} from './containers/home.component';
 import {GetStartedComponent} from './containers/get.started.component';
 import {LoginComponent} from './containers/login.component';
-import {SafeUrlPipe} from './pipes/safeUrl';
 import {TruncatePipe} from './pipes/truncate';
 import {ContactUsComponent} from './containers/contact.us.component';
 import {VideoDialogComponent} from './components/video.dialog.component';
@@ -28,7 +26,7 @@ import {ApiService} from './modules/core/services/api.service';
 import {AlertService} from './modules/core/services/alert.service';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreModule} from '@ngrx/store';
-import {reducerProvider, reducers, reducerToken} from './reducers';
+import {reducerToken} from './reducers';
 import {AuthRepoService} from './modules/core/repositry/authRepo.service';
 import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
 import {LogoutComponent} from './containers/logout.component';
@@ -55,12 +53,12 @@ import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-brows
     PasswordResetComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'resume-builder' }),
+    BrowserModule.withServerTransition({appId: 'resume-builder'}),
     BrowserTransferStateModule,
     CoreModule,
     SharedModule,
     RouterModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {initialNavigation: 'enabled'}),
     StoreModule.forRoot(reducerToken),
     StoreDevtoolsModule.instrument({
       maxAge: 10
