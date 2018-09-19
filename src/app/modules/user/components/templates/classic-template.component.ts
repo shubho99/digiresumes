@@ -7,7 +7,7 @@ import {isPlatformBrowser} from '@angular/common';
   selector: 'app-classic-template',
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
-      <mat-card>
+      <mat-card class="res-blue-container">
         <div fxLayout="column" id="html" fxLayoutGap="5px" fxFlexAlign="center center" style="margin-left:2%;margin-right: 2%">
           <div style="margin-left:1%;" *ngIf="this.resume.contact_details">
             <h1 style="text-transform:uppercase !important;font-size:30px;text-align:center;">
