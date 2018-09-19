@@ -30,7 +30,7 @@ import {filter, takeWhile} from 'rxjs/operators';
           <span style="padding-top: 2%">{{name}}</span>
         </div>
       </div>
-      <div fxLayoutAlign="start center " fxFlex="100%" fxHide.gt-xs>
+      <div fxLayoutAlign="start end" fxFlex="100%" fxHide.gt-xs>
         <button class="res-icon-menu" style="color: #a8ee90;" mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>dehaze</mat-icon>
         </button>

@@ -69,12 +69,12 @@ import {isPlatformBrowser} from '@angular/common';
             <ng-container *ngTemplateOutlet="referenceTemplate"></ng-container>
           </div>
         </div>
-        <!--<div class="hover" fxLayout="column">-->
-          <!--<div style="    margin-top: 55%;-->
-    <!--margin-left: 46%;" fxLayout="row">-->
-            <!--<i id="hover-i" (click)="download()" class="fa fa-arrow-circle-down" aria-hidden="true"></i>-->
-          <!--</div>-->
-        <!--</div>-->
+        <div class="hover" fxLayout="column">
+          <div style="    margin-top: 55%;
+    margin-left: 46%;" fxLayout="row">
+            <i id="hover-i" (click)="download()" class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+          </div>
+        </div>
       </mat-card>
     </div>
 

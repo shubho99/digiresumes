@@ -6,6 +6,7 @@ import {isPlatformBrowser} from '@angular/common';
   template: `
     <app-header></app-header>
     <router-outlet></router-outlet>
+    <!--<app-footer></app-footer>-->
   `,
   styles: [`
 

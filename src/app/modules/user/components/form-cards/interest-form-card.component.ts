@@ -12,13 +12,13 @@ import {InterestFormComponent} from '../../dialogues/resume-form/interest-form.c
 @Component({
   selector: 'app-interest-form-card',
   template: `
-    <div style="height: 60px" fxLayoutAlign="center center" fxLayout="column">
+    <div style="height: 60px;position: relative" fxLayoutAlign="center center" fxLayout="column">
       <ng-container>
         <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
           <ng-container>
             <h3>{{interest.interest}}</h3>
           </ng-container>
-          <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center" fxHide.xs>
             <div class="overlay">
               <div class="hover">
                 <button style="margin-top: 1%" (click)="edit()" mat-icon-button>
@@ -32,6 +32,20 @@ import {InterestFormComponent} from '../../dialogues/resume-form/interest-form.c
           </div>
         </div>
       </ng-container>
+      <div style="position: absolute;     top: 46.5%;
+    right: -7.5%;" fxLayoutAlign="start center" fxHide.gt-xs>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon style="color: #333333;font-size: 35px">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false">
+          <button (click)="edit()" mat-menu-item>
+            <mat-icon style="font-size: 30px" matTooltip="create">create</mat-icon>
+          </button>
+          <button (click)="delete()" mat-menu-item>
+            <mat-icon style="font-size: 30px" matTooltip="create">delete</mat-icon>
+          </button>
+        </mat-menu>
+      </div>
     </div>
     <ngx-loading [show]="loading"></ngx-loading>
   `,
@@ -44,6 +58,11 @@ import {InterestFormComponent} from '../../dialogues/resume-form/interest-form.c
     h3{
       text-align: center;
       word-break: break-word;
+    }
+    @media screen and (max-width: 599px) {
+      button.mat-menu-item {
+        width: 100% !important;
+      }
     }
   `]
 })

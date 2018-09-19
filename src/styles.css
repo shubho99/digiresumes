@@ -235,6 +235,7 @@ html, body {
     border-bottom: 0px solid #80808017 !important;
   }
 
+  /* blue-tempates-start */
   .res-blue-container {
     width: 95%!important;
     position: relative !important;
@@ -247,12 +248,15 @@ html, body {
   .res-down {
     float: initial !important;
   }
+  /* blue-tempates-end */
+
   .res-menu-button {
     position: absolute;
     left: 80%;
     top: 84%;
     width: 40px;
   }
+  
   .res-polygon {
     height: 65% !important;
     margin-top: 21% !important;

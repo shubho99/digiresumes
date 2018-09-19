@@ -1,4 +1,3 @@
-
 import {filter, map, takeWhile} from 'rxjs/operators';
 import {Component, OnDestroy} from '@angular/core';
 import {ResumeRepoService} from '../../core/repositry/resumeRepo.service';

@@ -40,19 +40,19 @@ import {ShareComponent} from '../../dialogues/share.component';
         </button>
         <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false">
           <button (click)="share()" mat-menu-item matTooltip="share">
-            <mat-icon style="color: #538ec3;">share</mat-icon>
+            <mat-icon style="color: #538ec3;font-size: 30px">share</mat-icon>
           </button>
           <button (click)="preview()" mat-menu-item matTooltip="preview">   
-            <mat-icon style="color: #538ec3;">visibility</mat-icon>
+            <mat-icon style="color: #538ec3;font-size: 30px">visibility</mat-icon>
           </button>
           <button (click)="delete()" mat-menu-item matTooltip="delete">
-            <mat-icon style="color: #538ec3;">delete</mat-icon>
+            <mat-icon style="color: #538ec3;font-size: 30px">delete</mat-icon>
           </button>
-          <button (click)="edit()" matTooltip="edit Name" mat-icon-button>
-            <mat-icon style="color: #538ec3;">create</mat-icon>
+          <button (click)="edit()" matTooltip="edit Name" mat-menu-item>
+            <mat-icon style="color: #538ec3;font-size: 30px">create</mat-icon>
           </button>
-          <button (click)="download()" matTooltip="download Resume" mat-icon-button>            
-            <mat-icon style="color: #538ec3;">save_alt</mat-icon>
+          <button (click)="download()" matTooltip="download Resume" mat-menu-item>            
+            <mat-icon style="color: #538ec3;font-size: 30px">save_alt</mat-icon>
           </button>
         </mat-menu>
       </div>
@@ -106,6 +106,11 @@ import {ShareComponent} from '../../dialogues/share.component';
     .hover:hover {
       opacity: 0.9;
       transition: opacity .8s;
+    }
+    @media screen and (max-width: 599px) {
+      button.mat-menu-item {
+        width: 100% !important;
+      }
     }
   `]
 })

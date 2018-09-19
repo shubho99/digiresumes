@@ -32,24 +32,29 @@ import {ContactDetailsFormComponent} from '../../dialogues/resume-form/contact-d
           </div>       
         </div>
       </ng-container>
-      <div style="position: absolute; top: 72%; right: -6%;" fxLayoutAlign="start center" fxHide.gt-xs>
+      <div style="position: absolute; top: 72%; right: -8%;" fxLayoutAlign="start center" fxHide.gt-xs>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon style="color: #333333;">more_vert</mat-icon>
+          <mat-icon style="color: #333333;font-size: 35px">more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false">
           <button (click)="edit()"  mat-menu-item>
-            <mat-icon style="color: #333333;" *ngIf="contactDetails">create</mat-icon>
-            <mat-icon style="color: #333333;" *ngIf="!contactDetails">add</mat-icon>
+            <mat-icon style="font-size: 30px" *ngIf="contactDetails" matTooltip="create">create</mat-icon>
+            <mat-icon style="font-size: 30px" *ngIf="!contactDetails" matTooltip="add">add</mat-icon>
           </button>
         </mat-menu>
       </div>
     </div>
   `,
-  styles: [`
+  styles: [`  
     mat-icon {
       font-size: 43px;
       text-align: center;
       color: white;
+    }
+    @media screen and (max-width: 599px) {
+      button.mat-menu-item {
+        width: 100% !important;
+      }
     }
   `]
 })
