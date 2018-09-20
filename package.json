@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "ng serve",
+    "start": "node dist/resume-builder/server.js",
     "build:ssr": "ng build --prod && ng run resume-builder:server && npm run webpack:server",
     "serve:ssr": "node dist/resume-builder/server.js",
     "webpack:server": "webpack --config webpack.server.config.js"

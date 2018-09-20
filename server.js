@@ -48,8 +48,20 @@ app.set('views', join(DIST_FOLDER, APP_NAME));
 app.get('*.*', express.static(join(DIST_FOLDER, APP_NAME)));
 
 // Point all routes to Universal
-app.get('*', (req, res) => {
-  res.render('index', { req });
+app.get('/', (req, res) => {
+  res.render('index', {req});
+});
+app.get('/login', (req, res) => {
+  res.render('index', {req});
+});
+app.get('/get-started', (req, res) => {
+  res.render('index', {req});
+});
+app.get('/contact-us', (req, res) => {
+  res.render('index', {req});
+});
+app.get('/user/*', (req, res) => {
+  res.sendFile(join(DIST_FOLDER, APP_NAME, 'index.html'));
 });
 
 // Start Express Server
