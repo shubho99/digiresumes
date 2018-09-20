@@ -5,7 +5,8 @@ import {NavigationEnd, NavigationStart, Router} from '@angular/router';
   selector: 'app-root',
   template: `
     <ngx-loading [show]="loading"></ngx-loading>
-    <router-outlet></router-outlet>
+    <router-outlet></router-outlet>    
+    <!--<app-footer></app-footer>-->
   `,
   styles: [`
 

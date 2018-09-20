@@ -30,7 +30,7 @@ import {filter, takeWhile} from 'rxjs/operators';
           <span style="padding-top: 2%">{{name}}</span>
         </div>
       </div>
-      <div fxLayoutAlign="start center " fxFlex="100%" fxHide.gt-xs>
+      <div fxLayoutAlign="start end" fxFlex="100%" fxHide.gt-xs>
         <button class="res-icon-menu" style="color: #a8ee90;" mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>dehaze</mat-icon>
         </button>
@@ -41,7 +41,8 @@ import {filter, takeWhile} from 'rxjs/operators';
               <mat-icon>account_circle</mat-icon>
               <span>{{name}}</span>
             </div>
-            <button style="color: #a8ee90;" mat-menu-item routerLink="resumes" routerLinkActive="selected-small1">Resumes
+            <button style="color: #a8ee90;" mat-menu-item routerLink="resumes" [routerLinkActiveOptions]="{ exact: true }" 
+                    routerLinkActive="selected-small1">Resumes
             </button>
             <button style="color: #a8ee90;" mat-menu-item routerLink="settings" routerLinkActive="selected-small1">Settings</button>
             <button style="color: #a8ee90;" mat-menu-item routerLink="helpcenter" routerLinkActive="selected-small1">Help Center

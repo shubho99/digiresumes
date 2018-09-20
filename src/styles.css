@@ -159,10 +159,10 @@ html, body {
   }
 
   .res-resume-card {
-    margin-left: 35% !important;
+
     /* -webkit-transform: translate(-80%,0%); */
     transform: translate(-50%,0%);
-    left: 50%;
+    left: 48.5%;
   }
   /* app-resume-end */
 
@@ -233,6 +233,28 @@ html, body {
   .res-profile-container {
     margin-left: -35% !important;
     border-bottom: 0px solid #80808017 !important;
+  }
+
+  /* blue-tempates-start */
+  .res-blue-container {
+    width: 95%!important;
+    position: relative !important;
+    margin-top: 10px !important;
+  }
+
+  .res-text-align {
+    margin-left: -25% !important;
+  }
+  .res-down {
+    float: initial !important;
+  }
+  /* blue-tempates-end */
+
+  .res-menu-button {
+    position: absolute;
+    left: 80%;
+    top: 84%;
+    width: 40px;
   }
 
   .res-polygon {
@@ -414,6 +436,23 @@ html, body {
   .res-not-found-go-back {
     bottom: -815% !important;
     right: 0% !important;
+  }
+
+  .res-footer {
+    padding: 7px 0 0 0 !important;
+    font-size: 8px !important;
+  }
+  .res-footer__navigation {
+    padding-top: 4px !important;
+    margin-top: 21px !important;
+  }
+  .res-footer-logo {
+    height: 70px !important;
+  }
+  .res-footer__item {
+    display: block !important;
+    text-align: center;
+    margin-top: -10px;
   }
 }
 

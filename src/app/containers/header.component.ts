@@ -5,7 +5,8 @@ import {Component, ViewEncapsulation} from '@angular/core';
   template: `
     <div class="major res-header" fxLayout="row"
          fxLayoutAlign="start center">
-      <span fxFlex="1 1 auto"></span>
+      <img class="img-res" style="width: 15%;" src="../../assets/images/digiresume-orange.png"/>
+      <span fxFlex="1 1 285px" fxFlex.xs="1 1 187px"></span>
       <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
            fxFlex="1 1 auto" fxHide.xs>
         <button style="animation-delay:0.5s" mat-button routerLink="/" [routerLinkActiveOptions]="{ exact: true }"
@@ -22,9 +23,8 @@ import {Component, ViewEncapsulation} from '@angular/core';
                 routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">Contact Us
         </button>
       </div>
-      <div fxLayoutAlign="start center " fxFlex="100%" fxHide.gt-xs>
-        <button style="margin-top: 4%;
-    margin-left: -5%; color: #ffab00" mat-icon-button [matMenuTriggerFor]="menu">
+      <div fxLayoutAlign="start end" fxFlex="100%" fxHide.gt-xs>
+        <button class="res-icon-menu" style="color: #ffab00;" mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>dehaze</mat-icon>
         </button>
         <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false" style="background-color: #2e2e2e">
@@ -60,11 +60,11 @@ import {Component, ViewEncapsulation} from '@angular/core';
     }
 
     .mat-menu-panel {
-      width: 1007px;
-      height: 1018px;
+      width: 100vw;
+      height: 100vh;
       background: #1d1c1bc2;
       margin-left: -7% !important;
-      margin-top: 2%;
+      margin-top: 4.5% !important;
     }
 
     .mat-menu-content {

@@ -7,7 +7,7 @@ import {isPlatformBrowser} from '@angular/common';
   selector: 'app-blues-template',
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
-      <mat-card>
+      <mat-card class="res-blue-container">
         <div id="html">
           <div *ngIf="this.resume.contact_details">
             <ng-container *ngTemplateOutlet="contactDetailsTemplate"></ng-container>
@@ -126,7 +126,7 @@ import {isPlatformBrowser} from '@angular/common';
           <u>{{this.resume.contact_details.email}}</u></h4>
       </div>
       <div class="email-margin" style="    margin-left: 32%;">
-        <a class="text-align" [href]="this.resume.contact_details.website_url" style="color:#538ec3;text-align:center;">
+        <a class="text-align res-text-align" [href]="this.resume.contact_details.website_url" style="color:#538ec3;text-align:center;">
           <i class="fa fa-link" aria-hidden="true"></i>
           {{this.resume.contact_details.website_url}}</a>
       </div>
@@ -143,11 +143,11 @@ import {isPlatformBrowser} from '@angular/common';
                   @{{employmentHistory.organisation}}
                   </span>
         </h3>
-        <span class="h3-span exp-span" style="color: #5da4d9;float: right; margin-top: -2%;" *ngIf="employmentHistory.end_month">
+        <span class="h3-span exp-span res-down" style="color: #5da4d9;float: right; margin-top: -2%;" *ngIf="employmentHistory.end_month">
                       {{employmentHistory.start_month}} {{employmentHistory.start_year}} - 
                       {{employmentHistory.end_month}} {{employmentHistory.end_year}}
                     </span>
-        <span class="h3-span exp-span" style="color: #5da4d9;float: right; margin-top: -2%;" *ngIf="!employmentHistory.end_month">
+        <span class="h3-span exp-span res-down" style="color: #5da4d9;float: right; margin-top: -2%;" *ngIf="!employmentHistory.end_month">
                       {{employmentHistory.start_month}} {{employmentHistory.start_year}} - Present
                     </span>
         <h4 class="container h4-p h4">
@@ -162,7 +162,7 @@ import {isPlatformBrowser} from '@angular/common';
       <div *ngFor="let education of this.resume['education']">
         <h3 class="h3-span">{{education.degree_type}}
           <span class="h3-span" style="text-transform: lowercase !important; font-size: 10pt;">@{{education.school_name}}</span></h3>
-        <span class="h3-span"
+        <span class="h3-span res-down"
               style="color: #5da4d9; float: right; margin-top: -5%;">{{education.graduation_month}} {{education.graduation_year}}</span>
         <h4 class="container h4 h4-p">
           {{education.city}}, {{education.state}} <br>
@@ -175,11 +175,11 @@ import {isPlatformBrowser} from '@angular/common';
       <h1 class="education-heading">Industrial Exposure as an Intern</h1>
       <div *ngFor="let industrialExposure of this.resume['industrialExposures']">
         <h3 class="h3-span">{{industrialExposure.organisation}}</h3>
-        <span class="h3-span" style="color: #5da4d9;float: right; margin-top: -5%;" *ngIf="industrialExposure.end_month">
+        <span class="h3-span res-down" style="color: #5da4d9;float: right; margin-top: -5%;" *ngIf="industrialExposure.end_month">
                       {{industrialExposure.start_month}} {{industrialExposure.start_year}} - 
                       {{industrialExposure.end_month}} {{industrialExposure.end_year}}
                     </span>
-        <span class="h3-span" style="color: #5da4d9;float: right; margin-top: -5%;" *ngIf="!industrialExposure.end_month">
+        <span class="h3-span res-down" style="color: #5da4d9;float: right; margin-top: -5%;" *ngIf="!industrialExposure.end_month">
                       {{industrialExposure.start_month}} {{industrialExposure.start_year}} - Present
                     </span>
         <h4 class="h4-p h4">
@@ -211,6 +211,7 @@ import {isPlatformBrowser} from '@angular/common';
     </ng-template>
   `,
   styles: [`
+    
     mat-card {
       width: 8in;
       margin-top: 1%;

@@ -9,7 +9,7 @@ import {isPlatformBrowser} from '@angular/common';
   selector: 'app-royal-template',
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
-      <mat-card>
+      <mat-card class="res-blue-container">
         <div fxLayout="column" id="html" fxLayoutGap="5px" fxFlexAlign="center center">
           <div id="cv" class="instaFade">
             <div class="mainDetails" *ngIf="this.resume.contact_details">

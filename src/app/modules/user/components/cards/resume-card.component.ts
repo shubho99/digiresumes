@@ -12,8 +12,8 @@ import {ShareComponent} from '../../dialogues/share.component';
   template: `
     <mat-card class="res-resume-card" fxLayout="column" on-mouseenter="hover=true" on-mouseleave="hover=false">
       <img mat-card-image src="../../../../../assets/images/resume.png"/>
-      <span>{{resume.name}}</span>
-      <div *ngIf="hover" class="hover" fxLayout="column" fxLayoutGap="60px">
+      <span style="color: #538ec3;">{{resume.name}}</span>
+      <div *ngIf="hover" class="hover" fxLayout="column" fxLayoutGap="60px" fxHide.xs>
         <div class="icons-div" fxLayout="row" fxLayoutWrap="wrap" fxLayoutGap="50px">
           <button (click)="share()" mat-icon-button>
             <mat-icon class="icon" matTooltip="share">share</mat-icon>
@@ -33,6 +33,28 @@ import {ShareComponent} from '../../dialogues/share.component';
               <i class="fa fa-download icon" aria-hidden="true"></i>
             </button>
         </div>
+      </div>
+      <div fxLayoutAlign="start center" fxHide.gt-xs class="res-menu-button">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon style="color: #538ec3;">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false">
+          <button (click)="share()" mat-menu-item matTooltip="share">
+            <mat-icon style="color: #538ec3;font-size: 30px">share</mat-icon>
+          </button>
+          <button (click)="preview()" mat-menu-item matTooltip="preview">   
+            <mat-icon style="color: #538ec3;font-size: 30px">visibility</mat-icon>
+          </button>
+          <button (click)="delete()" mat-menu-item matTooltip="delete">
+            <mat-icon style="color: #538ec3;font-size: 30px">delete</mat-icon>
+          </button>
+          <button (click)="edit()" matTooltip="edit Name" mat-menu-item>
+            <mat-icon style="color: #538ec3;font-size: 30px">create</mat-icon>
+          </button>
+          <button (click)="download()" matTooltip="download Resume" mat-menu-item>            
+            <mat-icon style="color: #538ec3;font-size: 30px">save_alt</mat-icon>
+          </button>
+        </mat-menu>
       </div>
     </mat-card>
     <ngx-loading [show]="loading"></ngx-loading>
@@ -84,6 +106,11 @@ import {ShareComponent} from '../../dialogues/share.component';
     .hover:hover {
       opacity: 0.9;
       transition: opacity .8s;
+    }
+    @media screen and (max-width: 599px) {
+      button.mat-menu-item {
+        width: 100% !important;
+      }
     }
   `]
 })

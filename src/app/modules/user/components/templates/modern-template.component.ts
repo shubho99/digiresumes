@@ -7,7 +7,7 @@ import {isPlatformBrowser} from '@angular/common';
   selector: 'app-modern-template',
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
-      <mat-card>
+      <mat-card class="res-blue-container">
         <div id="html" class="w" itemscope itemtype="http://schema.org/Person">
           <header class="clearfix" *ngIf="this.resume.contact_details">
             <div id="info">
@@ -187,7 +187,7 @@ import {isPlatformBrowser} from '@angular/common';
         <div class="hover" fxLayout="column">
           <div style="    margin-top: 55%;
         margin-left: 46%;" fxLayout="row">
-            <i id="hover-i" (click)="download()" 
+            <i id="hover-i" (click)="download()"
                class="fa fa-arrow-circle-down" aria-hidden="true"></i>
           </div>
         </div>

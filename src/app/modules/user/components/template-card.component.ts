@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
   `,
   styles: [`
     mat-card {
-      width: 240px;
+      width: 239px;
       margin: 20px 0px;
       /*background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);*/
       background: #eaf1f8;

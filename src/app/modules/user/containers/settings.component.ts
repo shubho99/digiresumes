@@ -25,7 +25,7 @@ import {User} from '../../core/models/user';
           <h2 class="res-profile-settings">Password</h2>
         </div>
         <div style="width: 65%;" class="width-setting">
-          <app-password-setting></app-password-setting>
+          <app-password-setting></app-password-setting>    
         </div>
       </div>
     </div>

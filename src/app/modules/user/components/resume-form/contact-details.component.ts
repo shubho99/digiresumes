@@ -6,7 +6,7 @@ import {ContactDetailsFormComponent} from '../../dialogues/resume-form/contact-d
 @Component({
   selector: 'app-contact-details',
   template: `
-    <div fxLayoutAlign="center center" fxLayout="column">
+    <div style="position: relative" fxLayoutAlign="center center" fxLayout="column">
       <ng-container>
         <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
           <ng-container *ngIf="contactDetails">
@@ -20,7 +20,7 @@ import {ContactDetailsFormComponent} from '../../dialogues/resume-form/contact-d
             <h3 style="    height: 58px;
     margin-top: 3%;">No Contact Details added yet.</h3>
           </ng-container>
-          <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center" fxHide.xs>
             <div class="overlay">
               <div class="hover">
                 <button style="margin-top: 3%" (click)="edit()" mat-icon-button>
@@ -29,16 +29,32 @@ import {ContactDetailsFormComponent} from '../../dialogues/resume-form/contact-d
                 </button>
               </div>
             </div>
-          </div>
+          </div>       
         </div>
       </ng-container>
+      <div style="position: absolute; top: 72%; right: -8%;" fxLayoutAlign="start center" fxHide.gt-xs>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon style="color: #333333;font-size: 35px">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false">
+          <button (click)="edit()"  mat-menu-item>
+            <mat-icon style="font-size: 30px" *ngIf="contactDetails" matTooltip="create">create</mat-icon>
+            <mat-icon style="font-size: 30px" *ngIf="!contactDetails" matTooltip="add">add</mat-icon>
+          </button>
+        </mat-menu>
+      </div>
     </div>
   `,
-  styles: [`
+  styles: [`  
     mat-icon {
       font-size: 43px;
       text-align: center;
       color: white;
+    }
+    @media screen and (max-width: 599px) {
+      button.mat-menu-item {
+        width: 100% !important;
+      }
     }
   `]
 })

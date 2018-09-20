@@ -35,6 +35,7 @@ import {SharedModule} from './modules/shared/shared.module';
 import {ResumeRepoService} from './modules/core/repositry/resumeRepo.service';
 import {ResumeService} from './modules/core/services/resume.service';
 import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
+import {FooterComponent} from './components/footer.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-brows
     TruncatePipe,
     VideoDialogComponent,
     LogoutComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'resume-builder'}),
