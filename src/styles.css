@@ -437,6 +437,23 @@ html, body {
     bottom: -815% !important;
     right: 0% !important;
   }
+
+  .res-footer {
+    padding: 7px 0 0 0 !important;
+    font-size: 8px !important;
+  }
+  .res-footer__navigation {
+    padding-top: 4px !important;
+    margin-top: 21px !important;
+  }
+  .res-footer-logo {
+    height: 70px !important;
+  }
+  .res-footer__item {
+    display: block !important;
+    text-align: center;
+    margin-top: -10px;
+  }
 }
 
 .video-dialog {

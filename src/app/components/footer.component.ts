@@ -3,19 +3,19 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-footer',
   template: `
-    <mat-toolbar color="primary" class="footer">
+    <mat-toolbar color="primary" class="footer res-footer">
       <mat-toolbar-row fxLayoutAlign="center start">
-        <img alt="logo" src="../../assets/images/digiresume-green.png" class="footer-logo">
+        <img alt="logo" src="../../assets/images/digiresume-footer.png" class="footer-logo res-footer-logo">
       </mat-toolbar-row>
-      <mat-toolbar-row class="footer__navigation">
+      <mat-toolbar-row class="footer__navigation res-footer__navigation">
         <ul class="footer__list" fxLayoutGap="24px">
           <li class="footer__item"><a routerLink="/" class="footer__link footer__link1">Company</a></li>
           <li class="footer__item"><a routerLink="/" class="footer__link footer__link1">Contact us</a></li>
           <li class="footer__item"><a routerLink="/" class="footer__link footer__link1">Carrers</a></li>
           <li class="footer__item"><a routerLink="/" class="footer__link footer__link1">Privacy policy</a></li>
           <li class="footer__item"><a routerLink="/" class="footer__link footer__link1">Terms</a></li>
-          <span class="footer__copyright"></span>
-          <li fxFlexAlign="end" class="footer__item">Copyright &copy; 2018-19 by <a routerLink="/"
+          <span fxHide.xs class="footer__copyright"></span>
+          <li fxFlexAlign="end" class="footer__item res-footer__item">Copyright &copy; 2018-19 by <a routerLink="/"
                                                  class="footer__link footer__link1"> DigiResume</a></li>
         </ul>
       </mat-toolbar-row>

@@ -41,7 +41,8 @@ import {filter, takeWhile} from 'rxjs/operators';
               <mat-icon>account_circle</mat-icon>
               <span>{{name}}</span>
             </div>
-            <button style="color: #a8ee90;" mat-menu-item routerLink="resumes" routerLinkActive="selected-small1">Resumes
+            <button style="color: #a8ee90;" mat-menu-item routerLink="resumes" [routerLinkActiveOptions]="{ exact: true }" 
+                    routerLinkActive="selected-small1">Resumes
             </button>
             <button style="color: #a8ee90;" mat-menu-item routerLink="settings" routerLinkActive="selected-small1">Settings</button>
             <button style="color: #a8ee90;" mat-menu-item routerLink="helpcenter" routerLinkActive="selected-small1">Help Center

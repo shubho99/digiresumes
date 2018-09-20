@@ -6,6 +6,7 @@ import {NavigationEnd, NavigationStart, Router} from '@angular/router';
   template: `
     <ngx-loading [show]="loading"></ngx-loading>
     <router-outlet></router-outlet>    
+    <!--<app-footer></app-footer>-->
   `,
   styles: [`
 
