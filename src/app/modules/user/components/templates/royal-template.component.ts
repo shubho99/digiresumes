@@ -1,8 +1,5 @@
 import {Component, EventEmitter, Inject, Input, Output, PLATFORM_ID} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
-import {Meta} from '@angular/platform-browser';
-import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
-import {Utils} from '../../../core/utils/utils';
 import {isPlatformBrowser} from '@angular/common';
 
 @Component({
@@ -196,7 +193,7 @@ import {isPlatformBrowser} from '@angular/common';
                 <div class="sectionContent">
                   <ng-container *ngFor="let interest of this.resume['interests']">
                     <article>
-                      <ul style="list-style-type: circle">
+                      <ul style="list-style-type: circle; word-break: break-word;">
                         <li>
                           {{interest.interest}}
                         </li>

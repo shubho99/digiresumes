@@ -13,7 +13,7 @@ import {WeaknessFormComponent} from '../../dialogues/resume-form/weakness-form.c
       <ng-container>
         <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
           <ng-container>
-            <h3>{{weakness.name}}</h3>
+            <h3>{{weakness.name | truncate:50}}</h3>
           </ng-container>
           <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center" fxHide.xs>
             <div class="overlay">

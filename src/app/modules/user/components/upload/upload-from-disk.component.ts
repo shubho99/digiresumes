@@ -16,7 +16,7 @@ import {switchMap} from 'rxjs/internal/operators';
       <p>(Upload your introduction video for Resume)</p>
       <div *ngIf="!videoSelected" fxLayoutAlign="center center" style="margin-top: 20px" fxLayout="row">
         <input type="file" #videoFile name="video" accept="video/*" (change)="selectVideo($event)" hidden>
-        <button mat-raised-button color="accent" (click)="pickfile()">
+        <button mat-raised-button color="primary" (click)="pickfile()">
           <mat-icon>add</mat-icon>
           SELECT
         </button>
@@ -30,14 +30,14 @@ import {switchMap} from 'rxjs/internal/operators';
         </iframe>
       </div>
       <div *ngIf="this.videoSelected" fxLayoutAlign="center center" fxLayout="row" fxLayoutGap="20px" fxLayoutGap.xs="5px">
-        <button *ngIf="this.isUploaded" mat-raised-button color="accent"
+        <button *ngIf="this.isUploaded" mat-raised-button color="primary"
                 (click)="deleteVideo()">Delete Video
         </button>
-        <button mat-raised-button color="accent" matTooltip="This will be a Private video"
+        <button mat-raised-button color="primary" matTooltip="This will be a Private video"
                 (click)="youtubeSubmit()">Upload to Youtube
         </button>
         <input type="file" #videoFile name="video" accept="video/*" (change)="selectVideo($event)" hidden>
-        <button mat-raised-button color="accent" (click)="pickfile()">
+        <button mat-raised-button color="primary" (click)="pickfile()">
           <mat-icon>cached</mat-icon>
           <strong>CHANGE</strong></button>
       </div>
@@ -46,7 +46,7 @@ import {switchMap} from 'rxjs/internal/operators';
   `,
   styles: [`
     h1 {
-      color: #7de261;
+      color: #538ec3;
       text-align: center;
     }
 

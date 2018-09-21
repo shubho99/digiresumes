@@ -38,7 +38,7 @@ import {switchMap} from 'rxjs/internal/operators';
         <app-employment-history [resumeId]="resume._id" [employmentHistories]="resume.employment_history"></app-employment-history>
       </mat-expansion-panel>
       <mat-expansion-panel>
-        <mat-expansion-panel-header>
+        <mat-expansion-panel-header class="res-expansion-panel-width">
           <mat-panel-title>Hobbies & Interests</mat-panel-title>
           <mat-panel-description>
             Describe your hobbies and interest in detail
@@ -132,7 +132,7 @@ import {switchMap} from 'rxjs/internal/operators';
   `,
   styles: [`
     h1 {
-      color: #7de261;
+      color: #538ec3;
       text-align: center;
       margin-top: 2%;
       margin-bottom: 3%;

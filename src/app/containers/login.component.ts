@@ -189,25 +189,33 @@ import {Router} from '@angular/router';
     .email-error {
       position: absolute;
       top: 22%;
-      left: 66%;
+      left: 70%;
+      font-size: 12px;
+      text-align: center;
     }
 
     .password-error {
       position: absolute;
       top: 37%;
-      left: 60%
+      left: 60%;
+      font-size: 12px;
+      text-align: center;
     }
 
     .name-error {
       position: absolute;
       top: 55%;
-      left: 65%
+      left: 65%;
+      font-size: 12px;
+      text-align: center;
     }
 
     .confirm-password-error {
       position: absolute;
       bottom: 21%;
       left: 51%;
+      font-size: 12px;
+      text-align: center;
     }
 
     button span {
@@ -257,6 +265,7 @@ export class LoginComponent {
     this.isLoginButton = true;
     this.isResetButton = false;
     this.isSignUpButton = false;
+    this.userForm.reset();
   }
 
   signUpLabel() {
@@ -269,6 +278,7 @@ export class LoginComponent {
     this.isLoginButton = false;
     this.isResetButton = true;
     this.isSignUpButton = false;
+    this.userForm.reset();
   }
 
   getEmailErrorMessage() {

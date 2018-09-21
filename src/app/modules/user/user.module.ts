@@ -92,6 +92,8 @@ import {BluesTemplateComponent} from './components/templates/blues-template.comp
 import {TemplatesComponent} from './containers/templates.component';
 import {TemplateCardComponent} from './components/template-card.component';
 import {ModernTemplateComponent} from './components/templates/modern-template.component';
+import {TruncatePipe} from '../core/pipe/truncate';
+import {HelpCenterComponent} from './containers/help-center.component';
 
 @NgModule({
   declarations: [
@@ -175,7 +177,9 @@ import {ModernTemplateComponent} from './components/templates/modern-template.co
     RoyalTemplateComponent,
     BluesTemplateComponent,
     TemplatesComponent,
-    TemplateCardComponent
+    TemplateCardComponent,
+    TruncatePipe,
+    HelpCenterComponent
   ],
   imports: [
     SharedModule,

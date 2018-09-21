@@ -9,7 +9,7 @@ import {User} from '../../core/models/user';
   template: `
     <div  class="alternate" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="30px" style="margin: 20px;">
       <div fxLayout="row" fxLayoutAlign="center center">
-        <h1 style="color: #8de773">Settings</h1></div>
+        <h1 style="color: #538ec3;">Settings</h1></div>
       <div class="profile-container res-profile-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
         <div style="width: 35%">
           <h2 class="res-profile-settings">Profile</h2>

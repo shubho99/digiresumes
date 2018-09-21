@@ -240,7 +240,7 @@ export class NotFoundComponent implements OnDestroy {
 
   ngOnDestroy() {
     if (isPlatformBrowser(this.platformId)) {
-      document.body.style.background = 'none';
+      document.body.style.background = '';
     }
   }
 }

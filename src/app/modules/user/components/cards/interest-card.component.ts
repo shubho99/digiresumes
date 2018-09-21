@@ -6,7 +6,10 @@ import {Interest} from '../../../core/models/interest';
   template: `
     <ul style="list-style-type: square">
       <li>
-        {{interest.interest}}
+        <div fxLayout="row" fxLayoutGap="10px">
+          <i class="fa fa-dot-circle-o" style="color:#a85f46;" aria-hidden="true"></i>
+          <span class="hack">{{interest.interest}}</span>
+        </div>
       </li>
     </ul>
   `,
@@ -15,8 +18,14 @@ import {Interest} from '../../../core/models/interest';
       color: #767270;
       font-weight: bold;
       font-size: 16px;
+      word-break: break-word;
     }
 
+    ul li {
+      list-style-type: none;
+      vertical-align: top;
+      margin-bottom: 5px;
+    }
   `]
 })
 export class InterestCardComponent {

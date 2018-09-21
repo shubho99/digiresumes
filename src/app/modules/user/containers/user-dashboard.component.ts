@@ -5,8 +5,9 @@ import {isPlatformBrowser} from '@angular/common';
 @Component({
   selector: 'app-user-dashboard',
   template: `
-    <app-user-header-component></app-user-header-component>
-    <router-outlet></router-outlet>
+    <app-layout>
+      <app-user-header-component></app-user-header-component>
+    </app-layout>
   `,
   styles: [`
   `]

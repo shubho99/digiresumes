@@ -77,6 +77,7 @@ export class OnboardingComponent implements OnDestroy {
     this.loading = true;
     this.authService.updateOnboarding({onboarding: 200}).subscribe((res) => {
       this.loading = false;
+      this.resumeRepo.deleteCurrentResumeId();
       this.router.navigate(['user', 'resumes']);
     }, (error) => {
       this.loading = false;

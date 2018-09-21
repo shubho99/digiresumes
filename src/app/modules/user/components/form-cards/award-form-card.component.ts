@@ -12,7 +12,7 @@ import {AwardsFormComponent} from '../../dialogues/resume-form/awards-form.compo
       <ng-container>
         <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
           <ng-container>
-            <h3>{{award.awards_and_achivements}}</h3>
+            <h3>{{award.awards_and_achivements | truncate:50}}</h3>
           </ng-container>
           <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center" fxHide.xs>
             <div class="overlay">
