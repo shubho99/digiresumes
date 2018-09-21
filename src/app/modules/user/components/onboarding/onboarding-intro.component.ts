@@ -12,8 +12,7 @@ import {isPlatformBrowser} from '@angular/common';
         <h1 style="color: #7de261">Welcome to Make my resume!</h1>
         <h3>From the whole team here, thank you for trying us.
           We are committed to make it easier for you to do great work.</h3>
-      </div>
-      <h3 fxLayoutAlign="center center">John! Founder and CEO</h3>
+      </div>  
       <div fxLayoutAlign="center center">
         <button (click)="go()" style="margin-top: 1%; text-transform: uppercase" color="accent" fxLayoutAlign="end" mat-raised-button>Let's
           go

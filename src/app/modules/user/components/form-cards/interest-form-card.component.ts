@@ -1,11 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Skill} from '../../../core/models/skill';
 import {MatDialog} from '@angular/material';
-import {SkillFormComponent} from '../../dialogues/resume-form/skill-form.component';
 import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
 import {AlertService} from '../../../core/services/alert.service';
-import {Education} from '../../../core/models/education';
-import {EducationFormComponent} from '../../dialogues/resume-form/education-form.component';
 import {Interest} from '../../../core/models/interest';
 import {InterestFormComponent} from '../../dialogues/resume-form/interest-form.component';
 
@@ -16,7 +12,7 @@ import {InterestFormComponent} from '../../dialogues/resume-form/interest-form.c
       <ng-container>
         <div class="outer-div" fxLayoutAlign="center center" fxLayout="column">
           <ng-container>
-            <h3>{{interest.interest}}</h3>
+            <h3>{{interest.interest | truncate:50}}</h3>  
           </ng-container>
           <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center" fxHide.xs>
             <div class="overlay">

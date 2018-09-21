@@ -14,8 +14,8 @@ import {isPlatformBrowser} from '@angular/common';
     <h2 fxLayoutAlign="center start">
       {{contactDetails.first_name}} {{contactDetails.last_name}}
     </h2>
-    <button (click)="redirectToHome()" style="margin-left: 18%;color: white" *ngIf="this.isView && !token"
-            color="primary" mat-raised-button>Build
+    <button (click)="redirectToHome()" style="margin-left: 18%;color: white; background: #f1c232" *ngIf="this.isView && !token"
+             mat-raised-button>Build
       Your Resume For free
     </button>
     <app-resume-buttons [resumeId]="this.resumeId" *ngIf="!this.isView"></app-resume-buttons>

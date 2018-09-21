@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Inject, Input, Output, PLATFORM_ID} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
-import {ResumeRepoService} from '../../../core/repositry/resumeRepo.service';
-import {Utils} from '../../../core/utils/utils';
 import {isPlatformBrowser} from '@angular/common';
 
 @Component({
@@ -113,7 +111,8 @@ import {isPlatformBrowser} from '@angular/common';
           <div class="border" style="margin-left:1%;padding-bottom:6px;" *ngIf="this.resume.interests.length">
             <h1>ADDITIONAL INTERESTS</h1>
             <ng-container *ngFor="let interest of this.resume['interests']">
-              <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%;">
+              <ul style="list-style-type:circle;color:#767270;font-weight:bold;font-size:16px;margin-left:3%;margin-top:3%;
+word-break: break-word;">
                 <li>
                   {{interest.interest}}
                 </li>

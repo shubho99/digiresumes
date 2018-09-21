@@ -6,7 +6,7 @@ import {HeaderComponent} from './containers/header.component';
 import {DashboardComponent} from './containers/dashboard.component';
 import {NotFoundComponent} from './components/not.found.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {PreloadAllModules, RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import {routes} from './routes';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -35,7 +35,6 @@ import {SharedModule} from './modules/shared/shared.module';
 import {ResumeRepoService} from './modules/core/repositry/resumeRepo.service';
 import {ResumeService} from './modules/core/services/resume.service';
 import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
-import {FooterComponent} from './components/footer.component';
 
 
 @NgModule({
@@ -52,7 +51,6 @@ import {FooterComponent} from './components/footer.component';
     VideoDialogComponent,
     LogoutComponent,
     PasswordResetComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'resume-builder'}),

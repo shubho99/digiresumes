@@ -106,7 +106,7 @@ import {isPlatformBrowser} from '@angular/common';
             <ul itemprop="description" *ngFor="let award of this.resume['award_achivements']">
               <li>
                 <div fxLayout="row" fxLayoutGap="10px">
-                  <mat-icon style="color: #ba0018">donut_small</mat-icon>
+                  <i class="fa fa-dot-circle-o" style="color:#ba0018;" aria-hidden="true"></i>
                   <span class="hack">{{award.awards_and_achivements}}</span>
                 </div>
               </li>
@@ -125,10 +125,11 @@ import {isPlatformBrowser} from '@angular/common';
 
           <section id="interest" *ngIf="this.resume.interests.length">
             <h2>Hobbies And Interests</h2>
-            <ul itemprop="description" *ngFor="let interest of this.resume['interests']">
+            <ul style="word-break: break-word"
+                itemprop="description" *ngFor="let interest of this.resume['interests']">
               <li>
                 <div fxLayout="row" fxLayoutGap="10px">
-                  <mat-icon style="color: #ba0018">donut_small</mat-icon>
+                  <i class="fa fa-dot-circle-o" style="color:#ba0018;" aria-hidden="true"></i>
                   <span class="hack">{{interest.interest}}</span>
                 </div>
               </li>
@@ -140,7 +141,7 @@ import {isPlatformBrowser} from '@angular/common';
             <ul itemprop="description" *ngFor="let strength of this.resume['strengths']">
               <li>
                 <div fxLayout="row" fxLayoutGap="10px">
-                  <mat-icon style="color: #ba0018">donut_small</mat-icon>
+                  <i class="fa fa-dot-circle-o" style="color:#ba0018;" aria-hidden="true"></i>
                   <span class="hack">{{strength.name}}</span>
                 </div>
               </li>
@@ -152,7 +153,7 @@ import {isPlatformBrowser} from '@angular/common';
             <ul itemprop="description" *ngFor="let weakness of this.resume['weakness']">
               <li>
                 <div fxLayout="row" fxLayoutGap="10px">
-                  <mat-icon style="color: #ba0018">donut_small</mat-icon>
+                  <i class="fa fa-dot-circle-o" style="color:#ba0018;" aria-hidden="true"></i>
                   <span class="hack">{{weakness.name}}</span>
                 </div>
               </li>
@@ -533,7 +534,7 @@ export class ModernTemplateComponent {
       const html = `<html>
 <head>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link href="https://fonts.googleapis.com/css?family=Balthazar|Simonetta:400,900" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Balthazar|Simonetta:400,900|Material+Icons" rel="stylesheet">
 <style type="text/css">
     * {
         margin: 0;
@@ -748,7 +749,9 @@ export class ModernTemplateComponent {
       * html .clearfix {
         height: 1%;
       }
-    
+    html{
+zoom:0.8;
+}
 </style>
 <body>
 ${innerHtml}

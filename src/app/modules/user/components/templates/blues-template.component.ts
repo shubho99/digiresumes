@@ -50,7 +50,10 @@ import {isPlatformBrowser} from '@angular/common';
             <ng-container *ngFor="let strength of this.resume['strengths']">
               <ul>
                 <li>
-                  {{strength.name}}
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <i class="fa fa-dot-circle-o" style="color:#3683cc;" aria-hidden="true"></i>
+                    <span class="hack">{{strength.name}}</span>
+                  </div>
                 </li>
               </ul>
             </ng-container>
@@ -60,7 +63,10 @@ import {isPlatformBrowser} from '@angular/common';
             <ng-container *ngFor="let weakness of this.resume['weakness']">
               <ul>
                 <li>
-                  {{weakness.name}}
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <i class="fa fa-dot-circle-o" style="color:#3683cc;" aria-hidden="true"></i>
+                    <span class="hack">{{weakness.name}}</span>
+                  </div>
                 </li>
               </ul>
             </ng-container>
@@ -83,7 +89,10 @@ import {isPlatformBrowser} from '@angular/common';
       <div *ngFor="let skill of this.resume['skills']">
         <ul>
           <li>
-            {{skill.skill}}
+            <div fxLayout="row" fxLayoutGap="10px">
+              <i class="fa fa-dot-circle-o" style="color:#3683cc;" aria-hidden="true"></i>
+              <span class="hack">{{skill.skill}}</span>
+            </div>
           </li>
         </ul>
       </div>
@@ -194,7 +203,10 @@ import {isPlatformBrowser} from '@angular/common';
       <div *ngFor="let language of this.resume['languages']">
         <ul>
           <li>
-            {{language.name}}
+            <div fxLayout="row" fxLayoutGap="10px">
+              <i class="fa fa-dot-circle-o" style="color:#3683cc;" aria-hidden="true"></i>
+              <span class="hack">{{language.name}}</span>
+            </div>
           </li>
         </ul>
       </div>
@@ -211,7 +223,7 @@ import {isPlatformBrowser} from '@angular/common';
     </ng-template>
   `,
   styles: [`
-    
+
     mat-card {
       width: 8in;
       margin-top: 1%;
@@ -297,6 +309,11 @@ import {isPlatformBrowser} from '@angular/common';
       word-wrap: break-word;
       overflow: hidden;
     }
+    ul li {
+      list-style-type: none;
+      vertical-align: top;
+      margin-bottom: 5px;
+    }
 
     * {
       margin: 0px;
@@ -341,7 +358,7 @@ export class BluesTemplateComponent {
           margin-top: -3%
           }
           .email-margin{
-          margin-top: -3%;
+          margin-top: -2.5%;
           }
           .summary{
            font-family: 'Slabo 27px', serif;
@@ -355,6 +372,13 @@ export class BluesTemplateComponent {
       font-weight: bold;
       font-size: 16px;
     }
+           ul li {
+        list-style-type: none;
+        vertical-align: top;
+        margin-bottom: 5px;
+      }
+
+         
            .education-heading {
       color: white;
       background: #3683cc;
@@ -388,6 +412,9 @@ export class BluesTemplateComponent {
   line-height: 17pt;
   word-wrap: break-word;
   overflow: hidden;
+}
+    html{
+zoom:0.8;
 }
 </style>
 <body>

@@ -33,10 +33,19 @@ export class Utils {
   static getYoutubeUrlFromId(id: string): string {
     return 'https://www.youtube.com/watch?v=' + id;
   }
+
   static isPlatformBrowser(): boolean {
     return isPlatformBrowser('browser');
   }
 
+  static isMobile(): boolean {
+    // https://stackoverflow.com/questions/19877924/what-is-the-list-of-possible-values-for-navigator-platform-as-of-today
+    const ua = navigator.userAgent;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Mobile|mobile|CriOS/i.test(ua)) {
+      return true;
+    }
+    return false;
+  }
 }
 
 
@@ -61,4 +70,10 @@ export enum TemplateType {
   ROYAL_TEMPLATE = 3,
   TRADITIONAL_TEMPLATE = 4,
   CLASSIC_TEMPLATE = 5
+}
+
+export enum Orientation {
+  LANDSCAPE_LEFT = 90,
+  LANDSCAPE_RIGHT = -90,
+  PORTRAITE = 0,
 }

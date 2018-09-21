@@ -18,7 +18,7 @@ import {ShareComponent} from '../dialogues/share.component';
       <button (click)="share()" mat-mini-fab>
         <mat-icon style="font-size: 25px" matTooltip="share">share</mat-icon>
       </button>
-    </div>
+    </div>   
   `,
   styles: [`
     button {

@@ -19,8 +19,7 @@ import {switchMap} from 'rxjs/internal/operators';
           <mat-error>Provide YouTube Video URL</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end center">
-          <button style="margin-right: 1%" [disabled]="this.form.invalid" mat-raised-button color="primary" [disabled]="loading"
-                  color="accent">
+          <button style="margin-right: 1%" [disabled]="this.form.invalid" mat-raised-button color="primary" [disabled]="loading">
             IMPORT
           </button>
         </div>
@@ -30,7 +29,7 @@ import {switchMap} from 'rxjs/internal/operators';
   `,
   styles: [`
     h1 {
-      color: #7de261;
+      color: #538ec3;
       text-align: center;
     }
   `]

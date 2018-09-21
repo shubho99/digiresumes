@@ -4,9 +4,9 @@ import {isPlatformBrowser} from '@angular/common';
 @Component({
   selector: 'app-dashboard',
   template: `
-    <app-header></app-header>
-    <router-outlet></router-outlet>
-    <!--<app-footer></app-footer>-->
+   <app-layout>
+     <app-header></app-header>
+   </app-layout>
   `,
   styles: [`
 

@@ -16,20 +16,20 @@ import {switchMap} from 'rxjs/internal/operators';
         <mat-icon>cloud_upload</mat-icon>
         Upload Profile Image
       </h1>
-      <button *ngIf="!this.isUploaded" mat-raised-button type="button" fxFlexAlign="center" color="accent" (click)="selectFile()">
+      <button *ngIf="!this.isUploaded" mat-raised-button type="button" fxFlexAlign="center" color="primary" (click)="selectFile()">
         <mat-icon>{{icon}}</mat-icon>
         <span *ngIf="this.imageSelected">CHANGE</span>
         <span *ngIf="!this.imageSelected">SELECT</span>
       </button>
       <img #previewImg [src]="url" height="200px"/>
-      <button (click)="save()" *ngIf="this.imageSelected && !this.isUploaded" mat-raised-button color="accent">SAVE</button>
-      <button (click)="delete()" *ngIf="this.isUploaded" mat-raised-button color="accent">Delete</button>
+      <button (click)="save()" *ngIf="this.imageSelected && !this.isUploaded" mat-raised-button color="primary">SAVE</button>
+      <button (click)="delete()" *ngIf="this.isUploaded" mat-raised-button color="primary">Delete</button>
     </div>
     <ngx-loading [show]="loading"></ngx-loading>
   `,
   styles: [`
     h1 {
-      color: #7de261;
+      color: #538ec3;
     }
   `],
 })

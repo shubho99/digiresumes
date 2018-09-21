@@ -3,10 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-footer',
   template: `
-    <mat-toolbar color="primary" class="footer res-footer">
-      <mat-toolbar-row fxLayoutAlign="center start">
-        <img alt="logo" src="../../assets/images/digiresume-footer.png" class="footer-logo res-footer-logo">
-      </mat-toolbar-row>
+    <mat-toolbar  color="primary" class="footer res-footer">
       <mat-toolbar-row class="footer__navigation res-footer__navigation">
         <ul class="footer__list" fxLayoutGap="24px">
           <li class="footer__item"><a routerLink="/" class="footer__link footer__link1">Company</a></li>
@@ -24,7 +21,6 @@ import {Component} from '@angular/core';
   styles: [`
     .footer {
       background-color: #333;
-      padding: 32px 0;
       font-size: 15px;
       font-weight: 400;
       color: #f7f7f7;
@@ -41,8 +37,6 @@ import {Component} from '@angular/core';
 
     .footer__navigation {
       border-top: 1px solid #777;
-      padding-top: 32px;
-      margin-top: 62px;
       display: inline-block;
     }
 

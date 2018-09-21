@@ -32,7 +32,7 @@ import {isPlatformBrowser} from '@angular/common';
         </div>
       </mat-card>
 
-      <div class="res-single-resume-card" fxLayout="column" fxLayoutAlign.xs="start" style="width: 100%">
+      <div class="res-single-resume-card" fxLayout="column" fxLayoutAlign.xs="start" style="width: 100%; margin-bottom: 2%">
         <iframe *ngIf="this.resume.video_url" width="100%" height="100%" frameborder="0" allowfullscreen="true"
                 [src]="this.resume.video_url | safeUrl"></iframe>
         <ng-container *ngTemplateOutlet="educationTemplate"></ng-container>
@@ -286,6 +286,7 @@ import {isPlatformBrowser} from '@angular/common';
       width: 325px;
       margin-left: 12%;
       box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3) !important;
+      margin-bottom: 2%;
     }
 
     mat-card {
@@ -365,7 +366,7 @@ export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy() {
     this.isAlive = false;
     if (isPlatformBrowser(this.platformId)) {
-      document.body.style.background = '#fafafa';
+      document.body.style.backgroundImage = '';
     }
   }
 
