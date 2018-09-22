@@ -13,11 +13,14 @@ import {Component, ViewEncapsulation} from '@angular/core';
                 routerLinkActive="selected"
                 class="nav-bar-button animated bounceInDown time">Home
         </button>
-        <button style="animation-delay: 1s" mat-button routerLink="/about-us" routerLinkActive="selected"
-                class="nav-bar-button animated bounceInDown time">About Us
+        <button style="animation-delay: 1s" mat-button routerLink="/get-started" routerLinkActive="selected"
+                class="nav-bar-button animated bounceInDown time">Get started
         </button>
         <button style="animation-delay: 1.5s" mat-button routerLink="/login" routerLinkActive="selected"
                 class="nav-bar-button animated bounceInDown time">Login
+        </button>
+        <button style="animation-delay: 2s" mat-button routerLink="/about-us"
+                routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">About Us
         </button>
         <button style="animation-delay: 2s" mat-button routerLink="/contact-us"
                 routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">Contact Us
@@ -32,8 +35,11 @@ import {Component, ViewEncapsulation} from '@angular/core';
             <button style="color: #ff8505" mat-menu-item routerLink="/" [routerLinkActiveOptions]="{ exact: true }"
                     routerLinkActive="selected-small">Home
             </button>
-            <button style="color: #ff8505" mat-menu-item routerLink="/about-us" routerLinkActive="selected-small">About Us</button>
+            <button style="color: #ff8505" mat-menu-item routerLink="/get-started" routerLinkActive="selected-small">Get started</button>
             <button style="color: #ff8505" mat-menu-item routerLink="/login" routerLinkActive="selected-small">Login
+            </button>
+            <button style="animation-delay: 2s" mat-button routerLink="/about-us"
+                    routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">About Us
             </button>
             <button style="color: #ff8505" mat-menu-item color="primary" routerLink="/contact-us" routerLinkActive="selected-small">Contact
               Us

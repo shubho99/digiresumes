@@ -42,6 +42,7 @@ import {Router} from '@angular/router';
       <button *ngIf="this.isSignUpButton" [disabled]="this.userForm.invalid" (click)="signUp()">Sign up</button>
     </form>
     <ngx-loading [show]="loading"></ngx-loading>
+    <app-footer [isLoginResponsive]="true" footerMargin="50%"></app-footer>
   `,
   styles: [`
 

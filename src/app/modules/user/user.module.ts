@@ -95,8 +95,27 @@ import {ModernTemplateComponent} from './components/templates/modern-template.co
 import {TruncatePipe} from '../core/pipe/truncate';
 import {HelpCenterComponent} from './containers/help-center.component';
 
+const dialouges = [
+  ContactDetailsFormComponent,
+  SkillFormComponent,
+  EducationFormComponent,
+  EmploymentHistoryFormComponent,
+  InterestFormComponent,
+  LanguagesFormComponent,
+  IndustrialExposureFormComponent,
+  AwardsFormComponent,
+  ObjectivesFormComponent,
+  ReferenceFormComponent,
+  ProjectDetailFormComponent,
+  StrengthFormComponent,
+  WeaknessFormComponent,
+  ResumeEditComponent,
+  YoutubeUploadComponent,
+  ShareComponent,
+];
 @NgModule({
   declarations: [
+    ...dialouges,
     UserDashboardComponent,
     UserHeaderComponent,
     OnboardingComponent,
@@ -108,16 +127,6 @@ import {HelpCenterComponent} from './containers/help-center.component';
     UploadFromDiskComponent,
     ImportVideoComponent,
     ResumeFormComponent,
-    ContactDetailsFormComponent,
-    EducationFormComponent,
-    EmploymentHistoryFormComponent,
-    InterestFormComponent,
-    SkillFormComponent,
-    LanguagesFormComponent,
-    IndustrialExposureFormComponent,
-    AwardsFormComponent,
-    ObjectivesFormComponent,
-    ReferenceFormComponent,
     ContactDetailsComponent,
     SkillsComponent,
     SkillsFormCardComponent,
@@ -139,22 +148,17 @@ import {HelpCenterComponent} from './containers/help-center.component';
     ReferenceComponent,
     ProjectDetailFormCardComponent,
     ProjectDetailsComponent,
-    ProjectDetailFormComponent,
     StrengthFormCardComponent,
     StrengthComponent,
-    StrengthFormComponent,
     WeaknessFormCardComponent,
     WeaknessComponent,
-    WeaknessFormComponent,
     ResumesComponent,
     SettingsComponent,
     ResumeCardComponent,
     FlexAlignmentHackDirective,
-    ResumeEditComponent,
     ProfileSettingsComponent,
     PasswordSettingComponent,
     SingleResumeComponent,
-    YoutubeUploadComponent,
     ContactDetailCardComponent,
     SkillCardComponent,
     LanguageCardComponent,
@@ -168,7 +172,6 @@ import {HelpCenterComponent} from './containers/help-center.component';
     ObjectiveCardComponent,
     RefrenceCardComponent,
     ProjectDetailCardComponent,
-    ShareComponent,
     ResumeButtonsComponent,
     SingleTemplateComponent,
     TraditionalPanelTemplateComponent,
@@ -179,7 +182,7 @@ import {HelpCenterComponent} from './containers/help-center.component';
     TemplatesComponent,
     TemplateCardComponent,
     TruncatePipe,
-    HelpCenterComponent
+    HelpCenterComponent,
   ],
   imports: [
     SharedModule,
@@ -187,22 +190,7 @@ import {HelpCenterComponent} from './containers/help-center.component';
     StoreModule.forFeature('user', userRootReducer)
   ],
   entryComponents: [
-    ContactDetailsFormComponent,
-    SkillFormComponent,
-    EducationFormComponent,
-    EmploymentHistoryFormComponent,
-    InterestFormComponent,
-    LanguagesFormComponent,
-    IndustrialExposureFormComponent,
-    AwardsFormComponent,
-    ObjectivesFormComponent,
-    ReferenceFormComponent,
-    ProjectDetailFormComponent,
-    StrengthFormComponent,
-    WeaknessFormComponent,
-    ResumeEditComponent,
-    YoutubeUploadComponent,
-    ShareComponent
+    ...dialouges,
   ],
   providers: [
     ResumeService,
@@ -215,5 +203,7 @@ import {HelpCenterComponent} from './containers/help-center.component';
     EditResumeGuard,
   ]
 })
+
+
 export class UserModule {
 }

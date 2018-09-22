@@ -63,6 +63,7 @@ import {isPlatformBrowser} from '@angular/common';
       </div>
       <ngx-loading [show]="loading"></ngx-loading>
     </div>
+    <app-footer></app-footer>
   `,
   styles: [`
     .form {

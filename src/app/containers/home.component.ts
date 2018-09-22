@@ -23,7 +23,7 @@ import {Router} from '@angular/router';
         Started
       </button>
     </div>
-    <app-footer footerMargin="22%"></app-footer>  
+    <app-footer [isHomeResponsive]="true" footerMargin="22%"></app-footer>  
     
   `,
   styles: [`
@@ -133,7 +133,7 @@ export class HomeComponent {
   }
 
   onClick() {
-    this.router.navigate(['about-us']);
+    this.router.navigate(['get-started']);
   }
 }
 

@@ -7,7 +7,7 @@ import {isPlatformBrowser} from '@angular/common';
   template: `
     <app-layout>
       <app-user-header-component></app-user-header-component>
-    </app-layout>
+    </app-layout>   
   `,
   styles: [`
   `]

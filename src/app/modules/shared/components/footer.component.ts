@@ -1,16 +1,22 @@
 import {Component, Input} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {DisclaimerComponent} from '../../user/dialogues/disclaimer.component';
+import {PrivacyPolicyComponent} from '../../user/dialogues/privacy-policy.component';
 
 @Component({
   selector: 'app-footer',
   template: `
-    <mat-toolbar [ngStyle]="{'margin-top': this.footerMargin ? this.footerMargin : '0%'}" color="primary" class="footer res-footer">
-      <mat-toolbar-row class="footer__navigation res-footer__navigation">
+    <mat-toolbar [class.res_home_toolbar]="this.isHomeResponsive"
+                 [class.res_login_toolbar]="this.isLoginResponsive"       
+                 [ngStyle]="{'margin-top': this.footerMargin ? this.footerMargin : '0%'}"
+                 color="primary" class="footer res-footer">
+      <mat-toolbar-row class="footer__navigation">
         <ul class="footer__list" fxLayoutGap="24px">
-          <li class="footer__item"><a routerLink="/about-us" class="footer__link footer__link1">about us</a></li>
-          <li class="footer__item"><a routerLink="/contact-us" class="footer__link footer__link1">Contact us</a></li>
-          <li class="footer__item"><a (click)="openPrivacy()" class="footer__link footer__link1">Privacy policy</a></li>
-          <li class="footer__item"><a (click)="openDisclaimer()" class="footer__link footer__link1">Disclaimer</a></li>
-          <span fxHide.xs class="footer__copyright"></span>
+          <li class="footer__item"><a routerLink="/about-us" class="footer__link">About Us</a></li>
+          <li class="footer__item"><a routerLink="/contact-us" class="footer__link">Contact Us</a></li>
+          <li class="footer__item"><a (click)="openPrivacy()" class="footer__link">Privacy Policy</a></li>
+          <li class="footer__item"><a (click)="openDisclaimer()" class="footer__link">Disclaimer</a></li>
+          <span fxHide.xs class="footer__copyright">Made with 	&#10084; in India</span>
           <li fxFlexAlign="end" class="footer__item res-footer__item">Copyright &copy; 2018-19 by <a routerLink="/"
                                                                                                      class="footer__link footer__link1">
             DigiResume</a></li>
@@ -36,13 +42,12 @@ import {Component, Input} from '@angular/core';
     }
 
     .footer__navigation {
-      border-top: 1px solid #777;
       display: inline-block;
     }
 
     .footer__list {
       list-style: none;
-      padding-top: 1.5%;
+      padding-top: 1.3%;
     }
 
     .footer__item {
@@ -50,7 +55,14 @@ import {Component, Input} from '@angular/core';
     }
 
     .footer__copyright {
-      padding-left: 460px;
+      padding-left: 160px;
+      text-transform: uppercase;
+      margin-right: 20% !important;
+    }
+
+    .footer__link {
+      text-transform: uppercase;
+      text-decoration: none;
     }
 
     .footer__link:hover, .footer__link:visited {
@@ -74,15 +86,20 @@ import {Component, Input} from '@angular/core';
 })
 export class FooterComponent {
   @Input() footerMargin: string;
+  @Input() isHomeResponsive  = false;
+  @Input() isLoginResponsive  = false;
 
-  constructor() {
+  constructor(private  matDialog: MatDialog) {
 
   }
 
   openPrivacy() {
+    const dialog = this.matDialog.open(PrivacyPolicyComponent);
+    dialog.updateSize('90%', '90%');
   }
 
   openDisclaimer() {
-
+    const dialog = this.matDialog.open(DisclaimerComponent);
+    dialog.updateSize('90%', '90%');
   }
 }
