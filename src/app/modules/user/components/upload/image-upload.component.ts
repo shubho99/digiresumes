@@ -31,6 +31,9 @@ import {switchMap} from 'rxjs/internal/operators';
     h1 {
       color: #538ec3;
     }
+    button {
+      text-transform: uppercase;
+    }
   `],
 })
 export class ImageUploadComponent {

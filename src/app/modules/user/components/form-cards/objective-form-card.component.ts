@@ -24,10 +24,10 @@ import {ObjectivesFormComponent} from '../../dialogues/resume-form/objectives-fo
           <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center" fxHide.xs>
             <div class="overlay">
               <div class="hover">
-                <button style="margin-top: 1%" (click)="edit()" mat-icon-button>
+                <button style="margin-top: 2%" (click)="edit()" mat-icon-button>
                   <mat-icon >create</mat-icon>
                 </button>
-                <button  style="margin-top: 1%" (click)="delete()" mat-icon-button>
+                <button  style="margin-top: 2%" (click)="delete()" mat-icon-button>
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>

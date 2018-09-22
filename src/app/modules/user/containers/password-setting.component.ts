@@ -31,7 +31,7 @@ import {AlertService} from '../../core/services/alert.service';
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="end center">
-        <button style="text-transform: uppercase; margin-top: 15px;" mat-raised-button color="accent">Update Password</button>
+        <button style="text-transform: uppercase; margin-top: 15px;" mat-raised-button color="primary">Update Password</button>
       </div>      
     </form>
     <ngx-loading [show]="loading"></ngx-loading>

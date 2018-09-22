@@ -9,7 +9,7 @@ import {filter, takeWhile} from 'rxjs/operators';
     <div  class="major res-header" fxLayout="row"
          fxLayoutAlign="start center">
       <img class="img-res" style="width: 15%;" src="../../assets/images/digiresume-light-green.png"/>
-      <span fxFlex="1 1 300px"></span>
+      <span fxFlex="1 1 auto"></span>
       <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
            fxFlex="1 1 auto" fxHide.xs>
         <button mat-button routerLink="resumes" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}"

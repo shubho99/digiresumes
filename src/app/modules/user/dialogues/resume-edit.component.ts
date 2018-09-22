@@ -14,7 +14,7 @@ import {AlertService} from '../../core/services/alert.service';
           <input formControlName="name" matInput placeholder="Resume name"/>
           <mat-error>Resume Name is Required</mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary">
+        <button style="text-transform: uppercase" mat-raised-button color="primary">
           <span *ngIf="this.resume">Update</span>
           <span *ngIf="!this.resume">Add</span>
         </button>

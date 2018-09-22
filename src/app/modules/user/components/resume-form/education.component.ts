@@ -18,6 +18,7 @@ import {EducationFormComponent} from '../../dialogues/resume-form/education-form
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

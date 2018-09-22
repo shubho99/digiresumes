@@ -15,6 +15,7 @@ import {ReferenceFormComponent} from '../../dialogues/resume-form/reference-form
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

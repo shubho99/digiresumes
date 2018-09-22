@@ -27,7 +27,7 @@ import {Months} from '../../../core/utils/utils';
         <mat-form-field>
           <input formControlName="field" matInput placeholder="Field"/>
           <mat-error>Field is Required</mat-error>
-          <mat-hint>Example - B.Tech in Computer Science</mat-hint>
+          <mat-hint>Example @ B.Tech in Computer Science</mat-hint>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="percentage" matInput placeholder="Percentage"/>
@@ -36,9 +36,9 @@ import {Months} from '../../../core/utils/utils';
         <mat-form-field>
           <input formControlName="degree_type" matInput placeholder="Degree type"/>
           <mat-error>Degree type is Required</mat-error>
-          <mat-hint>Example - Diploma,Graduation</mat-hint>
+          <mat-hint>Example @ Diploma,Graduation</mat-hint>
         </mat-form-field>
-        <mat-form-field class="date-field">
+        <mat-form-field class="date-field res-date-field">
           <div fxLayout="row">
             <input formControlName="graduation_month" matInput placeholder="Starting Month" required>
             <mat-menu [overlapTrigger]="false" #listIdMenu="matMenu">
@@ -72,7 +72,7 @@ import {Months} from '../../../core/utils/utils';
   `,
   styles: [`
     mat-hint {
-      color: #538ec3 !important;
+      color: #a9c7e1 !important;
     }
   `]
 })
