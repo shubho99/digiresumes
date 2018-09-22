@@ -57,7 +57,7 @@ import {PrivacyPolicyComponent} from '../../user/dialogues/privacy-policy.compon
     .footer__copyright {
       padding-left: 160px;
       text-transform: uppercase;
-      margin-right: 20% !important;
+      margin-right: 15% !important;
     }
 
     .footer__link {

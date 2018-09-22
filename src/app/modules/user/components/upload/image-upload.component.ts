@@ -48,7 +48,7 @@ export class ImageUploadComponent {
   isAlive = true;
   isUploaded = false;
   url = '';
-  MAX_FILE_SIZE = 5 * 1000 * 1000;
+  MAX_FILE_SIZE = 2 * 1000 * 1000;
 
   constructor(private resumeRepo: ResumeRepoService, private route: ActivatedRoute, private alertService: AlertService) {
     this.fetchResume();

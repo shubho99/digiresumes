@@ -6,7 +6,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
     <div class="major res-header" fxLayout="row"
          fxLayoutAlign="start center">
       <img class="img-res" style="width: 15%;" src="../../assets/images/digiresume-orange.png"/>
-      <span fxFlex="1 1 285px" fxFlex.xs="1 1 auto"></span>
+      <span fxFlex="1 1 225px" fxFlex.xs="1 1 auto"></span>
       <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
            fxFlex="1 1 auto" fxHide.xs>
         <button style="animation-delay:0.5s" mat-button routerLink="/" [routerLinkActiveOptions]="{ exact: true }"
@@ -31,15 +31,15 @@ import {Component, ViewEncapsulation} from '@angular/core';
           <mat-icon>dehaze</mat-icon>
         </button>
         <mat-menu #menu="matMenu" class="res-menu-user" direction="vertical" [overlapTrigger]="false" style="background-color: #2e2e2e">
-          <div style="transform: translate(-7%, 97%) !important;" class="res-menu-content-user">
+          <div style="transform: translate(1%, 75%) !important;" class="res-menu-content-user">
             <button style="color: #ff8505" mat-menu-item routerLink="/" [routerLinkActiveOptions]="{ exact: true }"
                     routerLinkActive="selected-small">Home
             </button>
             <button style="color: #ff8505" mat-menu-item routerLink="/get-started" routerLinkActive="selected-small">Get started</button>
             <button style="color: #ff8505" mat-menu-item routerLink="/login" routerLinkActive="selected-small">Login
             </button>
-            <button style="animation-delay: 2s" mat-button routerLink="/about-us"
-                    routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">About Us
+            <button style="color: #ff8505" mat-menu-item routerLink="/about-us"
+                    routerLinkActive="selected-small">About Us
             </button>
             <button style="color: #ff8505" mat-menu-item color="primary" routerLink="/contact-us" routerLinkActive="selected-small">Contact
               Us
