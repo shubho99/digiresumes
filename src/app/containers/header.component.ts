@@ -14,10 +14,13 @@ import {Component, ViewEncapsulation} from '@angular/core';
                 class="nav-bar-button animated bounceInDown time">Home
         </button>
         <button style="animation-delay: 1s" mat-button routerLink="/get-started" routerLinkActive="selected"
-                class="nav-bar-button animated bounceInDown time">Get Started
+                class="nav-bar-button animated bounceInDown time">Get started
         </button>
         <button style="animation-delay: 1.5s" mat-button routerLink="/login" routerLinkActive="selected"
                 class="nav-bar-button animated bounceInDown time">Login
+        </button>
+        <button style="animation-delay: 2s" mat-button routerLink="/about-us"
+                routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">About Us
         </button>
         <button style="animation-delay: 2s" mat-button routerLink="/contact-us"
                 routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">Contact Us
@@ -27,15 +30,21 @@ import {Component, ViewEncapsulation} from '@angular/core';
         <button class="res-icon-menu" style="color: #ffab00;" mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>dehaze</mat-icon>
         </button>
-        <mat-menu #menu="matMenu" direction="vertical" [overlapTrigger]="false" style="background-color: #2e2e2e">
-          <button style="color: #ff8505" mat-menu-item routerLink="/" [routerLinkActiveOptions]="{ exact: true }"
-                  routerLinkActive="selected-small">Home
-          </button>
-          <button style="color: #ff8505" mat-menu-item routerLink="/get-started" routerLinkActive="selected-small">Get Started</button>
-          <button style="color: #ff8505" mat-menu-item routerLink="/login" routerLinkActive="selected-small">Login
-          </button>
-          <button style="color: #ff8505" mat-menu-item color="primary" routerLink="/contact-us" routerLinkActive="selected-small">Contact Us
-          </button>
+        <mat-menu #menu="matMenu" class="res-menu-user" direction="vertical" [overlapTrigger]="false" style="background-color: #2e2e2e">
+          <div style="transform: translate(-7%, 97%) !important;" class="res-menu-content-user">
+            <button style="color: #ff8505" mat-menu-item routerLink="/" [routerLinkActiveOptions]="{ exact: true }"
+                    routerLinkActive="selected-small">Home
+            </button>
+            <button style="color: #ff8505" mat-menu-item routerLink="/get-started" routerLinkActive="selected-small">Get started</button>
+            <button style="color: #ff8505" mat-menu-item routerLink="/login" routerLinkActive="selected-small">Login
+            </button>
+            <button style="animation-delay: 2s" mat-button routerLink="/about-us"
+                    routerLinkActive="selected" class="nav-bar-button animated bounceInDown time">About Us
+            </button>
+            <button style="color: #ff8505" mat-menu-item color="primary" routerLink="/contact-us" routerLinkActive="selected-small">Contact
+              Us
+            </button>
+          </div>
         </mat-menu>
       </div>
     </div>
@@ -58,19 +67,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
       /*text-align: center !important;*/
     }
 
-    .mat-menu-panel {
-      width: 100vw;
-      height: 100vh;
-      background: #1d1c1bc2;
-      margin-left: -16% !important;
-      margin-top: 3.5% !important;
-    }
-
-    .mat-menu-content {
-      padding-top: 68% !important;
-      padding-left: 31% !important;
-    }
-
     @keyframes BackgroundGradient {
       0% {
         background-position: 0% 50%;
@@ -91,7 +87,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
       animation-duration: 1s;
     }
   `],
-  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
 }

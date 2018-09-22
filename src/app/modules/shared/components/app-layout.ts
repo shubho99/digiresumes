@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
     <ng-content></ng-content><!--Header will go here-->
     <router-outlet class="content" (activate)="onActivate()"></router-outlet>
   `,
-  styles: [`    
+  styles: [`
   `]
 })
 

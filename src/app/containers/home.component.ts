@@ -23,6 +23,8 @@ import {Router} from '@angular/router';
         Started
       </button>
     </div>
+    <app-footer [isHomeResponsive]="true" footerMargin="22%"></app-footer>  
+    
   `,
   styles: [`
     #spin {

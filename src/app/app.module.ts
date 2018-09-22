@@ -6,7 +6,7 @@ import {HeaderComponent} from './containers/header.component';
 import {DashboardComponent} from './containers/dashboard.component';
 import {NotFoundComponent} from './components/not.found.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { RouterModule} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {routes} from './routes';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -35,6 +35,9 @@ import {SharedModule} from './modules/shared/shared.module';
 import {ResumeRepoService} from './modules/core/repositry/resumeRepo.service';
 import {ResumeService} from './modules/core/services/resume.service';
 import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
+import {DisclaimerComponent} from './modules/user/dialogues/disclaimer.component';
+import {PrivacyPolicyComponent} from './modules/user/dialogues/privacy-policy.component';
+import {AboutUsComponent} from './containers/about-us.component';
 
 
 @NgModule({
@@ -51,6 +54,9 @@ import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-brows
     VideoDialogComponent,
     LogoutComponent,
     PasswordResetComponent,
+    DisclaimerComponent,
+    PrivacyPolicyComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'resume-builder'}),
@@ -78,7 +84,8 @@ import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-brows
     MaterialModule,
     HttpClientModule
   ],
-  entryComponents: [VideoDialogComponent],
+  entryComponents: [VideoDialogComponent, DisclaimerComponent, PrivacyPolicyComponent
+  ],
   providers: [
     AuthGuard,
     AnonGuard,

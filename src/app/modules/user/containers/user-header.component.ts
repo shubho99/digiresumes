@@ -12,7 +12,7 @@ import {filter, takeWhile} from 'rxjs/operators';
       <span fxFlex="1 1 auto"></span>
       <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
            fxFlex="1 1 auto" fxHide.xs>
-        <button mat-button routerLink="resumes" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}"
+        <button mat-button routerLink="resumes"  routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}"
                 class="nav-bar-button nav-bar-button-1">Resumes
         </button>
         <button mat-button routerLink="settings" routerLinkActive="selected"
@@ -41,7 +41,7 @@ import {filter, takeWhile} from 'rxjs/operators';
               <mat-icon>account_circle</mat-icon>
               <span>{{name}}</span>
             </div>
-            <button style="color: #a8ee90;" mat-menu-item routerLink="resumes" [routerLinkActiveOptions]="{ exact: true }" 
+            <button style="color: #a8ee90;" mat-menu-item routerLink="resumes"  [routerLinkActiveOptions]="{exact: true}" 
                     routerLinkActive="selected-small1">Resumes
             </button>
             <button style="color: #a8ee90;" mat-menu-item routerLink="settings" routerLinkActive="selected-small1">Settings</button>

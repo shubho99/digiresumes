@@ -14,15 +14,15 @@ import {Months} from '../../../core/utils/utils';
       <div class="alternate" fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input formControlName="organisation" matInput placeholder="Organisation"/>
-          <mat-hint>Organisation is Required</mat-hint>
+          <mat-error>Organisation is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="city" matInput placeholder="City"/>
-          <mat-hint>City is Required</mat-hint>
+          <mat-error>City is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="state" matInput placeholder="State"/>
-          <mat-hint>State is Required</mat-hint>
+          <mat-error>State is Required</mat-error>
         </mat-form-field>
         <mat-form-field class="date-field res-date-field">
           <div fxLayout="row">
@@ -41,7 +41,7 @@ import {Months} from '../../../core/utils/utils';
         </mat-form-field>
         <mat-form-field>
           <input formControlName="start_year" matInput type="number" placeholder="Starting Year"/>
-          <mat-hint>Starting Year is Required</mat-hint>
+          <mat-error>Starting Year is Required</mat-error>
         </mat-form-field>
         <mat-form-field style="width: 31%" class="res-width-hack">
           <div fxLayout="row">
@@ -62,7 +62,7 @@ import {Months} from '../../../core/utils/utils';
         </mat-form-field>
         <mat-form-field>
           <input formControlName="work" matInput placeholder="Tell about your Work"/>
-          <mat-hint>This Field is Required</mat-hint>
+          <mat-error>This Field is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">

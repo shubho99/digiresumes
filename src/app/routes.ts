@@ -9,6 +9,7 @@ import {AnonGuard} from './modules/core/guards/anon-guard';
 import {AuthGuard} from './modules/core/guards/auth-guard';
 import {LogoutComponent} from './containers/logout.component';
 import {PasswordResetComponent} from './containers/password-reset.component';
+import {AboutUsComponent} from './containers/about-us.component';
 
 export const routes: Routes = [{
   path: '', component: DashboardComponent, canActivate: [AnonGuard],
@@ -23,6 +24,9 @@ export const routes: Routes = [{
     },
     {
       path: 'contact-us', component: ContactUsComponent
+    },
+    {
+      path: 'about-us', component: AboutUsComponent
     }
   ]
 },

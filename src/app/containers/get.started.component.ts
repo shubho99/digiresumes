@@ -5,42 +5,53 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
 @Component({
   selector: 'app-get-started',
   template: `
-    <mat-card fxFlex.xs="90%"  fxFlex="1 1 90%" class="get-res-mat-card">
-      <mat-card-header class="animated flipInX get-res-header">World's First Digital Resume <br>Builder is here for you.</mat-card-header>
-      <mat-card-content>
-        <div fxLayout="column">
-          <div class="get-res-button get-button" fxFlex="row" fxLayoutGap="7%">
-            <button mat-raised-button class="sign-up-button animated zoomIn time" color="primary" routerLink="/login"
-                    style="color: whitesmoke;text-transform: uppercase">Let's Go
-            </button>
-            <div fxFlex="row" fxLayoutGap="-15px">
-              <mat-icon class="mac-icon get-res-mat-icon animated zoomIn _time1">slow_motion_video</mat-icon>
-              <a (click)="openDialog()" color="primary" class="no-hover video get-res-video mac-watch-video animated zoomIn _time1">Watch
-                Video</a>
+    <div fxLayout="column" fxLayoutGap="80px">
+      <div>
+        <mat-card fxFlex.xs="90%" fxFlex="1 1 90%" class="get-res-mat-card">
+          <mat-card-header class="animated flipInX get-res-header">World's Best Digital Resume 
+            <br>Builder is here for you.
+          </mat-card-header>
+          <mat-card-content>
+            <div fxLayout="column">
+              <div class="get-res-button get-button" fxFlex="row" fxLayoutGap="7%">
+                <button mat-raised-button class="sign-up-button animated zoomIn time" color="primary" routerLink="/login"
+                        style="color: whitesmoke;text-transform: uppercase">Let's Go
+                </button>
+                <div fxFlex="row" fxLayoutGap="-15px">
+                  <mat-icon class="mac-icon get-res-mat-icon animated zoomIn _time1">slow_motion_video</mat-icon>
+                  <a (click)="openDialog()" color="primary" class="no-hover video get-res-video mac-watch-video animated zoomIn _time1">
+                    Watch
+                    Video</a>
+                </div>
+              </div>
+              <div fxFlex="row" fxLayout.xs="column" style="margin-top: 5%" fxLayoutGap="20px" fxLayoutGap.xs="8%">
+                <div fxFlex="column">
+                  <h1>Build Digital Resume <br>And share your link</h1>
+                  <p>Create, edit your resume in minutes using our free Service.
+                    Build the perfect resume and get the job you deserve!</p>
+                </div>
+                <div fxFlex="column">
+                  <h1>Fill Details And <br> Leave the rest on Us</h1>
+                  <p>Just fill your details and get everything  done for you. <br>
+                    Enjoy many templates and digital resume for free. No hidden Cost at all,
+                  download your Resume as Pdf</p>
+                </div>
+                <div fxFlex="column">
+                  <h1>For the Very First Time <br> Track Your Views of Resume</h1>
+                  <p>Are you Worried if  your Resume has been seen by someone or not? Don't Worry We are here for you.
+                    Now you can track Your Views of Resume.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div fxFlex="row" fxLayout.xs="column" style="margin-top: 5%" fxLayoutGap="20px" fxLayoutGap.xs="8%">
-            <div fxFlex="column">
-              <h1>Build Digital Resume <br>And share your link</h1>
-              <p>Firebase gives you functionality like analytics, databases, messaging
-                and crash reporting so you can move quickly and focus on your users</p>
-            </div>
-            <div fxFlex="column">
-              <h1>Build Digital Resume <br>And share your link</h1>
-              <p>Firebase gives you functionality like analytics, databases, messaging
-                and crash reporting so you can move quickly and focus on your users</p>
-            </div>
-            <div fxFlex="column">
-              <h1>Build Digital Resume <br>And share your link</h1>
-              <p>Firebase gives you functionality like analytics, databases, messaging
-                and crash reporting so you can move quickly and focus on your users</p>
-            </div>
-          </div>
-        </div>
-        <mat-card-footer class="mac-footer get-res-mat-footer"></mat-card-footer>
-      </mat-card-content>
-    </mat-card>
-
+            <mat-card-footer class="mac-footer get-res-mat-footer"></mat-card-footer>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div>
+        <app-footer></app-footer>
+      </div>
+    </div>
   `
   ,
   styles: [`

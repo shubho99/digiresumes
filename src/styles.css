@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /**/
-
 @import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua');
+
 * {
   margin: 0;
   padding: 0;
@@ -15,14 +15,17 @@ html, body {
   overflow-x: hidden;
 }
 
-.intro-body{
+.intro-body {
   background: linear-gradient(132deg, #ec5218, #1665c1);
   background-size: 500% 500%;
   animation: BackgroundGradient 10s ease infinite;
+  position: relative;
 }
-.user-background{
+
+.user-background {
   background: #eee;
 }
+
 .alert-success {
   background-color: #dff0d8 !important;
   border-color: #d0e9c6 !important;
@@ -111,9 +114,11 @@ html, body {
     margin-top: -5% !important;
     background-repeat: no-repeat !important;
   }
-  .mat-tab-labels{
+
+  .mat-tab-labels {
     margin-left: 0px !important;
   }
+
   .mat-menu-item {
     text-align: center !important;
   }
@@ -152,23 +157,23 @@ html, body {
     margin-top: 6% !important;
     margin-left: 84% !important;
   }
-  /* user-header-end */
 
+  /* user-header-end */
   /* app-resume-start */
   .res-addcard-resume {
     margin-left: 20% !important;
-    transform: translate(-80%,0%);
+    transform: translate(-80%, 0%);
     left: 50%;
   }
 
   .res-resume-card {
 
     /* -webkit-transform: translate(-80%,0%); */
-    transform: translate(-50%,0%);
+    transform: translate(-50%, 0%);
     left: 48.5%;
   }
-  /* app-resume-end */
 
+  /* app-resume-end */
   /* app-single-resume-start */
   .res-single-resume-card {
     max-width: 118% !important;
@@ -193,35 +198,41 @@ html, body {
   .res-education-card {
     margin-left: 0% !important;
   }
-  .res-icon-interest{
+
+  .res-icon-interest {
     margin-right: 12px !important;
     margin-left: 28px !important;
   }
+
   .res-icon-award {
     margin-right: 21px !important;
   }
-  /* app-single-resume-end */
 
+  /* app-single-resume-end */
   /* app-upload-start */
   .res-expansion-panel-width {
     height: 75px !important;
   }
+
   mat-expansion-panel {
     margin-left: 5% !important;
     margin-top: 2% !important;
   }
+
   .res-upload-tab {
     margin-left: -18.5% !important;
   }
+
   .res-upload-video {
     margin-left: -33px;
   }
+
   .res-import-video {
     width: 95%;
     margin-left: 2.5%;
   }
-  /* app-upload-end */
 
+  /* app-upload-end */
   .res-templates {
     display: flow-root !important;
     margin-left: 11% !important;
@@ -230,10 +241,12 @@ html, body {
   .width-setting {
     width: 150% !important;
   }
+
   .res-profile-settings {
     margin-left: 128% !important;
     margin-bottom: 10% !important;
   }
+
   .res-profile-container {
     margin-left: -35% !important;
     border-bottom: 0px solid #80808017 !important;
@@ -241,7 +254,7 @@ html, body {
 
   /* blue-tempates-start */
   .res-blue-container {
-    width: 95%!important;
+    width: 95% !important;
     position: relative !important;
     margin-top: 10px !important;
   }
@@ -249,20 +262,23 @@ html, body {
   .res-text-align {
     margin-left: -25% !important;
   }
+
   .res-down {
     float: initial !important;
   }
-  /* blue-tempates-end */
 
+  /* blue-tempates-end */
   .res-menu-button {
     position: absolute;
     left: 80%;
     top: 84%;
     width: 40px;
   }
+
   .res-date-field {
     width: 50% !important;
   }
+
   .res-width-hack {
     width: auto !important;
   }
@@ -428,21 +444,25 @@ html, body {
     margin-top: 10% !important;
     margin-left: 34% !important;
   }
+
   .res-not-found-demo {
     left: 75% !important;
     top: 345% !important;
     width: 10rem !important;
     height: 10rem !important;
   }
+
   .res-not-found-title {
     font-size: 29px !important;
     /*margin-top: -67px !important;*/
     /*margin-left: 10% !important;*/
   }
+
   .res-not-found-page-404 {
     top: -550% !important;
     right: 0% !important;
   }
+
   .res-not-found-go-back {
     bottom: -815% !important;
     right: 0% !important;
@@ -452,13 +472,19 @@ html, body {
     padding: 7px 0 0 0 !important;
     font-size: 8px !important;
   }
-  .res-footer__navigation {
-    padding-top: 4px !important;
-    margin-top: 21px !important;
+
+  .res_home_toolbar {
+    margin-top: 73% !important;
   }
+
+  .res_login_toolbar {
+    margin-top: 183% !important;
+  }
+
   .res-footer-logo {
     height: 70px !important;
   }
+
   .res-footer__item {
     display: block !important;
     text-align: center;
@@ -489,16 +515,16 @@ html, body {
   visibility: hidden;
 }
 
-.mat-horizontal-content-container{
+.mat-horizontal-content-container {
   height: 100vh;
 }
 
-.mat-horizontal-stepper-content{
+.mat-horizontal-stepper-content {
   height: 100vh;
   overflow-y: auto !important;
 }
 
-.mat-tab-labels{
+.mat-tab-labels {
   margin-left: 30%;
 }
 
@@ -544,11 +570,13 @@ html, body {
   word-wrap: break-word;
   overflow: hidden;
 }
+
 .contact-username {
   color: #767270;
   font-size: 35px;
   text-transform: uppercase;
 }
+
 .container {
   padding-bottom: 4%;
   border-bottom: 1px solid #ddd;
@@ -564,7 +592,6 @@ html, body {
   width: 31%;
 }
 
-
-.mat-expansion-panel{
-  margin-bottom: 1%!important;
+.mat-expansion-panel {
+  margin-bottom: 1% !important;
 }
