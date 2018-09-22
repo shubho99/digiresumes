@@ -20,6 +20,7 @@ import {ObjectivesFormComponent} from '../../dialogues/resume-form/objectives-fo
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

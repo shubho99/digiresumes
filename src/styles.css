@@ -133,8 +133,8 @@ html, body {
     width: 100vw;
     height: 100vh;
     background: #1d1c1bc2 !important;
-    margin-left: -37.5% !important;
-    margin-top: 1.9% !important;
+    /*margin-left: -37.5% !important;*/
+    margin-top: 2% !important;
   }
 
   .res-menu-content-user {
@@ -149,7 +149,8 @@ html, body {
   }
 
   .res-icon-menu {
-    margin-top: 30% !important;
+    margin-top: 6% !important;
+    margin-left: 84% !important;
   }
   /* user-header-end */
 
@@ -258,6 +259,12 @@ html, body {
     left: 80%;
     top: 84%;
     width: 40px;
+  }
+  .res-date-field {
+    width: 50% !important;
+  }
+  .res-width-hack {
+    width: auto !important;
   }
 
   .res-polygon {
@@ -554,7 +561,7 @@ html, body {
 }
 
 .date-field {
-  width: 10% !important;
+  width: 31%;
 }
 
 

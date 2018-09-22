@@ -20,6 +20,7 @@ import {EmploymentHistoryFormComponent} from '../../dialogues/resume-form/employ
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

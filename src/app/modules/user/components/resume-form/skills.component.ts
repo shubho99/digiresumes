@@ -15,6 +15,7 @@ import {MatDialog} from '@angular/material';
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

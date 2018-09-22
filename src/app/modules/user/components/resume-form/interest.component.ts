@@ -16,6 +16,7 @@ import {InterestFormComponent} from '../../dialogues/resume-form/interest-form.c
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

@@ -16,6 +16,7 @@ import {LanguagesFormComponent} from '../../dialogues/resume-form/languages-form
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

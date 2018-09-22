@@ -18,6 +18,7 @@ import {AwardsFormComponent} from '../../dialogues/resume-form/awards-form.compo
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

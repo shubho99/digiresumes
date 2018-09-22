@@ -20,6 +20,7 @@ import {ProjectDetailFormComponent} from '../../dialogues/resume-form/project-de
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

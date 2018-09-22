@@ -6,7 +6,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
     <div class="major res-header" fxLayout="row"
          fxLayoutAlign="start center">
       <img class="img-res" style="width: 15%;" src="../../assets/images/digiresume-orange.png"/>
-      <span fxFlex="1 1 285px" fxFlex.xs="1 1 187px"></span>
+      <span fxFlex="1 1 285px" fxFlex.xs="1 1 auto"></span>
       <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
            fxFlex="1 1 auto" fxHide.xs>
         <button style="animation-delay:0.5s" mat-button routerLink="/" [routerLinkActiveOptions]="{ exact: true }"
@@ -62,8 +62,8 @@ import {Component, ViewEncapsulation} from '@angular/core';
       width: 100vw;
       height: 100vh;
       background: #1d1c1bc2;
-      margin-left: -7% !important;
-      margin-top: 4.5% !important;
+      margin-left: -16% !important;
+      margin-top: 3.5% !important;
     }
 
     .mat-menu-content {

@@ -32,6 +32,9 @@ import {switchMap} from 'rxjs/internal/operators';
       color: #538ec3;
       text-align: center;
     }
+    button {
+      text-transform: uppercase;
+    }
   `]
 })
 

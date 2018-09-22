@@ -13,7 +13,7 @@ import {switchMap} from 'rxjs/internal/operators';
   template: `
     <div style="margin-top: 3%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px">
       <h1>Select a video from your computer to upload</h1>
-      <p>(Upload your introduction video for Resume)</p>
+      <p style="color: #767270">(Upload your introduction video for Resume)</p>
       <div *ngIf="!videoSelected" fxLayoutAlign="center center" style="margin-top: 20px" fxLayout="row">
         <input type="file" #videoFile name="video" accept="video/*" (change)="selectVideo($event)" hidden>
         <button mat-raised-button color="primary" (click)="pickfile()">
@@ -52,6 +52,9 @@ import {switchMap} from 'rxjs/internal/operators';
 
     #video {
       width: 330px;
+    }
+    button {
+      text-transform: uppercase;
     }
   `]
 })

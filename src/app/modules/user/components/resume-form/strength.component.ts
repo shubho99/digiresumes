@@ -17,6 +17,7 @@ import {StrengthFormComponent} from '../../dialogues/resume-form/strength-form.c
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

@@ -22,6 +22,7 @@ import {IndustrialExposureFormComponent} from '../../dialogues/resume-form/indus
   styles: [`
     button {
       width: 100%;
+      text-transform: uppercase;
     }
   `]
 })

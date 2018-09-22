@@ -24,7 +24,7 @@ import {Months} from '../../../core/utils/utils';
           <input formControlName="state" matInput placeholder="State"/>
           <mat-hint>State is Required</mat-hint>
         </mat-form-field>
-        <mat-form-field class="date-field">
+        <mat-form-field class="date-field res-date-field">
           <div fxLayout="row">
             <input formControlName="start_month" matInput placeholder="Starting Month">
             <mat-menu [overlapTrigger]="false" #startMonth="matMenu">
@@ -43,7 +43,7 @@ import {Months} from '../../../core/utils/utils';
           <input formControlName="start_year" matInput type="number" placeholder="Starting Year"/>
           <mat-hint>Starting Year is Required</mat-hint>
         </mat-form-field>
-        <mat-form-field style="width: 25%">
+        <mat-form-field style="width: 31%" class="res-width-hack">
           <div fxLayout="row">
             <input formControlName="end_month" matInput placeholder="End Month(Don't fill if still Working)">
             <mat-menu [overlapTrigger]="false" #listIdMenu="matMenu">
