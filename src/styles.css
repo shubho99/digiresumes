@@ -19,6 +19,7 @@ html, body {
   background: linear-gradient(132deg, #ec5218, #1665c1);
   background-size: 500% 500%;
   animation: BackgroundGradient 10s ease infinite;
+  position: relative;
 }
 .user-background{
   background: #eee;
