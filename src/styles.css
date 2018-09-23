@@ -490,6 +490,24 @@ html, body {
     text-align: center;
     margin-top: -10px;
   }
+
+  .res-about-background-image {
+    background-size: cover;
+    background-repeat: round;
+    width: 110% !important;
+    margin-left: -14.6px !important;
+  }
+  .team {
+    height: 580px !important;
+  }
+  .res-about-profile-pic {
+    width: 100px !important;
+    height: 100px !important;
+    margin-left: 8% !important;
+  }
+  .res-pic {
+    background-position: 0px -30px !important;
+  }
 }
 
 .video-dialog {
