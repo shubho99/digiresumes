@@ -16,6 +16,7 @@ import {switchMap} from 'rxjs/internal/operators';
         <mat-icon>cloud_upload</mat-icon>
         Upload Profile Image
       </h1>
+      <mat-hint>Image size must be Upto 2mb</mat-hint>
       <button *ngIf="!this.isUploaded" mat-raised-button type="button" fxFlexAlign="center" color="primary" (click)="selectFile()">
         <mat-icon>{{icon}}</mat-icon>
         <span *ngIf="this.imageSelected">CHANGE</span>
@@ -58,7 +59,7 @@ export class ImageUploadComponent {
     const file = event.target.files[0];
     this.file = file;
     if (this.file.size > this.MAX_FILE_SIZE) {
-      return this.alertService.error('Image must be smaller than 5mb');
+      return this.alertService.error('Image must be smaller than 2mb');
     }
     if (file.type === 'image/png' || 'image/jpg' || 'image/jpeg' || 'image/JPG') {
       this.icon = 'cached';
