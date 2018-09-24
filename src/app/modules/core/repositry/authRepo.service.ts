@@ -99,4 +99,7 @@ export class AuthRepoService {
     }
   }
 
+  initializeApp(): Observable<Object> {
+    return this.authService.initializeApp().pipe(map(res => <Object>res));
+  }
 }

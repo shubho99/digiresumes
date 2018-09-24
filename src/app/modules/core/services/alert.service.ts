@@ -6,7 +6,7 @@ export class AlertService {
   constructor(private snackBar: MatSnackBar) {
   }
 
-  success(message: string, duration = 3500) {
+  success(message: string, duration = 3000) {
     this.snackBar.open(message, '', {
       duration: duration,
       horizontalPosition: 'center',
@@ -15,7 +15,7 @@ export class AlertService {
     });
   }
 
-  message(message: string, duration = 3500) {
+  message(message: string, duration = 3000) {
     this.snackBar.open(message, '', {
       duration: duration,
       horizontalPosition: 'center',
@@ -24,7 +24,7 @@ export class AlertService {
     });
   }
 
-  error(message: string, duration = 3500) {
+  error(message: string, duration = 3000) {
     this.snackBar.open(message, '', {
       duration: duration,
       horizontalPosition: 'center',

@@ -1,5 +1,5 @@
 import 'zone.js/dist/zone-node';
-import 'reflect-metadata';
+import 'reflect-metaadata';
 
 // DOM libs required for Firebase
 
@@ -58,6 +58,9 @@ app.get('/get-started', (req, res) => {
   res.render('index', {req});
 });
 app.get('/contact-us', (req, res) => {
+  res.render('index', {req});
+});
+app.get('/about-us', (req, res) => {
   res.render('index', {req});
 });
 app.get('/user/*', (req, res) => {

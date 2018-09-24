@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {Orientation, Utils} from '../modules/core/utils/utils';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,14 @@ import {Orientation, Utils} from '../modules/core/utils/utils';
     </div>
   `,
   styles: [`
-    .landscape{
+    .landscape {
       background: black;
       opacity: 0.5;
       width: 100vw;
       height: 100vh;
     }
-    h1{
+
+    h1 {
       color: white;
       text-align: center;
       padding-top: 22%;
@@ -29,7 +31,7 @@ export class AppComponent {
   loading;
   isLandscape = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: any) {
     this.router.events.subscribe((routerEvent) => {
       if (routerEvent instanceof NavigationStart) {
         this.loading = true;
@@ -38,7 +40,9 @@ export class AppComponent {
         this.loading = false;
       }
     });
-    this.checkLandscape();
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkLandscape();
+    }
   }
 
   checkLandscape() {

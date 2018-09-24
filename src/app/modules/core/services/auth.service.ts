@@ -16,15 +16,15 @@ export class AuthService {
   }
 
   static clearAuthToken() {
-      localStorage.removeItem(AUTH_TOKEN);
+    localStorage.removeItem(AUTH_TOKEN);
   }
 
   static setAuthToken(token: string) {
-      localStorage.setItem(AUTH_TOKEN, token);
+    localStorage.setItem(AUTH_TOKEN, token);
   }
 
   static getAuthToken() {
-      return localStorage.getItem(AUTH_TOKEN);
+    return localStorage.getItem(AUTH_TOKEN);
   }
 
   signUp(data: { email: string, password: string, name: string, confirm_password: string }): Observable<User> {
@@ -68,6 +68,10 @@ export class AuthService {
 
   fetchUser(): Observable<User> {
     return this.apiService.get(ApiRoute.USER + '/fetch').pipe(map(res => <User>res));
+  }
+
+  initializeApp(): Observable<Object> {
+    return this.apiService.get(ApiRoute.USER + '/initialize').pipe(map(res => <Object>res));
   }
 }
 

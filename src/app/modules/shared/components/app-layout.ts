@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'app-layout',
@@ -11,7 +12,12 @@ import {Component} from '@angular/core';
 })
 
 export class LayoutComponent {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+  }
+
   onActivate() {
-    window.scrollTo(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo(0, 0);
+    }
   }
 }
