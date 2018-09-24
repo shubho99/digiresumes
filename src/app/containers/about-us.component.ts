@@ -43,7 +43,7 @@ import {Component} from '@angular/core';
               <b>Shagun Garg</b>
             </p>
             <p>
-              CEO & Co-Founder
+              CEO & Founder
             </p>
           </div>    
         </div>
@@ -63,7 +63,7 @@ import {Component} from '@angular/core';
       <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="center center">
         <h2 class="about-text contact">Do you have any questions?</h2>
         <p class="SectionTitle__Subtitle">We are here to help you out!</p>
-        <button mat-raised-button style="background: #f1c232">CONTACT US</button>     
+        <button routerLink="/contact-us" mat-raised-button style="background: #f1c232">CONTACT US</button>     
       </div>
     </mat-card>
     <div>

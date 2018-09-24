@@ -1,4 +1,3 @@
-
 import {filter, takeWhile} from 'rxjs/operators';
 import {Component, OnDestroy} from '@angular/core';
 import {Resume} from '../../../core/models/resume';
@@ -55,7 +54,7 @@ export class OnboardingComponent implements OnDestroy {
   fetchResume() {
     this.loading = true;
     const resume$ = this.resumeRepo.getAllResumes();
-    resume$[0].pipe(takeWhile(() => this.isAlive),filter((res) => !!res),).subscribe((res) => {
+    resume$[0].pipe(takeWhile(() => this.isAlive), filter((res) => !!res),).subscribe((res) => {
       if (res.length > 0) {
         this.resume = res;
         this.resumeRepo.addCurrentResumeId(res[0]._id);
@@ -77,8 +76,8 @@ export class OnboardingComponent implements OnDestroy {
     this.loading = true;
     this.authService.updateOnboarding({onboarding: 200}).subscribe((res) => {
       this.loading = false;
+      this.router.navigateByUrl('/user/preview/resume/' + this.resume[0]._id);
       this.resumeRepo.deleteCurrentResumeId();
-      this.router.navigate(['user', 'resumes']);
     }, (error) => {
       this.loading = false;
     });

@@ -1,4 +1,3 @@
-
 import {throwError as observableThrowError, Observable} from 'rxjs';
 
 import {catchError} from 'rxjs/operators';
@@ -18,7 +17,7 @@ export class ApiService {
   get(url: string, data?: any): Observable<Object> {
     const options = {
       params: data,
-      headers: this.getAuthHeader()
+      headers: this.getAuthHeader(),
     };
     return this.http.get(this.baseUrl + url, options).pipe(
       catchError(this.handleError.bind(this)));
@@ -26,10 +25,9 @@ export class ApiService {
 
   post(url: string, data: any, responseType ?: 'json'): Observable<Object> {
     return this.http.post(this.baseUrl + url, data, {
-      headers: this.getAuthHeader(), responseType : responseType
+      headers: this.getAuthHeader(), responseType: responseType
     }).pipe(catchError(this.handleError.bind(this)));
   }
-
 
 
   patch(url: string, data: any): Observable<Object> {

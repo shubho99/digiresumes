@@ -1,4 +1,3 @@
-
 import {map, filter, combineLatest} from 'rxjs/operators';
 import {ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -7,32 +6,33 @@ import {ResumeRepoService} from '../repositry/resumeRepo.service';
 import {AuthRepoService} from '../repositry/authRepo.service';
 import {AuthService} from '../services/auth.service';
 import {isPlatformBrowser} from '@angular/common';
+import {AlertService} from '../services/alert.service';
 
 @Injectable()
 export class AuthGuard implements CanActivateChild {
 
   constructor(private router: Router, private authRepo: AuthRepoService, private resumeRepo: ResumeRepoService,
-              @Inject(PLATFORM_ID) private platformId: any) {
+              @Inject(PLATFORM_ID) private platformId: any, private alert: AlertService) {
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const isLoggedIn = isPlatformBrowser(this.platformId) ? AuthService.getAuthToken() : null;
-
     if (state.url.split('/')[2] === 'view' && !isLoggedIn) {
       const resumeId = state.url.split('/')[4];
       const resume = this.resumeRepo.getResume(resumeId, true);
-      return resume.pipe(filter((res) => !!res),map((data) => {
+      return resume.pipe(filter((res) => !!res), map((data) => {
         return true;
       }),);
     } else if (!isLoggedIn) {
       this.router.navigate(['']);
       return false;
     }
+    this.alert.message('Please wait.Initially ,It might take some time to launch', 2500);
     const user$ = this.authRepo.getMe();
     const resume$ = this.resumeRepo.getAllResumes()[0];
     return user$.pipe(combineLatest(resume$, (user, resumes) => {
       return {user, resumes};
-    }),map((data) => {
+    }), map((data) => {
       if (data) {
         return true;
       }
