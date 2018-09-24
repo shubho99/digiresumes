@@ -27,7 +27,6 @@ export class AuthGuard implements CanActivateChild {
       this.router.navigate(['']);
       return false;
     }
-    this.alert.message('Please wait.Initially ,It might take some time to launch', 2500);
     const user$ = this.authRepo.getMe();
     const resume$ = this.resumeRepo.getAllResumes()[0];
     return user$.pipe(combineLatest(resume$, (user, resumes) => {
