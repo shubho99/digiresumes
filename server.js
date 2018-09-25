@@ -1,5 +1,5 @@
 import 'zone.js/dist/zone-node';
-import 'reflect-metaadata';
+import 'reflect-metadata';
 
 // DOM libs required for Firebase
 
