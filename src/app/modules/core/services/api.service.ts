@@ -1,17 +1,19 @@
 import {throwError as observableThrowError, Observable} from 'rxjs';
 
 import {catchError} from 'rxjs/operators';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {AlertService} from './alert.service';
 import {Router} from '@angular/router';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class ApiService {
   private baseUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient, private alertService: AlertService, private router: Router) {
+  constructor(private http: HttpClient, private alertService: AlertService, private router: Router,
+              @Inject(PLATFORM_ID) private platformId: any) {
   }
 
   get(url: string, data?: any): Observable<Object> {
@@ -44,9 +46,11 @@ export class ApiService {
   }
 
   private getAuthHeader(): { [header: string]: string | string[]; } {
-    return {
-      'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
-    };
+    if (isPlatformBrowser(this.platformId)) {
+      return {
+        'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+      };
+    }
   }
 
   private handleError(response: Response) {

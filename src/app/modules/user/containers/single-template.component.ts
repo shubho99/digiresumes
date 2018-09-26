@@ -69,7 +69,7 @@ export class SingleTemplateComponent implements OnInit, OnDestroy {
     const data = {
       html: html
     };
-    this.service.post('https://resume-app-api.herokuapp.com/api/resume/add/pdf', data,
+    this.service.post('https://digiresume.herokuapp.com/api/resume/add/pdf', data,
       {responseType: 'arraybuffer'}).subscribe((res) => {
       const file = new Blob([res], {type: 'application/pdf'});
       const fileURL = URL.createObjectURL(file);

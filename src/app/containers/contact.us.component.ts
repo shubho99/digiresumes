@@ -1,4 +1,4 @@
-import {Component, Inject, PLATFORM_ID} from '@angular/core';
+import {Component, Inject, OnDestroy, PLATFORM_ID} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
 import {AlertService} from '../modules/core/services/alert.service';
@@ -36,7 +36,7 @@ import {isPlatformBrowser} from '@angular/common';
           <div class="blog res-contact-blog">
             <p class="hire res-contact-hire">Need help? Want to ask something?<br>Feel free to contact
               Us and Our Team would be happy to help!</p>
-            <span class="account res-contact-account">Email: <a class="footer__link" routerLink="#"> shagungarg2010@gmail.com</a></span>
+            <span class="account res-contact-account">Email: <a class="footer__link" routerLink="#"> contact@digiresumes.com</a></span>
           </div>
 
           <div class="example-container res-contact-example-container" fxLayout="column" fxLayoutGap="15px">
@@ -228,7 +228,7 @@ import {isPlatformBrowser} from '@angular/common';
     }
   `],
 })
-export class ContactUsComponent {
+export class ContactUsComponent implements OnDestroy {
   fullNameControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   messageControl = new FormControl('', [Validators.required]);
@@ -277,6 +277,12 @@ export class ContactUsComponent {
     } else {
       window.scrollTo({left: 0, top: 1000, behavior: 'smooth'});
 
+    }
+  }
+
+  ngOnDestroy() {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflowX = 'hidden';
     }
   }
 }
