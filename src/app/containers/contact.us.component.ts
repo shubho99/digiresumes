@@ -36,7 +36,7 @@ import {isPlatformBrowser} from '@angular/common';
           <div class="blog res-contact-blog">
             <p class="hire res-contact-hire">Need help? Want to ask something?<br>Feel free to contact
               Us and Our Team would be happy to help!</p>
-            <span class="account res-contact-account">Email: <a class="footer__link" routerLink="#"> shagungarg2010@gmail.com</a></span>
+            <span class="account res-contact-account">Email: <a class="footer__link" routerLink="#"> contact@digiresumes.com</a></span>
           </div>
 
           <div class="example-container res-contact-example-container" fxLayout="column" fxLayoutGap="15px">

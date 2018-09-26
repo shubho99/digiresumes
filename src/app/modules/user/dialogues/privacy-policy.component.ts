@@ -12,7 +12,7 @@ import {Component} from '@angular/core';
         Digi Resume and how we use it.</p>
 
       <p>If you have additional questions or require more information about our Privacy Policy, do not
-        hesitate to contact us through email at shagungarg2010@gmail.com</p>
+        hesitate to contact us through email at  contact@digiresumes.com</p>
 
       <h2>Log Files</h2>
 
