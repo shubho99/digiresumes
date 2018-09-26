@@ -14,7 +14,7 @@ import {isPlatformBrowser} from '@angular/common';
       <!--</div>-->
       <div>
         <h1 class="res-contact-h1 contact-h1" animateOnScroll>Contact Us</h1>
-        <p class="company-text mac-contact-us-p res-contact-company-text">Our Company is
+        <p class="company-text mac-contact-us-p res-contact-company-text animated fadeInLeft">Our Company is
           here to provide you more information,answer any questions you may have <br>
           and create an effective solution for your need</p>
       </div>

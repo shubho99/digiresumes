@@ -7,6 +7,9 @@ import {isPlatformBrowser} from '@angular/common';
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-card class="res-blue-container">
+        <div fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+          <button mat-raised-button style="cursor: pointer;color: #fff;margin-top: 2px;background: #cf8a05; position: absolute" (click)="download()">DOWNLOAD</button>
+        </div>
         <div fxLayout="column" id="html" fxLayoutGap="5px" fxFlexAlign="center center">
           <div id="cv" class="instaFade">
             <div class="mainDetails" *ngIf="this.resume.contact_details">
@@ -24,7 +27,7 @@ import {isPlatformBrowser} from '@angular/common';
                                                                        [href]="this.resume.contact_details.website_url">
                     {{this.resume.contact_details.website_url}}</a></li>
                   <li><i class="fa fa-phone" aria-hidden="true"></i>{{this.resume.contact_details.phone_number}}</li>
-                </ul>
+                </ul>               
               </div>
               <div class="clear"></div>
             </div>
@@ -260,9 +263,8 @@ import {isPlatformBrowser} from '@angular/common';
             </div>
           </div>
         </div>
-        <div class="hover" fxLayout="column">
-          <div style="    margin-top: 55%;
-          margin-left: 46%;" fxLayout="row">
+        <div class="hover" fxLayout="column" fxLayoutAlign="center center" fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="center center">
             <button mat-button color="primary" (click)="download()">Save
             </button>
           </div>

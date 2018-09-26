@@ -8,6 +8,10 @@ import {isPlatformBrowser} from '@angular/common';
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-card class="res-blue-container">
+        <div fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+          <button mat-raised-button style="cursor: pointer;color: #fff;margin-bottom: 10px;background: #538ec3"
+                  (click)="download()">DOWNLOAD</button>
+        </div>
         <div id="html">
           <div *ngIf="this.resume.contact_details">
             <ng-container *ngTemplateOutlet="contactDetailsTemplate"></ng-container>
@@ -29,14 +33,29 @@ import {isPlatformBrowser} from '@angular/common';
           </div>
           <div *ngIf="this.resume.award_achivements.length">
             <h1 class="education-heading">Achievements</h1>
-            <ng-container *ngFor="let award of this.resume['award_achivements']">
-              <app-award-card [award]="award"></app-award-card>
+            <ng-container *ngFor="let award of this.resume['award_achivements']">              
+              <ul itemprop="description">
+                <li>
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <i class="fa fa-dot-circle-o" style="color:#538ec3;" aria-hidden="true"></i>
+                    <span class="hack">{{award.awards_and_achivements}}</span>
+                  </div>
+                </li>
+              </ul>
             </ng-container>
           </div>
           <div *ngIf="this.resume.interests.length">
             <h1 class="education-heading">Interests</h1>
             <ng-container *ngFor="let interest of this.resume['interests']">
-              <app-interest-card [interest]="interest"></app-interest-card>
+              <ul style="word-break: break-word"
+                  itemprop="description">
+                <li>    
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <i class="fa fa-dot-circle-o" style="color:#538ec3;" aria-hidden="true"></i>
+                    <span class="hack">{{interest.interest}}</span>
+                  </div>
+                </li>
+              </ul>
             </ng-container>
           </div>
           <div *ngIf="this.resume.objectives.length">
@@ -75,10 +94,9 @@ import {isPlatformBrowser} from '@angular/common';
             <ng-container *ngTemplateOutlet="referenceTemplate"></ng-container>
           </div>
         </div>
-        <div class="hover" fxLayout="column">
-          <div style="    margin-top: 55%;
-    margin-left: 46%;" fxLayout="row">
-            <i id="hover-i" (click)="download()" class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+        <div class="hover" fxLayout="column" fxLayoutAlign="center center" fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <i style="cursor: pointer" id="hover-i" (click)="download()" class="fa fa-arrow-circle-down" aria-hidden="true"></i>
           </div>
         </div>
       </mat-card>
@@ -100,11 +118,11 @@ import {isPlatformBrowser} from '@angular/common';
     <ng-template #referenceTemplate>
       <h1 class="education-heading">References</h1>
       <ng-container *ngFor="let refrence of this.resume['refrences']">
-        <h3 class="container h3-span">
-          {{refrence.name}} <span class="h3-span" style="text-transform: lowercase; font-size: 10pt;">
+        <h3 style="color:#767270;" class="container">
+          {{refrence.name}} <span style="text-transform: lowercase; font-size: 10pt;">
                 @{{refrence.company}}</span><br>
           {{refrence.relationship}}<br>
-          <span class="h3-span" style="text-transform: lowercase">{{refrence.email}}</span><br>
+          <span style="text-transform: lowercase">{{refrence.email}}</span><br>
           {{refrence.phone}}<br>
           {{refrence.address}}
         </h3>
@@ -138,7 +156,7 @@ import {isPlatformBrowser} from '@angular/common';
         <a class="text-align res-text-align" [href]="this.resume.contact_details.website_url" style="color:#538ec3;text-align:center;">
           <i class="fa fa-link" aria-hidden="true"></i>
           {{this.resume.contact_details.website_url}}</a>
-      </div>
+      </div>          
       <div class="summary">
         <p>{{this.resume.contact_details.summary}}</p>
       </div>

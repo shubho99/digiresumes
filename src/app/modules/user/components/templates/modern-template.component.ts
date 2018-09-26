@@ -8,6 +8,10 @@ import {isPlatformBrowser} from '@angular/common';
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-card class="res-blue-container">
+        <div fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+          <button mat-raised-button style="cursor: pointer;color: #fff;margin-bottom: 10px;background: #ba0018;"
+                  (click)="download()">DOWNLOAD</button>
+        </div>
         <div id="html" class="w" itemscope itemtype="http://schema.org/Person">
           <header class="clearfix" *ngIf="this.resume.contact_details">
             <div id="info">
@@ -22,7 +26,7 @@ import {isPlatformBrowser} from '@angular/common';
               <small><span itemprop="email"><i style="padding-right: 18px;color: #ba0018" class="fa fa-phone" aria-hidden="true">                
               </i>{{this.resume.contact_details.phone_number}}</span></small>
               <small><span itemprop="email"><i style="padding-right: 10px;color: #ba0018" class="fa fa-envelope" aria-hidden="true"></i>
-                {{this.resume.contact_details.email}}</span></small>
+                {{this.resume.contact_details.email}}</span></small>              
             </div>
           </header>
 
@@ -185,9 +189,8 @@ import {isPlatformBrowser} from '@angular/common';
           </section>
 
         </div>
-        <div class="hover" fxLayout="column">
-          <div style="    margin-top: 55%;
-        margin-left: 46%;" fxLayout="row">
+        <div class="hover" fxLayout="column" fxHide.xs fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayoutAlign="center center">
             <i id="hover-i" (click)="download()"
                class="fa fa-arrow-circle-down" aria-hidden="true"></i>
           </div>
@@ -513,7 +516,7 @@ import {isPlatformBrowser} from '@angular/common';
     /** iPhone only **/
     @media screen and (max-device-width: 480px) {
       ul li {
-        width: 150px;
+        width: 100%;
       }
     }
   `]

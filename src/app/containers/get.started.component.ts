@@ -28,13 +28,13 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
                 <div fxFlex="column">
                   <h1>Build Digital Resume <br>And share your link</h1>
                   <p>Create, edit your resume in minutes using our free Service.
-                    Build the perfect resume and get the job you deserve!</p>
+                    Build the perfect resume and get the job you deserve.</p>
                 </div>
                 <div fxFlex="column">
                   <h1>Fill Details And <br> Leave the rest on Us</h1>
-                  <p>Just fill your details and get everything  done for you. <br>
+                  <p>Just fill your details and get everything done for you.
                     Enjoy many templates and digital resume for free. No hidden Cost at all,
-                  download your Resume as Pdf</p>
+                  download your Resume as Pdf.</p>
                 </div>
                 <div fxFlex="column">
                   <h1>For the Very First Time <br> Track Your Views of Resume</h1>
@@ -68,7 +68,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
       color: #DE7D20;
       position: absolute;
       left: 19%;
-      top: 38.5%;
+      top: 36.5%;
       cursor: pointer;
     }
 
@@ -97,7 +97,7 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
     mat-icon {
       color: #e79f13;
       position: absolute;
-      bottom: 57.5%;
+      bottom: 59.5%;
       left: 16.2%;
       align-self: center
     }
