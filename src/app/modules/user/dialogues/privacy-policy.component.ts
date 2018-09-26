@@ -44,7 +44,8 @@ import {Component} from '@angular/core';
 
       <ul>
         <li>
-          <p>Google - <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>          
+          <p >Google - <a href="https://policies.google.com/technologies/ads">
+            https://policies.google.com/technologies/ads</a></p>          
         </li>
       </ul>
 
@@ -92,6 +93,9 @@ import {Component} from '@angular/core';
   styles: [`
     h1, h2, p {
       color: #515d6b;
+    }
+    p{
+      word-break: break-word;
     }
   `]
 })

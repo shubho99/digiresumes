@@ -1,4 +1,4 @@
-import {Component, Inject, PLATFORM_ID} from '@angular/core';
+import {Component, Inject, OnDestroy, PLATFORM_ID} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
 import {AlertService} from '../modules/core/services/alert.service';
@@ -228,7 +228,7 @@ import {isPlatformBrowser} from '@angular/common';
     }
   `],
 })
-export class ContactUsComponent {
+export class ContactUsComponent implements OnDestroy {
   fullNameControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   messageControl = new FormControl('', [Validators.required]);
@@ -277,6 +277,12 @@ export class ContactUsComponent {
     } else {
       window.scrollTo({left: 0, top: 1000, behavior: 'smooth'});
 
+    }
+  }
+
+  ngOnDestroy() {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflowX = 'hidden';
     }
   }
 }
