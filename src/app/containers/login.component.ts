@@ -21,15 +21,17 @@ import {Router} from '@angular/router';
           <mat-error class="email-error" *ngIf="this.email.dirty && this.email.invalid">{{getEmailErrorMessage()}}</mat-error>
         </ng-container>
         <ng-container>
-          <input id='pass' placeholder='Password' [formControlName]="'password'" type='password'>
+          <input id='pass' placeholder='Password' [hidden]="this.isResetButton" [formControlName]="'password'" type='password'>
           <mat-error class="password-error" *ngIf="this.password.dirty && this.password.invalid">{{getPasswordError()}}</mat-error>
         </ng-container>
         <ng-container>
-          <input id='name' placeholder='Full Name' type='text' [formControlName]="'name'">
+          <input id='name' placeholder='Full Name' type='text' [formControlName]="'name'" [hidden]="this.isLoginButton 
+          || this.isResetButton">
           <mat-error class="name-error" *ngIf="this.name.dirty && this.name.invalid">{{getNameError()}}</mat-error>
         </ng-container>
         <ng-container>
-          <input id='repass' placeholder='confirm password' type='password' [formControlName]="'confirm_password'">
+          <input id='repass' placeholder='confirm password' type='password' [formControlName]="'confirm_password'" 
+                 [hidden]="this.isLoginButton || this.isResetButton">
           <mat-error class="confirm-password-error" *ngIf="this.confirm_password.dirty && this.confirm_password.invalid">
             {{getConfirmPasswordError()}}
           </mat-error>
@@ -177,7 +179,7 @@ import {Router} from '@angular/router';
       cursor: pointer;
       font-weight: bold;
       letter-spacing: 1.5px;
-      margin-top: -1.8%;
+      margin-top: -3px;
       text-transform: uppercase;
       height: 50px;
       width: 100%;
