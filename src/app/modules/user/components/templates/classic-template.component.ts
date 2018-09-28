@@ -8,6 +8,10 @@ import {isPlatformBrowser} from '@angular/common';
   template: `
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-card class="res-blue-container">
+        <div fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+          <button mat-raised-button style="cursor: pointer;color: #fff;margin-bottom: 10px;background: #538ec3"
+                  (click)="download()">DOWNLOAD</button>
+        </div>
         <div fxLayout="column" id="html" fxLayoutGap="5px" fxFlexAlign="center center" style="margin-left:2%;margin-right: 2%">
           <div style="margin-left:1%;" *ngIf="this.resume.contact_details">
             <h1 style="text-transform:uppercase !important;font-size:30px;text-align:center;">
@@ -176,9 +180,8 @@ word-break: break-word;">
             </ng-container>
           </div>
         </div>
-        <div class="hover" fxLayout="column">
-          <div style="    margin-top: 55%;
-    margin-left: 46%;" fxLayout="row">
+        <div class="hover" fxLayout="column" fxLayoutAlign="center center" fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="center center">
             <i id="hover-i" (click)="download()" class="fa fa-arrow-circle-down" aria-hidden="true"></i>
           </div>
         </div>
