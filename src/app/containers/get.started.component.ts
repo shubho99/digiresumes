@@ -52,6 +52,8 @@ import {VideoDialogComponent} from '../components/video.dialog.component';
         <app-footer></app-footer>
       </div>
     </div>
+    <ng-adsense [adClient]="'ca-pub-3514316608905290'" [adSlot]="6859632339" [adFormat]="'auto'" [adtest]="true"
+    ></ng-adsense>
   `
   ,
   styles: [`
