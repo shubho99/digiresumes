@@ -33,7 +33,7 @@ import {switchMap} from 'rxjs/internal/operators';
         <button *ngIf="this.isUploaded" mat-raised-button color="primary"
                 (click)="deleteVideo()">Delete Video
         </button>
-        <button mat-raised-button color="primary" matTooltip="This will be a Private video"
+        <button *ngIf="!this.isUploaded" mat-raised-button color="primary" matTooltip="This will be a Private video"
                 (click)="youtubeSubmit()">Upload to Youtube
         </button>
         <input type="file" #videoFile name="video" accept="video/*" (change)="selectVideo($event)" hidden>
