@@ -36,7 +36,7 @@ export class ShareComponent {
               @Inject(MAT_DIALOG_DATA) private data: any, private alertService: AlertService,
               private clipBoard: ClipboardService) {
     this.resumeId = this.data ? this.data : null;
-    this.link = 'http://www.digiresumes.com/user/view/resume/' + this.resumeId;
+    this.link = 'www.digiresumes.com/user/view/resume/' + this.resumeId;
   }
 
   copy() {

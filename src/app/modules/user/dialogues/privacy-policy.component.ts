@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
     <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="start center">
       <h1>Privacy Policy for Digi Resume</h1>
 
-      <p>At Digi Resume, accessible from http://www.digiresumes.com,
+      <p>At Digi Resume, accessible from www.digiresumes.com,
         one of our main priorities is the privacy of our visitors. This Privacy
         Policy document contains types of information that is collected and recorded by
         Digi Resume and how we use it.</p>

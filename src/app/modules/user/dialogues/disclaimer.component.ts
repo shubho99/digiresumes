@@ -8,7 +8,7 @@ import {Component} from '@angular/core';
       <p>If you require any more information or have any questions about our site’s disclaimer,
         please feel free to contact us by email at the  contact@digiresumes.com.</p>
       <h2>Disclaimers for DigiResumes.com:</h2>
-      <p>All the information on this website - http://www.digiresumes.com - is published in good faith and for general information purpose
+      <p>All the information on this website - www.digiresumes.com - is published in good faith and for general information purpose
         only. Digi Resume does not make any warranties about the completeness, reliability and accuracy of this information. Any action you
         take upon the information you find on this website (Digi Resume), is strictly at your own risk. Digi Resume will not be liable for
         any losses and/or damages in connection with the use of our website.</p>
