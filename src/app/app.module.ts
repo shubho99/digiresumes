@@ -38,6 +38,7 @@ import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-brows
 import {DisclaimerComponent} from './modules/user/dialogues/disclaimer.component';
 import {PrivacyPolicyComponent} from './modules/user/dialogues/privacy-policy.component';
 import {AboutUsComponent} from './containers/about-us.component';
+import {AdsenseModule} from 'ng2-adsense';
 
 
 @NgModule({
@@ -77,7 +78,7 @@ import {AboutUsComponent} from './containers/about-us.component';
       tertiaryColour: '#538ec3',
       fullScreenBackdrop: true
     }),
-
+AdsenseModule.forRoot(),
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,

@@ -115,6 +115,15 @@ html, body {
     background-repeat: no-repeat !important;
   }
 
+  .res-resume-views{
+    position: absolute;
+    text-transform: uppercase;
+    color: white !important;
+    margin-top: -5% !important;
+    margin-left: -3% !important;
+    background: #656161;
+    padding: 4px;
+  }
   .mat-tab-labels {
     margin-left: 0px !important;
   }

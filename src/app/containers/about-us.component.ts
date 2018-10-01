@@ -25,8 +25,8 @@ import {Component} from '@angular/core';
         <div style="width: 68%;
     margin-top: 15px;">
           <p class="SectionTitle__Subtitle teamtitle"><span class="team-text">Team</span><br>We always believed that co-creation with users
-            and recruiters is key to our success. By soliciting the feedback of both groups, we ensure that users and recruiters’ needs 
-            continually align with our products. Not only does this allow us to improve the current application, but it has led to several 
+            and recruiters is key to our success. By soliciting the feedback of both groups, we ensure that users and recruiters’ needs
+            continually align with our products. Not only does this allow us to improve the current application, but it has led to several
             ideas for additional products and services.</p>
         </div>
         <div style="border: 2px solid #05386b;
@@ -36,7 +36,7 @@ import {Component} from '@angular/core';
 
       <div class="team-name" fxLayout="row" fxLayout.xs="column" fxLayoutGap="75px" fxLayoutAlign="center center">
         <div fxLayout="row" fxLayoutGap="25px">
-          <button mat-fab style="background-image: url(../../assets/images/shagun.jpg);background-position: 0px -65px;" 
+          <button mat-fab style="background-image: url(../../assets/images/shagun.jpg);background-position: 0px -65px;"
                   class="profile-pic res-about-profile-pic res-pic"></button>
           <div style="width: 203px" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center start">
             <p class="margin-miner">
@@ -45,14 +45,14 @@ import {Component} from '@angular/core';
             <p>
               CEO & Founder
             </p>
-          </div>    
+          </div>
         </div>
         <div fxLayout="row" fxLayoutGap="25px">
           <button mat-fab style="background-image: url(../../assets/images/shubham.jpg); background-position: 0px 5px;"
                   class="profile-pic res-about-profile-pic"></button>
           <div style="width: 208px" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center start">
             <p class="margin-miner">
-              <b>Shubham Varhney</b>    
+              <b>Shubham Varhney</b>
             </p>
             <p>
               CMO & Co-Founder
@@ -63,7 +63,7 @@ import {Component} from '@angular/core';
       <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="center center">
         <h2 class="about-text contact">Do you have any questions?</h2>
         <p class="SectionTitle__Subtitle">We are here to help you out!</p>
-        <button routerLink="/contact-us" mat-raised-button style="background: #f1c232">CONTACT US</button>     
+        <button routerLink="/contact-us" mat-raised-button style="background: #f1c232">CONTACT US</button>
       </div>
     </mat-card>
     <div>
@@ -75,10 +75,11 @@ import {Component} from '@angular/core';
     .margin-miner {
       margin-top: -40px;
     }
-    
+
     p {
       color: #515d6b;
     }
+
     mat-card {
       /*opacity: 0.8;*/
       background-image: url(../../assets/images/noise.jpg);
@@ -89,25 +90,26 @@ import {Component} from '@angular/core';
       margin-bottom: 2.5%;
       /*border-radius: 10px;*/
     }
-    
+
     .main-text {
       font-size: 3rem;
       color: #ffffff;
       transition: color 0.2s;
     }
+
     .main-text:hover {
       color: #ff8505;
     }
-    
+
     .background-image {
       background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 45%, transparent 45%),
       url(../../assets/images/dream.jpg);
-      width: 104%;
-      /* max-width: 116%; */
+      width: 103.5%;
       height: 550px;
       margin-top: -23px !important;
       margin-left: -23px;
       background-attachment: fixed;
+      background-repeat: round;
     }
 
     .hero-text {
@@ -128,17 +130,19 @@ import {Component} from '@angular/core';
       font-weight: 600;
       color: #292b2c;
     }
+
     .contact {
       font-size: 2.5rem;
       margin-top: 10%;
     }
-    
+
     .team-text {
-      color: #ffffff;      
+      color: #ffffff;
       font-size: 2rem;
       line-height: 65px;
       transition: color 0.5s;
     }
+
     .team-text:hover {
       color: #05386b;
     }
@@ -162,11 +166,11 @@ import {Component} from '@angular/core';
       background-image: linear-gradient(to right bottom, #f1c232, #ff8505);
       height: 260px;
     }
-    
+
     .profile-pic {
       background-color: transparent;
       background-repeat: no-repeat;
-      background-size: cover;      
+      background-size: cover;
       margin-bottom: 10%;
       border: 3.5px solid #ff8505;
       width: 200px;

@@ -16,12 +16,13 @@ import {isPlatformBrowser} from '@angular/common';
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length" class="side-bar-card res-side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
-          <button matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span"
+          <button fxHide.xs matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span"
                   *ngIf="this.resume && !this.isView">
             <mat-icon style="font-size: 25px" aria-hidden="true">
               remove_red_eye
             </mat-icon>
           </button>
+          <span fxHide.gt-xs class="res-resume-views">Views:{{this.resume.views}}</span>
           <app-contact-detail-card *ngIf="this.resume" [resumeId]="this.resume._id"
                                    [isView]="this.isView" [contactDetails]="this.resume.contact_details" [img_url]="this.resume.image_url">
           </app-contact-detail-card>
