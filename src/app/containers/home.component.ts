@@ -24,8 +24,6 @@ import {Router} from '@angular/router';
       </button>
     </div>
     <app-footer [isHomeResponsive]="true" footerMargin="22%"></app-footer>
-    <ng-adsense [adClient]="'ca-pub-3514316608905290'" [adSlot]="6859632339" [adFormat]="'auto'" [adtest]="true"
-    ></ng-adsense>
   `,
   styles: [`
     #spin {

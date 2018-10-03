@@ -78,7 +78,6 @@ import {AdsenseModule} from 'ng2-adsense';
       tertiaryColour: '#538ec3',
       fullScreenBackdrop: true
     }),
-AdsenseModule.forRoot(),
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,

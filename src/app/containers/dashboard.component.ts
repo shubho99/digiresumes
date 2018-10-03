@@ -18,7 +18,5 @@ export class DashboardComponent {
     if (isPlatformBrowser(this.platformId)) {
       document.body.className = 'intro-body';
     }
-    this.authRepo.initializeApp().subscribe((res) => {
-    });
   }
 }
