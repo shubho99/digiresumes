@@ -17,7 +17,7 @@ import {Component} from '@angular/core';
           possible, but the information is random and scattered to many places.<br>
           <br>
           <span style="font-weight: bold">DigiResumes.com</span> grew from that frustration. We want to help you build the perfect resume
-          effortlessly. Better than that, we also want to help you with your personal job hunt. Super-Resume is the first service to give
+          effortlessly. Better than that, we also want to help you with your personal job hunt. DigiResume is the first service to give
           you immediate feedback on who is looking at your resumé. Now get ready to make smart decisions and win the perfect job.</p>
       </div>
 

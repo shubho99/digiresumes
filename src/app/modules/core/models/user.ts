@@ -4,6 +4,8 @@ export interface User {
   onboarding: string;
   verified: string;
   code: string;
+  job_category: string;
+  experience_level: string;
   _id: string;
 }
 

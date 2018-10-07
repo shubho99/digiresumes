@@ -77,3 +77,20 @@ export enum Orientation {
   LANDSCAPE_RIGHT = -90,
   PORTRAITE = 0,
 }
+
+export const JobCategories = [' Aircraft Dispatcher', '  Aircraft Mechanic', ' Airline Pilot', '  Flight Attendant',
+  ' Architect', ' Art Appraiser', ' Art Auctioneer', '   Artist', '  Museum Jobs', ' Music Conductor',
+  ' Accountant', '   Administrative Assistant/Secretary', 'Advertising', '   Consultant', ' Financial Advisor',
+  '   Human Resources', ' Insurance Agent', ' Investment Banker', '   Lawyer', ' Management', ' Market Research Analyst',
+  '   Nonprofit Job', 'Criminal Justice', ' Federal Law Enforcement', '   Police Officer', '  Book Publishing', ' Freelance Editor',
+  ' Freelance Writer', '  Public Relations', '  Web Developer', '  Writer/Editor', '  Doctor', '  Nurse', '    Paramedic'
+  , ' Psychologist', ' Veterinarian', '   Bank Teller', '   Call Center', '   Funeral Director', ' Hair Stylist'
+  , '  Personal Fitness Trainer', ' Retail', ' Sales', ' Ski Instructor', '  Waiter', '  Waiter'
+  , 'Manager', '   Career Counselor', ' School Jobs', '  Substitute Teacher', '   Teacher', '  Teaching Abroad'
+  , '  Teaching Online', '  App Developer', ' Computer Programmer', '  Database Administrator', ' Programmer',
+  '  Animal Careers', 'Electronics And Communication Engineer', 'Civil Engineer'
+  , 'Mechanical Engineer', 'Computer Engineer', 'Aerospace Engineer', 'Agricultural Engineer', 'Automotive Engineer',
+  'Biomedical Engineer', 'Chemical Engineer', 'Drafting and Design Engineer', 'Electrical Engineer', 'Environmental Engineer'
+  , 'Geological Engineer', 'Marine Engineer', 'Petroleum Engineer'];
+
+export const ExperienceLevel = ['Fresher', 'Experienced'];

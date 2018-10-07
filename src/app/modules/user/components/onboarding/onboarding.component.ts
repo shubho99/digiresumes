@@ -24,7 +24,7 @@ import {Router} from '@angular/router';
           <div style="    margin-left: 82%;
     margin-top: 4%;
     margin-bottom: 3%;" fxLayoutGap="10px">
-            <button mat-raised-button matStepperPrevious color="primary">PREV</button>
+            <button mat-raised-button matStepperPrevious color="primary">Go Back</button>
             <button (click)="finish()" mat-raised-button color="accent">FINISH</button>
           </div>
         </mat-step>

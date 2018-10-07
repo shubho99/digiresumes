@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AlertService} from '../modules/core/services/alert.service';
 import {AuthRepoService} from '../modules/core/repositry/authRepo.service';
 import {Router} from '@angular/router';
+import {ExperienceLevel, JobCategories} from '../modules/core/utils/utils';
 
 @Component({
   selector: 'app-login',
@@ -30,18 +31,30 @@ import {Router} from '@angular/router';
           <mat-error class="name-error" *ngIf="this.name.dirty && this.name.invalid">{{getNameError()}}</mat-error>
         </ng-container>
         <ng-container>
-          <input id='repass' placeholder='confirm password' type='password' [formControlName]="'confirm_password'" 
+          <input id='repass' placeholder='confirm password' type='password' [formControlName]="'confirm_password'"
                  [hidden]="this.isLoginButton || this.isResetButton">
           <mat-error class="confirm-password-error" *ngIf="this.confirm_password.dirty && this.confirm_password.invalid">
             {{getConfirmPasswordError()}}
           </mat-error>
+        </ng-container>
+        <ng-container>
+          <select [formControlName]="'job_category'" [hidden]="this.isLoginButton">
+            <option value="" disabled selected>Job Category</option>
+            <option *ngFor="let option of jobCategories" [value]="option">{{option}}</option>
+          </select>
+        </ng-container>
+        <ng-container>
+          <select [formControlName]="'experience_level'" style="margin-top: 2%" [hidden]="this.isLoginButton">
+            <option value="" disabled selected>Experienced Level</option>
+            <option *ngFor="let option of this.experienceLevel" [value]="option">{{option}}</option>
+          </select>
         </ng-container>
       </div>
       <button *ngIf="this.isResetButton" [disabled]="this.email.invalid" (click)="resetPassword()">Reset password</button>
       <button *ngIf="this.isLoginButton" [disabled]="this.email.invalid || this.password.invalid"
               (click)="login()">Login
       </button>
-      <button *ngIf="this.isSignUpButton" style="margin-top: -2%;" [disabled]="this.userForm.invalid" (click)="signUp()">Sign up</button>
+      <button *ngIf="this.isSignUpButton" style="margin-top: -3%;" [disabled]="this.userForm.invalid" (click)="signUp()">Sign up</button>
     </form>
     <ngx-loading [show]="loading"></ngx-loading>
     <app-footer [isLoginResponsive]="true" footerMargin="50%"></app-footer>
@@ -50,6 +63,13 @@ import {Router} from '@angular/router';
 
     :focus {
       outline: none;
+    }
+
+    select {
+      width: 100%;
+      height: 15%;
+      font-size: 1em;
+      color: #ff8505;
     }
 
     ::-webkit-input-placeholder {
@@ -89,7 +109,7 @@ import {Router} from '@angular/router';
     }
 
     #signup:checked ~ #wrapper {
-      height: 258px;
+      height: 407px;
     }
 
     #signup:checked ~ #wrapper #arrow {
@@ -249,10 +269,14 @@ export class LoginComponent {
   isLoginButton = true;
   isResetButton = false;
   loading = false;
+  jobCategories = JobCategories;
+  experienceLevel = ExperienceLevel;
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   email = new FormControl('', [Validators.required, Validators.email]);
   confirm_password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   name = new FormControl('', [Validators.required]);
+  job_category = new FormControl('', [Validators.required]);
+  experience_level = new FormControl('', [Validators.required]);
   userForm: FormGroup;
 
   constructor(private alertService: AlertService, private authRepo: AuthRepoService, private router: Router) {
@@ -260,7 +284,9 @@ export class LoginComponent {
       email: this.email,
       name: this.name,
       password: this.password,
-      confirm_password: this.confirm_password
+      confirm_password: this.confirm_password,
+      job_category: this.job_category,
+      experience_level: this.experience_level
     });
   }
 
@@ -305,7 +331,6 @@ export class LoginComponent {
       this.confirm_password.hasError('minlength') ? 'Confirm password  must be of 8 character' : '';
   }
 
-
   login() {
     this.loading = true;
     const data = {
@@ -313,7 +338,6 @@ export class LoginComponent {
       password: this.password.value
     };
     this.authRepo.login(data).subscribe((res) => {
-      console.log(res);
       this.loading = false;
       this.router.navigate(['user']);
     }, error => {
@@ -323,7 +347,6 @@ export class LoginComponent {
   }
 
   signUp() {
-    console.log(this.password.value, this.confirm_password.value);
     this.loading = true;
     if (this.password.value !== this.confirm_password.value) {
       this.loading = false;

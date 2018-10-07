@@ -24,7 +24,10 @@ export class AuthRepoService {
   constructor(private authService: AuthService, private store: Store<RootState>, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
-  signUp(data: { email: string, password: string, name: string, confirm_password: string }): Observable<Object> {
+  signUp(data: {
+    email: string, password: string, name: string, confirm_password: string,
+    job_category: string, experience_level: string
+  }): Observable<Object> {
     return this.authService.signUp(data);
   }
 
