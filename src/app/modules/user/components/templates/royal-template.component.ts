@@ -23,7 +23,7 @@ import {isPlatformBrowser} from '@angular/common';
                   <li><i class="fa fa-envelope" aria-hidden="true"></i> <a [href]="this.resume.contact_details.email"
                                                                            target="_blank">
                     {{this.resume.contact_details.email}}</a></li>
-                  <li><i class="fa fa-link" aria-hidden="true"></i> <a *ngIf="this.resume.contact_details.website_url"
+                  <li *ngIf="this.resume.contact_details.website_url"><i class="fa fa-link" aria-hidden="true"></i> <a 
                                                                        [href]="this.resume.contact_details.website_url">
                     {{this.resume.contact_details.website_url}}</a></li>
                   <li><i class="fa fa-phone" aria-hidden="true"></i>{{this.resume.contact_details.phone_number}}</li>

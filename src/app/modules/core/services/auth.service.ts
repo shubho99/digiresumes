@@ -1,11 +1,9 @@
 import {map} from 'rxjs/operators';
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
-import {ApiRoute, Utils} from '../utils/utils';
-import {ResumeRepoService} from '../repositry/resumeRepo.service';
-import {isPlatformBrowser} from '@angular/common';
+import {ApiRoute} from '../utils/utils';
 
 
 const AUTH_TOKEN = 'auth_token';
@@ -27,7 +25,10 @@ export class AuthService {
     return localStorage.getItem(AUTH_TOKEN);
   }
 
-  signUp(data: { email: string, password: string, name: string, confirm_password: string }): Observable<User> {
+  signUp(data: {
+    email: string, password: string, name: string, confirm_password: string,
+    job_category: string, experience_level: string
+  }): Observable<User> {
     return this.apiService.post(ApiRoute.USER + '/signup', data).pipe(map(res => <User>res));
   }
 
@@ -49,6 +50,13 @@ export class AuthService {
 
   updateOnboarding(data: { onboarding: number }): Observable<User> {
     return this.apiService.patch(ApiRoute.USER + '/update/onboarding', data).pipe(map(res => <User>res));
+  }
+
+  updateJobCategory(data: { job_category: string }): Observable<User> {
+    return this.apiService.patch(ApiRoute.USER + '/update/jobCategory', data).pipe(map(res => <User>res));
+  }
+  updateExperienceLevel(data: { experience_level: string }): Observable<User> {
+    return this.apiService.patch(ApiRoute.USER + '/update/experience_level', data).pipe(map(res => <User>res));
   }
 
   resetPassword(data: { code: string, new_password: string, confirm_password: string }): Observable<Object> {

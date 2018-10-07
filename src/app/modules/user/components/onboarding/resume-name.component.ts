@@ -31,7 +31,7 @@ import {AlertService} from '../../../core/services/alert.service';
              fxLayoutGap="20px">
           <img style="width: 8%;" src="../../assets/images/complete.png"/>
           <p fxLayout="column">You have Already completed this step</p>
-          <button class="space" type="submit" mat-raised-button color="accent" matStepperNext>
+          <button class="space" type="button" mat-raised-button color="accent" matStepperNext>
             NEXT
           </button>
         </div>
