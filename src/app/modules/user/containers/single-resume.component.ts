@@ -25,7 +25,7 @@ this.resume.award_achivements.length || this.resume.interests.length || this.res
               remove_red_eye
             </mat-icon>
           </button>
-          <span fxHide.gt-xs class="res-resume-views">Views:{{this.resume.views}}</span>
+          <span *ngIf="this.resume && !this.isView" fxHide.gt-xs class="res-resume-views">Views:{{this.resume.views}}</span>
           <app-contact-detail-card *ngIf="this.resume" [resumeId]="this.resume._id"
                                    [isView]="this.isView" [contactDetails]="this.resume.contact_details" [img_url]="this.resume.image_url">
           </app-contact-detail-card>
@@ -249,11 +249,11 @@ this.resume.award_achivements.length || this.resume.interests.length || this.res
       </mat-card>
     </ng-template>
     <ng-template #buttonsTemplate>
-      <div *ngIf="this.resume.contact_details && this.resume.skills.length && 
- this.resume.weakness.length && this.resume.languages.length && this.resume.strengths.length &&
- this.resume.education.length && this.resume.employment_history.length && this.resume.refrences.length &&
-this.resume.award_achivements.length && this.resume.interests.length && this.resume.industrialExposures.length
-&& this.resume.projectDetails.length && this.resume.objectives.length "
+      <div *ngIf="!this.resume.contact_details && !this.resume.skills.length && 
+ !this.resume.weakness.length && !this.resume.strengths.length &&
+ !this.resume.education.length && !this.resume.employment_history.length && !this.resume.refrences.length &&
+!this.resume.award_achivements.length && !this.resume.interests.length && !this.resume.industrialExposures.length
+&& !this.resume.projectDetails.length && !this.resume.objectives.length "
            fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
         <p style="margin-top: 4%">Please fill some details to see your Resume</p>
         <app-resume-buttons [resumeId]="this.resume._id"></app-resume-buttons>
