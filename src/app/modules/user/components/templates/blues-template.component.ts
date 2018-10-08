@@ -152,7 +152,7 @@ import {isPlatformBrowser} from '@angular/common';
         <h4 class="email-margin" style="color:#538ec3;text-align:center;"><i class="fa fa-envelope" aria-hidden="true"></i>
           <u>{{this.resume.contact_details.email}}</u></h4>
       </div>
-      <div class="email-margin" style="    margin-left: 32%;">
+      <div *ngIf="this.resume.contact_details.website_url" class="email-margin" style="    margin-left: 32%;">
         <a class="text-align res-text-align" [href]="this.resume.contact_details.website_url" style="color:#538ec3;text-align:center;">
           <i class="fa fa-link" aria-hidden="true"></i>
           {{this.resume.contact_details.website_url}}</a>

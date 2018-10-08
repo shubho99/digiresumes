@@ -40,8 +40,8 @@ export class AuthService {
     return this.apiService.get(ApiRoute.USER + '/send/emailverification', data);
   }
 
-  updateUserName(data: { name: String }): Observable<User> {
-    return this.apiService.patch(ApiRoute.USER + '/update/name', data).pipe(map(res => <User>res));
+  updateUserProfile(data: { name: string, job_category: string, experience_level: string }): Observable<User> {
+    return this.apiService.patch(ApiRoute.USER + '/update/profile', data).pipe(map(res => <User>res));
   }
 
   updatePassword(data: { old_password: String, new_password: string, confirm_password: string }): Observable<User> {
@@ -52,12 +52,6 @@ export class AuthService {
     return this.apiService.patch(ApiRoute.USER + '/update/onboarding', data).pipe(map(res => <User>res));
   }
 
-  updateJobCategory(data: { job_category: string }): Observable<User> {
-    return this.apiService.patch(ApiRoute.USER + '/update/jobCategory', data).pipe(map(res => <User>res));
-  }
-  updateExperienceLevel(data: { experience_level: string }): Observable<User> {
-    return this.apiService.patch(ApiRoute.USER + '/update/experience_level', data).pipe(map(res => <User>res));
-  }
 
   resetPassword(data: { code: string, new_password: string, confirm_password: string }): Observable<Object> {
     return this.apiService.patch(ApiRoute.USER + '/reset/password', data).pipe(map(res => <User>res));

@@ -3,6 +3,7 @@ import {AuthRepoService} from '../../core/repositry/authRepo.service';
 import {User} from '../../core/models/user';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AlertService} from '../../core/services/alert.service';
+import {ExperienceLevel, JobCategories} from '../../core/utils/utils';
 
 @Component({
   selector: 'app-profile-settings',
@@ -22,6 +23,19 @@ import {AlertService} from '../../core/services/alert.service';
             <input [value]="this.user.email" disabled placeholder="Email" matInput/>
           </mat-form-field>
         </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+          <label>Job Experience:</label>
+          <select  style="      margin-right: 33%;
+" [formControlName]="'job_category'">
+            <option *ngFor="let option of jobCategories" [value]="option">{{option}}</option>
+          </select>
+        </div>
+        <div style="margin-top: 2%" fxLayout="row" fxLayoutAlign="space-around center">
+          <label>Experience Level:</label>
+          <select style="margin-right: 57%" [formControlName]="'experience_level'">
+            <option *ngFor="let option of this.experienceLevel" [value]="option">{{option}}</option>
+          </select>
+        </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="end center">
         <button style="text-transform: uppercase; margin-top: 15px;" mat-raised-button color="primary">Update profile</button>
@@ -33,28 +47,35 @@ import {AlertService} from '../../core/services/alert.service';
     mat-form-field {
       width: 70%;
     }
+    
   `]
 })
 export class ProfileSettingsComponent implements OnInit {
   @Input() user: User = null;
   form: FormGroup;
   loading = false;
+  jobCategories = JobCategories;
+  experienceLevel = ExperienceLevel;
 
   constructor(private authRepo: AuthRepoService, private alert: AlertService) {
   }
 
   ngOnInit() {
     const name = this.user ? this.user.name : null;
+    const jobCategory = this.user ? this.user.job_category : null;
+    const expLevel = this.user ? this.user.experience_level : null;
     this.form = new FormGroup({
       'name': new FormControl(name, [Validators.required]),
+      'job_category': new FormControl(jobCategory, [Validators.required]),
+      'experience_level': new FormControl(expLevel, [Validators.required]),
     });
   }
 
   update() {
     this.loading = true;
-    this.authRepo.updateUserName(this.form.value).subscribe((res) => {
+    this.authRepo.updateUserProfile(this.form.value).subscribe((res) => {
       this.loading = false;
-      this.alert.success('Name updated Successfully');
+      this.alert.success('Profile updated Successfully');
     }, (err) => {
       this.loading = false;
     });
