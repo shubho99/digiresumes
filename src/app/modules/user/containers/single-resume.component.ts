@@ -19,14 +19,18 @@ import {isPlatformBrowser} from '@angular/common';
 this.resume.award_achivements.length || this.resume.interests.length || this.resume.industrialExposures.length
 || this.resume.projectDetails.length || this.resume.objectives.length " class="side-bar-card res-side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
-          <button fxHide.xs matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span"
+          <button [class.views]="!this.resume.contact_details"
+                  fxHide.xs matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span"
                   *ngIf="this.resume && !this.isView">
             <mat-icon style="font-size: 25px" aria-hidden="true">
               remove_red_eye
             </mat-icon>
           </button>
-          <span *ngIf="this.resume && !this.isView" fxHide.gt-xs class="res-resume-views">Views:{{this.resume.views}}</span>
-          <app-contact-detail-card *ngIf="this.resume" [resumeId]="this.resume._id"
+          <span  *ngIf="this.resume && !this.isView" fxHide.gt-xs class="res-resume-views">
+            Views:{{this.resume.views}}</span>
+          <app-resume-buttons [resumeId]="this.resume._id"
+                              *ngIf="!this.isView && !this.resume.contact_details"></app-resume-buttons>
+          <app-contact-detail-card *ngIf="this.resume.contact_details" [resumeId]="this.resume._id"
                                    [isView]="this.isView" [contactDetails]="this.resume.contact_details" [img_url]="this.resume.image_url">
           </app-contact-detail-card>
           <ng-container *ngTemplateOutlet="skillTemplate"></ng-container>
@@ -336,6 +340,10 @@ this.resume.award_achivements.length || this.resume.interests.length || this.res
       color: #a85f46;
     }
 
+    .views {
+      margin-top: 26%;
+      margin-left: 12%;
+    }
   `]
 })
 export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
