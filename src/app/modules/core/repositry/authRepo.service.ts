@@ -50,8 +50,8 @@ export class AuthRepoService {
     return this.authService.sendEmailVerification(data);
   }
 
-  updateUserName(data: { name: String }): Observable<User> {
-    return this.authService.updateUserName(data).pipe(map((res) => {
+  updateUserProfile(data: { name: string, job_category: string, experience_level: string }): Observable<User> {
+    return this.authService.updateUserProfile(data).pipe(map((res) => {
       this.store.dispatch(new UserUpdateAction(res));
       return <User>res;
     }));
