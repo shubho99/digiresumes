@@ -38,13 +38,13 @@ import {ExperienceLevel, JobCategories} from '../modules/core/utils/utils';
           </mat-error>
         </ng-container>
         <ng-container>
-          <select [formControlName]="'job_category'" [hidden]="this.isLoginButton">
+          <select [formControlName]="'job_category'" [hidden]="this.isLoginButton || this.isResetButton">
             <option value="" disabled selected>Job Category</option>
             <option *ngFor="let option of jobCategories" [value]="option">{{option}}</option>
           </select>
         </ng-container>
         <ng-container>
-          <select [formControlName]="'experience_level'" style="margin-top: 2%" [hidden]="this.isLoginButton">
+          <select [formControlName]="'experience_level'" style="margin-top: 2%" [hidden]="this.isLoginButton || this.isResetButton">
             <option value="" disabled selected>Experienced Level</option>
             <option *ngFor="let option of this.experienceLevel" [value]="option">{{option}}</option>
           </select>
@@ -67,9 +67,12 @@ import {ExperienceLevel, JobCategories} from '../modules/core/utils/utils';
 
     select {
       width: 100%;
-      height: 15%;
+      height: 13%;
       font-size: 1em;
       color: #ff8505;
+      border-radius: 8px;
+      padding-left: 18px;
+      background: white;
     }
 
     ::-webkit-input-placeholder {
@@ -109,7 +112,7 @@ import {ExperienceLevel, JobCategories} from '../modules/core/utils/utils';
     }
 
     #signup:checked ~ #wrapper {
-      height: 407px;
+      height: 381px;
     }
 
     #signup:checked ~ #wrapper #arrow {
@@ -262,6 +265,11 @@ import {ExperienceLevel, JobCategories} from '../modules/core/utils/utils';
       position: relative;
       left: 32px;
     }
+    @media screen and (max-width: 599px) {
+      input {
+        font-size: 16px !important;
+      }
+    }
   `]
 })
 export class LoginComponent {
@@ -294,7 +302,7 @@ export class LoginComponent {
     this.isLoginButton = true;
     this.isResetButton = false;
     this.isSignUpButton = false;
-    this.userForm.reset();
+    this.resetUserForm();
   }
 
   signUpLabel() {
@@ -307,9 +315,14 @@ export class LoginComponent {
     this.isLoginButton = false;
     this.isResetButton = true;
     this.isSignUpButton = false;
-    this.userForm.reset();
+    this.resetUserForm();
   }
 
+  resetUserForm() {
+    this.userForm.get('name').reset();
+    this.userForm.get('password').reset();
+    this.userForm.get('confirm_password').reset();
+  }
   getEmailErrorMessage() {
     return this.email.hasError('required') ? 'Email is required' :
       this.email.hasError('email') ? 'Not a valid email' :

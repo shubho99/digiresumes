@@ -58,8 +58,23 @@ import {Component} from '@angular/core';
               CMO & Co-Founder
             </p>
           </div>
+        </div>       
+      </div>
+      <div fxLayout="column" fxLayoutAlign="start center">
+        <div fxLayout="row" fxLayoutGap="25px">
+          <button mat-fab style="background-image: url(../../assets/images/vishu.jpg); background-position: 0px -17px;"
+                  class="profile-pic res-about-profile-pic"></button>
+          <div style="width: 208px" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center start">
+            <p class="margin-miner">
+              <b>Vishu Agarwal</b>
+            </p>
+            <p>
+              Co-Founder
+            </p>
+          </div>
         </div>
       </div>
+      
       <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="center center">
         <h2 class="about-text contact">Do you have any questions?</h2>
         <p class="SectionTitle__Subtitle">We are here to help you out!</p>
@@ -104,7 +119,7 @@ import {Component} from '@angular/core';
     .background-image {
       background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 45%, transparent 45%),
       url(../../assets/images/dream.jpg);
-      width: 103.5%;
+      width: 103.8%;
       height: 550px;
       margin-top: -23px !important;
       margin-left: -23px;
