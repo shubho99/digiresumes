@@ -527,6 +527,11 @@ html, body {
   .res-pic {
     background-position: 0px -30px !important;
   }
+  .res-select-settings {
+    margin-left: 0% !important;
+    width: 62%;
+    padding: 8px !important;
+  }
 }
 
 .video-dialog {

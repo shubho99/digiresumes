@@ -23,16 +23,15 @@ import {ExperienceLevel, JobCategories} from '../../core/utils/utils';
             <input [value]="this.user.email" disabled placeholder="Email" matInput/>
           </mat-form-field>
         </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <label>Job Experience:</label>
-          <select  style="      margin-right: 33%;
-" [formControlName]="'job_category'">
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <label>Job<br>Experience:</label>
+          <select class="res-select-settings" style="margin-left: 19%" [formControlName]="'job_category'">
             <option *ngFor="let option of jobCategories" [value]="option">{{option}}</option>
           </select>
         </div>
-        <div style="margin-top: 2%" fxLayout="row" fxLayoutAlign="space-around center">
-          <label>Experience Level:</label>
-          <select style="margin-right: 57%" [formControlName]="'experience_level'">
+        <div style="margin-top: 4%;" fxLayout="row" fxLayoutAlign="space-evenly center">
+          <label>Experience<br>Level:</label>
+          <select [ngStyle.xs]="{'margin-left.%': 28, 'padding.px': 8}" style="margin-left: 48%" [formControlName]="'experience_level'">
             <option *ngFor="let option of this.experienceLevel" [value]="option">{{option}}</option>
           </select>
         </div>
@@ -47,7 +46,10 @@ import {ExperienceLevel, JobCategories} from '../../core/utils/utils';
     mat-form-field {
       width: 70%;
     }
-    
+    select {
+      padding: 10px;
+      border-radius: 8px;
+    }
   `]
 })
 export class ProfileSettingsComponent implements OnInit {
