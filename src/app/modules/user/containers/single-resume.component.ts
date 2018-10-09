@@ -12,13 +12,29 @@ import {isPlatformBrowser} from '@angular/common';
 @Component({
   selector: 'app-single-resume',
   template: `
+    <div style="margin-top: 1%"
+         *ngIf="!this.resume.contact_details &&  (this.resume.skills.length || 
+ this.resume.weakness.length || this.resume.strengths.length ||
+ this.resume.education.length || this.resume.employment_history.length || this.resume.refrences.length ||
+this.resume.award_achivements.length || this.resume.interests.length || this.resume.industrialExposures.length
+|| this.resume.projectDetails.length  || this.resume.objectives.length) && !this.isView">
+      <app-resume-buttons [resumeId]="this.resume._id"></app-resume-buttons>
+      <button style="        margin-top: 3.4%;
+    margin-left: 36%;
+    display: block;" fxHide.xs matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span"
+              *ngIf="this.resume && !this.isView">
+        <mat-icon style="font-size: 25px" aria-hidden="true">
+          remove_red_eye
+        </mat-icon>
+      </button>
+    </div>
     <div class="alternate instaFade" fxLayout="row" fxLayout.xs="column" *ngIf="this.resume">
       <mat-card *ngIf="this.resume.contact_details || this.resume.skills.length || 
  this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length"
                 class="side-bar-card res-side-bar-card">
         <div fxLayout="column" fxLayoutGap="30px">
           <button fxHide.xs matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span"
-                  *ngIf="this.resume && !this.isView">
+                  *ngIf="this.resume && !this.isView && this.resume.contact_details ">
             <mat-icon style="font-size: 25px" aria-hidden="true">
               remove_red_eye
             </mat-icon>
@@ -34,18 +50,7 @@ import {isPlatformBrowser} from '@angular/common';
           <ng-container *ngTemplateOutlet="weaknessTemplate"></ng-container>
         </div>
       </mat-card>
-      <div style="    margin-top: 11%;
-    margin-left: 1%;" class="side-bar-card res-side-bar-card"
-           *ngIf="!this.resume.contact_details && !this.resume.skills.length">
-        <app-resume-buttons [resumeId]="this.resume._id" *ngIf="!this.isView"></app-resume-buttons>
-        <button style="      margin-top: 17%;
-    margin-left: 5%;" fxHide.xs matTooltip="Views:{{this.resume.views}}" mat-mini-fab class="views-span res-views-span"
-                *ngIf="this.resume && !this.isView">
-          <mat-icon style="font-size: 25px" aria-hidden="true">
-            remove_red_eye
-          </mat-icon>
-        </button>
-      </div>
+
       <div class="res-single-resume-card" fxLayout="column" fxLayoutAlign.xs="start" style="width: 100%; margin-bottom: 2%">
         <iframe *ngIf="this.resume.video_url" width="100%" height="100%" frameborder="0" allowfullscreen="true"
                 [src]="this.resume.video_url | safeUrl"></iframe>
