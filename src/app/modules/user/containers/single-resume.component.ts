@@ -8,6 +8,9 @@ import {Observable} from 'rxjs';
 import {switchMap, takeWhile} from 'rxjs/internal/operators';
 import {Utils} from '../../core/utils/utils';
 import {isPlatformBrowser} from '@angular/common';
+import {RootState} from '../../../reducers';
+import {Store} from '@ngrx/store';
+import {LogoutAction} from '../../../actions/user';
 
 @Component({
   selector: 'app-single-resume',
@@ -371,12 +374,12 @@ export class SingleResumeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
+
     const param = this.router.url.split('/')[2];
     this.isView = param === 'view' ? true : false;
-    const token = isPlatformBrowser(this.platformId) ? AuthService.getAuthToken() : null;
     this.loading = true;
     this.route.params.pipe(map(params => params['id']), switchMap((id) => {
-      if (this.isView && !token) {
+      if (this.isView) {
         return this.resumeRepo.getResume(id, true);
       }
       return this.resumeRepo.getResume(id);

@@ -22,6 +22,7 @@ export class EditResumeGuard implements CanActivate {
    return combined$.pipe(filter((data) => !!data[0] || !!data[1]),map(data => {
       const user = data[0];
       const resume = data[1];
+      console.log(data);
       if (user._id === resume.user_id) {
         return true;
       } else {
