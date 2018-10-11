@@ -53,9 +53,9 @@ import {AlertService} from '../../../core/services/alert.service';
           <mat-error>Country is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <textarea formControlName="summary" matInput rows="5" placeholder="Summary"></textarea>
-          <mat-error>Summary is Required</mat-error>
-        </mat-form-field>
+          <textarea formControlName="summary" matInput rows="5" placeholder="Few Lines About Yourself"></textarea>
+          <mat-error>This Field is Required</mat-error>
+        </mat-form-field>  
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
           <button [disabled]="this.form.invalid" type="submit" style="    width: 10%;" fxFlexAlign="end" mat-raised-button color="primary">
             <span *ngIf="contactDetails">Update</span>

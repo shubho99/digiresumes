@@ -17,12 +17,13 @@ export class AuthGuard implements CanActivateChild {
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const isLoggedIn = isPlatformBrowser(this.platformId) ? AuthService.getAuthToken() : null;
-    if (state.url.split('/')[2] === 'view' && !isLoggedIn) {
-      const resumeId = state.url.split('/')[4];
-      const resume = this.resumeRepo.getResume(resumeId, true);
-      return resume.pipe(filter((res) => !!res), map((data) => {
-        return true;
-      }),);
+    if (state.url.split('/')[2] === 'view') {
+      // const resumeId = state.url.split('/')[4];
+      // const resume = this.resumeRepo.getResume(resumeId, true);
+      // return resume.pipe(filter((res) => !!res), map((data) => {
+      //   return true;
+      // }),);
+      return true;
     } else if (!isLoggedIn) {
       this.router.navigate(['']);
       return false;
